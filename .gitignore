@@ -1,0 +1,48 @@
+# dependencias
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# nativo generado
+/ios
+/android
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+# Metro
+.metro-health-check*
+
+# pruebas
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+coverage/
+
+# Vercel
+.vercel/
+
+# variables de entorno
+.env*
+
+# logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# sistema
+.DS_Store
+*.tsbuildinfo
+.cache
+dist-*
+test-results-*
