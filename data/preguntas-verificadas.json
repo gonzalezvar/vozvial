@@ -592,6 +592,58 @@
       "respuesta_sencilla": "Deben decirte de forma clara qué tratamiento tendrán tus datos y para qué, que no estás obligado a responder preguntas sobre datos sensibles o de niños, niñas y adolescentes, qué derechos tienes y quién es el responsable, con su dirección y teléfono.",
       "citas": ["L1581-2012-art12"],
       "temas": ["autorización", "deber de informar", "política de datos", "privacidad"]
+    },
+    {
+      "id": "PV-046",
+      "pregunta": "¿Qué principios debe cumplir quien usa mis datos personales?",
+      "variantes": [
+        "cuales son los principios de proteccion de datos",
+        "que reglas tiene que seguir el que usa mis datos",
+        "pueden publicar mis datos en internet",
+        "mis datos tienen que ser ciertos y estar actualizados"
+      ],
+      "respuesta_sencilla": "La ley fija estos principios: legalidad; finalidad (el uso debe tener un fin legítimo que te deben informar); libertad (solo con tu consentimiento previo, expreso e informado, salvo mandato legal o judicial); veracidad (los datos deben ser ciertos, completos y actualizados); transparencia (puedes saber si tienen datos tuyos); acceso restringido (tus datos no pueden estar disponibles en Internet, salvo la información pública o si el acceso está controlado); seguridad (deben protegerlos para evitar su pérdida o el acceso no autorizado) y confidencialidad (quienes los manejan deben guardar reserva).",
+      "citas": ["L1581-2012-art4"],
+      "temas": ["datos personales", "principios", "privacidad"]
+    },
+    {
+      "id": "PV-047",
+      "pregunta": "¿Qué deberes tiene la empresa responsable de mis datos personales?",
+      "variantes": [
+        "que obligaciones tiene el que maneja mis datos",
+        "la empresa tiene que tener un manual de politicas de datos",
+        "me tienen que contestar un reclamo sobre mis datos",
+        "tienen que guardar copia de mi autorizacion"
+      ],
+      "respuesta_sencilla": "Entre otros deberes, el responsable debe: garantizarte el derecho de hábeas data; pedir y conservar copia de tu autorización; informarte para qué recoge tus datos y qué derechos tienes; conservarlos con la seguridad necesaria para impedir su adulteración, pérdida o uso no autorizado; rectificarlos cuando sean incorrectos; tramitar tus consultas y reclamos; tener un manual interno de políticas; informarte, si lo pides, el uso que les ha dado; y cumplir las instrucciones de la Superintendencia de Industria y Comercio.",
+      "citas": ["L1581-2012-art17"],
+      "temas": ["datos personales", "deberes", "responsable del tratamiento", "privacidad"]
+    },
+    {
+      "id": "PV-048",
+      "pregunta": "¿Cuánto vale la UVB en 2026?",
+      "variantes": [
+        "valor de la uvb para 2026",
+        "a cuanto esta la unidad de valor basico en 2026",
+        "cuantos pesos es una uvb en 2026",
+        "con que valor de uvb se calculan las multas de 2026"
+      ],
+      "respuesta_sencilla": "Según un concepto del Ministerio de Transporte, la Resolución 3488 de 2025 del Ministerio de Hacienda fijó la UVB para 2026 en doce mil ciento diez pesos ($12.110). Ese concepto es una orientación: no es de obligatorio cumplimiento.",
+      "citas": ["MT-CONCEPTO-20261340231211"],
+      "temas": ["uvb", "unidad-multa", "valor-multa"]
+    },
+    {
+      "id": "PV-049",
+      "pregunta": "¿Cómo se pasa una multa de salarios mínimos a UVB?",
+      "variantes": [
+        "como se calcula una multa en uvb",
+        "como convierten las multas de salario minimo a uvb",
+        "formula para pasar la multa a uvb",
+        "de donde sale el valor de la multa en uvb"
+      ],
+      "respuesta_sencilla": "Según un concepto del Ministerio de Transporte, el valor en pesos de cada multa vigente en 2023 se divide entre diez mil pesos ($10.000), que es el valor de la UVB para 2023, y se aproxima como dice la ley. Desde 2024, ese equivalente en UVB se multiplica por el valor de la UVB que fija cada año el Ministerio de Hacienda. Las multas en UVB aplican a las sanciones impuestas desde el 1 de enero de 2024. Ese concepto es una orientación: no es de obligatorio cumplimiento.",
+      "citas": ["MT-CONCEPTO-20241340954691", "L2294-2023-art313"],
+      "temas": ["uvb", "unidad-multa", "valor-multa"]
     }
   ]
 }

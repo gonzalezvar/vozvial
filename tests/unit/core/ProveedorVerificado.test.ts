@@ -75,6 +75,25 @@ describe('ProveedorVerificado con los datos reales', () => {
     }
   });
 
+  it('la calibración puede dejar fuera una formulación sin reconstruir el índice', () => {
+    const p = pv('PV-002');
+    const sinLaPrincipal = new Set([ProveedorVerificado.idFormulacion('PV-002', 0)]);
+    const conTodo = proveedor.candidatos(p.pregunta)[0]!;
+    const sinElla = proveedor.candidatos(p.pregunta, { excluirFormulaciones: sinLaPrincipal }).find((c) => c.preguntaId === 'PV-002');
+    expect(conTodo.preguntaId).toBe('PV-002');
+    expect(conTodo.puntaje).toBeCloseTo(1, 5);
+    expect(sinElla === undefined || sinElla.puntaje < conTodo.puntaje).toBe(true);
+    const sinPregunta = proveedor.candidatos(p.pregunta, { excluirPreguntas: new Set(['PV-002']) });
+    expect(sinPregunta.some((c) => c.preguntaId === 'PV-002')).toBe(false);
+  });
+
+  it('las preguntas nuevas PV-046 a PV-049 citan solo entradas verificadas', () => {
+    for (const id of ['PV-046', 'PV-047', 'PV-048', 'PV-049']) {
+      expect(pv(id).citas.length).toBeGreaterThan(0);
+      for (const c of pv(id).citas) expect(base.porId(c)).not.toBeNull();
+    }
+  });
+
   it('es determinista', async () => {
     const pregunta = '¿me pueden quitar el carro?';
     const a = await proveedor.responder(pregunta);
@@ -143,5 +162,76 @@ describe('ProveedorVerificado con datos de prueba', () => {
     const laxo = new ProveedorVerificado(json, base, { umbral: 0.1 });
     expect((await estricto.responder('grabar agente')).tipo).toBe('abstencion');
     expect((await laxo.responder('grabar agente')).tipo).toBe('respuesta');
+  });
+});
+
+describe('ProveedorVerificado: margen y texto literal', () => {
+  const entrada = (id: string, texto: string): EntradaNormativaJSON => ({
+    id,
+    norma: 'Ley de prueba',
+    articulo: id,
+    titulo: `Artículo ${id}`,
+    texto_literal: texto,
+    modificado_por: [],
+    resumen_sencillo: '',
+    url_fuente: 'https://example.org/ley',
+    fecha_consulta: '2026-11-08',
+    temas: [],
+    verificado: true,
+    verificado_por: 'Equipo',
+    notas: '',
+  });
+  const base = new BaseNormativa([
+    entrada('A', 'El conductor puede grabar el procedimiento.\nEl Ministerio Público podrá intervenir en la audiencia.'),
+    entrada('B', 'La licencia se renueva cada diez años.'),
+  ]);
+  const json = {
+    preguntas: [
+      { id: 'P1', pregunta: 'puedo grabar al agente', variantes: [], respuesta_sencilla: 'Sí.', citas: ['A'], temas: [] },
+      { id: 'P2', pregunta: 'cuando renuevo la licencia', variantes: [], respuesta_sencilla: 'Cada diez años.', citas: ['B'], temas: [] },
+    ],
+  };
+
+  it('una palabra que solo está en el texto literal de la norma citada sube el puntaje de esa pregunta', () => {
+    const conLiteral = new ProveedorVerificado(json, base, { umbral: 0 });
+    const sinLiteral = new ProveedorVerificado(json, base, { umbral: 0, pesos: { literal: 0 } });
+    const consulta = 'grabar agente ministerio publico';
+    const a = conLiteral.candidatos(consulta).find((c) => c.preguntaId === 'P1')!;
+    const b = sinLiteral.candidatos(consulta).find((c) => c.preguntaId === 'P1')!;
+    expect(a.puntaje).toBeGreaterThan(b.puntaje);
+  });
+
+  it('se abstiene si una rival con otras citas queda a menos del margen', () => {
+    const empate = {
+      preguntas: [
+        { id: 'P1', pregunta: 'plazo agente', variantes: [], respuesta_sencilla: 'Uno.', citas: ['A'], temas: [] },
+        { id: 'P2', pregunta: 'plazo licencia', variantes: [], respuesta_sencilla: 'Dos.', citas: ['B'], temas: [] },
+      ],
+    };
+    const sinMargen = new ProveedorVerificado(empate, base, { umbral: 0, margen: 0, pesos: { informacion: 0 } });
+    const conMargen = new ProveedorVerificado(empate, base, { umbral: 0, margen: 0.1, pesos: { informacion: 0 } });
+    const d = conMargen.decidir(conMargen.candidatos('plazo'));
+    expect(d.margen).toBeLessThan(0.1);
+    expect(d.responde).toBe(false);
+    expect(sinMargen.decidir(sinMargen.candidatos('plazo')).responde).toBe(true);
+  });
+
+  it('no hay rival si las dos candidatas comparten cita: el margen no la penaliza', () => {
+    const misma = {
+      preguntas: [
+        { id: 'P1', pregunta: 'plazo agente', variantes: [], respuesta_sencilla: 'Uno.', citas: ['A'], temas: [] },
+        { id: 'P2', pregunta: 'plazo grabar', variantes: [], respuesta_sencilla: 'Dos.', citas: ['A'], temas: [] },
+      ],
+    };
+    const proveedor = new ProveedorVerificado(misma, base, { umbral: 0, margen: 0.5, pesos: { informacion: 0 } });
+    expect(proveedor.decidir(proveedor.candidatos('plazo')).responde).toBe(true);
+  });
+
+  it('el factor de información baja el puntaje de una pregunta de una sola palabra común', () => {
+    const sinFactor = new ProveedorVerificado(json, base, { umbral: 0, pesos: { informacion: 0 } });
+    const conFactor = new ProveedorVerificado(json, base, { umbral: 0, pesos: { informacion: 3 } });
+    const a = sinFactor.candidatos('licencia')[0]!;
+    const b = conFactor.candidatos('licencia')[0]!;
+    expect(b.puntaje).toBeLessThan(a.puntaje);
   });
 });

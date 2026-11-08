@@ -1,4 +1,9 @@
-import { NormalizadorEspanol, terminosCoinciden } from '../../../src/core/NormalizadorEspanol';
+import {
+  NormalizadorEspanol,
+  raizLigera,
+  terminosAfines,
+  terminosCoinciden,
+} from '../../../src/core/NormalizadorEspanol';
 
 describe('NormalizadorEspanol', () => {
   const n = new NormalizadorEspanol();
@@ -49,5 +54,26 @@ describe('NormalizadorEspanol', () => {
     const texto = '¿Cuántos días hábiles tengo para impugnar la fotomulta?';
     expect(n.tokens(texto)).toEqual(n.tokens(texto));
     expect(n.normalizar(texto)).toBe('cuanto diahabil impugnar fotomulta');
+  });
+
+  it('la raíz ligera junta formas de la misma palabra sin acortar de más', () => {
+    expect(raizLigera('notificaron')).toBe(raizLigera('notificar'));
+    expect(raizLigera('decidieron')).toBe(raizLigera('decidir'));
+    expect(raizLigera('pago')).toBe('pago');
+    expect(raizLigera('mes')).toBe('mes');
+  });
+
+  it('terminosAfines acepta prefijo, raíz y una letra de error, pero no palabras distintas', () => {
+    expect(terminosAfines('inmovilizan', 'inmovilizacion')).toBe(true);
+    expect(terminosAfines('decidieron', 'decidir')).toBe(true);
+    expect(terminosAfines('notificasion', 'notificacion')).toBe(true);
+    expect(terminosAfines('carro', 'carretera')).toBe(false);
+    expect(terminosAfines('caso', 'casa')).toBe(false);
+    expect(terminosAfines('pago', 'pagar')).toBe(false);
+  });
+
+  it('el inspector es funcionario, no agente, y el dueño es el propietario', () => {
+    expect(n.tokens('el inspector de tránsito')).toEqual(['funcionario', 'transito']);
+    expect(n.tokens('el dueño del carro')).toEqual(['propietario', 'vehiculo']);
   });
 });

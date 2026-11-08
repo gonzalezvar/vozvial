@@ -110,7 +110,10 @@ export const GRUPOS_SINONIMOS: Readonly<Record<string, readonly string[]>> = {
   ],
   licencia: ['licencia', 'licencias', 'pase'],
   conducir: ['conducir', 'conduciendo', 'conduzco', 'manejar', 'manejando', 'manejo', 'maneja', 'volante'],
-  agente: ['agente', 'agentes', 'policia', 'policias', 'guarda', 'patrullero', 'inspector'],
+  agente: ['agente', 'agentes', 'policia', 'policias', 'guarda', 'patrullero'],
+  // El inspector decide el proceso en la audiencia; no es el agente que impone el comparendo en la vía.
+  funcionario: ['funcionario', 'funcionaria', 'funcionarios', 'inspector', 'inspectora', 'inspectores'],
+  propietario: ['propietario', 'propietaria', 'propietarios', 'dueno', 'duena', 'duenos'],
   pagar: ['pagar', 'pago', 'pague', 'pagando', 'cancelar', 'cancelo'],
   descuento: ['descuento', 'descuentos', 'rebaja', 'rebajas', 'reduccion', 'mitad'],
   celular: ['celular', 'telefono', 'whatsapp'],
@@ -151,6 +154,70 @@ export function terminosCoinciden(a: string, b: string): boolean {
   let comun = 0;
   while (comun < corta && a[comun] === b[comun]) comun++;
   return comun >= 5 && comun >= corta - 2;
+}
+
+/**
+ * Sufijos que quita raizLigera(), del más largo al más corto. Es un
+ * stemming ligero propio (no Snowball completo): basta para que formas
+ * como "notificaron", "notificación" y "notificar" compartan raíz.
+ */
+const SUFIJOS_RAIZ: readonly string[] = [
+  'amientos', 'imientos', 'aciones', 'iciones', 'amiento', 'imiento', 'adoras', 'adores', 'acion', 'icion',
+  'adora', 'ador', 'ando', 'iendo', 'aron', 'ieron', 'aban', 'ados', 'adas', 'idos', 'idas', 'aria', 'eria',
+  'iria', 'amos', 'emos', 'imos', 'ado', 'ada', 'ido', 'ida', 'ar', 'er', 'ir', 'as', 'es', 'os', 'an', 'en',
+  'a', 'e', 'o',
+];
+
+/** Raíz mínima: con menos de 4 letras se confunden palabras distintas ("pago" y "pagina"). */
+const LARGO_MINIMO_RAIZ = 4;
+
+/**
+ * Raíz aproximada de un término ya normalizado: quita el primer sufijo de
+ * SUFIJOS_RAIZ que deje al menos LARGO_MINIMO_RAIZ letras.
+ */
+export function raizLigera(termino: string): string {
+  for (const sufijo of SUFIJOS_RAIZ) {
+    if (termino.length - sufijo.length >= LARGO_MINIMO_RAIZ && termino.endsWith(sufijo)) {
+      return termino.slice(0, -sufijo.length);
+    }
+  }
+  return termino;
+}
+
+/** true si a y b difieren en a lo sumo una letra (cambio, inserción o borrado). */
+function distanciaUno(a: string, b: string): boolean {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  let j = 0;
+  let cambios = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) {
+      i++;
+      j++;
+      continue;
+    }
+    if (++cambios > 1) return false;
+    if (a.length > b.length) i++;
+    else if (b.length > a.length) j++;
+    else {
+      i++;
+      j++;
+    }
+  }
+  return cambios + (a.length - i) + (b.length - j) <= 1;
+}
+
+/**
+ * Coincidencia más amplia que terminosCoinciden(), solo para el modo
+ * verificado: además del prefijo largo acepta la misma raíz ligera
+ * ("decidieron" y "decidir") y un error de una letra en palabras de 7 o
+ * más letras ("notificasion"). DetectorTema y el modo LLM siguen usando
+ * terminosCoinciden().
+ */
+export function terminosAfines(a: string, b: string): boolean {
+  if (terminosCoinciden(a, b)) return true;
+  if (raizLigera(a) === raizLigera(b) && Math.min(a.length, b.length) >= LARGO_MINIMO_RAIZ) return true;
+  return Math.min(a.length, b.length) >= 7 && distanciaUno(a, b);
 }
 
 export class NormalizadorEspanol {

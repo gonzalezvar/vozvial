@@ -20,6 +20,8 @@ export const VOCABULARIO_TEMA: readonly string[] = [
   'prescribir', 'curso', 'tecnomecanica', 'retenido', 'pare', 'cruce', 'carril', 'contramano', 'adelantar',
   // procedimiento (vacíos encontrados al pasar las preguntas verificadas por el detector)
   'pagar', 'abogado', 'comparecer', 'comparecencia', 'prueba', 'firma', 'firmar', 'presentarse', 'presentarme',
+  // el inspector o funcionario de tránsito (antes "inspector" se llevaba a "agente")
+  'funcionario',
   // datos personales
   'dato', 'privacidad',
 ];

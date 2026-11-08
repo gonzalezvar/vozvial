@@ -36,7 +36,7 @@ test('CA-06.1 la respuesta muestra norma, artículo y enlace, y al tocar la cita
   await expect(tarjeta.getByText(`Consultado el ${fechaLegible(entrada.fecha_consulta)}.`)).toBeVisible();
   const enlace = tarjeta.getByRole('link', { name: /^Ver texto oficial/ });
   await expect(enlace).toBeVisible();
-  test.info().annotations.push({ type: 'observacion', description: 'El enlace al texto oficial aparece al tocar la cita. Solo responde preguntas parecidas a las 45 verificadas: con otras palabras suele abstenerse (ver docs/evaluacion/asistente.md).' });
+  test.info().annotations.push({ type: 'observacion', description: 'El enlace al texto oficial aparece al tocar la cita. Solo responde preguntas parecidas a las 49 verificadas: con otras palabras suele abstenerse (ver docs/evaluacion/asistente.md).' });
   await capturar(page, 'CA-06.1');
 
   // El enlace abre la URL oficial guardada en la base (se intercepta para no salir a internet).
