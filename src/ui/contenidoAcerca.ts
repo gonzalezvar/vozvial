@@ -93,7 +93,7 @@ export const LO_SIMULADO: readonly ElementoAcerca[] = [
   {
     titulo: 'El asistente no usa inteligencia artificial generativa',
     detalle:
-      'Responde en "modo verificado": busca entre 45 preguntas ya revisadas por el equipo. Si preguntas con otras palabras, muchas veces te dirá que no tiene información verificada.',
+      'Responde en "modo verificado": busca entre 49 preguntas ya revisadas por el equipo. Si preguntas con otras palabras, muchas veces te dirá que no tiene información verificada.',
     estado: 'listo',
   },
   {

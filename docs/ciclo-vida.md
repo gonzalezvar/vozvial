@@ -81,8 +81,79 @@ Este documento registra **lo que se hizo** en cada etapa del ciclo de vida del p
     - Este hallazgo va a la etapa de evaluación y refinamiento.
   - **Límite del PIN:** un PIN de 6 dígitos tiene solo 10⁶ combinaciones. Con el hash, alguien podría probarlas todas sin conexión. CA-01.6 se cumple (el PIN no está en claro), pero el límite se declara.
 
+### 2026-11-08 · Fase 4 · Módulos 1, 3, 4 y 5 en paralelo
+- **Qué se hizo:**
+  - Primero un agente de infraestructura dejó la base común: `AlmacenCifrado` (IndexedDB con AES-GCM y la clave de datos envuelta con el PIN y con el código de recuperación), `ServicioCuenta`, `RepositorioCasos`, la sesión en memoria con cierre por inactividad, los layouts y `e2e/utilidades.ts`. Sus pruebas unitarias usan `fake-indexeddb` y comprueban que en el almacén no aparecen el PIN, el nombre ni el texto de una nota.
+  - Después, cuatro agentes construyeron en paralelo los módulos 1 (cuenta y acceso, HU-01 a HU-03), 3 (asistente, HU-05, HU-06 y RNF-01), 4 (Me pararon y evidencias, HU-07 y HU-08) y 5 (comparendo y plazos, HU-09 a HU-12). Cada uno con una prueba e2e por criterio, con el id en el nombre, y su captura en `evidencias/`.
+  - Los wireframes de la etapa 2 se reemplazaron por pantallas reales conectadas al dominio de `src/core/`.
+  - OCR del comparendo con tesseract.js autoalojado en `public/tesseract/` (worker, núcleo WASM y modelo `spa`): la CSP no permite CDN y la foto no sale del celular. Solo se probó con imágenes sintéticas (`e2e/fixtures/comparendo-prueba.png`).
+  - Reporter `e2e/reporter-matriz.ts` que escribe `docs/evaluacion/matriz-criterios.md` y prueba `e2e/axe.spec.ts` sobre 10 pantallas (CA-04.3).
+  - Revisores que buscaban errores a propósito, uno por módulo, revisaron cada "Cumple" débil y corrigieron pruebas y pantallas.
+- **Decisiones:**
+  - Para que varias suites corrieran a la vez sin pisarse se escribió `scripts/e2e-aislado.sh <nombre> <puerto> <specs>`: cada agente usa su propio build (`dist-<nombre>`), su puerto y su carpeta de resultados. `scripts/build-e2e.sh` serializa los builds con `flock` sobre `.cache/` para que dos builds simultáneos no choquen en la caché de Metro.
+  - El build e2e inyecta tiempos cortos (bloqueo de 3 s, inactividad de 5 s y 1000 iteraciones PBKDF2). La app real usa 5 min, 10 min y 600 000.
+  - La matriz acumula resultados por criterio en `docs/evaluacion/resultados-e2e.json`, así cada suite actualiza solo sus criterios.
+  - Los módulos 2 (salvo axe), 6 y 7 no se priorizaron para el prototipo.
+- **Problemas reales:**
+  - **Carga diferida de rutas.** Con la carga diferida de Expo Router (`asyncRoutes`), cada pantalla se descarga la primera vez que se abre; sin red, una pantalla todavía no visitada no abriría, y CA-06.5 promete accesos a lo que funciona sin conexión. Se puso `"asyncRoutes": false` en `app.json` para que todas las rutas vayan en el paquete inicial. Aun así no hay service worker: si se recarga sin internet, la app no abre.
+  - **Suite de diseño rápido.** `e2e/diseno-rapido.spec.ts` recorría los wireframes y, al volverse reales las pantallas, sobrescribía las capturas históricas de `docs/diseno-rapido/`. Se desactivó en la suite normal y solo corre con `DISENO_RAPIDO=1`. Por eso `npm run e2e` muestra 14 pruebas omitidas.
+  - **Fechas futuras.** El formulario del comparendo rechaza fechas posteriores a hoy. Los ejemplos de CA-11.1 y CA-11.2 son del 13 nov 2026, así que sus pruebas fijan el reloj en ese día. El fixture del comparendo trae 13/11/2026: antes de esa fecha no se puede guardar a mano tal cual.
+  - **Tiempos de e2e.** La suite completa (`npm run e2e`) tarda unos 2 minutos en este computador: 45 pruebas pasan y 14 se omiten. Una suite aislada pequeña (hu06 y axe, 6 pruebas) tarda unos 22 s. Corren con un solo worker (`workers: 1` en `playwright.config.ts`).
+
 ## 4. Evaluación
+
+### 2026-11-08 · Evaluación con la matriz, axe y el banco del asistente
+- **Qué se hizo:**
+  - **Matriz de criterios** (`docs/evaluacion/matriz-criterios.md`, generada por Playwright): 50 criterios (49 de las historias y RNF-01). **40 Cumple, 1 Cumple parcialmente (CA-10.2), 0 No cumple y 9 Sin prueba** (CA-04.1, CA-04.2, CA-13.1 a CA-13.3 y CA-14.1 a CA-14.4).
+  - **Accesibilidad** (`docs/evaluacion/axe-reporte.md`): axe con `wcag2a` y `wcag2aa` en 10 pantallas (bienvenida, registro, entrar, inicio, asistente, Me pararon, Mis casos, registrar comparendo, ajustes y acerca): **0 violaciones** críticas, serias, moderadas o menores. axe no reemplaza una revisión con lector de pantalla.
+  - **Asistente, medición ANTES** (`npm run eval:asistente`, umbral 0,85, 45 preguntas verificadas, banco de 60):
+    - citas pertinentes 0/40 (0 %), meta ≥ 95 %: **No cumple**;
+    - abstenciones correctas 10/10 (100 %), meta ≥ 90 %: **Cumple**;
+    - fuera de tema 10/10; falsas abstenciones 39/40; citas no pertinentes 0/40; con sustento marcadas fuera de tema 1/40;
+    - la pertinente queda en primer lugar, sin umbral, en 21/40;
+    - p50 1,07 ms y p95 2,45 ms en local, en proceso y sin red.
+- **Hallazgos que pasan a refinamiento:**
+  - CA-10.2 no puede mostrar el valor en pesos de 2026: la UVB 2026 no está verificada.
+  - CA-11.2 y CA-11.3 hablan de "notificación", pero el art. 8 de la Ley 1843 cuenta desde el "recibo del comparendo".
+  - CA-07.3 se apoya en el art. 21 de la Ley 1801, que habla de "procedimiento policivo".
+  - CA-06.5 solo vale con la app ya abierta.
+  - El asistente se abstiene casi siempre que la pregunta usa otras palabras.
+- **Lo que no se pudo evaluar:** RNF-02 desde Vercel (no se ha desplegado) y la voz real (Chromium sin interfaz no habla; se muestra en el video).
+
 
 ## 5. Refinamiento
 
+### 2026-11-08 · Refinamiento de criterios y del asistente
+- **Criterios aclarados** (detalle, motivo y evidencia en `docs/refinamiento-historias.md`; en `docs/historias-usuario.md` quedan marcados "(refinado 2026-11-08, ver refinamiento)"):
+  - CA-11.2 y CA-11.3: los 11 días hábiles se cuentan desde el recibo del comparendo en la dirección del RUNT. Si el día del recibo cuenta queda marcado como "requiere revisión jurídica".
+  - CA-10.2: se divide en (a) sanción en su unidad legal con fuente y remisión a SIMIT, que cumple, y (b) valor en pesos del año, bloqueado hasta verificar la UVB 2026. Sigue "Cumple parcialmente".
+  - CA-07.3: el derecho a grabar se sustenta en el art. 21 de la Ley 1801 y su aplicación a agentes de tránsito civiles requiere revisión jurídica. La pantalla Me pararon muestra el resumen verificado y la cita, pero **no** muestra esa advertencia; la advertencia está en las respuestas PV-002 y PV-003 del asistente. Agregarla a la pantalla queda para la entrega final.
+  - CA-06.5: vale con la app ya abierta (no hay service worker).
+  - CA-11.1 y CA-11.2: la app rechaza fechas futuras y las pruebas usan reloj fijo.
+  - HU-04 (CA-04.1 y CA-04.2), HU-13 y HU-14: pospuestas para la entrega final, sin borrar sus criterios.
+- **Refinamiento del asistente:**
+  - Diagnóstico de 40 errores: el puntaje premiaba casi solo las palabras de las preguntas verificadas, faltaba raíz de las palabras, "inspector" se trataba como "agente" y varios artículos verificados no tenían pregunta.
+  - Cambios generales en `NormalizadorEspanol`, `ProveedorVerificado` y `DetectorTema`, y 4 preguntas verificadas nuevas (PV-046 a PV-049). Umbral, margen y pesos se calibraron sin el banco: costo 208 frente a 249 de abstenerse siempre.
+- **Reevaluación (DESPUÉS)**, con el mismo banco (umbral 0,85, margen 0, 49 preguntas verificadas):
+  - citas pertinentes 0/40 (0 %): **sigue No cumple**;
+  - abstenciones correctas 10/10 (100 %): **Cumple**;
+  - fuera de tema 10/10; falsas abstenciones 39/40; citas no pertinentes 0/40; con sustento marcadas fuera de tema 1/40;
+  - la pertinente queda en primer lugar, sin umbral, en 24/40 (antes 21/40);
+  - p50 3,71 ms y p95 6,31 ms en local.
+  - Cota informativa, no usada: lo mejor posible en el banco con al menos 90 % de abstenciones correctas es 8/40 con umbral 0,70.
+- **Lectura honesta:** el ciclo evaluar → refinar → reevaluar se aplicó de verdad, pero la mejora casi no se ve en las respuestas entregadas. Con búsqueda por palabras la calibración no separa bien lo que tiene sustento de lo que no. Para la entrega final hacen falta más preguntas verificadas revisadas por una persona o un buscador por significado.
+- **Pruebas tras el refinamiento:** jest 336/336 (32 suites); e2e del asistente (hu05, hu06 y rnf01) 9/9; `tsc` y `eslint` sin errores. En el cierre se corrió la suite completa y se regeneró la matriz: sigue en 40 Cumple, 1 Cumple parcialmente, 0 No cumple y 9 Sin prueba.
+- **Correcciones de cierre:** la pantalla "Acerca del prototipo", el README, el guion, los insumos y la observación de CA-06.1 decían "45 preguntas verificadas"; se cambió a 49. ESLint fallaba al analizar los scripts guardados en `docs/prompts/`, que no son código de la app; se agregaron a sus exclusiones.
+
+
 ## 6. Entrega
+
+### 2026-11-08 · Entrega preparada (sin publicar)
+- **Qué se hizo:**
+  - `README.md` como manual técnico: estado por módulo con la matriz, diagramas Mermaid de capas, de clases y de secuencia, instalación y comandos, variables de entorno que el código lee de verdad, privacidad (qué se guarda, dónde y cómo se cifra), base normativa y limitaciones.
+  - `docs/despliegue.md`: revisión previa, comandos de GitHub y Vercel, comprobaciones con `curl` y medición del p95 con `npm run eval:asistente -- --url`. **No se publicó nada**: lo publica Juan desde su cuenta. La función `api/asistente.ts` nunca se ha compilado en Vercel y RNF-02 sigue sin medir.
+  - `docs/guion-video.md`: recorrido criterio por criterio de los módulos 1, 3, 4 y 5 (unos 9,5 minutos). CA-10.2 se presenta como parcial.
+  - `docs/insumos-documento.md`: clasificación del prototipo, lo real frente a lo simulado, resumen de este ciclo de vida, resultados con los números finales y la propuesta, no probada, del modo LLM y la transcripción en el servidor.
+  - Scripts de orquestación usados con el asistente de programación con IA, guardados en `docs/prompts/`.
+  - Limpieza de los builds y resultados aislados (`dist-*`, `test-results-*`, `.cache`).
+- **Pendiente para Juan:** publicar en GitHub y Vercel, medir RNF-02 desde Vercel, ver los diagramas Mermaid renderizados en GitHub, cambiar la fecha del fixture a 06/11/2026 si graba antes del 13 nov 2026, confirmar con la app el ejemplo de CA-12.1 del guion, y la revisión jurídica y humana de lo listado en `docs/pendientes-verificacion.md`.
