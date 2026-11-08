@@ -6,6 +6,11 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const CARPETA = path.join(__dirname, '..', 'docs', 'diseno-rapido');
+
+// Archivo historico de la etapa 2: los wireframes ya se reemplazaron por pantallas reales, asi que esta
+// suite no corre en "npm run e2e" para no sobrescribir las capturas de docs/diseno-rapido.
+// Solo se ejecuta a proposito con DISENO_RAPIDO=1.
+test.skip(!process.env.DISENO_RAPIDO, 'Etapa 2 (wireframes): se ejecuta solo con DISENO_RAPIDO=1');
 mkdirSync(CARPETA, { recursive: true });
 
 /** Captura la pantalla completa: alarga el viewport hasta el alto del contenido con scroll. */
