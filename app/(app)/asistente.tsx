@@ -9,6 +9,7 @@ import { crearProveedorVoz } from '../../src/services/ProveedorTexto';
 import { ErrorVoz } from '../../src/services/ProveedorVozWeb';
 import { servicioConectividad } from '../../src/services/ServicioConectividad';
 import { servicioLecturaVoz } from '../../src/services/ServicioLecturaVoz';
+import { useSesion } from '../../src/state/sesion';
 import {
   Alerta,
   AvisoLegal,
@@ -84,6 +85,15 @@ export default function Asistente() {
       servicioLecturaVoz.detener();
     };
   }, []);
+
+  // Mientras se escucha la voz o se espera la respuesta la sesion no se cierra por inactividad:
+  // la persona no toca la pantalla y la respuesta se perderia.
+  useEffect(() => {
+    if (!consultando && !escuchando) return;
+    useSesion.getState().tocar();
+    const intervalo = setInterval(() => useSesion.getState().tocar(), 500);
+    return () => clearInterval(intervalo);
+  }, [consultando, escuchando]);
 
   // La respuesta se lee en voz alta apenas llega (CA-05.3).
   useEffect(() => {

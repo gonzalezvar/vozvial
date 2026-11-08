@@ -27,6 +27,7 @@ import {
   MAX_TOKENS,
   MODELO_PREDETERMINADO,
   ProveedorClaude,
+  REINTENTO_PREDETERMINADO_MS,
   TIMEOUT_PREDETERMINADO_MS,
   motivoDeError,
   parsearSalidaClaude,
@@ -247,6 +248,92 @@ describe('ProveedorClaude: fallos de la API caen al modo verificado', () => {
     expect(opciones.timeout).toBe(CONFIG.timeoutMs);
   });
 
+  describe('segunda petición ante latencia alta', () => {
+    const OK = () => mensaje({ tipo: 'respuesta', texto: 'Puedes pedir audiencia.', citas: [ID_REAL] });
+
+    /** Cliente cuyas llamadas siguen un guion: cada una tarda lo indicado y resuelve o falla. */
+    function clienteConGuion(guion: { ms: number; resultado: MensajeClaude | Error | 'colgado' }[]) {
+      const senales: AbortSignal[] = [];
+      const cliente: ClienteMensajesClaude = {
+        beta: {
+          messages: {
+            create(_params, opciones) {
+              const paso = guion[senales.length] ?? { ms: 0, resultado: 'colgado' as const };
+              senales.push((opciones as { signal: AbortSignal }).signal);
+              return new Promise<MensajeClaude>((resolver, rechazar) => {
+                if (paso.resultado === 'colgado') return;
+                const r = paso.resultado;
+                setTimeout(() => (r instanceof Error ? rechazar(r) : resolver(r)), paso.ms);
+              });
+            },
+          },
+        },
+      };
+      return { cliente, senales };
+    }
+
+    function crear(guion: Parameters<typeof clienteConGuion>[0], reintentoMs = 50) {
+      const { cliente, senales } = clienteConGuion(guion);
+      const p = new ProveedorClaude(cliente, base, respaldoFalso(), { ...CONFIG, timeoutMs: 400, reintentoMs }, { registrar: () => undefined });
+      return { p, senales };
+    }
+
+    it('si la primera tarda, la segunda responde y se cancela la primera', async () => {
+      const { p, senales } = crear([
+        { ms: 0, resultado: 'colgado' },
+        { ms: 20, resultado: OK() },
+      ]);
+      const r = await p.responder(PREGUNTA);
+      expect(r.modo).toBe('claude');
+      expect(r.respaldo).toBeUndefined();
+      expect(senales).toHaveLength(2);
+      expect(senales[0]!.aborted).toBe(true);
+    });
+
+    it('si la primera responde antes del reintento, no se lanza la segunda', async () => {
+      const { p, senales } = crear([{ ms: 5, resultado: OK() }]);
+      const r = await p.responder(PREGUNTA);
+      expect(r.modo).toBe('claude');
+      await new Promise((ok) => setTimeout(ok, 80));
+      expect(senales).toHaveLength(1);
+    });
+
+    it('si la primera falla antes del reintento, responde el verificado con ese motivo y no lanza la segunda', async () => {
+      const { p, senales } = crear([{ ms: 5, resultado: new APIConnectionError({ message: 'sin red' }) }]);
+      const r = await p.responder(PREGUNTA);
+      expect(r.respaldo).toBe('red');
+      await new Promise((ok) => setTimeout(ok, 80));
+      expect(senales).toHaveLength(1);
+    });
+
+    it('si una falla mientras la otra sigue en curso, espera a la otra', async () => {
+      const { p } = crear([
+        { ms: 100, resultado: OK() },
+        { ms: 5, resultado: new APIConnectionError({ message: 'sin red' }) },
+      ]);
+      const r = await p.responder(PREGUNTA);
+      expect(r.modo).toBe('claude');
+    });
+
+    it('si ninguna responde a tiempo, corta las dos y responde el verificado', async () => {
+      const { p, senales } = crear([
+        { ms: 0, resultado: 'colgado' },
+        { ms: 0, resultado: 'colgado' },
+      ]);
+      const r = await p.responder(PREGUNTA);
+      expect(r.respaldo).toBe('tiempo_agotado');
+      expect(senales).toHaveLength(2);
+      expect(senales.every((s) => s.aborted)).toBe(true);
+    });
+
+    it('con reintentoMs en 0 nunca lanza una segunda petición', async () => {
+      const { p, senales } = crear([{ ms: 0, resultado: 'colgado' }], 0);
+      const r = await p.responder(PREGUNTA);
+      expect(r.respaldo).toBe('tiempo_agotado');
+      expect(senales).toHaveLength(1);
+    });
+  });
+
   it('en el respaldo, una pregunta fuera de tema recibe el mensaje de fuera de tema', async () => {
     const { p, respaldo } = proveedor(new APIConnectionError({ message: 'sin red' }));
     const r = await p.responder('¿Cómo hago una torta de chocolate?');
@@ -344,6 +431,7 @@ describe('ProveedorClaude.configDesdeEntorno y crearAsistenteServidor', () => {
       modelo: 'claude-opus-5-5',
       esfuerzo: 'low',
       timeoutMs: TIMEOUT_PREDETERMINADO_MS,
+      reintentoMs: REINTENTO_PREDETERMINADO_MS,
     });
     expect(
       ProveedorClaude.configDesdeEntorno({
@@ -351,9 +439,34 @@ describe('ProveedorClaude.configDesdeEntorno y crearAsistenteServidor', () => {
         ANTHROPIC_MODELO: 'claude-sonnet-5-5',
         ASISTENTE_ESFUERZO: 'medium',
         ASISTENTE_TIMEOUT_MS: '8000',
+        ASISTENTE_REINTENTO_MS: '0',
       }),
-    ).toEqual({ apiKey: 'k', modelo: 'claude-sonnet-5-5', esfuerzo: 'medium', timeoutMs: 8000 });
+    ).toEqual({ apiKey: 'k', modelo: 'claude-sonnet-5-5', esfuerzo: 'medium', timeoutMs: 8000, reintentoMs: 0 });
     expect(ProveedorClaude.configDesdeEntorno({ ANTHROPIC_API_KEY: 'k', ASISTENTE_ESFUERZO: 'altisimo' })?.esfuerzo).toBe('low');
+  });
+
+  it('crearAsistenteServidor pasa el reintento al proveedor: si la primera petición se cuelga, responde la segunda', async () => {
+    let llamadas = 0;
+    const cliente: ClienteMensajesClaude = {
+      beta: {
+        messages: {
+          create() {
+            llamadas++;
+            if (llamadas === 1) return new Promise<MensajeClaude>(() => undefined);
+            return Promise.resolve(mensaje({ tipo: 'respuesta', texto: 'Puedes pedir audiencia.', citas: [ID_REAL] }));
+          },
+        },
+      },
+    };
+    const asistente = crearAsistenteServidor({
+      env: { ANTHROPIC_API_KEY: 'k', ASISTENTE_TIMEOUT_MS: '400', ASISTENTE_REINTENTO_MS: '30' },
+      crearCliente: () => cliente,
+      opcionesClaude: { registrar: () => undefined },
+    });
+    const r = await asistente.responder(PREGUNTA);
+    expect(r.modo).toBe('claude');
+    expect(r.respaldo).toBeUndefined();
+    expect(llamadas).toBe(2);
   });
 
   it('crearAsistenteServidor usa Claude solo con llave', async () => {

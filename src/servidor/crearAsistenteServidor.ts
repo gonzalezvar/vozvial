@@ -57,7 +57,7 @@ export function crearAsistenteServidor(opciones: OpcionesAsistenteServidor): Asi
     cliente,
     base,
     respaldo,
-    { modelo: config.modelo, esfuerzo: config.esfuerzo, timeoutMs: config.timeoutMs },
+    { modelo: config.modelo, esfuerzo: config.esfuerzo, timeoutMs: config.timeoutMs, reintentoMs: config.reintentoMs },
     { detectorRespaldo: new DetectorTema(), permitirConsulta: () => control.consumirGlobal(), ...opciones.opcionesClaude },
   );
   // Sin prefiltro de tema: Claude clasifica "fuera_de_tema" (ver AsistenteNormativo).

@@ -2,6 +2,8 @@
 
 Este documento registra **lo que se hizo** en cada etapa del ciclo de vida del prototipo, con fecha, decisiones y problemas. No contiene definiciones.
 
+
+> **Nota (2026-11-08):** al cierre se retiraron del repositorio, también de su historial, los documentos de trabajo: el plan (`docs/plan.md`), el prompt inicial y los scripts de orquestación con IA, la crítica y el sistema visual, los wireframes de diseño rápido con su suite de capturas, el guion del video y los insumos del documento. Las entradas de abajo los mencionan porque son el registro de lo que se hizo en cada etapa.
 ## 1. Recolección de requisitos
 
 ### 2026-11-08 · Fase 0 · Plan
@@ -205,3 +207,22 @@ Esta iteración volvió a pasar por las seis etapas, a partir de lo que dejó la
    - **Pendiente:** probar en producción el registro y la entrada desde otro navegador con una cuenta real.
 
 - **Pendiente para Juan:** medir el banco con Claude (gasta créditos), fijar un límite de gasto en la consola de Anthropic y la revisión jurídica de `docs/pendientes-verificacion.md`.
+
+### 2026-11-08 · Revisión completa con la API real de Anthropic
+1. **Evaluación.**
+   - E2E local completa con Claude real (no simulado): 51 de 55 en la primera corrida.
+     - Dos fallos venían de pruebas que comparaban con el texto fijo del modo verificado. Se cambiaron para que en modo Claude comparen con el texto y las citas que devuelve el servidor. Siguen validando norma, artículo, texto literal, fecha y enlace.
+     - Los otros dos eran un defecto real: el build de pruebas cierra la sesión a los 5 s sin actividad y, mientras Claude respondía, la sesión se cerraba y la respuesta se perdía.
+   - Banco con Claude (60 preguntas): 35/40 citas pertinentes. Los 5 fallos eran tiempo agotado (más de 12 s); las mismas preguntas repetidas respondían en 2 a 4,5 s.
+   - Suite contra producción: 27 de 28. La ruta inexistente mostraba la página de Expo Router en inglés.
+2. **Refinamiento.**
+   - El asistente mantiene la sesión activa mientras escucha la voz o espera la respuesta, como ya hacía "Me pararon".
+   - Segunda petición a Claude si la primera no responde en 5 s; gana la primera que llegue y la otra se cancela. Al conectarla se halló que `crearAsistenteServidor` no pasaba esa opción al proveedor; se corrigió y tiene prueba unitaria.
+   - Las instrucciones de Claude aclaran que festivos y días hábiles son del tema.
+   - Pantalla propia en español para rutas inexistentes (`app/+not-found.tsx`).
+3. **Reevaluación.**
+   - E2E local con Claude real: 55 de 55. Unitarias: 503 de 503.
+   - Banco con Claude: 40/40 citas pertinentes, 10/10 abstenciones y 10/10 fuera de tema, 0 respaldos; p50 de 2,2 s y p95 de 7,8 s.
+   - Producción: 28 de 28 después de redesplegar.
+4. **Limpieza.** Se retiraron del repositorio y de su historial los documentos de trabajo (ver la nota al inicio). Antes se guardó un respaldo completo del repositorio fuera de la carpeta del proyecto.
+

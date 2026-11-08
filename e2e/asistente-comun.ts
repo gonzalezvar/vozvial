@@ -1,6 +1,6 @@
 // Ayudas compartidas por las pruebas del asistente (HU-05, HU-06 y RNF-01).
 import { expect, type Page } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const RAIZ = path.join(__dirname, '..');
@@ -45,9 +45,10 @@ export function preguntaBanco(id: string): PreguntaBanco {
 
 /** Entrada de la base normativa por id, buscada en data/normativa/*.json. */
 export function entradaNormativa(id: string): EntradaNormativa {
-  for (const archivo of ['ley-769-2002.json', 'ley-769-2002-art131.json', 'ley-1843-2017.json', 'ley-1801-2016.json', 'ley-1581-2012.json', 'ley-51-1983.json', 'unidad-multa.json']) {
-    const datos = leerJSON<{ entradas: EntradaNormativa[] }>(`data/normativa/${archivo}`);
-    const e = datos.entradas.find((x) => x.id === id);
+  // Recorre todos los archivos de la base: con Claude la cita puede ser de cualquier norma verificada.
+  for (const archivo of readdirSync(path.join(RAIZ, 'data/normativa')).filter((f) => f.endsWith('.json'))) {
+    const datos = leerJSON<{ entradas?: EntradaNormativa[] }>(`data/normativa/${archivo}`);
+    const e = datos.entradas?.find((x) => x.id === id);
     if (e) return e;
   }
   throw new Error(`No existe ${id} en data/normativa`);
@@ -98,3 +99,22 @@ export async function preguntarEscribiendo(page: Page, pregunta: string): Promis
   // Espera la respuesta de esta pregunta, no la anterior que pueda seguir en pantalla.
   await expect(page.getByTestId('respuesta')).toContainText(`Preguntaste: ${pregunta.trim()}`, { timeout: 15_000 });
 }
+
+export interface RespuestaApi {
+  tipo: string;
+  texto: string;
+  modo: string;
+  citas: { id: string }[];
+}
+
+/**
+ * Promesa con el JSON de la proxima respuesta de /api/asistente. Sirve para que las pruebas valgan
+ * en los dos modos: en modo verificado el texto es la respuesta sencilla fija; con Claude el texto
+ * cambia y se compara con lo que devolvio el servidor.
+ */
+export function esperarRespuestaApi(page: Page): Promise<RespuestaApi> {
+  return page
+    .waitForResponse((r) => r.url().endsWith('/api/asistente') && r.request().method() === 'POST', { timeout: 20_000 })
+    .then((r) => r.json() as Promise<RespuestaApi>);
+}
+

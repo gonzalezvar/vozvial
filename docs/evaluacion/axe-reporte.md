@@ -2,7 +2,7 @@
 
 Archivo generado por `e2e/axe.spec.ts` (prueba CA-04.3). No editar a mano.
 
-- Fecha de ejecución: 2026-11-08T20:59:21.572Z
+- Fecha de ejecución: 2026-11-08T22:01:09.442Z
 - Herramienta: `@axe-core/playwright` con las etiquetas `wcag2a` y `wcag2aa`, en Chromium con viewport Pixel 7.
 - Criterio: no debe haber violaciones de impacto `critical` (crítico) ni `serious` (serio).
 - axe revisa reglas automáticas. No reemplaza una revisión manual con lector de pantalla.

@@ -7,7 +7,7 @@
   npx playwright test -c playwright.produccion.config.ts
   ```
   Con `E2E_URL_BASE=<url>` se apunta a otro despliegue. Las capturas quedan en `evidencias/produccion/`.
-- **Resultado:** 27 de 28 pruebas pasan. La que falló encontró un defecto real (ver "Hallazgo").
+- **Resultado:** primera corrida, 27 de 28: la que falló encontró un defecto real (ver "Hallazgo"). Después de corregirlo y redesplegar, **28 de 28**.
 
 ## Alcance: qué cubre y qué no
 
@@ -20,7 +20,7 @@ Esta suite **no crea cuentas ni escribe PIN en producción**. Por eso cubre solo
 | Grupo | Prueba | Resultado |
 |---|---|---|
 | Pantallas públicas | `/bienvenida`, `/registro`, `/entrar`, `/recuperar`, `/guia`, `/acerca` y `/privacidad` responden 200, muestran su título, sin errores de consola y sin violaciones serias de axe (7 pruebas) | Cumple |
-| Pantallas públicas | La raíz sin cuenta lleva a la bienvenida; una ruta inexistente abre una pantalla de VozVial | **No cumple** (ver "Hallazgo") |
+| Pantallas públicas | La raíz sin cuenta lleva a la bienvenida; una ruta inexistente abre una pantalla de VozVial en español | Cumple tras la corrección (ver "Hallazgo") |
 | Pantallas públicas | Sin sesión, `/casos` no se abre y vuelve a la bienvenida | Cumple |
 | Accesibilidad | Botones principales de al menos 56 px y letra base de al menos 18 px | Cumple |
 | Accesibilidad | "Volver", "Ayuda" y "Escuchar" en una fila a 412 px | Cumple |
@@ -49,4 +49,4 @@ Además, después de la corrida se revisaron los logs de Railway: no aparece nin
 Una ruta inexistente (por ejemplo `/ruta-que-no-existe`) mostraba la página por defecto de Expo Router, en inglés ("Unmatched Route"), con un enlace al mapa del sitio. No sigue el lenguaje sencillo ni el diseño de la app.
 
 - **Corrección:** `app/+not-found.tsx`, una pantalla en español ("No encontramos esta página") con el botón "Ir al comienzo". La prueba de humo local ahora lo comprueba y pasa.
-- **Estado en producción:** la corrección está en commits, pero **falta redesplegar** para que la prueba pase contra producción.
+- **Estado en producción:** desplegada; la prueba pasa contra producción.

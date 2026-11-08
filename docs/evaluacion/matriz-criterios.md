@@ -9,8 +9,8 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 
 ## Resumen
 
-- Fecha de generación: 8 de noviembre de 2026, 3:59 p. m.
-- Última ejecución registrada: 8 de noviembre de 2026, 3:59 p. m.
+- Fecha de generación: 8 de noviembre de 2026, 5:15 p. m.
+- Última ejecución registrada: 8 de noviembre de 2026, 5:15 p. m.
 - Total de criterios: 50
 - Cumple: 42
 - Cumple parcialmente: 1
@@ -64,7 +64,7 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 
 | Criterio | Resultado esperado | Resultado observado | Cumple / No cumple | Observación | Evidencia |
 |---|---|---|---|---|---|
-| CA-06.1 Cita obligatoria | Tarjeta de cita que, al tocarla, muestra el texto literal y la fecha de consulta | Comprobado: La respuesta muestra norma, artículo y enlace, y al tocar la cita el texto literal y la fecha | Cumple | El enlace al texto oficial aparece al tocar la cita. Solo responde preguntas parecidas a las 49 verificadas: con otras palabras suele abstenerse (ver docs/evaluacion/asistente.md). (prueba: e2e/hu06-respuestas.spec.ts, 2026-11-08) | [CA-06.1.png](../../evidencias/CA-06.1.png) |
+| CA-06.1 Cita obligatoria | Tarjeta de cita que, al tocarla, muestra el texto literal y la fecha de consulta | Comprobado: La respuesta muestra norma, artículo y enlace, y al tocar la cita el texto literal y la fecha | Cumple | El enlace al texto oficial aparece al tocar la cita. Respuesta redactada por Claude a partir de los artículos citados; las citas se validan contra la base. (prueba: e2e/hu06-respuestas.spec.ts, 2026-11-08) | [CA-06.1.png](../../evidencias/CA-06.1.png) |
 | CA-06.2 Abstención | "No tengo información verificada sobre eso" + sugerencia de dónde consultar | Comprobado: Sin sustento verificado se abstiene y sugiere dónde consultar | Cumple | (prueba: e2e/hu06-respuestas.spec.ts, 2026-11-08) | [CA-06.2.png](../../evidencias/CA-06.2.png) |
 | CA-06.3 Fuera de tema | Mensaje que explica qué temas sí cubre | Comprobado: Una pregunta que no es de tránsito se declina explicando los temas cubiertos | Cumple | (prueba: e2e/hu06-respuestas.spec.ts, 2026-11-08) | [CA-06.3.png](../../evidencias/CA-06.3.png) |
 | CA-06.4 Aviso legal | "VozVial informa y organiza. No reemplaza a un abogado." | Comprobado: Toda respuesta trae el aviso legal | Cumple | (prueba: e2e/hu06-respuestas.spec.ts, 2026-11-08) | [CA-06.4.png](../../evidencias/CA-06.4.png) |
@@ -83,7 +83,7 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 
 | Criterio | Resultado esperado | Resultado observado | Cumple / No cumple | Observación | Evidencia |
 |---|---|---|---|---|---|
-| CA-08.1 Foto | Miniatura en la lista de evidencias | Foto con fecha "domingo 8 de noviembre de 2026, 3:56 p. m." y miniatura de 64 x 64. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.1.png](../../evidencias/CA-08.1.png) |
+| CA-08.1 Foto | Miniatura en la lista de evidencias | Foto con fecha "domingo 8 de noviembre de 2026, 5:02 p. m." y miniatura de 64 x 64. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.1.png](../../evidencias/CA-08.1.png) |
 | CA-08.2 Nota por voz o texto | Nota visible con fecha y hora | Nota dictada (reconocimiento simulado, es-CO) y nota escrita, ambas con fecha y hora. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.2.png](../../evidencias/CA-08.2.png) |
 | CA-08.3 Evidencias cifradas | Solo se ven datos cifrados, sin texto ni imagen legible | IndexedDB: 1 caso y 2 contenidos, solo id, iv y datos cifrados. No aparece el texto de la nota ni la firma PNG o webm. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.3.png](../../evidencias/CA-08.3.png) |
 

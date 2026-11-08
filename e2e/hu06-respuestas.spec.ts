@@ -5,6 +5,7 @@ import { expect, test } from '@playwright/test';
 import {
   abrirAsistente,
   entradaNormativa,
+  esperarRespuestaApi,
   fechaLegible,
   preguntaBanco,
   preguntarEscribiendo,
@@ -20,13 +21,20 @@ const FUERA_DE_TEMA = preguntaBanco('BE-051');
 test('CA-06.1 la respuesta muestra norma, artículo y enlace, y al tocar la cita el texto literal y la fecha', async ({ page }) => {
   await crearCuentaYEntrar(page);
   await abrirAsistente(page);
+  const api = esperarRespuestaApi(page);
   await preguntarEscribiendo(page, AUDIENCIA.pregunta);
+  const datos = await api;
+  const claude = datos.modo === 'claude';
 
-  await expect(page.getByTestId('texto-respuesta')).toHaveText(AUDIENCIA.respuesta_sencilla);
+  // Modo verificado: respuesta y citas fijas. Con Claude: el texto y las citas que devolvio el servidor.
+  expect(datos.tipo).toBe('respuesta');
+  await expect(page.getByTestId('texto-respuesta')).toHaveText(claude ? datos.texto : AUDIENCIA.respuesta_sencilla);
+  const ids = claude ? datos.citas.map((c) => c.id) : AUDIENCIA.citas;
+  expect(ids.length).toBeGreaterThan(0);
   const citas = page.getByTestId('tarjeta-cita');
-  await expect(citas).toHaveCount(AUDIENCIA.citas.length);
+  await expect(citas).toHaveCount(ids.length);
 
-  const entrada = entradaNormativa(AUDIENCIA.citas[0]!);
+  const entrada = entradaNormativa(ids[0]!);
   const tarjeta = citas.first();
   const encabezado = tarjeta.getByRole('button', { name: new RegExp(`^${entrada.norma}, artículo ${entrada.articulo}`) });
   await expect(encabezado).toBeVisible();
@@ -36,11 +44,17 @@ test('CA-06.1 la respuesta muestra norma, artículo y enlace, y al tocar la cita
   await expect(tarjeta.getByText(`Consultado el ${fechaLegible(entrada.fecha_consulta)}.`)).toBeVisible();
   const enlace = tarjeta.getByRole('link', { name: /^Ver texto oficial/ });
   await expect(enlace).toBeVisible();
-  test.info().annotations.push({ type: 'observacion', description: 'El enlace al texto oficial aparece al tocar la cita. Solo responde preguntas parecidas a las 49 verificadas: con otras palabras suele abstenerse (ver docs/evaluacion/asistente.md).' });
+  test.info().annotations.push({
+    type: 'observacion',
+    description: claude
+      ? 'El enlace al texto oficial aparece al tocar la cita. Respuesta redactada por Claude a partir de los artículos citados; las citas se validan contra la base.'
+      : 'El enlace al texto oficial aparece al tocar la cita. Solo responde preguntas parecidas a las 49 verificadas: con otras palabras suele abstenerse (ver docs/evaluacion/asistente.md).',
+  });
   await capturar(page, 'CA-06.1');
 
   // El enlace abre la URL oficial guardada en la base (se intercepta para no salir a internet).
-  await page.context().route(/secretariasenado\.gov\.co/, (ruta) => ruta.fulfill({ status: 200, body: 'texto oficial' }));
+  const hostOficial = new URL(entrada.url_fuente).host.replace(/\./g, '\\.');
+  await page.context().route(new RegExp(hostOficial), (ruta) => ruta.fulfill({ status: 200, body: 'texto oficial' }));
   const [ventana] = await Promise.all([page.context().waitForEvent('page'), enlace.click()]);
   expect(ventana.url()).toBe(entrada.url_fuente);
   await ventana.close();

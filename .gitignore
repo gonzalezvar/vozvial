@@ -46,3 +46,7 @@ yarn-error.*
 .cache
 dist-*
 test-results-*
+
+# Instrucciones locales del asistente de programacion (no se versionan)
+CLAUDE.md
+CONTEXTO.md

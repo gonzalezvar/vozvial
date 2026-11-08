@@ -62,6 +62,8 @@ export interface ConfigClaude {
   modelo: string;
   esfuerzo: EsfuerzoClaude;
   timeoutMs: number;
+  /** Si la primera peticion no respondio en este tiempo, se lanza una segunda igual y gana la primera que llegue. 0 lo apaga. */
+  reintentoMs?: number;
 }
 
 export const MODELO_PREDETERMINADO = 'claude-opus-5-5';
@@ -69,6 +71,9 @@ export const MODELO_PREDETERMINADO = 'claude-opus-5-5';
 export const ESFUERZO_PREDETERMINADO: EsfuerzoClaude = 'low';
 // Menor que los 15 s de ClienteAsistente, para que el respaldo verificado alcance a llegar.
 export const TIMEOUT_PREDETERMINADO_MS = 12000;
+// Medido con el banco de 60 preguntas: p50 de 2,5 s, pero cerca de 1 de cada 12 llamadas pasa de 12 s.
+// La misma pregunta repetida responde en 2 a 4,5 s, asi que una segunda peticion a los 5 s cubre esa cola.
+export const REINTENTO_PREDETERMINADO_MS = 5000;
 // Incluye el razonamiento interno (no se puede apagar en Opus 5.5); la salida visible es corta.
 // Es también un tope de gasto por petición. Si se corta (stop_reason max_tokens), responde el
 // modo verificado. Valor sin medir todavía: se ajusta con npm run eval:asistente -- --claude.
@@ -109,6 +114,7 @@ Devuelve un objeto con "tipo", "texto" y "citas":
 - "respuesta": los artículos sustentan la respuesta. En "texto" responde en 1 a 4 frases cortas. En "citas" pon los ids exactos de los artículos que sustentan lo que dices: al menos uno, y solo ids que aparezcan en <articulos>.
 - "abstencion": la pregunta es de tránsito, de comparendos o de los datos personales que guarda la app, pero los artículos no la sustentan, o no sustentan lo principal de lo que pregunta. "texto" vacío y "citas" vacía.
 - "fuera_de_tema": la pregunta no es de tránsito, ni del procedimiento de un comparendo, ni del derecho a grabar a la autoridad, ni de los datos personales que guarda la app. "texto" vacío y "citas" vacía.
+- Los días festivos, los días hábiles y cómo se cuentan sí son del tema, porque con ellos se cuentan los plazos del comparendo.
 
 Cómo escribir "texto":
 - Español de Colombia, en segunda persona ("tú"), frases cortas y palabras de uso diario.
@@ -222,11 +228,13 @@ export class ProveedorClaude implements ProveedorRespuesta {
     if (env.ASISTENTE_MODO?.trim().toLowerCase() === 'verificado') return null;
     const esfuerzo = env.ASISTENTE_ESFUERZO?.trim().toLowerCase() as EsfuerzoClaude | undefined;
     const timeout = Number(env.ASISTENTE_TIMEOUT_MS);
+    const reintento = env.ASISTENTE_REINTENTO_MS === undefined ? NaN : Number(env.ASISTENTE_REINTENTO_MS);
     return {
       apiKey,
       modelo: env.ANTHROPIC_MODELO?.trim() || MODELO_PREDETERMINADO,
       esfuerzo: esfuerzo && ESFUERZOS.includes(esfuerzo) ? esfuerzo : ESFUERZO_PREDETERMINADO,
       timeoutMs: Number.isFinite(timeout) && timeout > 0 ? timeout : TIMEOUT_PREDETERMINADO_MS,
+      reintentoMs: Number.isFinite(reintento) && reintento >= 0 ? reintento : REINTENTO_PREDETERMINADO_MS,
     };
   }
 
@@ -288,26 +296,54 @@ export class ProveedorClaude implements ProveedorRespuesta {
   }
 
   private async consultar(pregunta: string): Promise<MensajeClaude> {
-    const control = new AbortController();
+    const { timeoutMs } = this.config;
+    const reintentoMs = this.config.reintentoMs ?? 0;
+    const parametros = this.parametros(pregunta);
+    const controles: AbortController[] = [];
     let temporizador: ReturnType<typeof setTimeout> | undefined;
+    let temporizadorReintento: ReturnType<typeof setTimeout> | undefined;
+
+    // Gana la primera peticion que responda. Si una falla mientras otra sigue en curso, se espera a la otra;
+    // si falla la unica que hay antes del reintento, se propaga ese error sin lanzar la segunda.
+    const ganadora = new Promise<MensajeClaude>((resolver, rechazar) => {
+      let enCurso = 0;
+      let terminada = false;
+      const intentar = () => {
+        const control = new AbortController();
+        controles.push(control);
+        enCurso++;
+        Promise.resolve(this.cliente.beta.messages.create(parametros, { timeout: timeoutMs, maxRetries: 0, signal: control.signal })).then(
+          (mensaje) => {
+            terminada = true;
+            resolver(mensaje);
+          },
+          (error: unknown) => {
+            enCurso--;
+            if (enCurso > 0 || terminada) return;
+            terminada = true;
+            clearTimeout(temporizadorReintento);
+            rechazar(error);
+          },
+        );
+      };
+      intentar();
+      if (reintentoMs > 0 && reintentoMs < timeoutMs) {
+        temporizadorReintento = setTimeout(() => {
+          if (!terminada) intentar();
+        }, reintentoMs);
+      }
+    });
     // La carrera con el temporizador cubre clientes que ignoran la señal de cancelación.
     const tiempo = new Promise<never>((_, rechazar) => {
-      temporizador = setTimeout(() => {
-        control.abort();
-        rechazar(new ErrorTiempo());
-      }, this.config.timeoutMs);
+      temporizador = setTimeout(() => rechazar(new ErrorTiempo()), timeoutMs);
     });
     try {
-      return await Promise.race([
-        this.cliente.beta.messages.create(this.parametros(pregunta), {
-          timeout: this.config.timeoutMs,
-          maxRetries: 0,
-          signal: control.signal,
-        }),
-        tiempo,
-      ]);
+      return await Promise.race([ganadora, tiempo]);
     } finally {
       clearTimeout(temporizador);
+      clearTimeout(temporizadorReintento);
+      // Cancela la que perdio (o todas, si se agoto el tiempo): no se paga una respuesta que nadie usa.
+      for (const control of controles) control.abort();
     }
   }
 

@@ -27,7 +27,7 @@ const LARGO_IV_BYTES = 12;
 const USOS_DATOS: KeyUsage[] = ['encrypt', 'decrypt'];
 
 /**
- * Esquema de clave envuelta (docs/plan.md, riesgo R7): una clave de datos AES-GCM 256
+ * Esquema de clave envuelta (riesgo R7 del plan de construccion): una clave de datos AES-GCM 256
  * aleatoria cifra casos y evidencias, y se guarda envuelta dos veces, con el PIN y con el
  * codigo de recuperacion. Asi, al olvidar el PIN, el codigo recupera la misma clave.
  *

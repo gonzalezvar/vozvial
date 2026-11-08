@@ -2,7 +2,7 @@
 // (declarado): se verifica lo que la app hace con el texto reconocido y que pide leer en es-CO.
 import { expect, test } from '@playwright/test';
 
-import { abrirAsistente, espiarLecturaEnVoz, lecturas, preguntaVerificada } from './asistente-comun';
+import { abrirAsistente, esperarRespuestaApi, espiarLecturaEnVoz, lecturas, preguntaVerificada } from './asistente-comun';
 import { capturar, crearCuentaYEntrar, simularReconocimientoVoz, sinReconocimientoVoz } from './utilidades';
 
 const GRABAR = preguntaVerificada('PV-002');
@@ -31,7 +31,7 @@ test('CA-05.1 al terminar de hablar muestra lo que entendió con Enviar y Correg
   // "Enviar" manda lo transcrito y llega la respuesta.
   await page.getByRole('button', { name: /^Hablar/ }).click();
   await page.getByTestId('transcripcion').getByRole('button', { name: 'Enviar la pregunta', exact: true }).click();
-  await expect(page.getByTestId('respuesta')).toContainText(`Preguntaste: ${GRABAR.pregunta}`);
+  await expect(page.getByTestId('respuesta')).toContainText(`Preguntaste: ${GRABAR.pregunta}`, { timeout: 20_000 });
 });
 
 test('CA-05.2 sin reconocimiento de voz o con el permiso negado se puede escribir y se explica por qué', async ({ page }) => {
@@ -93,17 +93,23 @@ test('CA-05.3 la respuesta verificada se lee en voz alta y se puede repetir', as
   await abrirAsistente(page);
 
   await page.getByRole('button', { name: /^Hablar/ }).click();
+  const api = esperarRespuestaApi(page);
   await page.getByTestId('transcripcion').getByRole('button', { name: 'Enviar la pregunta', exact: true }).click();
+  const datos = await api;
 
   const respuesta = page.getByTestId('respuesta');
-  await expect(page.getByTestId('texto-respuesta')).toHaveText(GRABAR.respuesta_sencilla);
-  // Respuesta corta: la respuesta sencilla verificada, no el texto completo de la ley.
-  expect(GRABAR.respuesta_sencilla.length).toBeLessThan(450);
+  // Modo verificado: la respuesta sencilla fija. Con Claude: el texto que devolvio el servidor, con la cita del art. 21.
+  const esperado = datos.modo === 'claude' ? datos.texto : GRABAR.respuesta_sencilla;
+  expect(datos.tipo).toBe('respuesta');
+  expect(datos.citas.map((c) => c.id)).toContain('L1801-2016-art21');
+  await expect(page.getByTestId('texto-respuesta')).toHaveText(esperado);
+  // Respuesta corta, no el texto completo de la ley.
+  expect(esperado.length).toBeLessThan(700);
 
   // Se pidió leerla en voz alta en español apenas llegó (verificación del llamado).
   await expect.poll(async () => (await lecturas(page)).length).toBeGreaterThan(0);
   const [primera] = await lecturas(page);
-  expect(primera?.texto).toContain(GRABAR.respuesta_sencilla.slice(0, 60));
+  expect(primera?.texto).toContain(esperado.slice(0, 60));
   expect(primera?.idioma).toMatch(/^es/);
 
   const repetir = respuesta.getByRole('button', { name: /^Repetir/ });

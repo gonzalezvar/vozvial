@@ -36,11 +36,13 @@ La evaluación se hace con las historias y criterios de `docs/historias-usuario.
 | RNF-01 · Privacidad | — | Cumple: la petición al asistente solo lleva `{ pregunta }`, y al servidor de datos solo llegan verificadores y datos cifrados (`docs/bd.md`) |
 | Guía | — | Recorrido de 5 pasos, ayuda por situación y botón "Ayuda" en cada pantalla, con 6 pruebas e2e propias (`e2e/guia.spec.ts`). No es una historia evaluada |
 
-Resumen de la matriz al 8 de noviembre de 2026: **50 criterios: 42 Cumple, 1 Cumple parcialmente, 0 No cumple, 7 Sin prueba**. Los 7 sin prueba son CA-04.1, CA-04.2, los 3 de HU-13, CA-14.2 y CA-14.3. La suite completa: 55 pruebas pasan y 14 se omiten a propósito (las de `diseno-rapido.spec.ts`, que solo regeneran los wireframes).
+Resumen de la matriz al 8 de noviembre de 2026: **50 criterios: 42 Cumple, 1 Cumple parcialmente, 0 No cumple, 7 Sin prueba**. Los 7 sin prueba son CA-04.1, CA-04.2, los 3 de HU-13, CA-14.2 y CA-14.3. La suite completa: 55 pruebas pasan, 0 fallan y 0 se omiten, tanto en modo verificado como con la API real de Anthropic (Claude). Además, la suite contra producción (`playwright.produccion.config.ts`) pasa 28 de 28.
 
 **CA-10.2 cumple solo en parte.** El valor en pesos de 2026 no está verificado: la Resolución de MinHacienda con el valor de la UVB no se pudo descargar. Por eso la app muestra la sanción en su unidad legal (por ejemplo, 15 SMDLV) con su fuente y fecha de consulta, y remite a SIMIT. No muestra "Valor de referencia para AAAA". El detalle está en `docs/pendientes-verificacion.md`.
 
-RNF-02 (tiempo de respuesta) y RNF-03 (precisión del asistente) se miden con `npm run eval:asistente`. El resultado está en `docs/evaluacion/asistente.md`.
+RNF-02 (tiempo de respuesta) y RNF-03 (precisión del asistente) se miden con `npm run eval:asistente`:
+- **Modo verificado** (`docs/evaluacion/asistente.md`): RNF-02 cumple (p95 de 119 ms contra Railway); RNF-03 no cumple (0 de 40 citas pertinentes: se abstiene con otras palabras).
+- **Con Claude, el modo que corre en producción** (`docs/evaluacion/asistente-claude.md`): RNF-03 **cumple**, con 40 de 40 citas pertinentes (100 %), 10 de 10 abstenciones correctas, 10 de 10 fuera de tema y 0 respaldos al modo verificado. El p50 es de 2,2 s y el p95 de 7,8 s: RNF-02 se definió para el modo verificado y con Claude la meta de 1,5 s no se alcanza.
 
 ## 2. Arquitectura
 
@@ -246,10 +248,11 @@ classDiagram
   - **Parámetros:** esfuerzo `low` (consulta corta sobre un contexto dado, meta de 4 s); `max_tokens` 4000, que también es el tope de gasto por petición (valor sin medir; si se corta, responde el modo verificado); sin `temperature` ni `thinking` (en Opus 5.5 el razonamiento no se apaga y se controla con el esfuerzo); fallback del servidor `fallbacks: "default"` (beta `server-side-fallback-2026-07-01`): si el modelo rechaza por política, Anthropic reintenta en otro modelo. Solo se envía a los modelos que lo aceptan (`claude-opus-5-5`, `claude-opus-5`, `claude-fable-5-1`, `claude-sonnet-5-5`); con otro `ANTHROPIC_MODELO`, por ejemplo `claude-haiku-5-5`, va sin fallback. Si aun así rechaza (`stop_reason: "refusal"`), se abstiene.
   - **Topes de gasto** (`ControlConsumo`, `src/servidor/`): en modo Claude, el endpoint acepta 10 preguntas por minuto y 100 por día por IP (después responde 429 con `Retry-After`), y un cupo global de 300 consultas a Claude por día; al agotarse el cupo global responde el modo verificado con `respaldo: "limite"`. Los contadores viven en memoria: se reinician si el servidor se reinicia y no se comparten entre instancias. En todos los modos el endpoint solo acepta `Content-Type: application/json` (415 si no), para que otro sitio no pueda enviar preguntas desde el navegador de un visitante sin una verificación de CORS, que el servidor no autoriza. Como protección adicional conviene fijar un límite de gasto mensual en la consola de Anthropic.
   - **Registros del SDK:** el cliente se crea con `logLevel: 'warn'` y sin trazas de OpenTelemetry, para que `ANTHROPIC_LOG=debug` no escriba en el log el cuerpo de la petición, que trae la pregunta.
+  - **Segunda petición:** si la primera no responde en 5 s (`ASISTENTE_REINTENTO_MS`), se lanza otra igual y gana la primera que llegue; la otra se cancela. Medido: la mayoría responde en 2 a 6 s, pero cerca de 1 de cada 12 llamadas esperaba más de 12 s en la API (con solo 130 tokens de salida), y repetirla respondía en 2 a 4 s. Con la segunda petición, el banco pasó de 35 a 40 citas pertinentes y de 5 a 0 respaldos.
   - **Respaldo:** si Claude falla (red, 429, 5xx, tiempo agotado a los 12 s, JSON inválido o salida cortada), responde el modo verificado y la respuesta trae `modo: "verificado"` y `respaldo: "<motivo>"`. El SDK no reintenta (`maxRetries: 0`) para no duplicar la espera.
   - **Detector de tema:** con Claude no hay prefiltro. El `DetectorTema` es una lista fija de palabras y bloqueaba preguntas válidas escritas con otras palabras (por ejemplo "¿Me pueden embargar el sueldo?"); Claude clasifica `fuera_de_tema`. El detector se sigue usando en el modo verificado, también cuando es el respaldo de Claude.
   - **En la pantalla:** si la respuesta viene de Claude, aparece la línea "Respuesta redactada con IA (Claude) a partir de los artículos citados. Revisa el texto de la norma." Las tarjetas de cita no cambian.
-  - Se evalúa con `npm run eval:asistente -- --claude` (gasta créditos de la API). Sin llave, avisa y no hace nada. No se ha medido todavía.
+  - Se evalúa con `npm run eval:asistente -- --claude` (gasta créditos de la API). Sin llave, avisa y no hace nada. Resultado en `docs/evaluacion/asistente-claude.md`.
 - **Modo verificado (predeterminado sin llave; el evaluado en el prototipo).** `ProveedorVerificado` busca con MiniSearch, después de normalizar el español, entre las preguntas verificadas y sus variantes.
   - Si el puntaje supera el umbral, devuelve la `respuesta_sencilla` ya revisada, con sus citas.
   - Si no lo supera, se abstiene.
@@ -292,6 +295,7 @@ Ninguna es obligatoria. Estas son las que el código lee de verdad:
 | `ASISTENTE_ESFUERZO` | `src/servidor/ProveedorClaude.ts` | Esfuerzo de Claude: `low`, `medium`, `high`, `xhigh` o `max` | `low` |
 | `ASISTENTE_MODO` | `src/servidor/ProveedorClaude.ts` | Si vale `verificado`, apaga Claude aunque exista la llave | sin valor |
 | `ASISTENTE_TIMEOUT_MS` | `src/servidor/ProveedorClaude.ts` | Tiempo máximo de espera de Claude antes de responder con el modo verificado. Debe ser menor que los 15 s del cliente | 12000 |
+| `ASISTENTE_REINTENTO_MS` | `src/servidor/ProveedorClaude.ts` | Si la primera petición a Claude no respondió en este tiempo, se lanza una segunda igual y gana la primera. `0` lo apaga | 5000 |
 | `ASISTENTE_LIMITE_MINUTO` | `src/servidor/ControlConsumo.ts` | Preguntas por minuto por IP en modo Claude (después, 429) | 10 |
 | `ASISTENTE_LIMITE_DIA` | `src/servidor/ControlConsumo.ts` | Preguntas por día por IP en modo Claude (después, 429) | 100 |
 | `ASISTENTE_LIMITE_GLOBAL_DIA` | `src/servidor/ControlConsumo.ts` | Consultas a Claude por día en todo el servidor (después, modo verificado) | 300 |
@@ -311,7 +315,6 @@ Ninguna es obligatoria. Estas son las que el código lee de verdad:
 | `CONFIAR_PROXY` | `src/servidor/configuracion.ts` | Si vale `1`, toma la IP de `X-Forwarded-For`. En Railway se activa solo | automático en Railway |
 | `PORT` | `scripts/servidor-api.ts`, `scripts/servidor-e2e.ts` y `scripts/servidor-produccion.ts` | Puerto de los servidores | 3001 y 4173 |
 | `E2E_PUERTO`, `E2E_DIST` | `playwright.config.ts` | Puerto y carpeta de build de una suite e2e aislada | 4173 y `dist` |
-| `DISENO_RAPIDO` | `e2e/diseno-rapido.spec.ts` | Si vale `1`, corre la suite que regenera las capturas de los wireframes | sin valor (se omite) |
 
 - Las `EXPO_PUBLIC_*` las reemplaza Expo **al compilar**, así que hay que definirlas antes de `expo export` o `expo start`.
 - Los tiempos cortos (3 s de bloqueo, 5 s de inactividad, 1000 iteraciones) se usan **solo** en el build de e2e (`scripts/build-e2e.sh` y `npm run build:web:e2e`). La app publicada usa los valores reales.
@@ -329,7 +332,6 @@ Ninguna es obligatoria. Estas son las que el código lee de verdad:
 | `npm run lint` | ESLint 9 con `eslint-config-expo` |
 | `npm run e2e` | Playwright (Pixel 7, Chromium). Compila con tiempos cortos, sirve la app y el API en el mismo origen y genera `evidencias/` y `docs/evaluacion/matriz-criterios.md` |
 | `bash scripts/e2e-aislado.sh <nombre> <puerto> [specs]` | Corre una o varias suites con su propio build (`dist-<nombre>`) y su propio puerto, para no chocar con otras corridas. Ejemplo: `bash scripts/e2e-aislado.sh m5 4215 e2e/hu11-plazos.spec.ts` |
-| `DISENO_RAPIDO=1 npx playwright test e2e/diseno-rapido.spec.ts` | Regenera las capturas de los wireframes en `docs/diseno-rapido/` (etapa de diseño rápido). La suite normal la omite |
 | `npx tsx scripts/matriz-desde-resultados.ts` | Regenera la matriz desde `docs/evaluacion/resultados-e2e.json` sin volver a correr las pruebas |
 | `npm run eval:asistente` | Corre `data/banco-evaluacion.json` contra el asistente en proceso y escribe `docs/evaluacion/asistente.md` |
 | `npm run eval:asistente -- --url <url>/api/asistente` | Además mide contra un servidor real (local o Railway), con la red incluida |
@@ -498,7 +500,7 @@ Todo lo que quedó sin verificar o que requiere decisión jurídica está en `do
 
 Son las mismas que declara la pantalla "Acerca del prototipo" (`src/ui/contenidoAcerca.ts`), más los pendientes de verificación:
 
-- **Asistente.** Sin `ANTHROPIC_API_KEY` responde en modo verificado con las 49 preguntas revisadas: si se pregunta con otras palabras, muchas veces se abstiene (resultado medido en `docs/evaluacion/asistente.md`). Con la llave, Claude redacta la respuesta desde la base verificada; las citas se validan contra la base, pero el texto redactado puede tener errores y por eso la pantalla pide revisar la norma. El modo Claude todavía no se ha medido con el banco (`npm run eval:asistente -- --claude`).
+- **Asistente.** Sin `ANTHROPIC_API_KEY` responde en modo verificado con las 49 preguntas revisadas: si se pregunta con otras palabras, muchas veces se abstiene (resultado medido en `docs/evaluacion/asistente.md`). Con la llave, Claude redacta la respuesta desde la base verificada; las citas se validan contra la base, pero el texto redactado puede tener errores y por eso la pantalla pide revisar la norma. Con Claude, el banco dio 40 de 40 citas pertinentes en una corrida (`docs/evaluacion/asistente-claude.md`); el modelo no es determinista, así que otra corrida puede variar.
 - **Sin conexión.** El asistente necesita internet. Sin conexión funcionan "Me pararon", las evidencias, el comparendo y los plazos, pero solo si la app ya estaba abierta: no hay service worker, así que recargar sin internet no abre la app.
 - **Voz.** El dictado funciona en Chrome y Edge, y en Chrome el audio lo procesa Google. En las pruebas automáticas la voz es simulada; la voz real se muestra en el video.
 - **Servidor de prueba.** La copia en Railway es del proyecto universitario y no se ha probado restaurar una copia de respaldo de la base. Si se olvidan el PIN y el código de recuperación, nadie puede abrir los casos, porque el servidor no tiene la clave.
@@ -529,16 +531,9 @@ Son las mismas que declara la pantalla "Acerca del prototipo" (`src/ui/contenido
 | `docs/historias-usuario.md` | Historias y criterios de aceptación (lo que se evalúa) |
 | `docs/base-normativa.md` | Procedimiento de la base normativa y tablas de prueba de festivos y plazos |
 | `docs/pendientes-verificacion.md` | Lo no verificado y las decisiones jurídicas pendientes |
-| `docs/plan.md` | Orden de construcción y riesgos técnicos |
 | `docs/ciclo-vida.md` | Lo que se hizo en cada etapa del ciclo de vida del prototipo |
 | `docs/refinamiento-historias.md` | Cambios a historias y criterios, con su motivo |
 | `docs/evaluacion/` | Matriz de criterios, evaluación del asistente y reporte de axe |
-| `docs/diseno-rapido/` | Capturas de los wireframes navegables |
 | `docs/despliegue.md` | Pasos para publicar en Railway (y la alternativa en Vercel) |
 | `docs/bd.md` | Base de datos, cifrado de extremo a extremo, protocolo y rutas de la API de datos |
-| `docs/diseno/` | Crítica del diseño anterior y sistema visual "papel y petróleo" |
 | `docs/usuarios-demo.md` | Cuentas de demostración con datos ficticios |
-| `docs/guion-video.md` | Guion del video de 8 a 10 minutos |
-| `docs/insumos-documento.md` | Insumos para el documento de la actividad |
-| `docs/prompts/` | Scripts de orquestación de agentes de IA usados para construir el prototipo |
-| `PROMPT_INICIAL.md` | Prompt inicial con el que se pidió el prototipo al asistente de programación con IA |

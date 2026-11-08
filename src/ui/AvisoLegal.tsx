@@ -7,7 +7,7 @@ import { Texto } from './Texto';
 export const TEXTO_AVISO_LEGAL = 'VozVial informa y organiza. No reemplaza a un abogado.';
 
 /**
- * Aviso legal visible en todas las pantallas (CA-06.4 y CLAUDE.md). Es una nota, no un boton:
+ * Aviso legal visible en todas las pantallas (CA-06.4 y reglas del proyecto). Es una nota, no un boton:
  * va sin caja, con una linea fina arriba y un icono de informacion.
  */
 export function AvisoLegal({ style }: { style?: StyleProp<ViewStyle> } = {}) {

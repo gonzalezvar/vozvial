@@ -20,8 +20,6 @@ module.exports = defineConfig([
       'data/fuentes/*',
       // Worker y núcleo WASM de tesseract.js copiados de node_modules: código de terceros.
       'public/tesseract/**',
-      // Scripts de orquestacion guardados como registro de los prompts: no son codigo de la app.
-      'docs/prompts/**',
       'expo-env.d.ts',
     ],
   },

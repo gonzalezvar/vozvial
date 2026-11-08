@@ -1,5 +1,5 @@
 // Tokens visuales de VozVial. Sin dependencias de React para poder probarlos en Node.
-// La direccion visual y las razones de cada token estan en docs/diseno/sistema.md.
+// Sistema visual "papel y petroleo": fondo calido, un solo color de accion y terracota solo para urgencias.
 
 export type TamanoLetra = 'normal' | 'grande' | 'muy_grande';
 
@@ -209,7 +209,7 @@ export const elevacion = {
   media: { boxShadow: '0 4px 14px rgba(27, 26, 24, 0.07)', elevation: 3 },
 } as const;
 
-/** Medidas minimas de accesibilidad definidas en CLAUDE.md. */
+/** Medidas minimas de accesibilidad del proyecto (texto de 18 px y botones de 56 px). */
 export const medidas = {
   altoMinimoBoton: 56,
   /** Filas de lista y accesos del inicio: mas altos que un boton para dar aire al texto de dos lineas. */
