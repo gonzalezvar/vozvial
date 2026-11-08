@@ -1,0 +1,59 @@
+{
+  "fecha": "2026-11-08T17:56:00.279Z",
+  "etiquetas": [
+    "wcag2a",
+    "wcag2aa"
+  ],
+  "pantallas": [
+    {
+      "pantalla": "Bienvenida",
+      "ruta": "/bienvenida",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Registro",
+      "ruta": "/registro",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Inicio",
+      "ruta": "/inicio",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Asistente",
+      "ruta": "/asistente",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Mis casos",
+      "ruta": "/casos",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Registrar comparendo",
+      "ruta": "/comparendo/nuevo",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Ajustes",
+      "ruta": "/ajustes",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Acerca del prototipo",
+      "ruta": "/acerca",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Me pararon",
+      "ruta": "/me-pararon",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Entrar",
+      "ruta": "/entrar",
+      "violaciones": []
+    }
+  ]
+}

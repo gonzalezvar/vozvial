@@ -1,0 +1,371 @@
+{
+  "CA-01.1": {
+    "id": "CA-01.1",
+    "estado": "cumple",
+    "prueba": "CA-01.1 registro exitoso muestra el código de 12 caracteres, se puede escuchar y pide guardarlo",
+    "archivo": "e2e/hu01-crear-cuenta.spec.ts",
+    "observado": "Comprobado: Registro exitoso muestra el código de 12 caracteres, se puede escuchar y pide guardarlo",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-01.2": {
+    "id": "CA-01.2",
+    "estado": "cumple",
+    "prueba": "CA-01.2 un campo vacío se marca con mensaje claro, se lee en voz alta y no se crea la cuenta",
+    "archivo": "e2e/hu01-crear-cuenta.spec.ts",
+    "observado": "Comprobado: Un campo vacío se marca con mensaje claro, se lee en voz alta y no se crea la cuenta",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-01.3": {
+    "id": "CA-01.3",
+    "estado": "cumple",
+    "prueba": "CA-01.3 un celular que no tiene 10 dígitos o no empieza por 3 se rechaza",
+    "archivo": "e2e/hu01-crear-cuenta.spec.ts",
+    "observado": "Comprobado: Un celular que no tiene 10 dígitos o no empieza por 3 se rechaza",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-01.4": {
+    "id": "CA-01.4",
+    "estado": "cumple",
+    "prueba": "CA-01.4 el PIN se rechaza diciendo qué regla falló",
+    "archivo": "e2e/hu01-crear-cuenta.spec.ts",
+    "observado": "Comprobado: El PIN se rechaza diciendo qué regla falló",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-01.5": {
+    "id": "CA-01.5",
+    "estado": "cumple",
+    "prueba": "CA-01.5 sin la autorización de datos no se crea la cuenta y se enlaza la política",
+    "archivo": "e2e/hu01-crear-cuenta.spec.ts",
+    "observado": "Comprobado: Sin la autorización de datos no se crea la cuenta y se enlaza la política",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-01.6": {
+    "id": "CA-01.6",
+    "estado": "cumple",
+    "prueba": "CA-01.6 el PIN no queda en texto plano: solo hash PBKDF2, sal e iteraciones",
+    "archivo": "e2e/hu01-crear-cuenta.spec.ts",
+    "observado": "Comprobado: El PIN no queda en texto plano: solo hash PBKDF2, sal e iteraciones",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-02.1": {
+    "id": "CA-02.1",
+    "estado": "cumple",
+    "prueba": "CA-02.1 con el PIN correcto entro y veo mi nombre en el inicio",
+    "archivo": "e2e/hu02-entrar.spec.ts",
+    "observado": "Comprobado: Con el PIN correcto entro y veo mi nombre en el inicio",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-02.2": {
+    "id": "CA-02.2",
+    "estado": "cumple",
+    "prueba": "CA-02.2 con un PIN incorrecto no entro y me dice cuántos intentos quedan",
+    "archivo": "e2e/hu02-entrar.spec.ts",
+    "observado": "Comprobado: Con un PIN incorrecto no entro y me dice cuántos intentos quedan",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-02.3": {
+    "id": "CA-02.3",
+    "estado": "cumple",
+    "prueba": "CA-02.3 tras 5 fallos seguidos se bloquea con un contador visible del tiempo restante",
+    "archivo": "e2e/hu02-entrar.spec.ts",
+    "observado": "Comprobado: Tras 5 fallos seguidos se bloquea con un contador visible del tiempo restante",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-02.4": {
+    "id": "CA-02.4",
+    "estado": "cumple",
+    "prueba": "CA-02.4 sin actividad la sesión se cierra y vuelve a pedir el PIN",
+    "archivo": "e2e/hu02-entrar.spec.ts",
+    "observado": "Comprobado: Sin actividad la sesión se cierra y vuelve a pedir el PIN",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-03.1": {
+    "id": "CA-03.1",
+    "estado": "cumple",
+    "prueba": "CA-03.1 con el código correcto y un PIN nuevo entro y mis casos anteriores siguen ahí",
+    "archivo": "e2e/hu03-recuperar.spec.ts",
+    "observado": "Comprobado: Con el código correcto y un PIN nuevo entro y mis casos anteriores siguen ahí",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-03.2": {
+    "id": "CA-03.2",
+    "estado": "cumple",
+    "prueba": "CA-03.2 con un código incorrecto se rechaza y el PIN no cambia",
+    "archivo": "e2e/hu03-recuperar.spec.ts",
+    "observado": "Comprobado: Con un código incorrecto se rechaza y el PIN no cambia",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-04.3": {
+    "id": "CA-04.3",
+    "estado": "cumple",
+    "prueba": "CA-04.3 sin violaciones serias ni criticas en pantallas principales",
+    "archivo": "e2e/axe.spec.ts",
+    "observado": "axe (wcag2a, wcag2aa) en 10 pantallas: 0 critical, 0 serious, 0 moderate, 0 minor. Reporte en docs/evaluacion/axe-reporte.md.",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-05.1": {
+    "id": "CA-05.1",
+    "estado": "cumple",
+    "prueba": "CA-05.1 al terminar de hablar muestra lo que entendió con Enviar y Corregir",
+    "archivo": "e2e/hu05-asistente-voz.spec.ts",
+    "observado": "Comprobado: Al terminar de hablar muestra lo que entendió con Enviar y Corregir",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-05.2": {
+    "id": "CA-05.2",
+    "estado": "cumple",
+    "prueba": "CA-05.2 sin reconocimiento de voz o con el permiso negado se puede escribir y se explica por qué",
+    "archivo": "e2e/hu05-asistente-voz.spec.ts",
+    "observado": "Comprobado: Sin reconocimiento de voz o con el permiso negado se puede escribir y se explica por qué",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-05.3": {
+    "id": "CA-05.3",
+    "estado": "cumple",
+    "prueba": "CA-05.3 la respuesta verificada se lee en voz alta y se puede repetir",
+    "archivo": "e2e/hu05-asistente-voz.spec.ts",
+    "observado": "Comprobado: La respuesta verificada se lee en voz alta y se puede repetir",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-06.1": {
+    "id": "CA-06.1",
+    "estado": "cumple",
+    "prueba": "CA-06.1 la respuesta muestra norma, artículo y enlace, y al tocar la cita el texto literal y la fecha",
+    "archivo": "e2e/hu06-respuestas.spec.ts",
+    "observado": "Comprobado: La respuesta muestra norma, artículo y enlace, y al tocar la cita el texto literal y la fecha",
+    "observacion": "El enlace al texto oficial aparece al tocar la cita. Solo responde preguntas parecidas a las 45 verificadas: con otras palabras suele abstenerse (ver docs/evaluacion/asistente.md).",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-06.2": {
+    "id": "CA-06.2",
+    "estado": "cumple",
+    "prueba": "CA-06.2 sin sustento verificado se abstiene y sugiere dónde consultar",
+    "archivo": "e2e/hu06-respuestas.spec.ts",
+    "observado": "Comprobado: Sin sustento verificado se abstiene y sugiere dónde consultar",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-06.3": {
+    "id": "CA-06.3",
+    "estado": "cumple",
+    "prueba": "CA-06.3 una pregunta que no es de tránsito se declina explicando los temas cubiertos",
+    "archivo": "e2e/hu06-respuestas.spec.ts",
+    "observado": "Comprobado: Una pregunta que no es de tránsito se declina explicando los temas cubiertos",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-06.4": {
+    "id": "CA-06.4",
+    "estado": "cumple",
+    "prueba": "CA-06.4 toda respuesta trae el aviso legal",
+    "archivo": "e2e/hu06-respuestas.spec.ts",
+    "observado": "Comprobado: Toda respuesta trae el aviso legal",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-06.5": {
+    "id": "CA-06.5",
+    "estado": "cumple",
+    "prueba": "CA-06.5 sin internet avisa que el asistente necesita internet y ofrece lo que sí funciona",
+    "archivo": "e2e/hu06-respuestas.spec.ts",
+    "observado": "Comprobado: Sin internet avisa que el asistente necesita internet y ofrece lo que sí funciona",
+    "observacion": "Vale con la app ya abierta antes de perder la conexión: no hay service worker, así que recargar sin internet no abre la app.",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-07.1": {
+    "id": "CA-07.1",
+    "estado": "cumple",
+    "prueba": "CA-07.1 un toque en \"Me pararon\" empieza a grabar y muestra el tiempo",
+    "archivo": "e2e/hu07-me-pararon.spec.ts",
+    "observado": "1 toque desde el inicio. Indicador \"Grabando\" con tiempo 00:02 (MediaRecorder activo).",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-07.2": {
+    "id": "CA-07.2",
+    "estado": "cumple",
+    "prueba": "CA-07.2 guarda fecha, hora y ubicación; si niego la ubicación queda \"Sin ubicación\"",
+    "archivo": "e2e/hu07-me-pararon.spec.ts",
+    "observado": "Con permiso: 4.60970, -74.08170 y fecha 8 de noviembre de 2026. Sin permiso: el caso se crea igual con \"Sin ubicación\".",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-07.3": {
+    "id": "CA-07.3",
+    "estado": "cumple",
+    "prueba": "CA-07.3 muestra solo derechos verificados de la base, cada uno con su artículo",
+    "archivo": "e2e/hu07-me-pararon.spec.ts",
+    "observado": "Se muestran 4 derechos verificados: L1801-2016-art21, L769-2002-art135, L769-2002-art125, L769-2002-art136.",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-07.4": {
+    "id": "CA-07.4",
+    "estado": "cumple",
+    "prueba": "CA-07.4 \"Terminar\" guarda el audio en el caso y se puede reproducir desde Mis casos",
+    "archivo": "e2e/hu07-me-pararon.spec.ts",
+    "observado": "Caso en Mis casos con audio audio/webm;codecs=opus de 28971 bytes, descifrado y cargado en el reproductor.",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-08.1": {
+    "id": "CA-08.1",
+    "estado": "cumple",
+    "prueba": "CA-08.1 una foto queda con fecha y hora y se ve su miniatura",
+    "archivo": "e2e/hu08-evidencias.spec.ts",
+    "observado": "Foto con fecha \"domingo 8 de noviembre de 2026, 12:57 p. m.\" y miniatura de 64 x 64.",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-08.2": {
+    "id": "CA-08.2",
+    "estado": "cumple",
+    "prueba": "CA-08.2 una nota dictada o escrita se guarda y se ve con fecha y hora",
+    "archivo": "e2e/hu08-evidencias.spec.ts",
+    "observado": "Nota dictada (reconocimiento simulado, es-CO) y nota escrita, ambas con fecha y hora.",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-08.3": {
+    "id": "CA-08.3",
+    "estado": "cumple",
+    "prueba": "CA-08.3 en IndexedDB las evidencias están cifradas: sin texto ni imagen legible",
+    "archivo": "e2e/hu08-evidencias.spec.ts",
+    "observado": "IndexedDB: 1 caso y 2 contenidos, solo id, iv y datos cifrados. No aparece el texto de la nota ni la firma PNG o webm.",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-09.1": {
+    "id": "CA-09.1",
+    "estado": "cumple",
+    "prueba": "CA-09.1 la foto legible llena número, fecha, placa y código",
+    "archivo": "e2e/hu09-comparendo.spec.ts",
+    "observado": "Comprobado: La foto legible llena número, fecha, placa y código",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-09.2": {
+    "id": "CA-09.2",
+    "estado": "cumple",
+    "prueba": "CA-09.2 el dato con baja confianza se resalta y no se guarda sin confirmarlo",
+    "archivo": "e2e/hu09-comparendo.spec.ts",
+    "observado": "Comprobado: El dato con baja confianza se resalta y no se guarda sin confirmarlo",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-09.3": {
+    "id": "CA-09.3",
+    "estado": "cumple",
+    "prueba": "CA-09.3 un código que no está en el catálogo se rechaza",
+    "archivo": "e2e/hu09-comparendo.spec.ts",
+    "observado": "Comprobado: Un código que no está en el catálogo se rechaza",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-09.4": {
+    "id": "CA-09.4",
+    "estado": "cumple",
+    "prueba": "CA-09.4 \"Escribir los datos\" registra el comparendo a mano",
+    "archivo": "e2e/hu09-comparendo.spec.ts",
+    "observado": "Comprobado: \"Escribir los datos\" registra el comparendo a mano",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-10.1": {
+    "id": "CA-10.1",
+    "estado": "cumple",
+    "prueba": "CA-10.1 el detalle explica la infracción en palabras sencillas, con su artículo y el texto literal desplegable",
+    "archivo": "e2e/hu10-infraccion.spec.ts",
+    "observado": "Comprobado: El detalle explica la infracción en palabras sencillas, con su artículo y el texto literal desplegable",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-10.2": {
+    "id": "CA-10.2",
+    "estado": "parcial",
+    "prueba": "CA-10.2 el valor aparece con su unidad, su vigencia y su fuente",
+    "archivo": "e2e/hu10-infraccion.spec.ts",
+    "observado": "Comprobado: El valor aparece con su unidad, su vigencia y su fuente",
+    "observacion": "No aparece un valor en pesos con su año: ninguna infracción tiene valor_referencia verificado y la UVB 2026 está en verificado:false. La app muestra la sanción en SMDLV, la fuente con su fecha de consulta y remite a SIMIT.",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-11.1": {
+    "id": "CA-11.1",
+    "estado": "cumple",
+    "prueba": "CA-11.1 comparendo en vía del viernes 13 nov 2026: fecha límite lunes 23 nov 2026",
+    "archivo": "e2e/hu11-plazos.spec.ts",
+    "observado": "Comprobado: Comparendo en vía del viernes 13 nov 2026: fecha límite lunes 23 nov 2026",
+    "observacion": "La prueba fija el reloj en el 13 nov 2026. La app no acepta fechas futuras, así que a mano solo se reproduce desde ese día.",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-11.2": {
+    "id": "CA-11.2",
+    "estado": "cumple",
+    "prueba": "CA-11.2 fotodetección notificada el viernes 13 nov 2026: fecha límite martes 1 dic 2026",
+    "archivo": "e2e/hu11-plazos.spec.ts",
+    "observado": "Comprobado: Fotodetección notificada el viernes 13 nov 2026: fecha límite martes 1 dic 2026",
+    "observacion": "La prueba fija el reloj en el 13 nov 2026. La app no acepta fechas futuras, así que a mano solo se reproduce desde ese día.",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-11.3": {
+    "id": "CA-11.3",
+    "estado": "cumple",
+    "prueba": "CA-11.3 en fotodetección se pregunta la fecha de la notificación y el cálculo dice qué fecha usó",
+    "archivo": "e2e/hu11-plazos.spec.ts",
+    "observado": "Comprobado: En fotodetección se pregunta la fecha de la notificación y el cálculo dice qué fecha usó",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-11.4": {
+    "id": "CA-11.4",
+    "estado": "cumple",
+    "prueba": "CA-11.4 el caso muestra los días hábiles restantes o que el plazo venció",
+    "archivo": "e2e/hu11-plazos.spec.ts",
+    "observado": "Comprobado: El caso muestra los días hábiles restantes o que el plazo venció",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-12.1": {
+    "id": "CA-12.1",
+    "estado": "cumple",
+    "prueba": "CA-12.1 con 2 días hábiles o menos el inicio muestra una alerta que lleva al caso",
+    "archivo": "e2e/hu12-recordatorios.spec.ts",
+    "observado": "Comprobado: Con 2 días hábiles o menos el inicio muestra una alerta que lleva al caso",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "CA-12.2": {
+    "id": "CA-12.2",
+    "estado": "cumple",
+    "prueba": "CA-12.2 el día límite la alerta dice \"Hoy vence tu plazo para …\"",
+    "archivo": "e2e/hu12-recordatorios.spec.ts",
+    "observado": "Comprobado: El día límite la alerta dice \"Hoy vence tu plazo para …\"",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  },
+  "RNF-01": {
+    "id": "RNF-01",
+    "estado": "cumple",
+    "prueba": "RNF-01 la peticion solo lleva el texto de la pregunta",
+    "archivo": "e2e/rnf01-privacidad.spec.ts",
+    "observado": "Comprobado: La peticion solo lleva el texto de la pregunta",
+    "observacion": "",
+    "fecha": "2026-11-08T17:57:45.209Z"
+  }
+}
