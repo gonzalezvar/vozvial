@@ -1,4 +1,4 @@
-// Sirve dist/ como SPA y /api/asistente en el mismo origen, como en Vercel. Lo usa Playwright.
+// Sirve dist/ como SPA y /api/asistente en el mismo origen, como en Vercel. Lo usan Playwright y el despliegue en Railway.
 import { readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import path from 'node:path';
