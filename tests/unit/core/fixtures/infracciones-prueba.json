@@ -1,0 +1,72 @@
+{
+  "articulo_id": "PRUEBA-art1",
+  "fecha_consulta": "2026-11-08",
+  "notas": "Fixture de prueba con datos de forma. No son normas reales ni deben usarse en la app.",
+  "infracciones": [
+    {
+      "codigo": "A01",
+      "literal": "A",
+      "numeral": "1",
+      "descripcion_literal": "Texto literal de prueba A1.",
+      "descripcion_sencilla": "Descripción sencilla de prueba A1.",
+      "sancion": { "cantidad": 1, "unidad": "UNIDAD_PRUEBA" },
+      "otras_consecuencias": "",
+      "articulo_id": "PRUEBA-art1",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C02",
+      "literal": "C",
+      "numeral": "2",
+      "descripcion_literal": "Texto literal de prueba C2.",
+      "descripcion_sencilla": "Descripción sencilla de prueba C2.",
+      "sancion": { "cantidad": 2, "unidad": "UNIDAD_PRUEBA" },
+      "otras_consecuencias": "Consecuencia de prueba.",
+      "articulo_id": "PRUEBA-art1",
+      "valor_referencia": { "pesos": 1000, "vigencia": 2026, "fuente": "Fuente de prueba" },
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C12A",
+      "literal": "C",
+      "numeral": "12A",
+      "descripcion_literal": "Texto literal de prueba C12A.",
+      "descripcion_sencilla": "Descripción sencilla de prueba C12A.",
+      "sancion": { "cantidad": 3, "unidad": "UNIDAD_PRUEBA" },
+      "otras_consecuencias": "",
+      "articulo_id": "PRUEBA-art1",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D05",
+      "literal": "D",
+      "numeral": "5",
+      "descripcion_literal": "Texto literal de prueba D5 sin verificar.",
+      "descripcion_sencilla": "Descripción sencilla de prueba D5.",
+      "sancion": { "cantidad": 4, "unidad": "UNIDAD_PRUEBA" },
+      "otras_consecuencias": "",
+      "articulo_id": "PRUEBA-art1",
+      "valor_referencia": null,
+      "verificado": false,
+      "notas": "Entrada no verificada: el catálogo debe ignorarla."
+    },
+    {
+      "codigo": "F",
+      "literal": "F",
+      "numeral": "",
+      "descripcion_literal": "Entrada verificada pero sin forma de código.",
+      "descripcion_sencilla": "",
+      "sancion": null,
+      "otras_consecuencias": "",
+      "articulo_id": "PRUEBA-art1",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Sin numeral: no se puede buscar por código."
+    }
+  ]
+}

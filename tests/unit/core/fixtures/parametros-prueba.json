@@ -1,0 +1,24 @@
+{
+  "parametros": [
+    {
+      "id": "dias_habiles_via",
+      "valor": 5,
+      "unidad": "dias_habiles",
+      "punto_partida": "dia_siguiente_evento",
+      "descripcion": "Parámetro de prueba para comparendo en vía. No es un valor legal.",
+      "sustento": ["TEST"],
+      "verificado": true,
+      "notas": "Fixture de pruebas unitarias. Los valores reales salen de data/normativa/parametros.json."
+    },
+    {
+      "id": "dias_habiles_fotodeteccion",
+      "valor": 11,
+      "unidad": "dias_habiles",
+      "punto_partida": "dia_siguiente_notificacion",
+      "descripcion": "Parámetro de prueba para fotodetección. No es un valor legal.",
+      "sustento": ["TEST"],
+      "verificado": true,
+      "notas": "Fixture de pruebas unitarias. Los valores reales salen de data/normativa/parametros.json."
+    }
+  ]
+}
