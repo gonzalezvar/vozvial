@@ -16,9 +16,9 @@
   - `RAILPACK_NODE_VERSION=22`.
 - **Cuentas de demostración:** el servicio `Postgres` no tiene URL pública, así que la semilla se corre dentro del contenedor de la app, que alcanza la base por la red interna con su `DATABASE_URL`:
   ```bash
-  railway ssh --service vozvial -- npx tsx scripts/sembrar-demo.ts
+  railway ssh --service vozvial -- npx tsx scripts/sembrar-demo.ts --sin-doc
   ```
-  Las fechas de los casos se calculan el día de la siembra. Los accesos ficticios están en `docs/usuarios-demo.md`.
+  `--sin-doc` evita que intente reescribir `docs/usuarios-demo.md`, que no se sube a Railway. Se sembró el 2026-11-08: 3 cuentas y 7 casos. Las fechas de los casos se calculan el día de la siembra. Los accesos ficticios están en `docs/usuarios-demo.md`.
 - **Redesplegar** (desde la raíz, con la CLI enlazada):
   ```bash
   railway up --ci -m "resumen del cambio"
