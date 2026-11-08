@@ -32,7 +32,7 @@
       "description": "Asistente de voz para entender tus derechos frente a un comparendo de tránsito."
     },
     "plugins": [
-      ["expo-router", { "root": "./app" }],
+      ["expo-router", { "root": "./app", "asyncRoutes": false }],
       [
         "expo-splash-screen",
         {
