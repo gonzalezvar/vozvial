@@ -6,6 +6,8 @@ const DIST = process.env.E2E_DIST ?? 'dist';
 
 export default defineConfig({
   testDir: './e2e',
+  // La suite de produccion corre aparte con playwright.produccion.config.ts.
+  testIgnore: ['produccion/**'],
   outputDir: './test-results',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,

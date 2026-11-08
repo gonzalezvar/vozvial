@@ -337,6 +337,7 @@ Ninguna es obligatoria. Estas son las que el código lee de verdad:
 | `npm run build:web` | `expo export -p web` a `dist/` y luego `scripts/verificar-bundle.ts`, que falla si el SDK de Anthropic o el prompt del servidor quedaron en el build |
 | `npm run build:web:e2e` | Mismo build con los tiempos cortos de prueba |
 | `npm run servidor:e2e` | Sirve `dist/`, `/api/asistente` y la API de datos en el puerto 4173, con las cabeceras y la CSP de `vercel.json` |
+| `npx playwright test -c playwright.produccion.config.ts` | Pruebas e2e contra el despliegue publicado (o `E2E_URL_BASE`). No crean cuentas: cubren pantallas públicas, guía, asistente, API sin sesión y cabeceras. Resultados en `docs/evaluacion/produccion.md` |
 | `npm start` | Servidor de producción (`scripts/servidor-produccion.ts`). Usa Postgres si hay `DATABASE_URL` y PGlite si no |
 | `npm run sembrar:demo -- --url-bd <url>` | Crea las 3 cuentas de demostración de `docs/usuarios-demo.md` con casos y plazos cargados. También acepta `--pglite <carpeta>` o lee `DATABASE_URL` |
 
