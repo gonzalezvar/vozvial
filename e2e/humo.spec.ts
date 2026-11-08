@@ -17,6 +17,11 @@ test('humo: una ruta desconocida tambien carga la SPA', async ({ page }) => {
   const respuesta = await page.goto('/ruta-que-no-existe');
   expect(respuesta?.status()).toBe(200);
   await expect(page.locator('#root')).toBeAttached();
+  // Pantalla propia en español, no la de Expo Router ("Unmatched Route").
+  await expect(page.getByRole('heading', { level: 1, name: 'No encontramos esta página' })).toBeVisible();
+  await expect(page.locator('body')).not.toContainText('Unmatched Route');
+  await page.getByTestId('ir-comienzo').click();
+  await expect(page).toHaveURL(/\/bienvenida$/);
 });
 
 test('humo: el endpoint del asistente responde JSON en el mismo origen', async ({ request }) => {
