@@ -1,0 +1,1737 @@
+{
+  "articulo_id": "L769-2002-art131",
+  "fecha_consulta": "2026-11-08",
+  "fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#131",
+  "notas": "Catálogo construido desde el texto vigente del art. 131 de la Ley 769 de 2002 publicado por la Secretaría del Senado (http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#131). HTML crudo en data/fuentes/senado-ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/senado-ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55). Literales existentes en el texto vigente: A a G (no existe literal H). E.3 fue eliminado por el art. 4 de la Ley 1696 de 2013 y no se incluye. Unidad: el texto dice 'salarios mínimos legales diarios vigentes (SMLDV/smldv)'; aquí se normaliza como 'SMDLV'. La conversión a la unidad vigente (UVB) y el valor en pesos los define data/normativa/unidad-multa.json y parametros.json; por eso valor_referencia es null. Convención de código: el oficio del Ministerio de Transporte radicado MT 20241340906911 del 31-07-2024 (https://mintransporte.gov.co/info/mintransporte/media/anexos/uv5ubOTu.pdf, copia en data/fuentes/mintransporte-concepto-20241340906911.pdf) transcribe el art. 8.5.1 'Codificación de las infracciones de tránsito' de la Resolución 20223040045295 de 2022 (compilatoria, que recoge la codificación de la Resolución 3027 de 2010) con códigos como 'C.02' y 'C.03'. Este catálogo usa la misma letra y número sin punto ('C02'). No se descargó el texto oficial de la Resolución 3027 de 2010 ni de la 20223040045295 de 2022: la convención está verificada solo de forma indirecta. La descripción del código en esa resolución puede ser más detallada que la de la ley (por ejemplo C.02 lista los sitios prohibidos); aquí se usa la de la ley. Verificación adversarial (2026-11-08): se volvió a descargar la fuente (mismo sha256) y se compararon las 108 infracciones contra el texto: descripciones literales, cantidades de SMLDV y numerales coinciden. Se corrigieron otras_consecuencias de A11, C01, C16, C18 y C35 (tenían el numeral entero y no solo la consecuencia) y se ajustaron descripciones sencillas que omitían condiciones o excepciones del texto (A09, A10, B09, C09, C32, D02, D06, D11, D15, G02, G04, G06). Fase 2 (síntesis, 2026-11-08): valor_referencia sigue en null en las 108 infracciones porque unidad_multa en data/normativa/parametros.json está en verificado:false (el valor UVB 2026 de $12.110 no se pudo verificar en la Resolución 3488 de 2025) y porque la sanción está en SMDLV mientras la unidad vigente es UVB: falta verificar la equivalencia SMDLV 2023 -> UVB. No se calculó ningún valor en pesos.",
+  "infracciones": [
+    {
+      "codigo": "A01",
+      "literal": "A",
+      "numeral": "1",
+      "descripcion_literal": "No transitar por la derecha de la vía.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, no ir por la derecha de la vía.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A02",
+      "literal": "A",
+      "numeral": "2",
+      "descripcion_literal": "Agarrarse de otro vehículo en circulación.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, agarrarte de otro vehículo que va andando.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A03",
+      "literal": "A",
+      "numeral": "3",
+      "descripcion_literal": "Transportar personas o cosas que disminuyan su visibilidad e incomoden la conducción.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, llevar personas o cosas que te tapen la vista o te estorben para conducir.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A04",
+      "literal": "A",
+      "numeral": "4",
+      "descripcion_literal": "Transitar por andenes y demás lugares destinados al tránsito de peatones.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, ir por andenes o lugares para peatones.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A05",
+      "literal": "A",
+      "numeral": "5",
+      "descripcion_literal": "No respetar las señales de tránsito.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, no respetar las señales de tránsito.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A06",
+      "literal": "A",
+      "numeral": "6",
+      "descripcion_literal": "Transitar sin los dispositivos luminosos requeridos.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, andar sin las luces exigidas.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A07",
+      "literal": "A",
+      "numeral": "7",
+      "descripcion_literal": "Transitar sin dispositivos que permitan la parada inmediata o con ellos, pero en estado defectuoso.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, andar sin frenos o con frenos dañados.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A08",
+      "literal": "A",
+      "numeral": "8",
+      "descripcion_literal": "Transitar por zonas prohibidas.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, andar por zonas prohibidas.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A09",
+      "literal": "A",
+      "numeral": "9",
+      "descripcion_literal": "Adelantar entre dos (2) vehículos automotores que estén en sus respectivos carriles.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, pasar entre dos vehículos con motor que van en sus carriles.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A10",
+      "literal": "A",
+      "numeral": "10",
+      "descripcion_literal": "Conducir por la vía férrea o por zonas de protección y seguridad.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, ir por la vía del tren o por zonas de protección y seguridad.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A11",
+      "literal": "A",
+      "numeral": "11",
+      "descripcion_literal": "Transitar por zonas restringidas o por vías de alta velocidad como autopistas y arterias, en este caso el vehículo no automotor será inmovilizado.",
+      "descripcion_sencilla": "Si vas en un vehículo sin motor o de tracción animal, ir por zonas restringidas o vías rápidas como autopistas. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "en este caso el vehículo no automotor será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "A12",
+      "literal": "A",
+      "numeral": "12",
+      "descripcion_literal": "Prestar servicio público con este tipo de vehículos. Además, el vehículo será inmovilizado por primera vez, por el término de cinco días, por segunda vez veinte días y por tercera vez cuarenta días.",
+      "descripcion_sencilla": "Prestar servicio público en un vehículo sin motor o de tracción animal. El vehículo queda inmovilizado 5, 20 o 40 días, según la vez.",
+      "sancion": {
+        "cantidad": 4,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado por primera vez, por el término de cinco días, por segunda vez veinte días y por tercera vez cuarenta días.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Numeral declarado CONDICIONALMENTE EXEQUIBLE por la Corte Constitucional (Sentencia C-981-10): la sanción solo es aplicable previa reglamentación de las autoridades territoriales sobre condiciones de tiempo, modo y lugar. Requiere revisión jurídica antes de usarlo en respuestas."
+    },
+    {
+      "codigo": "B01",
+      "literal": "B",
+      "numeral": "1",
+      "descripcion_literal": "Conducir un vehículo sin llevar consigo la licencia de conducción.",
+      "descripcion_sencilla": "Manejar sin llevar la licencia de conducción contigo.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B02",
+      "literal": "B",
+      "numeral": "2",
+      "descripcion_literal": "Conducir un vehículo con la licencia de conducción vencida.",
+      "descripcion_sencilla": "Manejar con la licencia de conducción vencida.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B03",
+      "literal": "B",
+      "numeral": "3",
+      "descripcion_literal": "Sin placas, o sin el permiso vigente expedido por autoridad de tránsito.",
+      "descripcion_sencilla": "Andar sin placas o sin el permiso vigente de tránsito. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En estos casos los vehículos serán inmovilizados.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente, la frase 'En estos casos los vehículos serán inmovilizados.' es un párrafo aparte, sin numeral, que sigue a B.6. Por el plural 'estos casos' se atribuye a B.3, B.4, B.5 y B.6; es una lectura del texto, no una aclaración de la fuente."
+    },
+    {
+      "codigo": "B04",
+      "literal": "B",
+      "numeral": "4",
+      "descripcion_literal": "Con placas adulteradas.",
+      "descripcion_sencilla": "Andar con placas alteradas. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En estos casos los vehículos serán inmovilizados.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente, la frase 'En estos casos los vehículos serán inmovilizados.' es un párrafo aparte, sin numeral, que sigue a B.6. Por el plural 'estos casos' se atribuye a B.3, B.4, B.5 y B.6; es una lectura del texto, no una aclaración de la fuente."
+    },
+    {
+      "codigo": "B05",
+      "literal": "B",
+      "numeral": "5",
+      "descripcion_literal": "Con una sola placa, o sin el permiso vigente expedido por autoridad de tránsito.",
+      "descripcion_sencilla": "Andar con una sola placa o sin el permiso vigente de tránsito. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En estos casos los vehículos serán inmovilizados.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente, la frase 'En estos casos los vehículos serán inmovilizados.' es un párrafo aparte, sin numeral, que sigue a B.6. Por el plural 'estos casos' se atribuye a B.3, B.4, B.5 y B.6; es una lectura del texto, no una aclaración de la fuente."
+    },
+    {
+      "codigo": "B06",
+      "literal": "B",
+      "numeral": "6",
+      "descripcion_literal": "Con placas falsas.",
+      "descripcion_sencilla": "Andar con placas falsas. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En estos casos los vehículos serán inmovilizados.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente, la frase 'En estos casos los vehículos serán inmovilizados.' es un párrafo aparte, sin numeral, que sigue a B.6. Por el plural 'estos casos' se atribuye a B.3, B.4, B.5 y B.6; es una lectura del texto, no una aclaración de la fuente."
+    },
+    {
+      "codigo": "B07",
+      "literal": "B",
+      "numeral": "7",
+      "descripcion_literal": "No informar a la autoridad de tránsito competente el cambio de motor o color de un vehículo. En ambos casos, el vehículo será inmovilizado.",
+      "descripcion_sencilla": "No avisar a tránsito que cambiaste el motor o el color del vehículo. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En ambos casos, el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B08",
+      "literal": "B",
+      "numeral": "8",
+      "descripcion_literal": "No pagar el peaje en los sitios establecidos.",
+      "descripcion_sencilla": "No pagar el peaje donde corresponde.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B09",
+      "literal": "B",
+      "numeral": "9",
+      "descripcion_literal": "Utilizar equipos de sonido a volúmenes que incomoden a los pasajeros de un vehículo de servicio público.",
+      "descripcion_sencilla": "Poner el equipo de sonido tan alto que moleste a los pasajeros de un vehículo de servicio público.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B10",
+      "literal": "B",
+      "numeral": "10",
+      "descripcion_literal": "Conducir un vehículo con vidrios polarizados, entintados u oscurecidos, sin portar el permiso respectivo, de acuerdo a la reglamentación existente sobre la materia.",
+      "descripcion_sencilla": "Manejar con vidrios polarizados u oscuros sin llevar el permiso.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B11",
+      "literal": "B",
+      "numeral": "11",
+      "descripcion_literal": "Conducir un vehículo con propaganda, publicidad o adhesivos en sus vidrios que obstaculicen la visibilidad.",
+      "descripcion_sencilla": "Manejar con publicidad o adhesivos en los vidrios que tapen la vista.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B12",
+      "literal": "B",
+      "numeral": "12",
+      "descripcion_literal": "No respetar las normas establecidas por la autoridad competente para el tránsito de cortejos fúnebres.",
+      "descripcion_sencilla": "No respetar las reglas de tránsito para los cortejos fúnebres.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B13",
+      "literal": "B",
+      "numeral": "13",
+      "descripcion_literal": "No respetar las formaciones de tropas, la marcha de desfiles, procesiones, entierros, filas estudiantiles y las manifestaciones públicas y actividades deportivas, debidamente autorizadas por las autoridades de tránsito.",
+      "descripcion_sencilla": "No respetar desfiles, procesiones, entierros, filas de estudiantes, manifestaciones o eventos deportivos autorizados.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B14",
+      "literal": "B",
+      "numeral": "14",
+      "descripcion_literal": "Remolcar otro vehículo violando lo dispuesto por este código.",
+      "descripcion_sencilla": "Remolcar otro vehículo sin cumplir lo que dice el código.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B15",
+      "literal": "B",
+      "numeral": "15",
+      "descripcion_literal": "Conducir un vehículo de servicio público que no lleve el aviso de tarifas oficiales en condiciones de fácil lectura para los pasajeros o poseer este aviso deteriorado o adulterado.",
+      "descripcion_sencilla": "Manejar un vehículo de servicio público sin el aviso de tarifas legible, o con el aviso dañado o alterado.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B16",
+      "literal": "B",
+      "numeral": "16",
+      "descripcion_literal": "Permitir que en un vehículo de servicio público para transporte de pasajeros se lleven animales u objetos que incomoden a los pasajeros.",
+      "descripcion_sencilla": "Dejar que en un vehículo público de pasajeros lleven animales u objetos que molesten.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B17",
+      "literal": "B",
+      "numeral": "17",
+      "descripcion_literal": "Abandonar un vehículo de servicio público con pasajeros.",
+      "descripcion_sencilla": "Abandonar un vehículo de servicio público con pasajeros adentro.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B18",
+      "literal": "B",
+      "numeral": "18",
+      "descripcion_literal": "Conducir un vehículo de transporte público individual de pasajeros sin cumplir con lo estipulado en el presente código.",
+      "descripcion_sencilla": "Manejar un vehículo de transporte público individual de pasajeros sin cumplir el código.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B19",
+      "literal": "B",
+      "numeral": "19",
+      "descripcion_literal": "Realizar el cargue o descargue de un vehículo en sitios y horas prohibidas por las autoridades competentes, de acuerdo con lo establecido en las normas correspondientes.",
+      "descripcion_sencilla": "Cargar o descargar el vehículo en sitios u horas prohibidas.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B20",
+      "literal": "B",
+      "numeral": "20",
+      "descripcion_literal": "Transportar carne, pescado o alimentos fácilmente corruptibles, en vehículos que no cumplan las condiciones fijadas por el Ministerio de Transporte.",
+      "descripcion_sencilla": "Llevar carne, pescado o alimentos que se dañan fácil en vehículos sin las condiciones del Ministerio de Transporte.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B21",
+      "literal": "B",
+      "numeral": "21",
+      "descripcion_literal": "Lavar vehículos en vía pública, en ríos, en canales y en quebradas.",
+      "descripcion_sencilla": "Lavar vehículos en la calle, en ríos, canales o quebradas.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B22",
+      "literal": "B",
+      "numeral": "22",
+      "descripcion_literal": "Llevar niños menores de diez (10) años en el asiento delantero.",
+      "descripcion_sencilla": "Llevar niños menores de 10 años en el asiento de adelante.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "B23",
+      "literal": "B",
+      "numeral": "23",
+      "descripcion_literal": "Utilizar radios, equipos de sonido o de amplificación a volúmenes que superen los decibeles máximos establecidos por las autoridades ambientales. De igual forma utilizar pantallas, proyectores de imagen o similares en la parte delantera de los vehículos, mientras esté en movimiento.",
+      "descripcion_sencilla": "Poner radio o sonido más alto de lo permitido, o usar pantallas adelante mientras el vehículo anda.",
+      "sancion": {
+        "cantidad": 8,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C01",
+      "literal": "C",
+      "numeral": "1",
+      "descripcion_literal": "Presentar licencia de conducción adulterada o ajena, lo cual dará lugar a la inmovilización del vehículo.",
+      "descripcion_sencilla": "Mostrar una licencia de conducción alterada o de otra persona. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "lo cual dará lugar a la inmovilización del vehículo.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C02",
+      "literal": "C",
+      "numeral": "2",
+      "descripcion_literal": "Estacionar un vehículo en sitios prohibidos.",
+      "descripcion_sencilla": "Parquear en un sitio prohibido.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C03",
+      "literal": "C",
+      "numeral": "3",
+      "descripcion_literal": "Bloquear una calzada o intersección con un vehículo, salvo cuando el bloqueo obedezca a la ocurrencia de un accidente de tránsito.",
+      "descripcion_sencilla": "Bloquear una calle o un cruce con el vehículo, salvo que sea por un accidente.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C04",
+      "literal": "C",
+      "numeral": "4",
+      "descripcion_literal": "Estacionar un vehículo sin tomar las debidas precauciones o sin colocar a la distancia señalada por este código, las señales de peligro reglamentarias.",
+      "descripcion_sencilla": "Parquear sin tomar precauciones o sin poner las señales de peligro a la distancia que pide el código.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente el numeral aparece como 'C.4' sin punto final."
+    },
+    {
+      "codigo": "C05",
+      "literal": "C",
+      "numeral": "5",
+      "descripcion_literal": "No reducir la velocidad según lo indicado por este código, cuando transite por un cruce escolar en los horarios y días de funcionamiento de la institución educativa. Así mismo, cuando transite por cruces de hospitales o terminales de pasajeros.",
+      "descripcion_sencilla": "No bajar la velocidad en cruces de colegios en su horario, ni en cruces de hospitales o terminales.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C06",
+      "literal": "C",
+      "numeral": "6",
+      "descripcion_literal": "No utilizar el cinturón de seguridad por parte de los ocupantes del vehículo.",
+      "descripcion_sencilla": "No usar el cinturón de seguridad. Aplica a quienes van en el vehículo.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C07",
+      "literal": "C",
+      "numeral": "7",
+      "descripcion_literal": "Dejar de señalizar con las luces direccionales o mediante señales de mano y con la debida anticipación, la maniobra de giro o de cambio de carril.",
+      "descripcion_sencilla": "No avisar con direccionales o con la mano, a tiempo, que vas a girar o cambiar de carril.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C08",
+      "literal": "C",
+      "numeral": "8",
+      "descripcion_literal": "Transitar sin los dispositivos luminosos requeridos o sin los elementos determinados en este código.",
+      "descripcion_sencilla": "Andar sin las luces o sin los elementos que exige el código.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C09",
+      "literal": "C",
+      "numeral": "9",
+      "descripcion_literal": "No respetar las señales de detención en el cruce de una línea férrea, o conducir por la vía férrea o por las zonas de protección y seguridad de ella.",
+      "descripcion_sencilla": "No respetar las señales de parar en el cruce con la vía del tren, o andar por la vía del tren o sus zonas de protección.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C10",
+      "literal": "C",
+      "numeral": "10",
+      "descripcion_literal": "Conducir un vehículo con una o varias puertas abiertas.",
+      "descripcion_sencilla": "Manejar con una o más puertas abiertas.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C11",
+      "literal": "C",
+      "numeral": "11",
+      "descripcion_literal": "No portar el equipo de prevención y seguridad establecido en este código o en la reglamentación correspondiente.",
+      "descripcion_sencilla": "No llevar el equipo de prevención y seguridad que exige la norma.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C12",
+      "literal": "C",
+      "numeral": "12",
+      "descripcion_literal": "Proveer de combustible un vehículo automotor con el motor encendido.",
+      "descripcion_sencilla": "Echar combustible con el motor encendido.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C12A",
+      "literal": "C",
+      "numeral": "12.A",
+      "descripcion_literal": "No apagar el motor del vehículo para la inspección canina.",
+      "descripcion_sencilla": "No apagar el motor para la inspección con perros.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Literal adicionado por el art. 20 de la Ley 2454 de 2025 (Diario Oficial 53.096 de 22 de abril de 2025). El código 'C12A' es convención de este catálogo para el numeral C.12.A; no se verificó su código en el manual de infracciones."
+    },
+    {
+      "codigo": "C13",
+      "literal": "C",
+      "numeral": "13",
+      "descripcion_literal": "Conducir un vehículo automotor sin las adaptaciones pertinentes, cuando el conductor padece de limitación física.",
+      "descripcion_sencilla": "Manejar sin las adaptaciones necesarias si tienes una limitación física.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C14",
+      "literal": "C",
+      "numeral": "14",
+      "descripcion_literal": "Transitar por sitios restringidos o en horas prohibidas por la autoridad competente. Además, el vehículo será inmovilizado.",
+      "descripcion_sencilla": "Andar por sitios restringidos o en horas prohibidas. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C15",
+      "literal": "C",
+      "numeral": "15",
+      "descripcion_literal": "Conducir un vehículo, particular o de servicio público, excediendo la capacidad autorizada en la licencia de tránsito o tarjeta de operación.",
+      "descripcion_sencilla": "Llevar más pasajeros o carga de lo autorizado en la licencia de tránsito o la tarjeta de operación.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C16",
+      "literal": "C",
+      "numeral": "16",
+      "descripcion_literal": "Conducir un vehículo escolar sin el permiso respectivo o los distintivos reglamentarios, además el vehículo será inmovilizado.",
+      "descripcion_sencilla": "Manejar un vehículo escolar sin el permiso o sin los distintivos. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "además el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C17",
+      "literal": "C",
+      "numeral": "17",
+      "descripcion_literal": "Circular con combinaciones de vehículos de dos (2) o más unidades remolcadas, sin autorización especial de autoridad competente.",
+      "descripcion_sencilla": "Andar con dos o más remolques sin autorización especial.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C18",
+      "literal": "C",
+      "numeral": "18",
+      "descripcion_literal": "Conducir un vehículo autorizado para prestar servicio público con el taxímetro dañado, con los sellos rotos o etiquetas adhesivas con calibración vencida o adulteradas o cuando se carezca de él, o cuando aún teniéndolo, no cumpla con las normas mínimas de calidad y seguridad exigidas por la autoridad competente o este no esté en funcionamiento, además el vehículo será inmovilizado.",
+      "descripcion_sencilla": "Manejar un vehículo de servicio público con el taxímetro dañado, alterado, vencido, sin funcionar o sin taxímetro. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "además el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C19",
+      "literal": "C",
+      "numeral": "19",
+      "descripcion_literal": "Dejar o recoger pasajeros en sitios distintos de los demarcados por las autoridades.",
+      "descripcion_sencilla": "Dejar o recoger pasajeros fuera de los sitios marcados.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C20",
+      "literal": "C",
+      "numeral": "20",
+      "descripcion_literal": "Conducir un vehículo de carga en que se transporten materiales de construcción o a granel sin las medidas de protección, higiene y seguridad ordenadas. Además el vehículo será inmovilizado.",
+      "descripcion_sencilla": "Llevar materiales de construcción o a granel sin las medidas de protección. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C21",
+      "literal": "C",
+      "numeral": "21",
+      "descripcion_literal": "No asegurar la carga para evitar que se caigan en la vía las cosas transportadas. Además, se inmovilizará el vehículo hasta tanto se remedie la situación.",
+      "descripcion_sencilla": "No asegurar la carga y arriesgar que se caiga a la vía. El vehículo queda inmovilizado hasta que lo arregles.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, se inmovilizará el vehículo hasta tanto se remedie la situación.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C22",
+      "literal": "C",
+      "numeral": "22",
+      "descripcion_literal": "Transportar carga de dimensiones superiores a las autorizadas sin cumplir con los requisitos exigidos. Además, el vehículo será inmovilizado hasta que se remedie dicha situación.",
+      "descripcion_sencilla": "Llevar carga más grande de lo autorizado sin cumplir los requisitos. El vehículo queda inmovilizado hasta que lo arregles.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado hasta que se remedie dicha situación.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C23",
+      "literal": "C",
+      "numeral": "23",
+      "descripcion_literal": "Impartir en vías públicas al público enseñanza práctica para conducir, sin estar autorizado para ello.",
+      "descripcion_sencilla": "Enseñar a manejar en la calle sin estar autorizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C24",
+      "literal": "C",
+      "numeral": "24",
+      "descripcion_literal": "Conducir motocicleta sin observar las normas establecidas en el presente código.",
+      "descripcion_sencilla": "Manejar moto sin cumplir las normas del código.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C25",
+      "literal": "C",
+      "numeral": "25",
+      "descripcion_literal": "Transitar, cuando hubiere más de un carril, por el carril izquierdo de la vía a velocidad que entorpezca el tránsito de los demás vehículos.",
+      "descripcion_sencilla": "Ir despacio por el carril izquierdo cuando hay más de un carril y estorbar a los demás.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C26",
+      "literal": "C",
+      "numeral": "26",
+      "descripcion_literal": "Transitar en vehículos de 3.5 o más toneladas por el carril izquierdo de la vía cuando hubiere más de un carril.",
+      "descripcion_sencilla": "Ir por el carril izquierdo en un vehículo de 3,5 toneladas o más cuando hay más de un carril.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C27",
+      "literal": "C",
+      "numeral": "27",
+      "descripcion_literal": "Conducir un vehículo cuya carga o pasajeros obstruyan la visibilidad del conductor hacia el frente, atrás o costados, o impidan el control sobre el sistema de dirección, frenos o seguridad. Además el vehículo será inmovilizado.",
+      "descripcion_sencilla": "Manejar con carga o pasajeros que te tapan la vista o te impiden controlar dirección, frenos o seguridad. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C28",
+      "literal": "C",
+      "numeral": "28",
+      "descripcion_literal": "Hacer uso de dispositivos propios de vehículos de emergencia, por parte de conductores de otro tipo de vehículos.",
+      "descripcion_sencilla": "Usar dispositivos propios de vehículos de emergencia, si tu vehículo no lo es.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C29",
+      "literal": "C",
+      "numeral": "29",
+      "descripcion_literal": "Conducir un vehículo a velocidad superior a la máxima permitida.",
+      "descripcion_sencilla": "Manejar más rápido de la velocidad máxima permitida.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente el numeral aparece como 'C. 29'."
+    },
+    {
+      "codigo": "C30",
+      "literal": "C",
+      "numeral": "30",
+      "descripcion_literal": "No atender una señal de ceda el paso.",
+      "descripcion_sencilla": "No respetar una señal de ceda el paso.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C31",
+      "literal": "C",
+      "numeral": "31",
+      "descripcion_literal": "No acatar las señales o requerimientos impartidos por los agentes de tránsito.",
+      "descripcion_sencilla": "No obedecer las señales o las órdenes de los agentes de tránsito.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C32",
+      "literal": "C",
+      "numeral": "32",
+      "descripcion_literal": "No respetar el paso de peatones que cruzan una vía en sitio permitido para ellos o no darles la prelación en las franjas para ello establecidas.",
+      "descripcion_sencilla": "No dejar pasar a los peatones que cruzan donde está permitido, o no darles prioridad en las franjas para ellos.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C33",
+      "literal": "C",
+      "numeral": "33",
+      "descripcion_literal": "Poner un vehículo en marcha sin las precauciones para evitar choques.",
+      "descripcion_sencilla": "Arrancar el vehículo sin precaución para evitar choques.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C34",
+      "literal": "C",
+      "numeral": "34",
+      "descripcion_literal": "Reparar un vehículo en las vías públicas, parque o acera, o hacerlo en caso de emergencia, sin atender el procedimiento señalado en este código.",
+      "descripcion_sencilla": "Reparar el vehículo en la calle, el parque o el andén, o hacerlo en una emergencia sin seguir el procedimiento del código.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C35",
+      "literal": "C",
+      "numeral": "35",
+      "descripcion_literal": "No realizar la revisión técnico-mecánica en el plazo legal establecido o cuando el vehículo no se encuentre en adecuadas condiciones técnico-mecánicas o de emisiones contaminantes, aun cuando porte los certificados correspondientes, además el vehículo será inmovilizado.",
+      "descripcion_sencilla": "No hacer la revisión técnico-mecánica a tiempo, o andar con el vehículo en malas condiciones o contaminando, aunque tengas el certificado. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "además el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C36",
+      "literal": "C",
+      "numeral": "36",
+      "descripcion_literal": "Transportar carga en contenedores sin los dispositivos especiales de sujeción. El vehículo será inmovilizado.",
+      "descripcion_sencilla": "Llevar contenedores sin los dispositivos para sujetarlos. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "El vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C37",
+      "literal": "C",
+      "numeral": "37",
+      "descripcion_literal": "Transportar pasajeros en el platón de una camioneta picó o en la plataforma de un vehículo de carga, trátese de furgón o plataforma de estacas.",
+      "descripcion_sencilla": "Llevar personas en el platón de una camioneta o en la plataforma de un vehículo de carga.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C38",
+      "literal": "C",
+      "numeral": "38",
+      "descripcion_literal": "Usar sistemas móviles de comunicación o teléfonos instalados en los vehículos al momento de conducir, exceptuando si estos son utilizados con accesorios o equipos auxiliares que permitan tener las manos libres.",
+      "descripcion_sencilla": "Usar el celular u otro sistema de comunicación mientras manejas, salvo con manos libres.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "C39",
+      "literal": "C",
+      "numeral": "39",
+      "descripcion_literal": "Vulnerar las reglas de estacionamiento contenidas en el artículo 77 de este Código.",
+      "descripcion_sencilla": "Incumplir las reglas para parquear del artículo 77 del código.",
+      "sancion": {
+        "cantidad": 15,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "En la fuente el numeral aparece como 'C. 39.'."
+    },
+    {
+      "codigo": "D01",
+      "literal": "D",
+      "numeral": "1",
+      "descripcion_literal": "Guiar un vehículo sin haber obtenido la licencia de conducción correspondiente. Además, el vehículo será inmovilizado en el lugar de los hechos, hasta que este sea retirado por una persona autorizada por el infractor con licencia de conducción.",
+      "descripcion_sencilla": "Manejar sin haber sacado la licencia de conducción. El vehículo queda inmovilizado hasta que lo retire alguien con licencia que tú autorices.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado en el lugar de los hechos, hasta que este sea retirado por una persona autorizada por el infractor con licencia de conducción.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D02",
+      "literal": "D",
+      "numeral": "2",
+      "descripcion_literal": "Conducir sin portar los seguros ordenados por la ley. Además, el vehículo será inmovilizado.",
+      "descripcion_sencilla": "Manejar sin llevar los seguros que exige la ley. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D03",
+      "literal": "D",
+      "numeral": "3",
+      "descripcion_literal": "Transitar en sentido contrario al estipulado para la vía, calzada o carril.",
+      "descripcion_sencilla": "Ir en contravía.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Literal modificado por el art. 2 de la Ley 2435 de 2024 (Diario Oficial 52.938 de 12 de noviembre de 2024). El texto anterior (Ley 1383 de 2010) incluía la inmovilización de motocicletas; el texto vigente ya no la menciona."
+    },
+    {
+      "codigo": "D04",
+      "literal": "D",
+      "numeral": "4",
+      "descripcion_literal": "No detenerse ante una luz roja o amarilla de semáforo, una señal de “PARE\" o un semáforo intermitente en rojo.",
+      "descripcion_sencilla": "No detenerte en semáforo en rojo o amarillo, en una señal de PARE o en un semáforo rojo intermitente.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Literal modificado por el art. 2 de la Ley 2435 de 2024. El texto anterior incluía la inmovilización de motocicletas; el vigente no. La fuente abre la comilla de PARE con “ y la cierra con \"; se copió tal cual."
+    },
+    {
+      "codigo": "D05",
+      "literal": "D",
+      "numeral": "5",
+      "descripcion_literal": "Conducir un vehículo sobre aceras, plazas, vías peatonales, separadores, bermas, demarcaciones de canalización, zonas verdes o vías especiales para vehículos no motorizados.",
+      "descripcion_sencilla": "Manejar por andenes, plazas, vías peatonales, separadores, bermas, zonas verdes o vías especiales para vehículos sin motor.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Literal modificado por el art. 2 de la Ley 2435 de 2024. El texto anterior incluía la inmovilización de motocicletas; el vigente no."
+    },
+    {
+      "codigo": "D06",
+      "literal": "D",
+      "numeral": "6",
+      "descripcion_literal": "Adelantar a otro vehículo en berma, túnel, puente, curva, pasos a nivel y cruces no regulados o al aproximarse a la cima de una cuesta o donde la señal de tránsito correspondiente lo indique.",
+      "descripcion_sencilla": "Adelantar en berma, túnel, puente, curva, pasos a nivel, cruces no regulados, cerca de la cima de una subida, o donde una señal lo prohíba.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Literal modificado por el art. 2 de la Ley 2435 de 2024. El texto anterior incluía la inmovilización de motocicletas; el vigente no."
+    },
+    {
+      "codigo": "D07",
+      "literal": "D",
+      "numeral": "7",
+      "descripcion_literal": "Conducir realizando maniobras altamente peligrosas e irresponsables que pongan en peligro a las personas o las cosas.",
+      "descripcion_sencilla": "Hacer maniobras muy peligrosas que ponen en riesgo a personas o cosas.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Literal modificado por el art. 2 de la Ley 2435 de 2024. El texto anterior incluía la inmovilización de motocicletas; el vigente no. La fuente remite a la Sentencia C-530-03, que condicionó el inciso D.8 original (equivalente al D.7 de la Ley 1383 de 2010): maniobras que violen las normas de tránsito, pongan en peligro a personas o cosas y sean dolosas o altamente imprudentes. No se verificó si ese condicionamiento se extiende al texto de la Ley 2435 de 2024."
+    },
+    {
+      "codigo": "D08",
+      "literal": "D",
+      "numeral": "8",
+      "descripcion_literal": "Conducir un vehículo sin luces o sin los dispositivos luminosos de posición, direccionales o de freno, o con alguna de ellas dañada, en las horas o circunstancias en que lo exige este código. Además, el vehículo será inmovilizado, cuando no le funcionen dos (2) o más de estas luces.",
+      "descripcion_sencilla": "Manejar sin luces o con luces dañadas cuando el código las exige. Si fallan dos o más, el vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado, cuando no le funcionen dos (2) o más de estas luces.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D09",
+      "literal": "D",
+      "numeral": "9",
+      "descripcion_literal": "No permitir el paso de los vehículos de emergencia.",
+      "descripcion_sencilla": "No dejar pasar a los vehículos de emergencia.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D10",
+      "literal": "D",
+      "numeral": "10",
+      "descripcion_literal": "Conducir un vehículo para transporte escolar con exceso de velocidad.",
+      "descripcion_sencilla": "Manejar un vehículo escolar con exceso de velocidad.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D11",
+      "literal": "D",
+      "numeral": "11",
+      "descripcion_literal": "Permitir el servicio público de pasajeros que no tenga las salidas de emergencia exigidas. En este caso, la multa se impondrá solidariamente a la empresa a la cual esté afiliado y al propietario. Si se tratare de vehículo particular, se impondrá la sanción solidariamente al propietario.",
+      "descripcion_sencilla": "Permitir servicio público de pasajeros en un vehículo sin salidas de emergencia. Responden juntos la empresa y el propietario. Si es particular, responde el propietario.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En este caso, la multa se impondrá solidariamente a la empresa a la cual esté afiliado y al propietario. Si se tratare de vehículo particular, se impondrá la sanción solidariamente al propietario.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D12",
+      "literal": "D",
+      "numeral": "12",
+      "descripcion_literal": "Conducir un vehículo que, sin la debida autorización, se destine a un servicio diferente de aquel para el cual tiene licencia de tránsito. Además, el vehículo será inmovilizado por primera vez, por el término de cinco días, por segunda vez veinte días y por tercera vez cuarenta días.",
+      "descripcion_sencilla": "Usar el vehículo para un servicio distinto al de su licencia de tránsito, sin autorización. Queda inmovilizado 5, 20 o 40 días, según la vez.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Además, el vehículo será inmovilizado por primera vez, por el término de cinco días, por segunda vez veinte días y por tercera vez cuarenta días.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D13",
+      "literal": "D",
+      "numeral": "13",
+      "descripcion_literal": "En caso de transportar carga con peso superior al autorizado el vehículo será inmovilizado y el exceso deberá ser transbordado.",
+      "descripcion_sencilla": "Llevar carga con más peso del autorizado. El vehículo queda inmovilizado y el exceso se pasa a otro vehículo.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En caso de transportar carga con peso superior al autorizado el vehículo será inmovilizado y el exceso deberá ser transbordado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D14",
+      "literal": "D",
+      "numeral": "14",
+      "descripcion_literal": "Las autoridades de tránsito ordenarán la inmovilización inmediata de los vehículos que usen para su movilización combustibles no regulados como gas propano u otros que pongan en peligro la vida de los usuarios o de los peatones.",
+      "descripcion_sencilla": "Usar combustibles no regulados, como gas propano, que pongan en peligro a otros. El vehículo queda inmovilizado de inmediato.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Las autoridades de tránsito ordenarán la inmovilización inmediata de los vehículos que usen para su movilización combustibles no regulados como gas propano u otros que pongan en peligro la vida de los usuarios o de los peatones.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "D15",
+      "literal": "D",
+      "numeral": "15",
+      "descripcion_literal": "Cambio del recorrido o trazado de la ruta para vehículo de servicio de transporte público de pasajeros, autorizado por el organismo de tránsito correspondiente. En este caso, la multa se impondrá solidariamente a la empresa a la cual esté afiliado el vehículo y al propietario. Además el vehículo será inmovilizado, salvo casos de fuerza mayor que sean debidamente autorizados por el agente de tránsito.",
+      "descripcion_sencilla": "Cambiar la ruta autorizada de un vehículo de transporte público de pasajeros. Responden juntos la empresa y el propietario. El vehículo queda inmovilizado, salvo fuerza mayor autorizada por el agente de tránsito.",
+      "sancion": {
+        "cantidad": 30,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En este caso, la multa se impondrá solidariamente a la empresa a la cual esté afiliado el vehículo y al propietario. Además el vehículo será inmovilizado, salvo casos de fuerza mayor que sean debidamente autorizados por el agente de tránsito.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "E01",
+      "literal": "E",
+      "numeral": "1",
+      "descripcion_literal": "Proveer combustible a vehículos de servicio público con pasajeros a bordo.",
+      "descripcion_sencilla": "Echar combustible a un vehículo de servicio público con pasajeros adentro.",
+      "sancion": {
+        "cantidad": 45,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "E02",
+      "literal": "E",
+      "numeral": "2",
+      "descripcion_literal": "Negarse a prestar el servicio público sin causa justificada, siempre que dicha negativa cause alteración del orden público.",
+      "descripcion_sencilla": "Negarte sin justa causa a prestar el servicio público, si eso altera el orden público.",
+      "sancion": {
+        "cantidad": 45,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "E04",
+      "literal": "E",
+      "numeral": "4",
+      "descripcion_literal": "Transportar en el mismo vehículo y al mismo tiempo personas y sustancias peligrosas como explosivos, tóxicos, radiactivos, combustibles no autorizados, etc. En estos casos se suspenderá la licencia por un (1) año y por dos (2) años cada vez que reincida. El vehículo será inmovilizado por un (1) año cada vez.",
+      "descripcion_sencilla": "Llevar personas junto con sustancias peligrosas en el mismo vehículo. Te suspenden la licencia un año, o dos si reincides. El vehículo queda inmovilizado un año cada vez.",
+      "sancion": {
+        "cantidad": 45,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "En estos casos se suspenderá la licencia por un (1) año y por dos (2) años cada vez que reincida. El vehículo será inmovilizado por un (1) año cada vez.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "Además de la multa del literal E, el numeral fija suspensión de la licencia por un año, y por dos años cada vez que reincida, e inmovilización del vehículo por un año cada vez."
+    },
+    {
+      "codigo": "F",
+      "literal": "F",
+      "numeral": null,
+      "descripcion_literal": "Conducir bajo el influjo del alcohol o bajo los efectos de sustancias psicoactivas. Esta conducta será sancionada con las multas establecidas en el artículo 152 de este Código. Si se trata de conductores de vehículos de servicio público, de transporte escolar o de instructor de conducción, la multa y el período de suspensión de la licencia se duplicarán. En todos los casos de embriaguez o alcoholemia el vehículo será inmovilizado. El estado de embriaguez o alcoholemia se establecerá mediante una prueba que no cause lesión, la cual será determinada por el Instituto de Medicina Legal y Ciencias Forenses.",
+      "descripcion_sencilla": "Manejar bajo el efecto del alcohol o de drogas. La multa la fija el artículo 152 del código. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": null,
+        "unidad": null,
+        "remite_a": "L769-2002-art152"
+      },
+      "otras_consecuencias": "Si se trata de conductores de vehículos de servicio público, de transporte escolar o de instructor de conducción, la multa y el período de suspensión de la licencia se duplicarán. En todos los casos de embriaguez o alcoholemia el vehículo será inmovilizado.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": false,
+      "notas": "Texto literal copiado y verificado contra la fuente (literal adicionado por el art. 4 de la Ley 1696 de 2013). Queda verificado:false porque el art. 131 no fija la cantidad de la multa: remite al art. 152, que no está en esta entrada. El código 'F' sin numeral es convención de este catálogo."
+    },
+    {
+      "codigo": "G01",
+      "literal": "G",
+      "numeral": "1",
+      "descripcion_literal": "Transportar a más de una persona de manera simultánea en un vehículo eléctrico liviano de movilidad personal urbana que no esté expresamente diseñado para tal fin, o sin cumplir con las condiciones definidas por el Ministerio de Transporte en la reglamentación correspondiente.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, llevar a más de una persona si no está hecho para eso.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G02",
+      "literal": "G",
+      "numeral": "2",
+      "descripcion_literal": "Circular-por la Red Vial Nacional, salvo en los tramos que cuenten con ciclo-infraestructura, siempre que esta no haya sido restringida expresamente por la autoridad competente. Esta infracción no se aplicará a las bicicletas eléctricas, las cuales podrán circular por la Red Vial Nacional en los términos definidos para las bicicletas.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, andar por la Red Vial Nacional fuera de tramos con ciclo-infraestructura. No aplica a bicicletas eléctricas.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "La fuente escribe 'Circular-por' con guion; se copió tal cual."
+    },
+    {
+      "codigo": "G03",
+      "literal": "G",
+      "numeral": "3",
+      "descripcion_literal": "Circular sobre aceras, andenes, lugares destinados al tránsito de peatones o por vías en las que la autoridad competente haya prohibido expresamente su circulación.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, andar por andenes, lugares de peatones o vías donde está prohibido.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G04",
+      "literal": "G",
+      "numeral": "4",
+      "descripcion_literal": "No circular por la ciclo-infraestructura habilitada en el tramo vial correspondiente, cuando esta cuente con condiciones adecuadas de seguridad y transitabilidad y no haya sido restringida expresamente. por la autoridad competente.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, no usar la ciclo-infraestructura habilitada cuando es segura y no está restringida.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": "La fuente escribe 'expresamente. por' con punto; se copió tal cual."
+    },
+    {
+      "codigo": "G05",
+      "literal": "G",
+      "numeral": "5",
+      "descripcion_literal": "Circular por la vía permitida utilizando carriles distintos al derecho sin que sea necesario para adelantar o para girar a la izquierda; o circular en sentido contrario al de la vía, o por vías preferenciales o exclusivas del sistema de transporte público.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, no ir por el carril derecho sin necesidad, ir en contravía o por carriles exclusivos del transporte público.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G06",
+      "literal": "G",
+      "numeral": "6",
+      "descripcion_literal": "Superar los límites de velocidad establecidos para la ciclo-infraestructura o para las vías permitidas por las que circule, o exceder los máximos de 25 km/h en ciclo-infraestructura y 40 km/h en vías permitidas cuando dichos límites sean superiores.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, pasarte del límite de velocidad. El máximo es 25 km/h en ciclo-infraestructura y 40 km/h en las vías permitidas.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G07",
+      "literal": "G",
+      "numeral": "7",
+      "descripcion_literal": "Adelantar a otros vehículos por la derecha o entre vehículos que transiten por sus respectivos carriles.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, adelantar por la derecha o entre vehículos en sus carriles.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G08",
+      "literal": "G",
+      "numeral": "8",
+      "descripcion_literal": "Realizar una maniobra de giro o de adelantamiento sin utilizar señales direccionales.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, girar o adelantar sin direccionales.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G09",
+      "literal": "G",
+      "numeral": "9",
+      "descripcion_literal": "No respetar las señales o normas de tránsito aplicables en la cicloinfraestructura o en las vías permitidas.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, no respetar las señales o normas de tránsito.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G10",
+      "literal": "G",
+      "numeral": "10",
+      "descripcion_literal": "Circular sin utilizar casco de seguridad que cumpla con las características definidas por el Ministerio de Transporte. Esta infracción dará lugar, además, a la inmovilización del vehículo.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, andar sin casco. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Esta infracción dará lugar, además, a la inmovilización del vehículo.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G11",
+      "literal": "G",
+      "numeral": "11",
+      "descripcion_literal": "Circular entre las 18:00 y las 6:00 horas sin vestir prendas retrorreflectivas de identificación que cumplan con las características definidas por el Ministerio de Transporte.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, andar de 6 p. m. a 6 a. m. sin prendas reflectivas.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G12",
+      "literal": "G",
+      "numeral": "12",
+      "descripcion_literal": "Circular sin que el vehículo cuente con dispositivos luminosos que proyecten luz blanca en la parte delantera y luz roja en la parte trasera.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, andar sin luz blanca adelante y luz roja atrás.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G13",
+      "literal": "G",
+      "numeral": "13",
+      "descripcion_literal": "Transportar objetos que disminuyan la visibilidad, incomoden la conducción o constituyan un peligro para los demás actores de la vía.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, llevar objetos que tapen la vista, estorben o sean peligrosos.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    },
+    {
+      "codigo": "G14",
+      "literal": "G",
+      "numeral": "14",
+      "descripcion_literal": "Conducir en estado de embriaguez o bajo los efectos de sustancias psicoactivas. Esta infracción dará lugar, además, a la inmovilización del vehículo.",
+      "descripcion_sencilla": "En un vehículo eléctrico liviano de uso personal, manejar borracho o bajo el efecto de drogas. El vehículo queda inmovilizado.",
+      "sancion": {
+        "cantidad": 6,
+        "unidad": "SMDLV"
+      },
+      "otras_consecuencias": "Esta infracción dará lugar, además, a la inmovilización del vehículo.",
+      "articulo_id": "L769-2002-art131",
+      "valor_referencia": null,
+      "verificado": true,
+      "notas": ""
+    }
+  ]
+}

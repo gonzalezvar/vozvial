@@ -1,0 +1,44 @@
+{
+  "norma": "Ley 51 de 1983",
+  "entradas": [
+    {
+      "id": "L51-1983-art1",
+      "norma": "Ley 51 de 1983",
+      "articulo": "1",
+      "titulo": "Días festivos con descanso remunerado y traslado al lunes",
+      "texto_literal": "Todos los trabajadores, tanto del sector público como del sector privado, tienen derecho al descanso remunerado en los siguientes días de fiesta de carácter civil o religioso: primero de enero, seis de enero, diecinueve de marzo, primero de mayo, veintinueve de junio, veinte de julio, siete de agosto, quince de agosto, doce de octubre, primero de noviembre, once de noviembre, ocho de diciembre y veinticinco de diciembre, además de los días Jueves y Viernes Santos, Ascensión del Señor, Corpus Christi y Sagrado Corazón de Jesús.\n2. Pero el descanso remunerado del seis de enero, diecinueve de marzo, veintinueve de junio, quince de agosto, doce de octubre, primero de noviembre, once de noviembre, Ascensión del Señor, Corpus Christi y Sagrado Corazón de Jesús cuando no caigan en día lunes se trasladarán al lunes siguiente a dicho día.\nCuando las mencionadas festividades caigan en domingo el descanso remunerado igualmente se trasladará al lunes.\n3. Las prestaciones y derechos que para el trabajador origina el trabajo en los días festivos, se reconocerán en relación al día de descanso remunerado establecido en el inciso anterior.",
+      "modificado_por": [],
+      "resumen_sencillo": "Estos días son festivos: 1 de enero, 6 de enero, 19 de marzo, 1 de mayo, 29 de junio, 20 de julio, 7 de agosto, 15 de agosto, 12 de octubre, 1 de noviembre, 11 de noviembre, 8 de diciembre y 25 de diciembre. También el Jueves y el Viernes Santo, la Ascensión del Señor, Corpus Christi y el Sagrado Corazón de Jesús. El 6 de enero, 19 de marzo, 29 de junio, 15 de agosto, 12 de octubre, 1 de noviembre, 11 de noviembre, la Ascensión, Corpus Christi y el Sagrado Corazón se pasan al lunes siguiente si no caen en lunes. Si caen en domingo, también se pasan al lunes. La lista de traslado no incluye estos: 1 de enero, 1 de mayo, 20 de julio, 7 de agosto, 8 de diciembre, 25 de diciembre, Jueves Santo y Viernes Santo.",
+      "url_fuente": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4954",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "festivos",
+        "plazos",
+        "dias_habiles",
+        "traslado_lunes"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial); segunda verificacion adversarial automatizada el 2026-11-08 (texto literal recomparado contra la fuente). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Fuente principal: Gestor Normativo de Función Pública (la Secretaría del Senado no publica la Ley 51 como página propia: ley_0051_1983.html responde 404). Crudo: data/fuentes/funcionpublica_ley_51_1983.html (sha256 cab5be70524ea753dc3f1735dec9110360dfa5a676d756b8db2ad9b9ed355f52). Función Pública muestra 'Vigencias(0)' y advierte que no se hace responsable de la vigencia. Contraste: la Corte Constitucional transcribe el mismo numeral 2 con 'once de noviembre' en la lista de traslado (C-568-93, crudo data/fuentes/corte_c-568-93.html, sha256 1d5b238f5a9eb96aff928aef1bdb8cf50b314a9efc5968f4cb1e342eb6f99f13; C-107-94, crudo data/fuentes/corte_c-107-94.html, sha256 7ed1207cfcb59c2cdc18e97335235d9c66764b7e6391002a3523a3d68c6fe9ae). Discrepancia: la compilación de la Secretaría del Senado (Código Sustantivo del Trabajo, art. 177, data/fuentes/codigo_sustantivo_trabajo_pr006.html) omite 'once de noviembre' en el numeral 2; tres fuentes oficiales lo incluyen, por eso se usa el texto de Función Pública. Vigencia: la Corte Constitucional declaró exequibles los arts. 1 y 2 en la Sentencia C-568 de 1993; la C-107 de 1994 resolvió estar a lo resuelto en la C-568. La ley modificó el art. 177 del Código Sustantivo del Trabajo (art. 3 de la Ley 51). Fecha de la ley: Función Pública dice 'Diciembre 6'; la transcripción de la C-568-93 dice 'Diciembre 22'; la nota del Senado indica publicación en el Diario Oficial No. 36.428 del 30 de diciembre de 1983. No afecta el contenido. La ley no da la fecha de Jueves y Viernes Santo, Ascensión, Corpus Christi ni Sagrado Corazón: la app la calcula desde el Domingo de Pascua (cálculo propio, no sale de la norma). Lista ampliada por la Ley 2578 de 2026, art. 6 (9 de julio), ver L2578-2026-art6. Verificación adversarial 2026-11-08: la URL de Función Pública no se pudo volver a descargar con verificación TLS (el servidor envía una cadena de certificados incompleta); se usó el crudo local, cuyo sha256 coincide con el registrado y que contiene el id de norma 4954. El HTML declara ISO-8859-1 pero está en UTF-8. El texto literal coincide palabra por palabra con ese crudo. Se confirmaron en las fuentes: la parte resolutiva de la C-568-93 (exequibles los arts. 1 y 2), la de la C-107-94 (estar a lo resuelto en la C-568), la nota del Senado con el Diario Oficial No 36.428 del 30 de diciembre de 1983 y la omisión de 'once de noviembre' en el numeral 2 de la compilación del CST. Diferencias menores de redacción entre transcripciones oficiales, sin efecto en las fechas: numeral 3 'el trabajo en los días festivos' (Función Pública), 'en días festivos' (C-568-93) y 'de los días festivos' (CST, Senado); la C-568-93 escribe 'Ascención' y 'Corpus Cristi'. El título de la entrada es descriptivo: el artículo no trae epígrafe en Función Pública (en el CST el art. 177 se titula 'REMUNERACION'). Se corrigió el resumen_sencillo: decía 'Los demás no se mueven', que el texto no dice de forma expresa; ahora dice que la lista de traslado no los incluye, y agrega la regla del domingo del numeral 2."
+    },
+    {
+      "id": "L2578-2026-art6",
+      "norma": "Ley 2578 de 2026",
+      "articulo": "6",
+      "titulo": "Fiesta nacional: Día de Nuestra Señora del Rosario de Chiquinquirá",
+      "texto_literal": "Declárase el Día de Nuestra Señora del Rosario de Chiquinquirá, que se conmemora el 9 de julio de cada año, como día festivo de carácter nacional, de obligatorio cumplimiento en todo el territorio de la República de Colombia. Por consiguiente, todos los trabajadores, tanto del sector público como del sector privado, tienen derecho al descanso remunerado por la celebración de carácter religioso. Se aplicarán las disposiciones de la ley 51 de 1983 para efectos de determinar el día en el cual se disfrute del descanso remunerado en el calendario.",
+      "modificado_por": [],
+      "resumen_sencillo": "El 9 de julio de cada año es festivo nacional: Día de Nuestra Señora del Rosario de Chiquinquirá. Para saber qué día se descansa, esta ley remite a la Ley 51 de 1983.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_2578_2026.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "festivos",
+        "plazos",
+        "dias_habiles"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial); segunda verificacion adversarial automatizada el 2026-11-08 (texto literal recomparado contra la fuente). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Fuente: Secretaría del Senado, Ley 2578 de 2026 (junio 1), Diario Oficial No. 53.510 de 2 de junio de 2026; rige desde su promulgación (art. 7). Crudo: data/fuentes/ley_2578_2026.html (sha256 2430a654bc70272a92d42df1d0ab640aa3323f1ccea87f6d07622527c80bd5ea). Se encontró por la nota del editor que la Secretaría del Senado pone en el art. 177 del Código Sustantivo del Trabajo (data/fuentes/codigo_sustantivo_trabajo_pr006.js, sha256 0615dedf55a8d257cf4fc0b1b86f54af016b8adb1e2681e8a3245e71fe4a939d), la única modificación a la lista de festivos que reporta esa fuente. Requiere revisión jurídica: el artículo dice que se aplica la Ley 51 de 1983 para fijar el día de descanso, pero el 9 de julio no está en la lista de traslado del numeral 2 del art. 1 de la Ley 51; el texto no dice expresamente si se pasa al lunes. FestivosColombia no debe resolver esto por su cuenta: decidir con Juan antes de usarlo. No afecta el rango de fechas de los casos de prueba actuales (noviembre 2026 a enero 2027). Verificación adversarial 2026-11-08: se volvió a descargar la URL (mismo sha256 2430a654...d5ea); el texto literal coincide palabra por palabra con el art. 6o; se confirmaron la fecha (junio 1), el Diario Oficial No. 53.510 de 2 de junio de 2026 y el art. 7o (rige desde la promulgación). La fuente no muestra notas de vigencia ni jurisprudencia. Esta entrada vive en ley-51-1983.json aunque su norma es la Ley 2578 de 2026; quien cargue la base debe leer el campo norma de cada entrada y no el de la cabecera del archivo."
+    }
+  ]
+}

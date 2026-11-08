@@ -1,0 +1,286 @@
+{
+  "norma": "Unidad de las multas de tránsito (Ley 2294 de 2023, art. 313, y actos que fijan su valor)",
+  "conclusion": {
+    "unidad": "UVB",
+    "anio": 2026,
+    "valor_pesos": 12110,
+    "explicacion": "Desde el 1 de enero de 2024 las multas de tránsito del art. 131 de la Ley 769 de 2002, que la ley expresa en salarios mínimos diarios (SMDLV), se liquidan en Unidades de Valor Básico (UVB) según el art. 313 de la Ley 2294 de 2023 (vigencia: art. 372, parágrafo 1). El texto del art. 313 no menciona una excepción para tránsito; su parágrafo 2 solo excluye lo tributario, aduanero y cambiario en UVT, y su parágrafo 3 deja en salarios mínimos lo que estaba en firme antes del 1 de enero de 2024. El Ministerio de Transporte lo aplica así (Circular Externa 20244000000077 de 2024 para la equivalencia y 20264000000037 de 2026 para la vigencia 2026, citadas en sus conceptos). Fórmula: valor en pesos de la multa en 2023 / 10.000 = UVB de la multa (redondeo del parágrafo 1); multa del año = UVB de la multa x valor de la UVB del año. Valor de la UVB 2026: $12.110, fijado por la Resolución 3488 del 31 de diciembre de 2025 del Ministerio de Hacienda, según lo cita el Ministerio de Transporte. El texto de esa resolución no se pudo descargar (bloqueo anti-bots), por eso el valor queda sin verificar.",
+    "verificado": false,
+    "motivo_no_verificado": "El valor 12.110 solo consta en un concepto no vinculante de MinTransporte que cita la Resolución 3488 de 2025; la resolución misma no se descargó. Además, la tabla del concepto rotula la columna como 'Resolución 3914 del 17 de diciembre 2024' (que corresponde a la UVB 2025) aunque sus valores cuadran con 12.110.",
+    "sustento": [
+      "L2294-2023-art313",
+      "L2294-2023-art372",
+      "MT-CONCEPTO-20261340231211",
+      "MT-CONCEPTO-20241340954691",
+      "MH-R3488-2025-art1"
+    ],
+    "fuente_valor_url": "https://mintransporte.gov.co/info/mintransporte/media/anexos/MEXQ3BQm.pdf",
+    "fecha_consulta": "2026-11-08",
+    "tabla_mintransporte_2026": {
+      "descripcion": "Equivalencias que publica el Ministerio de Transporte en el concepto 20261340231211 (anexo: Circular Externa 20264000000037). Columnas: multa en SMDLV según la Ley 769 de 2002, equivalencia en UVB base y valor de la multa 2026 en pesos.",
+      "filas": [
+        {
+          "smdlv": 4,
+          "uvb": 13.94,
+          "pesos_2026": 168813
+        },
+        {
+          "smdlv": 8,
+          "uvb": 27.88,
+          "pesos_2026": 337627
+        },
+        {
+          "smdlv": 15,
+          "uvb": 52.28,
+          "pesos_2026": 633111
+        },
+        {
+          "smdlv": 30,
+          "uvb": 104.56,
+          "pesos_2026": 1266222
+        },
+        {
+          "smdlv": 45,
+          "uvb": 156.83,
+          "pesos_2026": 1899211
+        },
+        {
+          "smdlv": 90,
+          "uvb": 313.67,
+          "pesos_2026": 3798544
+        },
+        {
+          "smdlv": 135,
+          "uvb": 470.5,
+          "pesos_2026": 5697755
+        },
+        {
+          "smdlv": 180,
+          "uvb": 627.34,
+          "pesos_2026": 7597087
+        },
+        {
+          "smdlv": 270,
+          "uvb": 941.01,
+          "pesos_2026": 11395631
+        },
+        {
+          "smdlv": 360,
+          "uvb": 1254.67,
+          "pesos_2026": 15194054
+        },
+        {
+          "smdlv": 540,
+          "uvb": 1882.01,
+          "pesos_2026": 22791141
+        },
+        {
+          "smdlv": 720,
+          "uvb": 2509.35,
+          "pesos_2026": 30388229
+        },
+        {
+          "smdlv": 1080,
+          "uvb": 3764.02,
+          "pesos_2026": 45582282
+        },
+        {
+          "smdlv": 1440,
+          "uvb": 5018.7,
+          "pesos_2026": 60776457
+        }
+      ],
+      "verificado": false,
+      "notas": "Transcrita a mano desde la imagen de las páginas 6 y 7 del PDF (no es texto extraíble). Se comprobó que cada fila cumple UVB x 12.110 = pesos, redondeado al peso. Fase 2: se extrajeron las imágenes con pdfimages y se cotejaron las 14 filas y el rótulo de la tercera columna ('Resolución 3914 del 17 de diciembre 2024'); coinciden. Sigue en verificado:false porque sale de una imagen dentro de un concepto no vinculante y la circular que la contiene no se descargó."
+    },
+    "smmlv_2026_contexto": {
+      "valor_pesos": 1750905,
+      "sustento": [
+        "D-SMMLV-2026-art1",
+        "D1469-2025-art1"
+      ],
+      "verificado": false,
+      "notas": "Solo contexto. No se usa para liquidar multas de tránsito en 2026."
+    }
+  },
+  "fuentes_crudas": [
+    {
+      "archivo": "data/fuentes/senado-ley_2294_2023_pr008.html",
+      "sha256": "26e2c385b35c54f907655e09b4b8e8e33ba9277ccd71711a3cdce133ee626100",
+      "url": "http://www.secretariasenado.gov.co/senado/basedoc/ley_2294_2023_pr008.html"
+    },
+    {
+      "archivo": "data/fuentes/senado-ley_2294_2023_pr008.js",
+      "sha256": "7c8b121151be834237975ee3870cac07ec59c932eaa0391a3bbddb6f2e5abb4d",
+      "url": "http://www.secretariasenado.gov.co/senado/basedoc/js/ley_2294_2023_pr008.js"
+    },
+    {
+      "archivo": "data/fuentes/senado-ley_2294_2023_pr009.html",
+      "sha256": "93c219467e9b2ef88c5de4db3ad1c49be2fc5de870c3af60cb241983f60f9825",
+      "url": "http://www.secretariasenado.gov.co/senado/basedoc/ley_2294_2023_pr009.html"
+    },
+    {
+      "archivo": "data/fuentes/senado-ley_2294_2023_pr009.js",
+      "sha256": "b289ac1182e4766477342e8eb9c4372330df1612ac9358130cf1561627905c6e",
+      "url": "http://www.secretariasenado.gov.co/senado/basedoc/js/ley_2294_2023_pr009.js"
+    },
+    {
+      "archivo": "data/fuentes/dapre-decreto_0159_2026.pdf",
+      "sha256": "64e1026bd7dccd1594cd7a2a210053fcdb33a122202a6f6fb2e73b0c1ce2861f",
+      "url": "https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%20No.%200159%20DEL%2019%20DE%20FEBRERO%20DE%202026.pdf"
+    },
+    {
+      "archivo": "data/fuentes/dapre-decreto_1469_2025.pdf",
+      "sha256": "45d700b8ba5a6d4299964db561a18edfabbae646ca1c940f17c4a8812ba0f543",
+      "url": "https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%201469%20DEL%2029%20DE%20DICIEMBRE%20DE%202025.pdf"
+    },
+    {
+      "archivo": null,
+      "sha256": "a92b983e8f1bb332966961a579b6d9e5148b6c5d124ae7488b0b461a021ee6da",
+      "url": "https://mintransporte.gov.co/info/mintransporte/media/anexos/MEXQ3BQm.pdf",
+      "nota": "No se guardó: contiene datos personales de un ciudadano."
+    },
+    {
+      "archivo": null,
+      "sha256": "8d4f305b95c0459c7f536ef13d253b0bce1132d4dacae9463eeafba66b5d768c",
+      "url": "https://mintransporte.gov.co/info/mintransporte/media/anexos/RKMimXCb.pdf",
+      "nota": "No se guardó: contiene el nombre de un destinatario."
+    }
+  ],
+  "entradas": [
+    {
+      "id": "L2294-2023-art313",
+      "norma": "Ley 2294 de 2023",
+      "articulo": "313",
+      "titulo": "Unidad de Valor Básico (UVB)",
+      "texto_literal": "ARTÍCULO 313. UNIDAD DE VALOR BÁSICO (UVB). Créase la Unidad de Valor Básico (UVB). El valor de la Unidad de Valor Básico (UVB) se reajustará anualmente en la variación del Índice de Precios al Consumidor (IPC) sin alimentos ni regulados, certificado por el Departamento Administrativo Nacional de Estadística (DANE), en el periodo comprendido entre el primero (1o) de octubre del año anterior al año considerado y la misma fecha del año inmediatamente anterior a este.\nEl Ministerio de Hacienda y Crédito Público publicará mediante Resolución antes del primero (1o) de enero de cada año, el valor de la Unidad de Valor Básico (UVB) aplicable para el año siguiente.\nEl valor de la UVB para el año 2023 será de diez mil pesos ($10.000.00).\nTodos los cobros; sanciones; multas; tarifas; requisitos financieros para la constitución, la habilitación, la operación o el funcionamiento de empresas públicas y/o privadas; requisitos de capital, patrimonio o ingresos para acceder y/o ser beneficiario de programas del estado; montos máximos establecidos para realizar operaciones financieras; montos mínimos establecidos para el pago de comisiones y contraprestaciones definidas por el legislador; cuotas asociadas al desarrollo de actividades agropecuarias y de salud; clasificaciones de hogares, personas naturales y personas jurídicas en función de su patrimonio y/o ingresos; incentivos para la prestación de servicio público de aseo; y honorarios de los miembros de juntas o consejos directivos, actualmente denominados y establecidos con base en salarios mínimos o en Unidades de Valor tributario (UVT), deberán ser calculados con base en su equivalencia en términos de la Unidad de Valor Básico (UVB) el año 2023, conforme lo dispuesto en este artículo.\nPARÁGRAFO 1o. Si como consecuencia de la aplicación de lo dispuesto en el presente artículo el valor de los conceptos objeto de indexación no es un número entero, se deberá aproximar dicho valor a la cifra con dos (2) decimales más cercana; y si es inferior a una (1) Unidad de Valor Básico (UVB), se deberá aproximar a la cifra con tres (3) decimales más cercana.\nPARÁGRAFO 2o. Lo dispuesto en este artículo no será aplicable a las cifras y valores aplicables a tributos, sanciones y, en general, a los asuntos previstos en las disposiciones tributarias, ni en relación con los asuntos de índole aduanera ni de fiscalización cambiaria, que se encuentren medidos o tasados en Unidades de Valor Tributario (UVT).\nPARÁGRAFO 3o. Los cobros; sanciones; multas; tarifas; requisitos financieros para la constitución, la habilitación, la operación o el funcionamiento de empresas públicas y/o privadas; requisitos de capital, patrimonio o ingresos para acceder y/o ser beneficiario de programas del Estado; montos máximos establecidos para realizar operaciones financieras; montos mínimos establecidos para el pago de comisiones y contraprestaciones definidas por el legislador; cuotas asociadas al desarrollo de actividades agropecuarias y de salud; clasificaciones de hogares, personas naturales y personas jurídicas en función de su patrimonio y/o sus ingresos; incentivos para la prestación de servicio público de aseó; y honorarios de los miembros de juntas o consejos directivos, que se encuentren en firme o ejecutoriados con anterioridad al 1o de enero de 2024, se mantendrán determinados en salarios mínimos o en Unidades de Valor Tributario (UVT), según el caso.\nPARÁGRAFO 4o. Los valores que se encuentren definidos en salarios mínimos o en UVT en la presente ley, deberán ser calculados con base en su equivalencia en términos de la Unidad de Valor Básico (UVB) conforme lo dispuesto en el presente artículo, con excepción de lo previsto en el artículo 293 de esta ley en relación con el concepto de vivienda de interés social.",
+      "modificado_por": [],
+      "resumen_sencillo": "Esta ley creó la Unidad de Valor Básico (UVB). Su valor se ajusta cada año según la variación del Índice de Precios al Consumidor (IPC) sin alimentos ni regulados, que certifica el DANE. El Ministerio de Hacienda publica por resolución, antes del 1 de enero de cada año, el valor de la UVB del año siguiente. En 2023 la UVB valía 10.000 pesos. Los cobros, sanciones y multas que estaban en salarios mínimos o en UVT se deben calcular en UVB. Los que quedaron en firme antes del 1 de enero de 2024 siguen en salarios mínimos o en UVT, según el caso.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_2294_2023_pr008.html#313",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "uvb",
+        "multas",
+        "valor-multa"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial) y verificacion adversarial de Fase 2 (2026-11-08, fuente descargada de nuevo y cotejada palabra por palabra). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Fuente cruda: data/fuentes/senado-ley_2294_2023_pr008.html (sha256 26e2c385b35c54f907655e09b4b8e8e33ba9277ccd71711a3cdce133ee626100) y notas en senado-ley_2294_2023_pr008.js. Se quitó la marca del editor '<Rige a partir del 1 de enero de 2024>' (la vigencia sale del art. 372 parágrafo 1). En el parágrafo 4o la fuente muestra 'salarios mínimos <o>* en UVT' y la nota del editor (caja 'Notas del Editor' del art. 313) dice que en el Diario Oficial se omitió la 'o' que sí está en el PDF original firmado; aquí se deja 'o'. Jurisprudencia: en esta página el art. 313 solo tiene la caja 'Notas del Editor'; no trae caja de 'Jurisprudencia Vigencia' ni registra modificaciones. Corrección de Fase 2: la versión anterior atribuía a este artículo las Sentencias C-448-24 y C-143-25, pero esa caja de la fuente pertenece al art. 312; se retiró. El editor del Senado transcribe este artículo en la nota del art. 122 de la Ley 769 de 2002 (data/fuentes/ley_0769_2002_pr002.js, caja 40) y allí destaca la temporalidad de cuatro años de los planes de desarrollo."
+    },
+    {
+      "id": "L2294-2023-art372",
+      "norma": "Ley 2294 de 2023",
+      "articulo": "372",
+      "titulo": "Vigencias y derogatorias",
+      "texto_literal": "ARTÍCULO 372. VIGENCIAS Y DEROGATORIAS. La presente ley rige a partir de su publicación y deroga todas las disposiciones que le sean contrarias.\nLos artículos de las Leyes 812 de 2003, 1151 de 2007, 1450 de 2011, 1753 de 2015 y 1955 de 2019 no derogados expresamente en el siguiente inciso o por otras leyes, continuarán vigentes hasta que sean derogados o modificados por norma posterior.\nSe derogan expresamente el artículo 26 de la Ley 45 de 1990; el artículo 45 de la Ley 300 de 1996; artículos 15, 41, 44, 45, 46, 50, 105, 137, 144, 146, 165 y 179 de la Ley 1450 de 2011; el artículo 22 de la Ley 1558 de 2012; artículos 11, 13, parágrafo segundo del artículo 30, 42, 56, 75, 91, 100, 129, 171, 203, 207, 221, 225, 249 de la Ley 1753 de 2015; incisos 2 y 3, así como los parágrafos 1, 2 y transitorio del artículo 357 de la Ley 1819 de 2016; el artículo 3 del Decreto Ley 413 de 2018; artículos 12, 49, 62, 85, 94, la expresión \"Colombia rural\" del artículo 118, los artículos 132, 137, 163, 175, 179, 200, 218, 239, 281, 303, 305, 307, de la Ley 1955 de 2019; las expresiones \"con corte al 30 de junio de 2020\" y \"desarrollo de líneas de crédito\" del numeral 23 del artículo 35 de la Ley 1341 de 2009 adicionado por el artículo 9o de la Ley 2108 de 2021; el parágrafo del artículo 9o de la Ley 1969 de 2019; la expresión \"Sistemas Integrados de Transporte Masivo (SITM)\" incluida en el artículo 9o de la Ley 1972 de 2019; artículo 48 de la Ley 2099 de 2021; artículo 54 de la Ley 2155 de 2021; artículo 13 de la Ley 2128 de 2021; la expresión \"territoriales\" prevista en el inciso del artículo 95 de la Ley 2166 de 2021; y los artículos 2o y 3o de la Ley 2186 de 2022.\nPARÁGRAFO 1o. El artículo 313 de la presente ley entrará en vigencia a partir del 1o de enero de 2024.\nPARÁGRAFO 2o. El artículo 49 de la Ley 1955 de 2019 perderá vigencia el 31 de diciembre de 2023.\nPARÁGRAFO 3o. Los bienes inmuebles actualmente administrados por Fontur, en virtud del artículo 22 de la Ley 1558 de 2012 deberán ser transferidos a la SAE para su administración o enajenación.",
+      "modificado_por": [],
+      "resumen_sencillo": "La ley rige desde su publicación. El artículo 313 de esta ley empezó a regir el 1 de enero de 2024. El artículo 49 de la Ley 1955 de 2019 dejó de regir el 31 de diciembre de 2023.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_2294_2023_pr009.html#372",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "uvb",
+        "vigencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial) y verificacion adversarial de Fase 2 (2026-11-08, fuente descargada de nuevo y cotejada palabra por palabra). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Fuente cruda: data/fuentes/senado-ley_2294_2023_pr009.html (sha256 93c219467e9b2ef88c5de4db3ad1c49be2fc5de870c3af60cb241983f60f9825) y senado-ley_2294_2023_pr009.js. Texto vigente: se quitaron los apartes que la fuente marca entre corchetes y tachados como INEXEQUIBLES ('el parágrafo tercero del artículo 167 de la Ley 142 de 1994; el parágrafo tercero del artículo 32 de la Ley 143 de 1994', Sentencia C-049-26; 'el artículo 52 de la Ley 2136 de 2021', Sentencia C-119-25) y la marca del editor '<Apartes tachados INEXEQUIBLES>'. Artículo declarado EXEQUIBLE por vicio de procedimiento (C-448-24; estarse a lo resuelto en C-143-25). Para la app importan los parágrafos 1o y 2o. Corrección de Fase 2: el resumen anterior decía que el art. 49 de la Ley 1955 de 2019 'pasaba los valores a UVT'; eso no está en el texto de este artículo (sí aparece en la nota del editor al art. 122 de la Ley 769 de 2002), así que se quitó del resumen."
+    },
+    {
+      "id": "MT-CONCEPTO-20261340231211",
+      "norma": "Ministerio de Transporte, concepto con radicado 20261340231211 de 20 de febrero de 2026",
+      "articulo": "Marco normativo (cita de la Circular Externa 20264000000037) y Conclusión",
+      "titulo": "Multas de tránsito en UVB para 2026 (concepto no vinculante)",
+      "texto_literal": "Ahora bien, en cumplimiento a lo dispuesto en el artículo 313 de la Ley 2294 de 2023, la Dirección de Transporte y Transito, emitió la Circular Externa No. 20264000000037 del 02 de enero de 2026, en el cual se establece lo siguiente:\n“Con el fin de dar cumplimiento a disposiciones legales, se insta a las autoridades de tránsito a realizar la actualización obligatoria del valor de las Multas de Tránsito para la vigencia 2026, de acuerdo con la Resolución 3488 del 31 de diciembre de 2025 “Por medio de la cual se establece el valor de la Unidad de Valor Básico – UVB para la vigencia 2026”, expedida por el Ministerio de Hacienda y Crédito Público, con base en el artículo 313 de la Ley 2294 de 2023, “Por el cual se expide el Plan Nacional de Desarrollo 2022 – 2026 “Colombia Potencia de la Vida”.”, el cual crea la Unidad de Valor Básico para, entre otros, todos los cobros, sanciones, multas, tarifas, así: (…) En tal sentido, y trayendo los valores al 2026, la Resolución 3488 del 31 de diciembre de 2025, emitida por el Ministerio de Hacienda y Crédito Público fijó el valor de la Unidad del Valor Básico – UVB para el año 2026 en Doce Mil Ciento Diez pesos ($12.110,00), entrando en rigor dicha actualización a partir del primero de enero de 2026. Así las cosas y teniendo en cuenta el resultado obtenido de la operación matemática contemplada en la circular externa No. 20244000000077 del 16 de enero de 2024, que determinó la equivalencia base de UVB para fijar el valor de las multas de tránsito en cada anualidad, a continuación se referencian los valores de las multas para la vigencia 2026: (…) Finalmente, se insta a las autoridades de tránsito a nivel municipal, distrital y departamental, a actualizar los valores de las multas de tránsito impuestas a partir del 1 de enero de 2026. Les agradezco su colaboración con el fin de que se cumpla a cabalidad lo preceptuado en la normatividad vigente y lo dispuesto en la presente circular, lo cual redundará en beneficio de los entes territoriales y lo más importante, de toda la comunidad”.\n[…]\nEn ese sentido, las multas de tránsito previstas en el artículo 131 de la Ley 769 de 2002, modificado por el artículo 21 de la Ley 1383 de 2010, cuya cuantía fue definida originalmente en salarios mínimos, deben ser convertidas a UVB mediante la equivalencia aplicable a la vigencia correspondiente.\nEn ese orden de ideas, el Ministerio de Hacienda y Crédito Público, mediante la Resolución 3488 de 2025, estableció el valor de la Unidad de Valor Básico (UVB) para el año 2026 en la suma de doce mil ciento diez pesos ($12.110,00).\n[…]\nDicho lo anterior, se absuelve el objeto de la consulta, concepto que tiene el alcance de que trata el artículo 28 del Código de Procedimiento Administrativo y de lo Contencioso Administrativo y en consecuencia no es de obligatorio cumplimiento, ni tiene efectos vinculantes, pues se trata de “… orientaciones, puntos de vista, consejos y cumplen tanto una función didáctica como una función de comunicación fluida y transparente”, conforme al pronunciamiento de la Corte Constitucional mediante Sentencia C-542 de 2005.",
+      "modificado_por": [],
+      "resumen_sencillo": "El Ministerio de Transporte dice que las multas del artículo 131 de la Ley 769 de 2002 se deben pasar a UVB. Dice que para 2026 la UVB vale 12.110 pesos, según la Resolución 3488 de 2025 del Ministerio de Hacienda. En una circular del 2 de enero de 2026 pidió a las autoridades de tránsito actualizar el valor de las multas impuestas desde el 1 de enero de 2026. Este concepto es una orientación: no es obligatorio.",
+      "url_fuente": "https://mintransporte.gov.co/info/mintransporte/media/anexos/MEXQ3BQm.pdf",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "uvb",
+        "multas",
+        "valor-multa"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial) y verificacion adversarial de Fase 2 (2026-11-08, fuente descargada de nuevo y cotejada palabra por palabra). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Texto extraído con pdftotext del PDF oficial (sha256 a92b983e8f1bb332966961a579b6d9e5148b6c5d124ae7488b0b461a021ee6da, descargado de nuevo en Fase 2 con el mismo hash); se unieron los saltos de línea y se quitaron encabezados y pies de página. '[…]' marca texto del concepto que VozVial omitió entre fragmentos no contiguos; '(…)' es del propio concepto. Los dos primeros párrafos están en la sección 'Marco normativo': el segundo es la cita que hace el concepto de la Circular Externa 20264000000037 del 2 de enero de 2026 (la circular original no se descargó; el concepto la anexa). Los demás párrafos son de la 'Conclusión'. Corrección de Fase 2: la versión anterior unía fragmentos no contiguos sin marcar la omisión, no incluía la frase que identifica la circular y rotulaba todo como 'Conclusión'. No es una norma: es un concepto del art. 28 del CPACA, no vinculante, como el mismo texto lo dice. El PDF crudo NO se copió a data/fuentes porque contiene nombre y correo de un ciudadano particular (el repositorio será público). La tabla de valores 2026 está como imagen dentro del PDF; ver conclusion.tabla_mintransporte_2026."
+    },
+    {
+      "id": "MT-CONCEPTO-20241340954691",
+      "norma": "Ministerio de Transporte, concepto con radicado 20241340954691 de 12 de agosto de 2024",
+      "articulo": "Respuesta a los interrogantes 4 y 5, y cierre",
+      "titulo": "Método para pasar las multas de tránsito a UVB (Circular Externa 20244000000077 de 2024)",
+      "texto_literal": "Conforme a la Circular Externa No. 20244000000077 del 16 de enero de 2024, para la tasación de multas en UVB, es necesario que el valor en pesos de cada multa, vigente para el año 2023, se divida en el monto fijado en el artículo 313 de la Ley 2294 de 2023, para la UVB, es decir $10.000 y que al resultado se le apliquen los criterios de aproximación que expresamente contempla el parágrafo 1 del mismo artículo. De igual manera que para el año 2024 y los años siguientes, el valor de las multas en pesos, se calculen multiplicado el equivalente en UBV que se obtuvo de la operación anterior, por el valor que el Ministerio de Hacienda y Crédito Público defina anualmente para la UVB, el cual, para el caso del año 2024, se fijó en $10.951, con la Resolución 3268 del 18 de diciembre de 2023, “Por medio del cual se reajusta el valor de la Unidad de Valor Básico (UVB) para la vigencia 2024”. Al respecto es de resaltar que de conformidad con lo dispuesto en la Ley 2294 de 2023, las multas en UVB, aplican para las sanciones que se impongan a partir del 1 de enero de 2024.\nDicho lo anterior, se absuelve el objeto de la consulta, concepto que tiene el alcance de que trata el artículo 28 del Código de Procedimiento Administrativo y de lo Contencioso Administrativo y en consecuencia no es de obligatorio cumplimiento, ni tiene efectos vinculantes",
+      "modificado_por": [],
+      "resumen_sencillo": "El valor en pesos de cada multa en 2023 se divide entre 10.000 pesos y se redondea como dice la ley. Ese resultado es la multa en UVB. Desde 2024, cada año se multiplica por el valor de la UVB que fija el Ministerio de Hacienda. Las multas en UVB aplican a las sanciones impuestas desde el 1 de enero de 2024. Este concepto es una orientación: no es obligatorio.",
+      "url_fuente": "https://mintransporte.gov.co/info/mintransporte/media/anexos/RKMimXCb.pdf",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "uvb",
+        "multas",
+        "valor-multa"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial) y verificacion adversarial de Fase 2 (2026-11-08, fuente descargada de nuevo y cotejada palabra por palabra). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Texto extraído con pdftotext del PDF oficial (sha256 8d4f305b95c0459c7f536ef13d253b0bce1132d4dacae9463eeafba66b5d768c, descargado de nuevo en Fase 2 con el mismo hash). 'UBV' y 'multiplicado' son erratas del original y se conservan. La última frase va sin punto final, igual que en la fuente. Corrección de Fase 2: se agregó la frase de cierre, contigua en el PDF, que dice que el concepto no es obligatorio ni vinculante. Resume la Circular Externa 20244000000077 del 16 de enero de 2024, que no se descargó de una fuente oficial aceptada. Concepto no vinculante (art. 28 CPACA). El PDF crudo no se copió a data/fuentes porque trae nombre de un destinatario."
+    },
+    {
+      "id": "MH-R3488-2025-art1",
+      "norma": "Resolución 3488 de 2025 del Ministerio de Hacienda y Crédito Público",
+      "articulo": "1",
+      "titulo": "Valor de la UVB para 2026",
+      "texto_literal": "",
+      "modificado_por": [],
+      "resumen_sencillo": "",
+      "url_fuente": "https://www.minhacienda.gov.co/documents/d/portal/resolucion_3488_diciembre_31_2025?download=true",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "uvb",
+        "valor-multa"
+      ],
+      "verificado": false,
+      "verificado_por": "",
+      "notas": "No se pudo descargar: minhacienda.gov.co respondió con una verificación anti-bots (Radware) en vez del PDF, y no se intentó saltarla. El normograma de la DIAN no la tiene en las rutas probadas. Su valor ($12.110,00) solo consta aquí a través de la cita del Ministerio de Transporte (MT-CONCEPTO-20261340231211). Juan debe abrir el PDF en un navegador, guardarlo en data/fuentes y copiar el artículo literal."
+    },
+    {
+      "id": "D-SMMLV-2026-art1",
+      "norma": "Decreto 0159 de 2026",
+      "articulo": "1",
+      "titulo": "Salario mínimo mensual 2026 (fijado de forma transitoria)",
+      "texto_literal": "Artículo 1. Salario Mínimo Legal Mensual vigente para el año 2026. Fijar transitoriamente a partir de la fecha de publicación del presente decreto como Salario Mínimo Legal Mensual para el año 2026, la suma de UN MILLÓN SETECIENTOS CINCUENTA MIL NOVECIENTOS CINCO PESOS ($1.750.905).",
+      "modificado_por": [],
+      "resumen_sencillo": "Fija de forma transitoria el salario mínimo mensual de 2026 en 1.750.905 pesos. Rige mientras el Consejo de Estado decide el proceso de nulidad.",
+      "url_fuente": "https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%20No.%200159%20DEL%2019%20DE%20FEBRERO%20DE%202026.pdf",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "salario-minimo"
+      ],
+      "verificado": false,
+      "verificado_por": "",
+      "notas": "Fuente cruda: data/fuentes/dapre-decreto_0159_2026.pdf (sha256 64e1026bd7dccd1594cd7a2a210053fcdb33a122202a6f6fb2e73b0c1ce2861f). Es un PDF escaneado con capa OCR; el artículo 1 se cotejó contra la imagen de la hoja 17. Queda verificado:false por dos razones: (1) dapre.presidencia.gov.co no está en la lista de fuentes aceptadas del proyecto; (2) duda de vigencia: el art. 2 dice que rige hasta que se dicte sentencia en el proceso 11001-03-25-000-2026-00004-00 del Consejo de Estado, que reemplazó al Decreto 1469 de 2025 (suspendido provisionalmente). Según MinTransporte, las multas de tránsito no se liquidan con este valor sino en UVB; se guarda solo como contexto."
+    },
+    {
+      "id": "D1469-2025-art1",
+      "norma": "Decreto 1469 de 2025",
+      "articulo": "1",
+      "titulo": "Salario mínimo mensual 2026 (decreto original, con suspensión provisional)",
+      "texto_literal": "Artículo 1. Salario Mínimo Legal Mensual vigente para el año 2026. Fijar a partir del primero (1°) de enero de 2026 como Salario Mínimo Legal Mensual, la suma de UN MILLÓN SETECIENTOS CINCUENTA MIL NOVECIENTOS CINCO PESOS ($1.750.905).",
+      "modificado_por": [],
+      "resumen_sencillo": "Fijaba desde el 1 de enero de 2026 el salario mínimo mensual en 1.750.905 pesos.",
+      "url_fuente": "https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%201469%20DEL%2029%20DE%20DICIEMBRE%20DE%202025.pdf",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "unidad-multa",
+        "salario-minimo"
+      ],
+      "verificado": false,
+      "verificado_por": "",
+      "notas": "Fuente cruda: data/fuentes/dapre-decreto_1469_2025.pdf (sha256 45d700b8ba5a6d4299964db561a18edfabbae646ca1c940f17c4a8812ba0f543). verificado:false porque la fuente no está en la lista aceptada y porque el Decreto 0159 de 2026 (considerandos) dice que el Consejo de Estado suspendió provisionalmente este decreto por auto del 12 de febrero de 2026, con efectos diferidos a la publicación del nuevo decreto. No se consultó el auto en una fuente oficial."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "norma": "Ley 1801 de 2016",
+  "entradas": [
+    {
+      "id": "L1801-2016-art21",
+      "norma": "Ley 1801 de 2016",
+      "articulo": "21",
+      "titulo": "Carácter público de las actividades de Policía",
+      "texto_literal": "Todo procedimiento policivo podrá ser grabado mediante cualquier medio de las tecnologías de información y comunicación, por lo que le está prohibido a cualquier persona, salvo las restricciones expresas de ley, impedir que sean realizadas dichas grabaciones.\nLa autoridad de Policía que impida la grabación de que trata este artículo sin la justificación legal correspondiente incurrirá en causal de mala conducta.",
+      "modificado_por": [],
+      "resumen_sencillo": "Todo procedimiento de policía se puede grabar con cualquier medio tecnológico, como tu celular. Nadie puede impedir que se grabe, salvo las restricciones que una ley diga de forma expresa. Si una autoridad de Policía impide la grabación sin justificación legal, incurre en lo que la ley llama \"causal de mala conducta\".",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016.html#21",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "grabacion",
+        "derechos",
+        "procedimiento_policia",
+        "me_pararon",
+        "evidencias"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial); segunda verificacion adversarial automatizada el 2026-11-08 (texto literal recomparado contra la fuente). Pendiente de revision humana de Juan David Gonzalez Varilla",
+      "notas": "Fuente: Secretaría del Senado, Ley 1801 de 2016 (julio 29), Diario Oficial No. 49.949 de 29 de julio de 2016, rige desde el 29 de enero de 2017; página con última actualización 15 de octubre de 2026. La fuente no muestra notas de vigencia, modificación ni jurisprudencia para el art. 21. Crudo: data/fuentes/ley_1801_2016.html (sha256 381f6222b6cfe2dc27aa89033c23c609239f5f470f8bade605708ae1c707d884). Se buscaron otros artículos de la ley sobre grabación en las seis páginas de la fuente (ley_1801_2016.html y _pr001 a _pr005, arts. 1 a 243): solo el art. 21 regula la grabación de procedimientos; el art. 33 menciona grabaciones como prueba en otro contexto (ruido y convivencia) y no se incluye. Requiere revisión jurídica: el artículo habla de 'procedimiento policivo' y 'autoridad de Policía'; si cubre a agentes de tránsito civiles de un organismo municipal no lo dice el texto. Verificación adversarial 2026-11-08: se volvió a descargar la URL (mismo sha256 381f6222...d884) y el texto literal coincide palabra por palabra con la fuente; el HTML no trae bloque de notas de vigencia ni jurisprudencia para el art. 21. Se corrigió el resumen_sencillo: decía 'con tu celular o con otro medio' (el texto dice 'cualquier medio de las tecnologías de información y comunicación'), 'salvo que una ley lo prohíba' (el texto dice 'salvo las restricciones expresas de ley') y 'comete una falta' (el texto dice 'incurrirá en causal de mala conducta')."
+    }
+  ]
+}

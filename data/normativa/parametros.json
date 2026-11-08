@@ -1,0 +1,129 @@
+{
+  "descripcion": "Parámetros que usa el código. Cada uno sale del texto literal de una entrada verificada de la base normativa (campo sustento). Si el texto no permite fijar el valor o su forma de conteo con certeza, el parámetro queda verificado:false y la app no lo usa. Construido el 2026-11-08 por un agente automatizado; requiere la revisión humana de Juan David González Varilla antes de la entrega.",
+  "fecha_construccion": "2026-11-08",
+  "parametros": [
+    {
+      "id": "dias_habiles_via",
+      "valor": 5,
+      "unidad": "dias_habiles",
+      "punto_partida": "dia_siguiente_evento",
+      "descripcion": "Días hábiles que tienes para presentarte ante la autoridad de tránsito después de un comparendo impuesto en la vía. Se cuentan desde el día hábil siguiente a la fecha en que el agente te entregó el comparendo.",
+      "sustento": ["L769-2002-art135", "L769-2002-art136", "L769-2002-art2"],
+      "verificado": true,
+      "notas": "Art. 135 (texto vigente, Ley 1383 de 2010 art. 22): 'le extenderá al conductor la orden de comparendo en la que ordenará al infractor presentarse ante la autoridad de tránsito competente dentro de los cinco (5) días hábiles siguientes'. Art. 136: 'Si el contraventor no compareciere sin justa causa comprobada dentro de los cinco (5) días hábiles siguientes a Ia notificación del comparendo'. En la vía el evento (entrega del comparendo) y la notificación coinciden: el art. 2 define el comparendo como 'Orden formal de notificación'. Por eso el punto de partida es 'dia_siguiente_evento', con fechaBase = fecha del comparendo. La palabra 'siguientes' se lee como: el día hábil 1 es el día hábil siguiente a la entrega; esa lectura coincide con CA-11.1 y con la tabla de pruebas de docs/base-normativa.md, pero debe confirmarla la revisión jurídica. La base no tiene una norma que defina 'día hábil'; la app excluye sábados, domingos y festivos (Ley 51 de 1983) por decisión de diseño, pendiente de revisión. Revisión adversarial fase 2 (2026-11-08): se agregó L769-2002-art2 al sustento, porque el punto de partida se apoya en su definición de comparendo."
+    },
+    {
+      "id": "dias_habiles_fotodeteccion",
+      "valor": 11,
+      "unidad": "dias_habiles",
+      "punto_partida": "dia_siguiente_notificacion",
+      "descripcion": "Días hábiles que tiene el propietario del vehículo para presentarse ante la autoridad de tránsito por un comparendo de fotodetección. Se cuentan desde el día hábil siguiente al recibo del comparendo en su última dirección registrada en el RUNT.",
+      "sustento": ["L1843-2017-art8"],
+      "verificado": true,
+      "notas": "Art. 8 de la Ley 1843 de 2017: 'presentarse ante la autoridad de tránsito competente dentro de los once (11) días hábiles siguientes a la entrega del comparendo, contados a partir del recibo del comparendo en la última dirección registrada por el propietario del vehículo en el Registro Único Nacional de Tránsito'. El texto dice 'entrega' y 'recibo', no 'notificación': en la app 'dia_siguiente_notificacion' significa el día siguiente al recibo del comparendo. Lectura de conteo: por 'siguientes', el día hábil 1 es el siguiente al recibo (CA-11.2: recibo el viernes 13 nov 2026 da martes 1 dic 2026). La frase 'contados a partir del recibo' podría leerse como que el día del recibo cuenta; esa duda requiere revisión jurídica. Casos que el artículo no resuelve: envío solo por correo electrónico y notificación por aviso (cuando no es posible identificar al propietario en la dirección del RUNT); la app no debe calcular el plazo en esos casos sin revisión jurídica. Concordancia, no usada como sustento: el art. 137 de la Ley 769 (L769-2002-art137) da 'un plazo adicional de seis (6) días hábiles contados a partir del recibo de la comunicación' sobre el trámite del 'artículo precedente'; 5 + 6 = 11 cuadra con el art. 8, pero esa suma es una lectura del equipo."
+    },
+    {
+      "id": "dias_habiles_envio_fotodeteccion",
+      "valor": 3,
+      "unidad": "dias_habiles",
+      "punto_partida": "dia_siguiente_validacion_comparendo",
+      "descripcion": "Días hábiles que tiene la autoridad (no tú) para enviar por correo o correo electrónico la copia del comparendo de fotodetección y sus soportes al propietario. Se cuentan desde la validación del comparendo por parte de la autoridad.",
+      "sustento": ["L1843-2017-art8"],
+      "verificado": true,
+      "notas": "Art. 8 de la Ley 1843 de 2017: 'El envío se hará por correo y/o correo electrónico [...] dentro de los tres (3) días hábiles siguientes a la validación del comparendo por parte de la autoridad'. No existe en el texto un plazo llamado 'de notificación': es un plazo de envío de la autoridad, contado desde la validación, no desde la infracción. Por eso no se creó 'dias_habiles_notificacion_fotodeteccion'. El conductor no conoce la fecha de validación, así que la app no debe usar este parámetro para calcular sus plazos; solo sirve para explicar el procedimiento. ParametrosPlazos no lo lee."
+    },
+    {
+      "id": "porcentaje_pago_reducido_5_dias",
+      "valor": 50,
+      "unidad": "porcentaje",
+      "punto_partida": "no_aplica",
+      "descripcion": "Porcentaje del valor de la multa que pagas (no el descuento) si aceptas la infracción, pagas dentro del primer plazo del art. 136 y haces el curso sobre normas de tránsito.",
+      "sustento": ["L769-2002-art136"],
+      "verificado": true,
+      "notas": "Art. 136 numeral 1 (modificado por el art. 118 del Decreto Ley 2106 de 2019): 'Cancelar el cincuenta por ciento (50%) del valor de la multa dentro de los cinco (5) días siguientes a la orden de comparendo y siempre y cuando asista obligatoriamente a un curso sobre normas de tránsito'. El valor 50 es el porcentaje a pagar. Lo verificado es solo el porcentaje; el plazo de 5 días está en plazo_pago_reducido_50 y no está verificado."
+    },
+    {
+      "id": "plazo_pago_reducido_50",
+      "valor": 5,
+      "unidad": "dias_sin_precisar",
+      "punto_partida": "dia_siguiente_orden_comparendo",
+      "descripcion": "Plazo para pagar el 50 % de la multa con el curso: 'cinco (5) días siguientes a la orden de comparendo'. El texto no dice si son días hábiles o calendario.",
+      "sustento": ["L769-2002-art136"],
+      "verificado": false,
+      "notas": "verificado:false porque el art. 136 numeral 1 dice 'dentro de los cinco (5) días siguientes a la orden de comparendo' sin decir 'hábiles', mientras el inciso de la audiencia del mismo artículo sí dice 'cinco (5) días hábiles siguientes a Ia notificación del comparendo'. Cómo se cuentan requiere revisión jurídica. La unidad 'dias_sin_precisar' se usa a propósito para no afirmar 'dias_habiles' ni 'calendario'. Para fotodetección mal notificada, el parágrafo 2 del art. 136 (L1843-2017-art7) dice que estos términos corren 'a partir de la fecha de la notificación del comparendo'. La app no debe calcular fechas de descuento con este parámetro."
+    },
+    {
+      "id": "porcentaje_pago_reducido_20_dias",
+      "valor": 75,
+      "unidad": "porcentaje",
+      "punto_partida": "no_aplica",
+      "descripcion": "Porcentaje del valor de la multa que pagas (no el descuento) si aceptas la infracción, pagas dentro del segundo plazo del art. 136 y haces el curso sobre normas de tránsito.",
+      "sustento": ["L769-2002-art136"],
+      "verificado": true,
+      "notas": "Art. 136 numeral 2: 'Cancelar el setenta y cinco por ciento (75%) del valor de la multa, si paga dentro de los veinte días siguientes a la orden de comparendo y siempre y cuando asista obligatoriamente a un curso sobre normas de tránsito'. El valor 75 es el porcentaje a pagar. Lo verificado es solo el porcentaje; el plazo de 20 días está en plazo_pago_reducido_75 y no está verificado."
+    },
+    {
+      "id": "plazo_pago_reducido_75",
+      "valor": 20,
+      "unidad": "dias_sin_precisar",
+      "punto_partida": "dia_siguiente_orden_comparendo",
+      "descripcion": "Plazo para pagar el 75 % de la multa con el curso: 'veinte días siguientes a la orden de comparendo'. El texto no dice si son días hábiles o calendario.",
+      "sustento": ["L769-2002-art136"],
+      "verificado": false,
+      "notas": "verificado:false por la misma razón que plazo_pago_reducido_50: el numeral 2 del art. 136 dice 'dentro de los veinte días siguientes a la orden de comparendo', sin 'hábiles' y sin número entre paréntesis. Requiere revisión jurídica. La app no debe calcular fechas de descuento con este parámetro."
+    },
+    {
+      "id": "porcentaje_pago_fuera_de_plazo",
+      "valor": 100,
+      "unidad": "porcentaje",
+      "punto_partida": "no_aplica",
+      "descripcion": "Si aceptas la infracción y no pagas en los plazos de reducción, pagas el 100 % de la multa más intereses de mora. También es el 100 % si te declaran contraventor en la audiencia.",
+      "sustento": ["L769-2002-art136"],
+      "verificado": true,
+      "notas": "Art. 136 numeral 3: 'Si aceptada Ia infracción, ésta no se paga en las oportunidades antes indicadas, el inculpado deberá cancelar el cien por ciento (100%) del valor de Ia multa más sus correspondientes intereses moratorios'. Y: 'Si fuere declarado contraventor, se le impondrá el cien por ciento (100%) de Ia sanción prevista en Ia ley'. La tasa de los intereses no está en la base."
+    },
+    {
+      "id": "caducidad_accion_contravencional",
+      "valor": 1,
+      "unidad": "anios",
+      "punto_partida": "fecha_ocurrencia_hechos",
+      "descripcion": "La acción por una infracción de tránsito caduca al año, contado desde que ocurrieron los hechos. En ese año la autoridad debe decidir si impone la sanción.",
+      "sustento": ["L769-2002-art161", "L1843-2017-art11"],
+      "verificado": true,
+      "notas": "Art. 161 (texto dado por el art. 11 de la Ley 1843 de 2017): 'La acción por contravención de las normas de tránsito, caduca al año (1), contado a partir de la ocurrencia de los hechos que dieron origen a ella. En consecuencia, durante este término se deberá decidir sobre la imposición de la sanción'. Las dos entradas tienen el mismo texto (cruce hecho por el verificador de la Ley 1843). Excepción del mismo artículo: si prospera una revocación directa, la caducidad se cuenta 'a partir de la notificación de la aceptación de su solicitud o su declaratoria de oficio'; la app no calcula ese caso. La app no debe afirmar que una sanción concreta ya caducó: eso lo declara la autoridad."
+    },
+    {
+      "id": "plazo_decision_recursos",
+      "valor": 1,
+      "unidad": "anios",
+      "punto_partida": "fecha_interposicion_recurso",
+      "descripcion": "La decisión sobre los recursos debe expedirse en un año contado desde que se presentaron en debida forma y a tiempo. Si no se deciden en ese plazo, se entienden fallados a favor de quien los presentó.",
+      "sustento": ["L769-2002-art161", "L1843-2017-art11"],
+      "verificado": true,
+      "notas": "Art. 161 inciso 2: 'La decisión que resuelve los recursos, de ser procedentes, deberá ser expedida en un término de un (1) año contado a partir de su debida y oportuna interposición, si los recursos no se deciden en el término fijado en esta disposición, se entenderán fallados a favor del recurrente'."
+    },
+    {
+      "id": "prescripcion_sanciones",
+      "valor": 3,
+      "unidad": "anios",
+      "punto_partida": "fecha_ocurrencia_hechos",
+      "descripcion": "Las sanciones de tránsito prescriben en tres años contados desde que ocurrió el hecho. La prescripción se declara de oficio y se interrumpe con la notificación del mandamiento de pago.",
+      "sustento": ["L769-2002-art159"],
+      "verificado": true,
+      "notas": "Art. 159 (modificado por el art. 26 de la Ley 1383 de 2010 y por el art. 206 del Decreto 19 de 2012): 'Las sanciones impuestas por infracciones a las normas de tránsito prescribirán en tres (3) años contados a partir de Ia ocurrencia del hecho; Ia prescripción deberá ser declarada de oficio y se interrumpirá con Ia notificación del mandamiento de pago'. La app no debe afirmar que una sanción concreta ya prescribió: depende de si hubo mandamiento de pago notificado, dato que la app no tiene."
+    }
+  ],
+  "unidad_multa": {
+    "nombre": "UVB",
+    "anio": 2026,
+    "valor_pesos": null,
+    "valor_pesos_sin_verificar": 12110,
+    "norma_valor": "Resolución 3488 del 31 de diciembre de 2025 del Ministerio de Hacienda y Crédito Público (citada por el Ministerio de Transporte; el texto de la resolución no se descargó)",
+    "fuente_url": "https://mintransporte.gov.co/info/mintransporte/media/anexos/MEXQ3BQm.pdf",
+    "fecha_consulta": "2026-11-08",
+    "sustento": ["L2294-2023-art313", "L2294-2023-art372", "MT-CONCEPTO-20261340231211", "MT-CONCEPTO-20241340954691"],
+    "sustento_pendiente": ["MH-R3488-2025-art1"],
+    "verificado": false,
+    "notas": "Tomado de data/normativa/unidad-multa.json (conclusion), que está en verificado:false. La unidad UVB sale del art. 313 de la Ley 2294 de 2023 (verificado), vigente desde el 1 de enero de 2024 (art. 372 parágrafo 1, verificado). El valor de $12.110 para 2026 solo consta en un concepto no vinculante de MinTransporte que cita la Resolución 3488 de 2025; la resolución no se pudo descargar (bloqueo anti-bots de minhacienda.gov.co). Por eso valor_pesos es null y el número reportado va en valor_pesos_sin_verificar: la app no debe mostrarlo. Además las sanciones del art. 131 están en SMDLV y la unidad vigente es UVB: para convertir hace falta la equivalencia SMDLV 2023 -> UVB (UVB de la multa = cantidad de SMDLV x salario mínimo diario de 2023 / 10.000, con el redondeo del parágrafo 1 del art. 313; el salario mínimo de 2023 no está en la base) o la tabla de la Circular Externa 20264000000037; ninguna de las dos está verificada en la base. Por eso valor_referencia queda null en todas las infracciones de data/infracciones.json. Para cerrarlo: Juan descarga la Resolución 3488 de 2025, la copia en MH-R3488-2025-art1, verifica la equivalencia SMDLV->UVB en una fuente aceptada y entonces se calcula pesos = UVB de la multa x 12.110. Actualización: cada enero se repite con la resolución de la UVB del año."
+  }
+}

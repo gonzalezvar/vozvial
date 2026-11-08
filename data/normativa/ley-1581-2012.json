@@ -1,0 +1,132 @@
+{
+  "norma": "Ley 1581 de 2012",
+  "entradas": [
+    {
+      "id": "L1581-2012-art3",
+      "norma": "Ley 1581 de 2012",
+      "articulo": "3",
+      "titulo": "Definiciones",
+      "texto_literal": "ARTÍCULO 3o. DEFINICIONES. Para los efectos de la presente ley, se entiende por:\na) Autorización: Consentimiento previo, expreso e informado del Titular para llevar a cabo el Tratamiento de datos personales;\nb) Base de Datos: Conjunto organizado de datos personales que sea objeto de Tratamiento;\nc) Dato personal: Cualquier información vinculada o que pueda asociarse a una o varias personas naturales determinadas o determinables;\nd) Encargado del Tratamiento: Persona natural o jurídica, pública o privada, que por sí misma o en asocio con otros, realice el Tratamiento de datos personales por cuenta del Responsable del Tratamiento;\ne) Responsable del Tratamiento: Persona natural o jurídica, pública o privada, que por sí misma o en asocio con otros, decida sobre la base de datos y/o el Tratamiento de los datos;\nf) Titular: Persona natural cuyos datos personales sean objeto de Tratamiento;\ng) Tratamiento: Cualquier operación o conjunto de operaciones sobre datos personales, tales como la recolección, almacenamiento, uso, circulación o supresión.",
+      "modificado_por": [],
+      "resumen_sencillo": "Autorización es cuando tú dices que sí, antes, de forma clara y sabiendo para qué, a que usen tus datos personales. Dato personal es cualquier información que se pueda relacionar contigo. Titular eres tú, la persona dueña de los datos. Tratamiento es cualquier cosa que se haga con tus datos: recogerlos, guardarlos, usarlos, compartirlos o borrarlos. Responsable es quien decide sobre la base de datos o sobre el uso de los datos. Encargado es quien trata los datos por cuenta del responsable.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "datos personales",
+        "autorización",
+        "tratamiento de datos",
+        "registro",
+        "privacidad"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Verificacion adversarial (fase 2): texto_literal recotejado contra la fuente descargada de nuevo (mismo sha256)",
+      "notas": "Según la fuente, la Corte Constitucional, mediante Sentencia C-748 de 2011 (revisión previa del Proyecto de Ley Estatutaria 184/10 Senado, 046/10 Cámara), declaró EXEQUIBLE este artículo. La fuente no registra modificaciones posteriores a este artículo."
+    },
+    {
+      "id": "L1581-2012-art4",
+      "norma": "Ley 1581 de 2012",
+      "articulo": "4",
+      "titulo": "Principios para el tratamiento de datos personales",
+      "texto_literal": "ARTÍCULO 4o. PRINCIPIOS PARA EL TRATAMIENTO DE DATOS PERSONALES. En el desarrollo, interpretación y aplicación de la presente ley, se aplicarán, de manera armónica e integral, los siguientes principios:\na) Principio de legalidad en materia de Tratamiento de datos: El Tratamiento a que se refiere la presente ley es una actividad reglada que debe sujetarse a lo establecido en ella y en las demás disposiciones que la desarrollen;\nb) Principio de finalidad: El Tratamiento debe obedecer a una finalidad legítima de acuerdo con la Constitución y la Ley, la cual debe ser informada al Titular;\nc) Principio de libertad: El Tratamiento sólo puede ejercerse con el consentimiento, previo, expreso e informado del Titular. Los datos personales no podrán ser obtenidos o divulgados sin previa autorización, o en ausencia de mandato legal o judicial que releve el consentimiento;\nd) Principio de veracidad o calidad: La información sujeta a Tratamiento debe ser veraz, completa, exacta, actualizada, comprobable y comprensible. Se prohíbe el Tratamiento de datos parciales, incompletos, fraccionados o que induzcan a error;\ne) Principio de transparencia: En el Tratamiento debe garantizarse el derecho del Titular a obtener del Responsable del Tratamiento o del Encargado del Tratamiento, en cualquier momento y sin restricciones, información acerca de la existencia de datos que le conciernan;\nf) Principio de acceso y circulación restringida: El Tratamiento se sujeta a los límites que se derivan de la naturaleza de los datos personales, de las disposiciones de la presente ley y la Constitución. En este sentido, el Tratamiento sólo podrá hacerse por personas autorizadas por el Titular y/o por las personas previstas en la presente ley;\nLos datos personales, salvo la información pública, no podrán estar disponibles en Internet u otros medios de divulgación o comunicación masiva, salvo que el acceso sea técnicamente controlable para brindar un conocimiento restringido sólo a los Titulares o terceros autorizados conforme a la presente ley;\ng) Principio de seguridad: La información sujeta a Tratamiento por el Responsable del Tratamiento o Encargado del Tratamiento a que se refiere la presente ley, se deberá manejar con las medidas técnicas, humanas y administrativas que sean necesarias para otorgar seguridad a los registros evitando su adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento;\nh) Principio de confidencialidad: Todas las personas que intervengan en el Tratamiento de datos personales que no tengan la naturaleza de públicos están obligadas a garantizar la reserva de la información, inclusive después de finalizada su relación con alguna de las labores que comprende el Tratamiento, pudiendo sólo realizar suministro o comunicación de datos personales cuando ello corresponda al desarrollo de las actividades autorizadas en la presente ley y en los términos de la misma.",
+      "modificado_por": [],
+      "resumen_sencillo": "Quien use tus datos debe seguir la ley. Debe decirte para qué los usa. Solo puede usarlos si tú lo autorizas antes y de forma clara, salvo orden legal o judicial. Los datos deben ser ciertos y completos. Tienes derecho a saber si tienen datos tuyos. Tus datos no pueden quedar a la vista de todos en Internet, salvo la información pública o si el acceso está controlado para que solo los veas tú o personas autorizadas. Deben protegerlos para que no se pierdan ni los vean personas sin permiso. Quienes manejan tus datos que no son públicos deben guardar reserva.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "datos personales",
+        "principios",
+        "finalidad",
+        "seguridad",
+        "confidencialidad",
+        "privacidad"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Verificacion adversarial (fase 2): texto_literal recotejado contra la fuente descargada de nuevo (mismo sha256)",
+      "notas": "Según la fuente, la Corte Constitucional, mediante Sentencia C-748 de 2011 (revisión previa del Proyecto de Ley Estatutaria 184/10 Senado, 046/10 Cámara), declaró EXEQUIBLE este artículo. Nota de vigencia de la fuente sobre el literal g): durante la emergencia sanitaria por COVID-19, el Decreto Legislativo 538 de 2020, art. 8, limitó lo dispuesto en ese literal al manejo de medidas de seguridad de los prestadores de servicios de salud. Es una medida temporal y no cambió el texto del literal; no aplica a VozVial."
+    },
+    {
+      "id": "L1581-2012-art8",
+      "norma": "Ley 1581 de 2012",
+      "articulo": "8",
+      "titulo": "Derechos de los titulares",
+      "texto_literal": "ARTÍCULO 8o. DERECHOS DE LOS TITULARES. El Titular de los datos personales tendrá los siguientes derechos:\na) Conocer, actualizar y rectificar sus datos personales frente a los Responsables del Tratamiento o Encargados del Tratamiento. Este derecho se podrá ejercer, entre otros frente a datos parciales, inexactos, incompletos, fraccionados, que induzcan a error, o aquellos cuyo Tratamiento esté expresamente prohibido o no haya sido autorizado;\nb) Solicitar prueba de la autorización otorgada al Responsable del Tratamiento salvo cuando expresamente se exceptúe como requisito para el Tratamiento, de conformidad con lo previsto en el artículo 10 de la presente ley;\nc) Ser informado por el Responsable del Tratamiento o el Encargado del Tratamiento, previa solicitud, respecto del uso que le ha dado a sus datos personales;\nd) Presentar ante la Superintendencia de Industria y Comercio quejas por infracciones a lo dispuesto en la presente ley y las demás normas que la modifiquen, adicionen o complementen;\ne) Revocar la autorización y/o solicitar la supresión del dato cuando en el Tratamiento no se respeten los principios, derechos y garantías constitucionales y legales. La revocatoria y/o supresión procederá cuando la Superintendencia de Industria y Comercio haya determinado que en el Tratamiento el Responsable o Encargado han incurrido en conductas contrarias a esta ley y a la Constitución;\nf) Acceder en forma gratuita a sus datos personales que hayan sido objeto de Tratamiento.",
+      "modificado_por": [],
+      "resumen_sencillo": "Tienes derecho a conocer, actualizar y corregir tus datos. Puedes pedir prueba de la autorización que diste, salvo en los casos en que la ley no exige autorización (artículo 10). Puedes pedir que te digan cómo han usado tus datos. Puedes quejarte ante la Superintendencia de Industria y Comercio si no cumplen la ley. Puedes revocar tu autorización o pedir que borren tus datos en los casos del literal e) (la Corte Constitucional lo condicionó; mira las notas). Puedes ver gratis tus datos.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "datos personales",
+        "derechos",
+        "habeas data",
+        "privacidad",
+        "superintendencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Verificacion adversarial (fase 2): texto_literal recotejado contra la fuente descargada de nuevo (mismo sha256)",
+      "notas": "Según la fuente, la Corte Constitucional, mediante Sentencia C-748 de 2011, declaró EXEQUIBLE este artículo, excepto la expresión 'sólo' del literal e), que declaró INEXEQUIBLE; el texto literal ya no la incluye. La fuente marca el literal e) como 'CONDICIONALMENTE exequible': debe entenderse en el sentido de que el titular también podrá revocar la autorización y solicitar la supresión del dato cuando no exista un deber legal o contractual que le imponga permanecer en la base de datos. La marca editorial '<Literal CONDICIONALMENTE exequible>' se quitó de texto_literal porque es anotación de la fuente, no texto de la ley."
+    },
+    {
+      "id": "L1581-2012-art9",
+      "norma": "Ley 1581 de 2012",
+      "articulo": "9",
+      "titulo": "Autorización del titular",
+      "texto_literal": "ARTÍCULO 9o. AUTORIZACIÓN DEL TITULAR. Sin perjuicio de las excepciones previstas en la ley, en el Tratamiento se requiere la autorización previa e informada del Titular, la cual deberá ser obtenida por cualquier medio que pueda ser objeto de consulta posterior.",
+      "modificado_por": [],
+      "resumen_sencillo": "Para usar tus datos necesitan tu autorización, antes y sabiendo para qué, salvo las excepciones de la ley. Esa autorización debe quedar guardada de forma que se pueda consultar después.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "autorización",
+        "datos personales",
+        "registro",
+        "consentimiento",
+        "privacidad"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Verificacion adversarial (fase 2): texto_literal recotejado contra la fuente descargada de nuevo (mismo sha256)",
+      "notas": "Según la fuente, la Corte Constitucional, mediante Sentencia C-748 de 2011 (revisión previa del Proyecto de Ley Estatutaria 184/10 Senado, 046/10 Cámara), declaró EXEQUIBLE este artículo. La fuente no registra modificaciones posteriores a este artículo."
+    },
+    {
+      "id": "L1581-2012-art12",
+      "norma": "Ley 1581 de 2012",
+      "articulo": "12",
+      "titulo": "Deber de informar al titular",
+      "texto_literal": "ARTÍCULO 12. DEBER DE INFORMAR AL TITULAR. El Responsable del Tratamiento, al momento de solicitar al Titular la autorización, deberá informarle de manera clara y expresa lo siguiente:\na) El Tratamiento al cual serán sometidos sus datos personales y la finalidad del mismo;\nb) El carácter facultativo de la respuesta a las preguntas que le sean hechas, cuando estas versen sobre datos sensibles o sobre los datos de las niñas, niños y adolescentes;\nc) Los derechos que le asisten como Titular;\nd) La identificación, dirección física o electrónica y teléfono del Responsable del Tratamiento.\nPARÁGRAFO. El Responsable del Tratamiento deberá conservar prueba del cumplimiento de lo previsto en el presente artículo y, cuando el Titular lo solicite, entregarle copia de esta.",
+      "modificado_por": [],
+      "resumen_sencillo": "Cuando te piden autorización, deben decirte de forma clara: qué harán con tus datos y para qué; que no estás obligado a responder preguntas sobre datos sensibles o de niños, niñas y adolescentes; qué derechos tienes; y quién es el responsable, con su dirección y teléfono. Deben guardar prueba de que te informaron y darte copia si la pides.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "autorización",
+        "deber de informar",
+        "registro",
+        "política de datos",
+        "privacidad"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Verificacion adversarial (fase 2): texto_literal recotejado contra la fuente descargada de nuevo (mismo sha256)",
+      "notas": "Según la fuente, la Corte Constitucional, mediante Sentencia C-748 de 2011 (revisión previa del Proyecto de Ley Estatutaria 184/10 Senado, 046/10 Cámara), declaró EXEQUIBLE este artículo. La fuente destaca de la parte motiva que, cuando excepcionalmente se permite el tratamiento de un dato sensible o de un menor, el responsable debe informar las limitaciones y derechos de ese tipo de dato."
+    },
+    {
+      "id": "L1581-2012-art17",
+      "norma": "Ley 1581 de 2012",
+      "articulo": "17",
+      "titulo": "Deberes de los responsables del tratamiento",
+      "texto_literal": "ARTÍCULO 17. DEBERES DE LOS RESPONSABLES DEL TRATAMIENTO. Los Responsables del Tratamiento deberán cumplir los siguientes deberes, sin perjuicio de las demás disposiciones previstas en la presente ley y en otras que rijan su actividad:\na) Garantizar al Titular, en todo tiempo, el pleno y efectivo ejercicio del derecho de hábeas data;\nb) Solicitar y conservar, en las condiciones previstas en la presente ley, copia de la respectiva autorización otorgada por el Titular;\nc) Informar debidamente al Titular sobre la finalidad de la recolección y los derechos que le asisten por virtud de la autorización otorgada;\nd) Conservar la información bajo las condiciones de seguridad necesarias para impedir su adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento;\ne) Garantizar que la información que se suministre al Encargado del Tratamiento sea veraz, completa, exacta, actualizada, comprobable y comprensible;\nf) Actualizar la información, comunicando de forma oportuna al Encargado del Tratamiento, todas las novedades respecto de los datos que previamente le haya suministrado y adoptar las demás medidas necesarias para que la información suministrada a este se mantenga actualizada;\ng) Rectificar la información cuando sea incorrecta y comunicar lo pertinente al Encargado del Tratamiento;\nh) Suministrar al Encargado del Tratamiento, según el caso, únicamente datos cuyo Tratamiento esté previamente autorizado de conformidad con lo previsto en la presente ley;\ni) Exigir al Encargado del Tratamiento en todo momento, el respeto a las condiciones de seguridad y privacidad de la información del Titular;\nj) Tramitar las consultas y reclamos formulados en los términos señalados en la presente ley;\nk) Adoptar un manual interno de políticas y procedimientos para garantizar el adecuado cumplimiento de la presente ley y en especial, para la atención de consultas y reclamos;\nl) Informar al Encargado del Tratamiento cuando determinada información se encuentra en discusión por parte del Titular, una vez se haya presentado la reclamación y no haya finalizado el trámite respectivo;\nm) Informar a solicitud del Titular sobre el uso dado a sus datos;\nn) Informar a la autoridad de protección de datos cuando se presenten violaciones a los códigos de seguridad y existan riesgos en la administración de la información de los Titulares.\no) Cumplir las instrucciones y requerimientos que imparta la Superintendencia de Industria y Comercio.",
+      "modificado_por": [],
+      "resumen_sencillo": "Quien decide sobre tus datos debe, entre otras cosas: respetar tus derechos; pedir y guardar copia de tu autorización; decirte para qué recoge tus datos y qué derechos tienes; protegerlos para que no se pierdan ni los usen sin permiso; corregirlos si están mal; atender tus consultas y reclamos; tener un manual interno de políticas; decirte cómo usa tus datos si lo pides; avisar a la autoridad de protección de datos si hay violaciones a los códigos de seguridad y riesgos para tus datos; y cumplir lo que ordene la Superintendencia de Industria y Comercio.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "deberes",
+        "responsable del tratamiento",
+        "seguridad",
+        "política de datos",
+        "privacidad"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Verificacion adversarial (fase 2): texto_literal recotejado contra la fuente descargada de nuevo (mismo sha256)",
+      "notas": "Según la fuente, la Corte Constitucional, mediante Sentencia C-748 de 2011 (revisión previa del Proyecto de Ley Estatutaria 184/10 Senado, 046/10 Cámara), declaró EXEQUIBLE este artículo. La fuente destaca de la parte motiva que estos deberes son enunciativos frente al titular, pero taxativos para efectos de sanciones administrativas."
+    }
+  ]
+}

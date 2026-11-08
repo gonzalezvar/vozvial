@@ -1,0 +1,287 @@
+{
+  "norma": "Ley 769 de 2002",
+  "entradas": [
+    {
+      "id": "L769-2002-art2",
+      "norma": "Ley 769 de 2002",
+      "articulo": "2",
+      "titulo": "Definiciones (comparendo, agente de tránsito, infracción, inmovilización, multa, organismos de tránsito)",
+      "texto_literal": "ARTÍCULO 2o. DEFINICIONES. Para la aplicación e interpretación de este código, se tendrán en cuenta las siguientes definiciones:\nAgente de tránsito: Todo funcionario o persona civil identificada que está investida de autoridad para regular la circulación vehicular y peatonal y vigilar, controlar e intervenir en el cumplimiento de las normas de tránsito y transporte en cada uno de los entes territoriales.\nComparendo: Orden formal de notificación para que el presunto contraventor o implicado se presente ante la autoridad de tránsito por la comisión de una infracción.\nInfracción: Transgresión o violación de una norma de tránsito. Habrá dos tipos de infracciones: simple y compleja. Será simple cuando se trate de violación a la mera norma. Será compleja si se produce un daño material.\nInmovilización: Suspensión temporal de la circulación de un vehículo.\nMulta: Sanción pecuniaria. Para efectos del presente código y salvo disposición en contrario, la multa debe entenderse en salarios mínimos diarios legales vigentes.\nOrganismos de tránsito: Son unidades administrativas municipales distritales o departamentales que tienen por reglamento la función de organizar y dirigir lo relacionado con el tránsito y transporte en su respectiva jurisdicción.",
+      "modificado_por": [],
+      "resumen_sencillo": "Comparendo: es la orden formal para que te presentes ante la autoridad de tránsito por una presunta infracción. Agente de tránsito: es el funcionario o persona civil identificada que tiene autoridad para regular y controlar el tránsito. Infracción: es violar una norma de tránsito. Es simple si solo se viola la norma y compleja si hay daño material. Inmovilización: es la suspensión temporal de la circulación de un vehículo. Multa: es una sanción en dinero. En este código se entiende en salarios mínimos diarios legales vigentes, salvo que otra norma diga otra cosa. Organismos de tránsito: son las oficinas municipales, distritales o departamentales que organizan y dirigen el tránsito en su jurisdicción.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002.html#2",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "definiciones",
+        "comparendo",
+        "agente de transito",
+        "inmovilizacion",
+        "multa",
+        "organismo de transito"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Extracto: solo se copiaron, literales, el encabezado del artículo y las definiciones que usa la app. El art. 2 no trae definición de 'día hábil'. Nota del editor de la fuente: para 'Agente de tránsito' y 'Organismos de tránsito' remite a la definición del art. 2 de la Ley 1310 de 2009 (no incluida en esta base). La definición de 'Multa' remite a salarios mínimos 'salvo disposición en contrario': la unidad vigente de las multas se verifica aparte (unidad-multa.json / parametros.json), no con esta entrada. Fuente cruda: data/fuentes/ley_0769_2002.html (sha256 72e28611ceecd46a45cc6173acff23f87603f5f7ffda78b1de8e7db5c3f6c2f5); notas de vigencia en data/fuentes/ley_0769_2002.js (sha256 e65ace890d23772c215c27f00c9631a4b9afb61b9207602b0619d658ac629be5)."
+    },
+    {
+      "id": "L769-2002-art125",
+      "norma": "Ley 769 de 2002",
+      "articulo": "125",
+      "titulo": "Inmovilización",
+      "texto_literal": "ARTÍCULO 125. INMOVILIZACIÓN. La inmovilización en los casos a que se refiere este código, consiste en suspender temporalmente la circulación del vehículo por las vías públicas o privadas abiertas al público. Para tal efecto, el vehículo será conducido a parqueaderos autorizados que determine la autoridad competente, hasta que se subsane o cese la causa que le dio origen, a menos que sea subsanable en el sitio que se detectó la infracción.\nPARÁGRAFO 1o. El propietario o administrador del parqueadero autorizado utilizado para este fin, que permita la salida de un vehículo inmovilizado por infracción de las normas de tránsito, sin orden de la autoridad competente, incurrirá en multa de cincuenta (50) salarios mínimos legales mensuales vigentes. Si se tratare de parqueadero autorizado no oficial, incurrirá además en suspensión o cancelación de la autorización del patio, parqueadero autorizado de acuerdo con la gravedad de la falta.\nEn todo caso, el ingreso del vehículo al lugar de inmovilización deberá hacerse previo inventario de los elementos contenidos en él y descripción del estado exterior. Este mismo procedimiento se hará a la salida del vehículo. En caso de diferencias entre el inventario de recibo y el de entrega, el propietario o administrador del parqueadero autorizado incurrirá en multa de veinte (20) salarios mínimos legales mensuales vigentes y, adicionalmente, deberá responder por los elementos extraviados, dañados o averiados del vehículo.\nPARÁGRAFO 2o. La orden de entrega del vehículo se emitirá por la autoridad de tránsito competente, previa comprobación directa de haberse subsanado la causa que motivó la inmovilización. La orden de entrega se ejecutará a favor del propietario del vehículo o al infractor, quien acreditará tal calidad con la exhibición de medios de prueba documentales.\nPARÁGRAFO 3o. En el caso de vehículos de servicio público, cuando no sea posible subsanar la falta por encontrarse el vehículo retenido, la autoridad de tránsito podrá ordenar la entrega al propietario o infractor previa suscripción de un acta en la cual se comprometa a subsanarla en un plazo no mayor a cinco días. Copia del acta se remitirá a la Empresa de Transporte Público a la cual se encuentre afiliado el vehículo.\nEl incumplimiento del compromiso suscrito por el propietario o infractor dará lugar a una multa de veinte (20) salarios mínimos legales mensuales vigentes a cargo del propietario.\nPARÁGRAFO 4o. En el caso de inmovilización de vehículos de servicio público, la empresa transportadora responderá como deudor solidario de las obligaciones que se contraigan, entre ellas las derivadas de la prestación del servicio de grúa y parqueaderos.\nLa inmovilización o retención a que hacen referencia las normas de transporte se regirán por el procedimiento establecido en este artículo.\nPARÁGRAFO 5o. Cuando el vehículo no sea llevado a parqueaderos autorizados la inmovilización se hará bajo la responsabilidad del propietario del vehículo o del infractor, para lo cual, el agente de tránsito notificará al propietario o administrador del parqueadero autorizado.\nPARÁGRAFO 6o. El propietario del vehículo será el responsable del pago al administrador o al propietario del parqueadero por el tiempo que estuvo inmovilizado el vehículo.\nPARÁGRAFO 7o. Los parqueaderos autorizados deben ser aprobados por el organismo de tránsito correspondiente en resolución que determinará lo atinente.",
+      "modificado_por": [],
+      "resumen_sencillo": "Inmovilizar tu vehículo es suspender temporalmente su circulación. El vehículo se lleva a un parqueadero autorizado hasta que se corrija la causa, salvo que se pueda corregir en el sitio. Al entrar y al salir del parqueadero se hace inventario de lo que hay en el vehículo y de su estado exterior. Para entregarlo, la autoridad de tránsito debe comprobar que se corrigió la causa. Se entrega al propietario o al infractor, que lo prueba con documentos. El propietario paga el parqueadero por el tiempo que estuvo inmovilizado.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#125",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "inmovilizacion",
+        "patios",
+        "parqueadero",
+        "entrega del vehiculo"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Texto original de la Ley 769 de 2002; la fuente no registra modificaciones del artículo. Notas del editor de la fuente: para el parágrafo 2 remite al art. 209 del Decreto 19 de 2012 (retiro de vehículos de los patios) y, para el artículo, a los arts. 65, 66 y 67 de la Ley 962 de 2005 (información, pagos y cómputo del tiempo de parqueo). Esas normas no están en esta base. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art129",
+      "norma": "Ley 769 de 2002",
+      "articulo": "129",
+      "titulo": "De los informes de tránsito (datos del comparendo y ayudas tecnológicas)",
+      "texto_literal": "ARTÍCULO 129. DE LOS INFORMES DE TRÁNSITO. Los informes de las autoridades de tránsito por las infracciones previstas en este código, a través de la imposición de comparendo, deberán indicar el número de la licencia de conducción, el nombre, teléfono y dirección del presunto inculpado y el nombre y número de placa del agente que lo realiza. En el caso de no poder indicar el número de licencia de conducción del infractor, el funcionario deberá aportar pruebas objetivas que sustenten el informe o la infracción, intentando la notificación al conductor; si no fuere viable identificarlo, se notificará al último propietario registrado del vehículo, para que rinda sus descargos dentro de los siguientes diez (10) días al recibo de la notificación.\nPARÁGRAFO 1o. Las multas no podrán ser impuestas a persona distinta de quien cometió la infracción.\nPARÁGRAFO 2o. Las ayudas tecnológicas como cámaras de vídeo y equipos electrónicos de lectura que permitan con precisión la identificación del vehículo o del conductor serán válidos como prueba de ocurrencia de una infracción de tránsito y por lo tanto darán lugar a la imposición de un comparendo.",
+      "modificado_por": [],
+      "resumen_sencillo": "El comparendo debe indicar tu número de licencia, tu nombre, teléfono y dirección, y el nombre y número de placa del agente. Si no tiene tu número de licencia, el funcionario debe aportar pruebas objetivas e intentar notificarte. Si no es posible identificarte, se notifica al último propietario registrado del vehículo, que tiene diez (10) días desde que recibe la notificación para dar sus descargos (explicar su versión). La multa no se puede imponer a una persona distinta de quien cometió la infracción. Las cámaras de video y equipos electrónicos que identifiquen con precisión el vehículo o al conductor sirven como prueba y dan lugar a un comparendo.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#129",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "comparendo",
+        "fotodeteccion",
+        "ayudas tecnologicas",
+        "notificacion",
+        "pruebas",
+        "propietario"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Se retiró del texto el aparte tachado en la fuente, declarado INEXEQUIBLE por la Corte Constitucional en la Sentencia C-530-03: 'en caso de no concurrir se impondrá la sanción al propietario registrado del vehículo' (con la coma que lo precedía). El aparte 'si no fuere viable identificarlo, se notificará al último propietario registrado del vehículo, para que rinda sus descargos dentro de los siguientes diez (10) días al recibo de la notificación' fue declarado EXEQUIBLE de forma condicionada (C-530-03): el propietario solo será llamado a descargos cuando existan elementos probatorios que permitan inferir que probablemente es el responsable. Según la fuente, 'Parágrafo declarado EXEQUIBLE, por los cargos analizados' (C-530-03); la caja de jurisprudencia aparece a continuación del parágrafo 2o. y no dice a cuál de los dos parágrafos se refiere. Texto original; la fuente no registra modificaciones del artículo. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art135",
+      "norma": "Ley 769 de 2002",
+      "articulo": "135",
+      "titulo": "Procedimiento para imponer el comparendo",
+      "texto_literal": "ARTÍCULO 135. PROCEDIMIENTO. Ante la comisión de una contravención, la autoridad de tránsito debe seguir el procedimiento siguiente para imponer el comparendo:\nOrdenará detener la marcha del vehículo y le extenderá al conductor la orden de comparendo en la que ordenará al infractor presentarse ante la autoridad de tránsito competente dentro de los cinco (5) días hábiles siguientes. Al conductor se le entregará copia de la orden de comparendo.\nPara el servicio además se enviará por correo dentro de los tres (3) días hábiles siguientes copia del comparendo al propietario del vehículo, a la empresa a la cual se encuentra vinculado y a la Superintendencia de Puertos y Transporte para lo de su competencia.\nLa orden de comparendo deberá estar firmada por el conductor, siempre y cuando ello sea posible. Si el conductor se negara a firmar o a presentar la licencia, firmará por él un testigo, el cual deberá identificarse plenamente con el número de su cédula de ciudadanía o pasaporte, dirección de domicilio y teléfono, si lo tuviere.\nNo obstante lo anterior, las autoridades competentes podrán contratar el servicio de medios técnicos y tecnológicos que permitan evidenciar la comisión de infracciones o contravenciones, el vehículo, la fecha, el lugar y la hora. En tal caso se enviará por correo dentro de los tres (3) días hábiles siguientes la infracción y sus soportes al propietario, quien estará obligado al pago de la multa. Para el servicio público además se enviará por correo dentro de este mismo término copia del comparendo y sus soportes a la empresa a la cual se encuentre vinculado y a la Superintendencia de Puertos y Transporte para lo de su competencia.\nEl Ministerio de Transporte determinará las características técnicas del formulario de comparendo único nacional, así como su sistema de reparto. En este se indicará al conductor que tendrá derecho a nombrar un apoderado si así lo desea y que en la audiencia, para la que se le cite, se decretarán o practicarán las pruebas que solicite. El comparendo deberá además proveer el espacio para consignar la dirección del inculpado o del testigo que lo haya suscrito por este.\nPARÁGRAFO 1o. La autoridad de tránsito entregará al funcionario competente o a la entidad que aquella encargue para su recaudo, dentro de las doce (12) horas siguientes, la copia de la orden de comparendo, so pena de incurrir en causal de mala conducta.\nCuando se trate de agentes de policía de carreteras, la entrega de esta copia se hará por conducto del comandante de la ruta o del comandante director del servicio.\nPARÁGRAFO 2o. Los organismos de tránsito podrán suscribir contratos o convenios con entes públicos o privados con el fin de dar aplicación a los principios de celeridad y eficiencia en el cobro de las multas.",
+      "modificado_por": [
+        "Ley 1383 de 2010, art. 22"
+      ],
+      "resumen_sencillo": "El agente detiene el vehículo y te entrega la orden de comparendo. En ella se te ordena presentarte ante la autoridad de tránsito dentro de los cinco (5) días hábiles siguientes. Te deben entregar copia del comparendo. El comparendo debe ir firmado por ti si es posible. Si no firmas o no muestras la licencia, firma un testigo plenamente identificado. Si la infracción la detectan medios técnicos o tecnológicos, la infracción y sus soportes se envían por correo al propietario dentro de los tres (3) días hábiles siguientes. El comparendo debe decirte que puedes nombrar un apoderado y que en la audiencia se decretarán o practicarán las pruebas que pidas.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#135",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "procedimiento",
+        "comparendo",
+        "plazos",
+        "fotodeteccion",
+        "testigo",
+        "apoderado"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Artículo modificado por el art. 22 de la Ley 1383 de 2010 (Notas de Vigencia de la fuente). Nota del editor de la fuente: para infracciones detectadas por ayudas tecnológicas debe seguirse el procedimiento del art. 8 de la Ley 1843 de 2017 (ver ley-1843-2017.json). El aparte 'En tal caso se enviará por correo dentro de los tres (3) días hábiles siguientes la infracción y sus soportes al propietario, quien estará obligado al pago de la multa' fue declarado EXEQUIBLE 'bajo las consideraciones expuestas' (C-980-10; la fuente lo marca como 'Aparte subrayado CONDICIONALMENTE exequible'). Según los apartes de la parte considerativa que transcribe el editor, la obligación del propietario de pagar solo surge tras su vinculación formal a la actuación y luego de establecerse su culpabilidad; la notificación no impone la sanción de forma automática. El inciso que empieza 'Para el servicio además...' aparece así en la fuente (sin la palabra 'público'); se conserva tal cual. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art136",
+      "norma": "Ley 769 de 2002",
+      "articulo": "136",
+      "titulo": "Reducción de la multa y audiencia",
+      "texto_literal": "ARTÍCULO 136. REDUCCIÓN DE LA MULTA. Una vez surtida Ia orden de comparendo, si el inculpado acepta Ia comisión de Ia infracción, podrá, sin necesidad de otra actuación administrativa:\n1. Cancelar el cincuenta por ciento (50%) del valor de la multa dentro de los cinco (5) días siguientes a la orden de comparendo y siempre y cuando asista obligatoriamente a un curso sobre normas de tránsito en un Organismo de Tránsito o en un Centro de Enseñanza Automovilística o un Centro integral de atención debidamente registrados ante el RUNT. Si el curso se realiza ante un centro de enseñanza automovilística o en centro integral de atención, o en un organismo de tránsito de diferente jurisdicción donde se cometió la infracción, a este se le cancelará un veinticinco por ciento (25%) del valor a pagar y el excedente se pagará al organismo de tránsito de la jurisdicción donde se cometió la infracción; o\n2. Cancelar el setenta y cinco por ciento (75%) del valor de la multa, si paga dentro de los veinte días siguientes a la orden de comparendo y siempre y cuando asista obligatoriamente a un curso sobre normas de tránsito en un Organismo de Tránsito, en un centro de enseñanza automovilística, o un Centro integral de atención debidamente registrados ante el RUNT. Si el curso se realiza ante un centro de enseñanza automovilística, o centro integral de atención o en un organismo de tránsito de diferente jurisdicción donde se cometió la infracción, a este se le cancelará un veinticinco por ciento (25%) del valor a pagar y el excedente se pagará al organismo de tránsito de la jurisdicción donde se cometió la infracción.\n3. Si aceptada Ia infracción, ésta no se paga en las oportunidades antes indicadas, el inculpado deberá cancelar el cien por ciento (100%) del valor de Ia multa más sus correspondientes intereses moratorios.\nSi el inculpado rechaza Ia comisión de Ia infracción, deberá comparecer ante el funcionario en audiencia pública para que éste decrete las pruebas conducentes que le sean solicitadas y las de oficio que considere útiles.\nSi el contraventor no compareciere sin justa causa comprobada dentro de los cinco (5) días hábiles siguientes a Ia notificación del comparendo, Ia autoridad de tránsito, después de treinta (30) días calendario de ocurrida Ia presunta infracción, seguirá el proceso, entendiéndose que queda vinculado al mismo, fallándose en audiencia pública y notificándose en estrados.\nEn Ia misma audiencia, si fuere posible, se practicarán las pruebas y se sancionará o absolverá al inculpado. Si fuere declarado contraventor, se le impondrá el cien por ciento (100%) de Ia sanción prevista en Ia ley.\nLos organismos de tránsito de manera gratuita podrán celebrar acuerdos para el recaudo de las multas y podrán establecer convenios con los bancos para este fin. El pago de Ia multa a favor del organismo de tránsito que Ia impone y Ia comparecencia, podrá efectuarse en cualquier lugar del país.\nPARÁGRAFO 1o. En los lugares donde existan inspecciones ambulantes de tránsito, los funcionarios competentes podrán imponer al infractor la sanción correspondiente en el sitio y hora donde se haya cometido la contravención respetando el derecho de defensa.\nPARÁGRAFO 2o. Cuando se demuestre que la orden de comparendo por infracción a las normas de tránsito detectada por sistemas automáticos, semiautomáticos y otros medios tecnológicos, no fue notificada o indebidamente notificada, los términos establecidos para la reducción de la sanción comenzarán a correr a partir de la fecha de la notificación del comparendo.\nPARÁGRAFO 3. Los cursos a los infractores de las normas de tránsito podrán ser también virtuales, para lo cual quien lo dicta deberá garantizar la autenticación biométrica del ciudadano en la forma en que determine el Ministerio de Transporte, a través del sistema del Registro Único Nacional de Tránsito (RUNT) y por el Sistema de Control y Vigilancia de la Superintendencia de Transporte, que permita la identificación del infractor de forma segura, así como el registro y su permanencia en el curso, en los términos señalados por el Ministerio de Transporte.\nLos cursos realizados por los organismos de tránsito, los centros integrales de atención y los centros de enseñanza automovilística registrados ante el sistema del Registro Nacional de Tránsito (RUNT) para dicha labor, no podrán ser en número/día más de la capacidad física instalada, certificada por medio del registro, gestión de calidad o acreditación, en las condiciones señaladas por el Ministerio de Transporte.\nEn todo caso, para la prestación del curso virtual y/o presencial, los centros integrales de atención y los centros de enseñanza automovilística, deberán cumplir los mismos requisitos técnicos de operación y funcionamiento previstos en la ley, según reglamentación del Ministerio de Transporte.\nA los organismos de tránsito no se les exigirá convenio para prestar los cursos.\nLos cursos a los que se refiere este artículo deberán incluir contenidos de seguridad vial que promuevan el respeto en la vía por los usuarios de la bicicleta.\nPARÁGRAFO TRANSITORIO. El Ministerio de Transporte continuará realizando las habilitaciones, hasta que se cuente con el desarrollo en el sistema RUNT, para que dichos organismos realicen el registro de manera directa, plazo que no podrá ser mayor a 6 meses contados a partir de la expedición del presente decreto ley prorrogables por 3 meses más.\nPara todos los efectos legales, el registro en el RUNT hará las veces de habilitación.",
+      "modificado_por": [
+        "Ley 1383 de 2010, art. 24",
+        "Decreto 19 de 2012, art. 205 (artículo, salvo sus parágrafos)",
+        "Ley 1843 de 2017, art. 7 (adiciona el parágrafo 2)",
+        "Decreto Ley 2106 de 2019, art. 118 (numerales 1 y 2; adiciona el parágrafo transitorio)",
+        "Ley 2050 de 2020, art. 23 (adiciona el parágrafo 3)",
+        "Ley 2222 de 2022, art. 2 (adiciona un inciso al parágrafo 3)"
+      ],
+      "resumen_sencillo": "Si aceptas la infracción, puedes pagar el cincuenta por ciento (50 %) de la multa dentro de los cinco (5) días siguientes a la orden de comparendo, siempre que hagas un curso sobre normas de tránsito en un organismo de tránsito o centro registrado ante el RUNT. También puedes pagar el setenta y cinco por ciento (75 %) si pagas dentro de los veinte días siguientes a la orden de comparendo, con el mismo curso. Si aceptas y no pagas en esos plazos, pagas el cien por ciento (100 %) más intereses de mora. Si no aceptas la infracción, debes presentarte ante el funcionario en audiencia pública. Allí el funcionario decreta las pruebas conducentes (las que sirven para el caso) que pidas y las que él considere útiles. Si no te presentas sin justa causa dentro de los cinco (5) días hábiles siguientes a la notificación del comparendo, después de treinta (30) días calendario de ocurrida la presunta infracción el proceso sigue y quedas vinculado; se decide en audiencia pública. Si te declaran contraventor, se te impone el cien por ciento (100 %) de la sanción. Puedes pagar y presentarte en cualquier lugar del país. Si se demuestra que un comparendo detectado por sistemas automáticos, semiautomáticos u otros medios tecnológicos no te fue notificado o fue mal notificado, los plazos para el descuento empiezan a contar desde la fecha de la notificación. El curso también puede ser virtual.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#136",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "plazos",
+        "audiencia",
+        "descuentos",
+        "curso",
+        "reduccion de la multa",
+        "fotodeteccion",
+        "notificacion"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Vigencia según la fuente: artículo modificado por el art. 24 de la Ley 1383 de 2010 y luego, salvo sus parágrafos, por el art. 205 del Decreto 19 de 2012; numerales 1 y 2 modificados por el art. 118 del Decreto Ley 2106 de 2019; parágrafo 2 adicionado por el art. 7 de la Ley 1843 de 2017 (la misma nota registra que antes el parágrafo fue modificado por el art. 95 de la Ley 1450 de 2011, y que ese art. 95 fue derogado por el art. 267 de la Ley 1753 de 2015); parágrafo 3 adicionado por el art. 23 de la Ley 2050 de 2020, con inciso adicionado por el art. 2 de la Ley 2222 de 2022; parágrafo transitorio adicionado por el art. 118 del Decreto Ley 2106 de 2019. Jurisprudencia: Ley 1383 de 2010 (texto del art.) declarado EXEQUIBLE (C-089-11); la Corte se declaró inhibida en C-849-12 y C-107-21. Nota del editor de la fuente sobre los cursos: ver el art. 136A (adicionado por el art. 8 de la Ley 2251 de 2022), no incluido aquí. Observación textual, sin interpretación: los numerales 1 y 2 dicen 'días siguientes a la orden de comparendo' (no dicen 'hábiles'); el inciso de la audiencia dice 'cinco (5) días hábiles siguientes a la notificación del comparendo'. Cómo se cuentan los plazos de descuento requiere revisión jurídica antes de usarlos en el cálculo. La fuente escribe 'Ia' (I mayuscula) en lugar de 'la' en varios lugares; se conserva tal cual. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art137",
+      "norma": "Ley 769 de 2002",
+      "articulo": "137",
+      "titulo": "Información (comparendo detectado por medios técnicos)",
+      "texto_literal": "ARTÍCULO 137. INFORMACIÓN. En los casos en que la infracción fuere detectada por medios que permitan comprobar la identidad del vehículo o del conductor el comparendo se remitirá a la dirección registrada del último propietario del vehículo.\nLa actuación se adelantará en la forma prevista en el artículo precedente, con un plazo adicional de seis (6) días hábiles contados a partir del recibo de la comunicación respectiva, para lo cual deberá disponerse de la prueba de la infracción como anexo necesario del comparendo.\nSi no se presentare el citado a rendir sus descargos ni solicitare pruebas que desvirtúen la comisión de la infracción, se registrará la sanción a su cargo en el Registro de Conductores e infractores, en concordancia con lo dispuesto por el presente código.\nPARÁGRAFO 1o. El respeto al derecho a defensa será materializado y garantizado por los organismos de tránsito, adoptando para uso de sus inculpados y autoridad, herramientas técnicas de comunicación y representación de hechos sucedidos en el tránsito, que se constituyan en medios probatorios, para que en audiencia pública estos permitan sancionar o absolver al inculpado bajo claros principios de oportunidad, transparencia y equidad.",
+      "modificado_por": [],
+      "resumen_sencillo": "Si la infracción se detectó por medios que permiten comprobar la identidad del vehículo o del conductor, el comparendo se envía a la dirección registrada del último propietario del vehículo. El trámite se hace en la forma prevista en el artículo anterior del Código, con un plazo adicional de seis (6) días hábiles contados desde que recibes la comunicación. Al comparendo se debe anexar la prueba de la infracción. Si no te presentas a dar tus descargos ni pides pruebas, la sanción se registra a tu cargo en el Registro de Conductores e Infractores. Los organismos de tránsito deben garantizar tu derecho a la defensa con herramientas técnicas que sirvan como prueba en la audiencia.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#137",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "notificacion",
+        "plazos",
+        "descargos",
+        "propietario"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Texto original; la fuente no registra modificaciones del artículo. Jurisprudencia (C-530-03): incisos declarados EXEQUIBLES; el inciso 3 ('Si no se presentare el citado...') es EXEQUIBLE de forma condicionada: solo se puede culminar la actuación cuando la administración haya agotado todos los medios a su alcance para hacer comparecer al citado; cuando el propietario no coincide con el conductor, la citación no implica vinculación; y la sanción solo puede imponerse cuando esté plenamente comprobado que el citado es el infractor. Para fotodetección ver también el art. 8 de la Ley 1843 de 2017 (ley-1843-2017.json) y el parágrafo 2 del art. 136. El texto remite al 'artículo precedente', sin número. En la redacción original de la ley ese artículo es el 136, pero hoy la fuente publica entre ambos el art. 136A (adicionado por el art. 8 de la Ley 2251 de 2022, sobre validez de los cursos); por eso el resumen no nombra el número y la remisión debe revisarla una persona. La fuente publica solo un 'PARÁGRAFO 1o.' (no hay parágrafo 2 en el texto). Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art138",
+      "norma": "Ley 769 de 2002",
+      "articulo": "138",
+      "titulo": "Comparecencia",
+      "texto_literal": "ARTÍCULO 138. COMPARECENCIA. El inculpado podrá comparecer por sí mismo, pero si designa apoderado éste deberá ser abogado en ejercicio. El Ministerio Público podrá intervenir en los procesos, de acuerdo con las funciones que le sean propias.\nPARÁGRAFO. Si resultare involucrado un menor de edad en la actuación contravencional, deberá estar asistido por su representante legal, o por un apoderado designado por éste, o por un defensor de familia.",
+      "modificado_por": [],
+      "resumen_sencillo": "Puedes presentarte tú mismo al proceso. Si nombras un apoderado (alguien que te representa), debe ser abogado en ejercicio. El Ministerio Público puede intervenir en el proceso. Si hay un menor de edad involucrado, debe estar asistido por su representante legal, por un apoderado nombrado por este o por un defensor de familia.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#138",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "audiencia",
+        "comparecencia",
+        "apoderado",
+        "abogado",
+        "menor de edad"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Texto original; la fuente no registra modificaciones del artículo. La Corte se declaró inhibida sobre el Capítulo IV del Título IV (C-714-03). Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art139",
+      "norma": "Ley 769 de 2002",
+      "articulo": "139",
+      "titulo": "Notificación en estrados",
+      "texto_literal": "ARTÍCULO 139. NOTIFICACIÓN. La notificación de las providencias que se dicten dentro del proceso se hará en estrados.",
+      "modificado_por": [],
+      "resumen_sencillo": "Las decisiones que se dictan dentro del proceso se notifican en estrados, es decir, en la misma audiencia.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#139",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "notificacion",
+        "audiencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Texto original; la fuente no registra modificaciones del artículo. La Corte se declaró inhibida sobre el Capítulo IV del Título IV (C-714-03). La explicación 'en la misma audiencia' del resumen aclara el término 'en estrados'; no está en el texto y debe revisarla una persona. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art142",
+      "norma": "Ley 769 de 2002",
+      "articulo": "142",
+      "titulo": "Recursos (reposición y apelación)",
+      "texto_literal": "ARTÍCULO 142. RECURSOS. Contra las providencias que se dicten dentro del proceso procederán los recursos de reposición y apelación.\nEl recurso de reposición procede contra los autos ante el mismo funcionario y deberá interponerse y sustentarse en la propia audiencia en la que se pronuncie.\nEl recurso de apelación procede sólo contra las resoluciones que pongan fin a la primera instancia y deberá interponerse oralmente y sustentarse en la audiencia en que se profiera.\nToda providencia queda en firme cuando vencido el término de su ejecutoria, no se ha interpuesto recurso alguno o éste ha sido negado.",
+      "modificado_por": [],
+      "resumen_sencillo": "Contra las decisiones del proceso proceden dos recursos: reposición y apelación. La reposición procede contra los autos, ante el mismo funcionario. Debes presentarla y sustentarla en la misma audiencia en que se dicta. La apelación procede solo contra las resoluciones que terminan la primera instancia. Debes presentarla de forma oral y sustentarla en la audiencia en que se dicta. La decisión queda en firme si vence el plazo sin que presentes recurso, o si el recurso fue negado.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#142",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "recursos",
+        "reposicion",
+        "apelacion",
+        "audiencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Texto original (Capítulo V, Recursos); la fuente no registra notas de vigencia ni jurisprudencia para este artículo. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art157",
+      "norma": "Ley 769 de 2002",
+      "articulo": "157",
+      "titulo": "Incapacidad",
+      "texto_literal": "ARTÍCULO 157. INCAPACIDAD. Quien incumpla la obligación consagrada en el artículo 24, y se le compruebe que en caso de un accidente la deficiencia de carácter orgánico o funcional fue su causa, el conductor se hará acreedor a una multa de hasta cien (100) salarios mínimos legales diarios vigentes, y a la suspensión de la licencia de conducción hasta por cinco (5) años.",
+      "modificado_por": [],
+      "resumen_sencillo": "Si incumples la obligación del artículo 24 y se prueba que, en un accidente, la causa fue una deficiencia de carácter orgánico o funcional, puedes recibir una multa de hasta cien (100) salarios mínimos legales diarios vigentes y la suspensión de la licencia de conducción hasta por cinco (5) años.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#157",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "sanciones",
+        "licencia",
+        "accidente"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Este artículo trata de 'Incapacidad' (Capítulo IX, Sanciones especiales), no de cumplimiento ni de prescripción: la regla de prescripción está en el art. 159. Texto original; la fuente no registra modificaciones. El art. 24 al que remite no está en esta base. Posiblemente la app no lo necesite; se deja porque se pidió. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art158",
+      "norma": "Ley 769 de 2002",
+      "articulo": "158",
+      "titulo": "Procedimiento de las sanciones especiales",
+      "texto_literal": "ARTÍCULO 158. PROCEDIMIENTO. El procedimiento para regular las actuaciones a que se refiere este capítulo, se someterá a las siguientes reglas:\nApertura de la investigación mediante acto administrativo motivado, no susceptible de recurso alguno que señalará los hechos y las normas presuntamente violadas.\nRendición de descargos por escrito dentro de los diez (10) días siguientes.\nPráctica de las pruebas pertinentes dentro de un plazo no superior a quince (15) días.\nToma de la decisión dentro de los seis (6) meses siguientes a la apertura de la investigación.\nPARÁGRAFO 1o. Los recursos se ejercitarán de conformidad con las normas del Código Contencioso Administrativo.\nPARÁGRAFO 2o. Igualmente, se someterán a este procedimiento todas aquellas infracciones de las normas de este Código que, dada su naturaleza, no tengan señalado un procedimiento específico para su definición.",
+      "modificado_por": [],
+      "resumen_sencillo": "Este procedimiento se aplica a las actuaciones del capítulo de sanciones especiales y a las infracciones del Código que no tengan un procedimiento propio. Se abre la investigación con un acto administrativo motivado, contra el que no hay recurso. Tienes diez (10) días para presentar descargos por escrito. Las pruebas se practican en un plazo no mayor a quince (15) días. La decisión se toma dentro de los seis (6) meses siguientes a la apertura. Los recursos siguen las normas del Código Contencioso Administrativo.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#158",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "procedimiento",
+        "sanciones",
+        "descargos",
+        "pruebas"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Pertenece al Capítulo IX 'Sanciones especiales' (centros de enseñanza, instructores, ensambladoras, expendios, incapacidad, etc.). No es el procedimiento ordinario del comparendo (arts. 135 y 136). Texto original; la fuente no registra modificaciones. El parágrafo 1 remite al 'Código Contencioso Administrativo'; la fuente no anota su sustitución por otra norma, y eso no se resuelve aquí. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art159",
+      "norma": "Ley 769 de 2002",
+      "articulo": "159",
+      "titulo": "Cumplimiento y prescripción de las sanciones",
+      "texto_literal": "ARTÍCULO 159. CUMPLIMIENTO. La ejecución de las sanciones que se impongan por violación de las normas de tránsito, estará a cargo de las autoridades de tránsito de Ia jurisdicción donde se cometió el hecho, quienes estarán investidas de jurisdicción coactiva para el cobro, cuando ello fuere necesario.\nLas sanciones impuestas por infracciones a las normas de tránsito prescribirán en tres (3) años contados a partir de Ia ocurrencia del hecho; Ia prescripción deberá ser declarada de oficio y se interrumpirá con Ia notificación del mandamiento de pago. La autoridad de tránsito no podrá iniciar el cobro coactivo de sanciones respecto de las cuales se encuentren configurados los supuestos necesarios para declarar su prescripción.\nLas autoridades de tránsito deberán establecer públicamente a más tardar en el mes de enero de cada año, planes y programas destinados al cobro de dichas sanciones y dentro de este mismo periodo rendirán cuentas públicas sobre Ia ejecución de los mismos.\nPARÁGRAFO 1. Las autoridades de tránsito podrán contratar el cobro de las multas que se impongan por Ia comisión de infracciones de tránsito.\nPARÁGRAFO 2. Las multas serán de propiedad exclusiva de los organismos de tránsito donde se cometió Ia infracción de acuerdo con su jurisdicción. El monto de aquellas multas que sean impuestas sobre las vías nacionales, por parte del personal de Ia Policía Nacional de Colombia, adscrito a Ia Dirección de Tránsito y Transporte, se distribuirá en un cincuenta por ciento (50%) para el municipio donde se entregue el correspondiente comparendo y el otro cincuenta por ciento (50%) para Ia Dirección de Tránsito y Transporte de Ia Policía Nacional, con destino a Ia capacitación de su personal adscrito, planes de educación y seguridad vial que adelante esta especialidad a lo largo de Ia red vial nacional, locaciones que suplan las necesidades del servicio y Ia construcción de Ia Escuela de Seguridad Vial de Ia Policía Nacional.",
+      "modificado_por": [
+        "Ley 1383 de 2010, art. 26",
+        "Decreto 19 de 2012, art. 206"
+      ],
+      "resumen_sencillo": "Las sanciones de tránsito las ejecuta la autoridad de tránsito del lugar donde ocurrió el hecho, que puede hacer cobro coactivo cuando sea necesario. Las sanciones prescriben en tres (3) años contados desde que ocurrió el hecho. La prescripción se debe declarar de oficio y se interrumpe con la notificación del mandamiento de pago. La autoridad no puede iniciar el cobro coactivo de sanciones que ya cumplen las condiciones para declarar su prescripción. Las autoridades de tránsito deben publicar cada enero sus planes de cobro y rendir cuentas sobre ellos.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr003.html#159",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "prescripcion",
+        "cobro coactivo",
+        "plazos",
+        "cumplimiento"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Artículo modificado por el art. 26 de la Ley 1383 de 2010 y luego por el art. 206 del Decreto 19 de 2012 (texto vigente que publica la fuente). En la fuente, a continuación del art. 159 aparecen dos 'ARTÍCULO TRANSITORIO' (adicionados por el art. 27 de la Ley 1383 de 2010 y por el art. 49 de la Ley 2155 de 2021, sobre amnistías y condiciones especiales de pago ya vencidas); son artículos distintos y no se incluyen en este texto. La fuente escribe 'Ia' (I mayuscula) en lugar de 'la' en varios lugares; se conserva tal cual. Fuente cruda: data/fuentes/ley_0769_2002_pr003.html (sha256 19d3195ef3ba3d27cbc9a0e0c945a2cb86d6cc5b2c9ebcdcefe27f34715d0b1d); notas de vigencia en data/fuentes/ley_0769_2002_pr003.js (sha256 4d26199854177a956bdfacc68d20f619c7d267752ab006237e08273406705d55)."
+    },
+    {
+      "id": "L769-2002-art161",
+      "norma": "Ley 769 de 2002",
+      "articulo": "161",
+      "titulo": "Caducidad",
+      "texto_literal": "ARTÍCULO 161. CADUCIDAD. La acción por contravención de las normas de tránsito, caduca al año (1), contado a partir de la ocurrencia de los hechos que dieron origen a ella. En consecuencia, durante este término se deberá decidir sobre la imposición de la sanción, en tal momento se entenderá realizada efectivamente la audiencia e interrumpida la caducidad.\nLa decisión que resuelve los recursos, de ser procedentes, deberá ser expedida en un término de un (1) año contado a partir de su debida y oportuna interposición, si los recursos no se deciden en el término fijado en esta disposición, se entenderán fallados a favor del recurrente.\nLa revocación directa solo podrá proceder en forma supletiva al proceso contravencional y en el evento de ser resuelta a favor de los intereses del presunto infractor sus efectos serán a futuro, iniciando la contabilización de la caducidad a partir de la notificación de la aceptación de su solicitud o su declaratoria de oficio, permitiendo al presunto infractor contar con los términos establecidos en la ley para la obtención de los descuentos establecidos en la ley o la realización de la audiencia contemplados en el Código Nacional de Tránsito.",
+      "modificado_por": [
+        "Ley 1843 de 2017, art. 11"
+      ],
+      "resumen_sencillo": "La acción por una infracción de tránsito caduca al año (1), contado desde que ocurrieron los hechos. En ese año se debe decidir si se impone la sanción. Si presentas recursos, la decisión sobre ellos debe expedirse en un (1) año desde que los presentaste en debida forma y a tiempo. Si no se deciden en ese plazo, se entienden fallados a tu favor. La revocación directa solo procede de forma supletiva al proceso. Si se resuelve a tu favor, la caducidad se cuenta desde la notificación de la aceptación, y vuelves a contar con los plazos para los descuentos o la audiencia.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_0769_2002_pr004.html#161",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "caducidad",
+        "plazos",
+        "recursos",
+        "revocacion directa"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Segunda verificacion adversarial automatizada (Fase 2, 2026-11-08): texto_literal recomparado parrafo a parrafo con la fuente descargada de nuevo (sha256 identico al crudo de data/fuentes).",
+      "notas": "Artículo modificado por el art. 11 de la Ley 1843 de 2017 (texto original: caducidad de seis meses). Fuente cruda: data/fuentes/ley_0769_2002_pr004.html (sha256 1ddb04fff3833ad21ff0867d266b8432f95841f57e833c1404a15497cbecd2a8); notas de vigencia en data/fuentes/ley_0769_2002_pr004.js (sha256 6f73e9c0e123b36250736d2eb57a38db5dff8efa209d4528aad8516e99502cab)."
+    }
+  ]
+}

@@ -1,0 +1,597 @@
+{
+  "descripcion": "Preguntas frecuentes de un conductor, sobre todo adulto mayor, con respuesta sencilla tomada del texto literal de la base normativa. Cada cita apunta a una entrada con verificado:true. Redactadas por el Equipo VozVial con asistencia de IA el 2026-11-08; requieren la revisión humana de Juan David González Varilla antes de la entrega.",
+  "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+  "revisada_por": "Pendiente de revisión humana de Juan David González Varilla",
+  "fecha": "2026-11-08",
+  "preguntas": [
+    {
+      "id": "PV-001",
+      "pregunta": "¿Qué hago si me para un agente de tránsito y me pone un comparendo?",
+      "variantes": [
+        "me paro el transito que hago",
+        "me pararon y me van a poner un comparendo, que debo hacer",
+        "el agente me detuvo y me dio un papel, ahora que hago",
+        "que pasa cuando el de transito me para y me hace un parte",
+        "me hicieron un parte en la calle que tengo que hacer"
+      ],
+      "respuesta_sencilla": "El agente debe entregarte copia de la orden de comparendo. Ese comparendo te ordena presentarte ante la autoridad de tránsito dentro de los cinco (5) días hábiles siguientes.",
+      "citas": ["L769-2002-art135"],
+      "temas": ["comparendo", "procedimiento", "me_pararon", "plazos"]
+    },
+    {
+      "id": "PV-002",
+      "pregunta": "¿Puedo grabar con el celular cuando me para la Policía?",
+      "variantes": [
+        "puedo grabar al policia",
+        "es legal grabar con el celular un procedimiento de la policia",
+        "me deja grabar el agente o no",
+        "puedo filmar cuando me paran"
+      ],
+      "respuesta_sencilla": "La Ley 1801 de 2016 dice que todo procedimiento policivo podrá ser grabado con cualquier medio de las tecnologías de información y comunicación. La norma habla de procedimientos de Policía; no dice de forma expresa si cubre a agentes de tránsito que no son policías.",
+      "citas": ["L1801-2016-art21"],
+      "temas": ["grabacion", "derechos", "me_pararon", "evidencias"]
+    },
+    {
+      "id": "PV-003",
+      "pregunta": "¿Me pueden prohibir que grabe el procedimiento?",
+      "variantes": [
+        "el policia me dijo que no grabara, puede hacer eso",
+        "me pueden impedir grabar",
+        "es prohibido que no me dejen grabar",
+        "el agente dice que no se puede grabar, es verdad"
+      ],
+      "respuesta_sencilla": "La Ley 1801 de 2016 prohíbe a cualquier persona impedir que se graben los procedimientos policivos, salvo las restricciones expresas de ley. La autoridad de Policía que impida la grabación sin justificación legal incurre en causal de mala conducta. La norma no dice de forma expresa si cubre a agentes de tránsito que no son policías.",
+      "citas": ["L1801-2016-art21"],
+      "temas": ["grabacion", "derechos", "me_pararon"]
+    },
+    {
+      "id": "PV-004",
+      "pregunta": "¿Cuánto tiempo tengo para presentarme si me pusieron un comparendo en la calle?",
+      "variantes": [
+        "cuantos dias tengo para impugnar un comparendo",
+        "cuanto tiempo tengo para reclamar la multa",
+        "hasta cuando puedo ir al transito despues del comparendo",
+        "cuantos dias habiles hay para presentarse",
+        "tengo plazo para pelear el parte"
+      ],
+      "respuesta_sencilla": "El comparendo te ordena presentarte ante la autoridad de tránsito dentro de los cinco (5) días hábiles siguientes. Si no aceptas la infracción, debes comparecer en audiencia pública.",
+      "citas": ["L769-2002-art135", "L769-2002-art136"],
+      "temas": ["plazos", "comparendo", "audiencia", "impugnar"]
+    },
+    {
+      "id": "PV-005",
+      "pregunta": "¿Cómo pido la audiencia para impugnar el comparendo?",
+      "variantes": [
+        "como hago para impugnar una multa",
+        "quiero pelear el comparendo, como se hace",
+        "no estoy de acuerdo con la multa que hago",
+        "como solicito audiencia en transito",
+        "yo no cometi esa infraccion como reclamo"
+      ],
+      "respuesta_sencilla": "Si rechazas la infracción, debes comparecer ante el funcionario de tránsito en audiencia pública, dentro de los cinco (5) días hábiles siguientes a la notificación del comparendo. Allí el funcionario decreta las pruebas conducentes que pidas y las que considere útiles.",
+      "citas": ["L769-2002-art136"],
+      "temas": ["audiencia", "impugnar", "pruebas"]
+    },
+    {
+      "id": "PV-006",
+      "pregunta": "¿Puedo llevar pruebas a la audiencia?",
+      "variantes": [
+        "puedo presentar fotos o videos en la audiencia",
+        "me reciben pruebas en transito",
+        "puedo pedir que miren mis pruebas",
+        "sirve llevar testigos a la audiencia"
+      ],
+      "respuesta_sencilla": "Sí. El comparendo debe indicarte que en la audiencia se decretarán o practicarán las pruebas que solicites. El funcionario decreta las pruebas conducentes que pidas.",
+      "citas": ["L769-2002-art135", "L769-2002-art136"],
+      "temas": ["audiencia", "pruebas", "evidencias"]
+    },
+    {
+      "id": "PV-007",
+      "pregunta": "¿Qué pasa si no me presento dentro del plazo?",
+      "variantes": [
+        "que pasa si no voy al transito",
+        "si no voy a la audiencia que me pasa",
+        "se me paso el plazo para presentarme",
+        "no fui en los 5 dias que pasa ahora"
+      ],
+      "respuesta_sencilla": "Si no te presentas sin justa causa comprobada dentro de los cinco (5) días hábiles siguientes a la notificación del comparendo, después de treinta (30) días calendario de ocurrida la presunta infracción el proceso sigue y quedas vinculado. Se falla en audiencia pública y se notifica en estrados.",
+      "citas": ["L769-2002-art136"],
+      "temas": ["plazos", "audiencia", "comparecencia"]
+    },
+    {
+      "id": "PV-008",
+      "pregunta": "¿Necesito un abogado para la audiencia?",
+      "variantes": [
+        "me toca pagar abogado",
+        "tengo que ir con abogado a transito",
+        "puedo ir yo mismo a la audiencia",
+        "puede ir otra persona por mi a la audiencia"
+      ],
+      "respuesta_sencilla": "Puedes presentarte tú mismo. Si nombras un apoderado (alguien que te representa), debe ser abogado en ejercicio.",
+      "citas": ["L769-2002-art138", "L769-2002-art135"],
+      "temas": ["audiencia", "apoderado", "abogado", "comparecencia"]
+    },
+    {
+      "id": "PV-009",
+      "pregunta": "¿Qué es un comparendo?",
+      "variantes": [
+        "que es un comparendo",
+        "que significa comparendo",
+        "el comparendo es lo mismo que la multa",
+        "que quiere decir que me hicieron un comparendo"
+      ],
+      "respuesta_sencilla": "Es la orden formal de notificación para que el presunto contraventor se presente ante la autoridad de tránsito por una infracción. La multa es otra cosa: es la sanción en dinero.",
+      "citas": ["L769-2002-art2"],
+      "temas": ["definiciones", "comparendo", "multa"]
+    },
+    {
+      "id": "PV-010",
+      "pregunta": "¿Cuánto tiempo tengo para presentarme por una fotomulta?",
+      "variantes": [
+        "cuantos dias tengo por una fotomulta",
+        "me llego una fotomulta cuanto tiempo tengo",
+        "plazo para la camara que me cogio",
+        "cuanto tiempo hay para reclamar una foto multa",
+        "fotodeteccion cuantos dias habiles"
+      ],
+      "respuesta_sencilla": "Si eres el propietario, el comparendo te ordena presentarte ante la autoridad de tránsito dentro de los once (11) días hábiles siguientes a la entrega. Se cuentan a partir del recibo del comparendo en tu última dirección registrada en el RUNT.",
+      "citas": ["L1843-2017-art8"],
+      "temas": ["fotodeteccion", "plazos", "comparecencia"]
+    },
+    {
+      "id": "PV-011",
+      "pregunta": "¿Los días de la fotomulta se cuentan desde la infracción o desde que me llega?",
+      "variantes": [
+        "desde cuando cuentan los dias de la fotomulta",
+        "los 11 dias son desde que paso o desde que me llego la carta",
+        "cuenta la fecha de la camara o la fecha en que recibi el comparendo",
+        "cuando empieza a correr el plazo de la fotomulta"
+      ],
+      "respuesta_sencilla": "Los once (11) días hábiles se cuentan a partir del recibo del comparendo en tu última dirección registrada en el RUNT, no desde el día de la infracción.",
+      "citas": ["L1843-2017-art8"],
+      "temas": ["fotodeteccion", "plazos", "notificacion"]
+    },
+    {
+      "id": "PV-012",
+      "pregunta": "¿Cómo me llega una fotomulta?",
+      "variantes": [
+        "como me notifican una fotomulta",
+        "me mandan la fotomulta por correo",
+        "como me entero de una multa de camara",
+        "cuanto se demoran en mandarme la fotomulta"
+      ],
+      "respuesta_sencilla": "La autoridad envía copia del comparendo y sus soportes por correo y/o correo electrónico al propietario del vehículo. Debe enviarla dentro de los tres (3) días hábiles siguientes a la validación del comparendo.",
+      "citas": ["L1843-2017-art8"],
+      "temas": ["fotodeteccion", "notificacion", "procedimiento"]
+    },
+    {
+      "id": "PV-013",
+      "pregunta": "¿Qué pasa si no actualicé mi dirección en el RUNT?",
+      "variantes": [
+        "me cambie de casa y no actualice el runt",
+        "tengo la direccion vieja en el runt",
+        "que pasa si el runt tiene otra direccion",
+        "tengo que actualizar mis datos en el runt"
+      ],
+      "respuesta_sencilla": "Actualizar la dirección de notificaciones en el RUNT es responsabilidad del propietario. Si no lo haces, la autoridad envía el comparendo a la última dirección registrada, quedas vinculado al proceso y las decisiones que sigan se te notifican en estrados.",
+      "citas": ["L1843-2017-art8"],
+      "temas": ["fotodeteccion", "runt", "notificacion", "propietario"]
+    },
+    {
+      "id": "PV-014",
+      "pregunta": "¿Una cámara sirve como prueba de una infracción?",
+      "variantes": [
+        "las camaras sirven de prueba",
+        "me pueden multar solo por una foto",
+        "una camara de video puede probar la infraccion",
+        "vale como prueba lo que graba una camara de transito"
+      ],
+      "respuesta_sencilla": "Sí. Las ayudas tecnológicas como cámaras de vídeo y equipos electrónicos de lectura que permitan con precisión la identificación del vehículo o del conductor son válidas como prueba y dan lugar a un comparendo.",
+      "citas": ["L769-2002-art129", "L1843-2017-art1"],
+      "temas": ["fotodeteccion", "pruebas", "camaras"]
+    },
+    {
+      "id": "PV-015",
+      "pregunta": "¿Tiene que haber una señal que avise que hay cámara?",
+      "variantes": [
+        "tienen que avisar donde hay camaras",
+        "debe haber letrero de fotomulta",
+        "antes de la camara tiene que haber un aviso",
+        "la señal de zona vigilada es obligatoria"
+      ],
+      "respuesta_sencilla": "Sí. Donde funcionen estos sistemas debe haber en la vía señales visibles, antes de iniciar la zona, que informen que es una zona vigilada por cámaras o radar.",
+      "citas": ["L1843-2017-art10"],
+      "temas": ["fotodeteccion", "camaras", "senalizacion"]
+    },
+    {
+      "id": "PV-016",
+      "pregunta": "¿Me pueden cobrar una multa por algo que hizo otra persona?",
+      "variantes": [
+        "la multa se la pueden poner a otra persona",
+        "me pueden multar por lo que hizo otro",
+        "la multa es para el que cometio la infraccion o para cualquiera"
+      ],
+      "respuesta_sencilla": "La ley dice que las multas no podrán ser impuestas a persona distinta de quien cometió la infracción.",
+      "citas": ["L769-2002-art129"],
+      "temas": ["multa", "propietario", "derechos"]
+    },
+    {
+      "id": "PV-017",
+      "pregunta": "No me notificaron la fotomulta, ¿pierdo el descuento?",
+      "variantes": [
+        "nunca me llego la fotomulta y ya paso el descuento",
+        "me notificaron mal la fotomulta que pasa con el descuento",
+        "no me avisaron de la camara y ya paso el tiempo de la rebaja",
+        "fotomulta mal notificada descuento"
+      ],
+      "respuesta_sencilla": "Si se demuestra que el comparendo de fotodetección no fue notificado o fue indebidamente notificado, los términos para la reducción de la sanción comienzan a correr desde la fecha de la notificación del comparendo.",
+      "citas": ["L1843-2017-art7", "L769-2002-art136"],
+      "temas": ["fotodeteccion", "notificacion", "descuentos"]
+    },
+    {
+      "id": "PV-018",
+      "pregunta": "¿Puedo presentarme a distancia por una fotomulta?",
+      "variantes": [
+        "puedo hacer la audiencia virtual de la fotomulta",
+        "tengo que ir en persona por la fotomulta",
+        "hay forma de comparecer por internet",
+        "audiencia virtual por camara"
+      ],
+      "respuesta_sencilla": "La Ley 1843 de 2017 ordenó a quienes operan los sistemas de detección implementar mecanismos electrónicos para que el presunto infractor comparezca a distancia. La ley no dice si cada autoridad ya lo hizo: pregúntalo en tu organismo de tránsito.",
+      "citas": ["L1843-2017-art12"],
+      "temas": ["fotodeteccion", "comparecencia", "audiencia"]
+    },
+    {
+      "id": "PV-019",
+      "pregunta": "¿Una empresa privada me puede poner un comparendo?",
+      "variantes": [
+        "quien puede poner comparendos",
+        "la empresa de las camaras puede multarme",
+        "un privado puede cobrar fotomultas",
+        "quien es el que expide los comparendos"
+      ],
+      "respuesta_sencilla": "Solo las autoridades de tránsito pueden expedir y recaudar comparendos por infracciones en su jurisdicción. No pueden entregar esa facultad a una entidad privada, ni por delegación ni por convenio.",
+      "citas": ["L1843-2017-art4"],
+      "temas": ["fotodeteccion", "autoridad_competente", "comparendo"]
+    },
+    {
+      "id": "PV-020",
+      "pregunta": "¿Me pueden inmovilizar el carro?",
+      "variantes": [
+        "me pueden quitar el carro",
+        "que es la inmovilizacion",
+        "me pueden llevar la moto a los patios",
+        "cuando inmovilizan un vehiculo",
+        "me van a inmovilizar que significa"
+      ],
+      "respuesta_sencilla": "La inmovilización es suspender temporalmente la circulación del vehículo. Se lleva a un parqueadero autorizado hasta que se corrija la causa, salvo que se pueda corregir en el sitio. Varias infracciones del artículo 131 traen además la inmovilización, por ejemplo conducir sin portar los seguros ordenados por la ley (D.2).",
+      "citas": ["L769-2002-art125", "L769-2002-art2", "L769-2002-art131"],
+      "temas": ["inmovilizacion", "patios", "definiciones"]
+    },
+    {
+      "id": "PV-021",
+      "pregunta": "¿Cómo saco mi vehículo de los patios?",
+      "variantes": [
+        "como recupero el carro inmovilizado",
+        "que necesito para que me entreguen la moto",
+        "cuando me devuelven el carro de los patios",
+        "quien me entrega el vehiculo inmovilizado"
+      ],
+      "respuesta_sencilla": "La autoridad de tránsito emite la orden de entrega después de comprobar que se corrigió la causa de la inmovilización. Se entrega al propietario o al infractor, que prueba esa calidad con documentos.",
+      "citas": ["L769-2002-art125"],
+      "temas": ["inmovilizacion", "patios", "entrega del vehiculo"]
+    },
+    {
+      "id": "PV-022",
+      "pregunta": "¿Quién paga el parqueadero cuando inmovilizan el vehículo?",
+      "variantes": [
+        "quien paga los patios",
+        "me toca pagar el parqueadero de transito",
+        "el parqueadero de la inmovilizacion lo paga el dueño"
+      ],
+      "respuesta_sencilla": "El propietario del vehículo es el responsable del pago al parqueadero por el tiempo que estuvo inmovilizado.",
+      "citas": ["L769-2002-art125"],
+      "temas": ["inmovilizacion", "patios", "parqueadero"]
+    },
+    {
+      "id": "PV-023",
+      "pregunta": "¿Qué pasa si se pierden cosas de mi carro en los patios?",
+      "variantes": [
+        "me robaron cosas del carro en el parqueadero de transito",
+        "hacen inventario cuando se llevan el carro",
+        "mi carro salio rayado de los patios",
+        "faltan cosas en mi vehiculo inmovilizado"
+      ],
+      "respuesta_sencilla": "Al entrar y al salir del lugar de inmovilización se hace inventario de lo que hay en el vehículo y de su estado exterior. Si hay diferencias, el propietario o administrador del parqueadero incurre en multa y debe responder por lo extraviado, dañado o averiado.",
+      "citas": ["L769-2002-art125"],
+      "temas": ["inmovilizacion", "patios", "parqueadero"]
+    },
+    {
+      "id": "PV-024",
+      "pregunta": "¿Hay descuento si pago la multa rápido?",
+      "variantes": [
+        "cuanto me descuentan si pago rapido",
+        "hay rebaja por pagar pronto el comparendo",
+        "como pago la mitad de la multa",
+        "descuento del 50 por ciento comparendo",
+        "si pago ya me sale mas barato"
+      ],
+      "respuesta_sencilla": "Si aceptas la infracción, puedes pagar el 50 % del valor de la multa dentro de los cinco (5) días siguientes a la orden de comparendo, o el 75 % dentro de los veinte días siguientes. En los dos casos debes asistir a un curso sobre normas de tránsito.",
+      "citas": ["L769-2002-art136"],
+      "temas": ["descuentos", "reduccion de la multa", "curso"]
+    },
+    {
+      "id": "PV-025",
+      "pregunta": "¿El curso para la rebaja puede ser virtual?",
+      "variantes": [
+        "puedo hacer el curso de transito por internet",
+        "el curso del comparendo es virtual o presencial",
+        "donde hago el curso para el descuento",
+        "curso virtual para la multa"
+      ],
+      "respuesta_sencilla": "Sí, los cursos también pueden ser virtuales, con autenticación biométrica a través del RUNT. También se hacen en un organismo de tránsito, un centro de enseñanza automovilística o un centro integral de atención registrados ante el RUNT.",
+      "citas": ["L769-2002-art136"],
+      "temas": ["curso", "descuentos"]
+    },
+    {
+      "id": "PV-026",
+      "pregunta": "¿Qué pasa si acepto la multa pero no la pago a tiempo?",
+      "variantes": [
+        "si no pago a tiempo la multa que pasa",
+        "me cobran intereses por la multa",
+        "acepte el comparendo y no pague",
+        "se me paso el descuento y no he pagado"
+      ],
+      "respuesta_sencilla": "Si aceptaste la infracción y no pagas en los plazos de reducción, debes pagar el cien por ciento (100 %) de la multa más los intereses moratorios.",
+      "citas": ["L769-2002-art136"],
+      "temas": ["descuentos", "multa", "intereses"]
+    },
+    {
+      "id": "PV-027",
+      "pregunta": "¿Puedo pagar o presentarme en otra ciudad?",
+      "variantes": [
+        "me pusieron la multa en otra ciudad donde pago",
+        "tengo que ir a la ciudad del comparendo",
+        "puedo pagar en cualquier parte del pais",
+        "puedo ir a la audiencia en mi ciudad"
+      ],
+      "respuesta_sencilla": "Sí. El pago de la multa y la comparecencia pueden hacerse en cualquier lugar del país.",
+      "citas": ["L769-2002-art136"],
+      "temas": ["pago", "comparecencia", "audiencia"]
+    },
+    {
+      "id": "PV-028",
+      "pregunta": "¿Cuándo prescribe una multa de tránsito?",
+      "variantes": [
+        "las multas de transito prescriben",
+        "cuanto tiempo dura una multa",
+        "despues de cuantos años se vence una multa",
+        "prescripcion de comparendos"
+      ],
+      "respuesta_sencilla": "Las sanciones de tránsito prescriben en tres (3) años contados desde que ocurrió el hecho. La prescripción se declara de oficio y se interrumpe con la notificación del mandamiento de pago.",
+      "citas": ["L769-2002-art159"],
+      "temas": ["prescripcion", "plazos", "cobro coactivo"]
+    },
+    {
+      "id": "PV-029",
+      "pregunta": "¿Qué es la caducidad de un comparendo?",
+      "variantes": [
+        "cuando caduca un comparendo",
+        "el comparendo se vence",
+        "cuanto tiempo tiene transito para sancionarme",
+        "caducidad de la multa de transito"
+      ],
+      "respuesta_sencilla": "La acción por una infracción de tránsito caduca al año (1), contado desde que ocurrieron los hechos. En ese año la autoridad debe decidir si impone la sanción.",
+      "citas": ["L769-2002-art161", "L1843-2017-art11"],
+      "temas": ["caducidad", "plazos"]
+    },
+    {
+      "id": "PV-030",
+      "pregunta": "¿Puedo apelar la decisión de la audiencia?",
+      "variantes": [
+        "como apelo la multa",
+        "que recursos tengo contra la decision",
+        "no estoy de acuerdo con el fallo de transito",
+        "puedo poner reposicion"
+      ],
+      "respuesta_sencilla": "Contra las decisiones del proceso proceden los recursos de reposición y apelación. La apelación procede solo contra la decisión que pone fin a la primera instancia: debes presentarla de forma oral y sustentarla en la misma audiencia en que se dicta.",
+      "citas": ["L769-2002-art142"],
+      "temas": ["recursos", "reposicion", "apelacion", "audiencia"]
+    },
+    {
+      "id": "PV-031",
+      "pregunta": "¿Qué pasa si no resuelven mi recurso?",
+      "variantes": [
+        "pusieron mi recurso y no contestan",
+        "cuanto se demoran en resolver la apelacion",
+        "si no responden el recurso gano",
+        "plazo para resolver un recurso de transito"
+      ],
+      "respuesta_sencilla": "La decisión sobre los recursos debe expedirse en un (1) año desde que los presentaste en debida forma y a tiempo. Si no se deciden en ese plazo, se entienden fallados a tu favor.",
+      "citas": ["L769-2002-art161", "L1843-2017-art11"],
+      "temas": ["recursos", "caducidad", "plazos"]
+    },
+    {
+      "id": "PV-032",
+      "pregunta": "¿Qué significa el código de mi comparendo?",
+      "variantes": [
+        "que quiere decir el codigo del comparendo",
+        "que significa la letra y el numero del comparendo",
+        "como se que infraccion me pusieron",
+        "que es el codigo de infraccion"
+      ],
+      "respuesta_sencilla": "El código indica la infracción. Las infracciones y sus multas están en el artículo 131 del Código de Tránsito, en grupos con letras de la A a la G. Registra tu comparendo en la app para ver la descripción de tu código.",
+      "citas": ["L769-2002-art131"],
+      "temas": ["codigos de infraccion", "infracciones", "multas"]
+    },
+    {
+      "id": "PV-033",
+      "pregunta": "¿Cuánto vale una multa de tránsito?",
+      "variantes": [
+        "cuanto cuesta un comparendo",
+        "de cuanto son las multas",
+        "cuanto me toca pagar por la multa",
+        "en que se miden las multas de transito"
+      ],
+      "respuesta_sencilla": "El artículo 131 fija las multas en salarios mínimos legales diarios vigentes: 4, 8, 15, 30 o 45 según el grupo (A a E), y 6 en el grupo G. El grupo F (alcohol o sustancias psicoactivas) remite al artículo 152. Desde el 1 de enero de 2024, las multas establecidas en salarios mínimos se calculan con su equivalencia en Unidades de Valor Básico (UVB). La app todavía no muestra el valor en pesos porque no está verificado.",
+      "citas": ["L769-2002-art131", "L769-2002-art2", "L2294-2023-art313", "L2294-2023-art372"],
+      "temas": ["multas", "infracciones", "valor-multa"]
+    },
+    {
+      "id": "PV-034",
+      "pregunta": "¿Las multas se cobran en salarios mínimos o en UVB?",
+      "variantes": [
+        "que es la uvb",
+        "las multas ya no van con el salario minimo",
+        "por que la multa sale en uvb",
+        "que es eso de unidad de valor basico"
+      ],
+      "respuesta_sencilla": "Desde el 1 de enero de 2024, las multas que estaban establecidas en salarios mínimos deben calcularse con su equivalencia en Unidades de Valor Básico (UVB). El Ministerio de Hacienda publica cada año el valor de la UVB.",
+      "citas": ["L2294-2023-art313", "L2294-2023-art372"],
+      "temas": ["unidad-multa", "uvb", "multas"]
+    },
+    {
+      "id": "PV-035",
+      "pregunta": "¿Cuánto es la multa por manejar sin llevar la licencia?",
+      "variantes": [
+        "se me quedo el pase en la casa me multan",
+        "multa por no llevar el pase",
+        "si no cargo la licencia que me pasa",
+        "olvide la licencia de conduccion"
+      ],
+      "respuesta_sencilla": "Conducir sin llevar consigo la licencia de conducción tiene multa de ocho (8) salarios mínimos legales diarios vigentes (literal B.1 del artículo 131).",
+      "citas": ["L769-2002-art131"],
+      "temas": ["multas", "infracciones", "licencia"]
+    },
+    {
+      "id": "PV-036",
+      "pregunta": "¿Cuánto es la multa por pasarse un semáforo en rojo?",
+      "variantes": [
+        "me pase el semaforo en amarillo",
+        "multa por no parar en el pare",
+        "cuanto cobran por volarse un semaforo",
+        "semaforo rojo multa"
+      ],
+      "respuesta_sencilla": "No detenerse ante una luz roja o amarilla de semáforo, una señal de PARE o un semáforo intermitente en rojo tiene multa de treinta (30) salarios mínimos legales diarios vigentes (literal D.4 del artículo 131).",
+      "citas": ["L769-2002-art131"],
+      "temas": ["multas", "infracciones", "semaforo"]
+    },
+    {
+      "id": "PV-037",
+      "pregunta": "¿Cuánto es la multa por hablar por celular manejando?",
+      "variantes": [
+        "me multaron por el celular",
+        "puedo contestar el telefono manejando",
+        "multa por usar el celular al volante",
+        "con manos libres me pueden multar"
+      ],
+      "respuesta_sencilla": "Usar sistemas móviles de comunicación o teléfonos instalados en el vehículo al conducir tiene multa de quince (15) salarios mínimos legales diarios vigentes (literal C.38 del artículo 131). No aplica si se usan con accesorios o equipos que permitan tener las manos libres.",
+      "citas": ["L769-2002-art131"],
+      "temas": ["multas", "infracciones", "celular"]
+    },
+    {
+      "id": "PV-038",
+      "pregunta": "¿Qué pasa si manejo sin los seguros obligatorios?",
+      "variantes": [
+        "me pararon sin seguro",
+        "multa por no tener el seguro",
+        "me inmovilizan por no tener seguro",
+        "andar sin los seguros que pasa"
+      ],
+      "respuesta_sencilla": "Conducir sin portar los seguros ordenados por la ley tiene multa de treinta (30) salarios mínimos legales diarios vigentes y, además, el vehículo será inmovilizado (literal D.2 del artículo 131).",
+      "citas": ["L769-2002-art131"],
+      "temas": ["multas", "infracciones", "seguros", "inmovilizacion"]
+    },
+    {
+      "id": "PV-039",
+      "pregunta": "¿Cuánto es la multa por no usar el cinturón de seguridad?",
+      "variantes": [
+        "multa por no ponerse el cinturon",
+        "mi acompañante no tenia cinturon",
+        "cinturon de seguridad comparendo",
+        "el de atras tambien tiene que usar cinturon"
+      ],
+      "respuesta_sencilla": "No utilizar el cinturón de seguridad por parte de los ocupantes del vehículo tiene multa de quince (15) salarios mínimos legales diarios vigentes (literal C.6 del artículo 131).",
+      "citas": ["L769-2002-art131"],
+      "temas": ["multas", "infracciones", "cinturon"]
+    },
+    {
+      "id": "PV-040",
+      "pregunta": "¿Qué pasa si no quiero firmar el comparendo?",
+      "variantes": [
+        "me negue a firmar el comparendo",
+        "tengo que firmar el comparendo",
+        "si no firmo el parte que pasa",
+        "quien firma si yo no firmo"
+      ],
+      "respuesta_sencilla": "El comparendo debe ir firmado por el conductor, siempre que sea posible. Si te niegas a firmar o a presentar la licencia, firma por ti un testigo, que debe identificarse plenamente.",
+      "citas": ["L769-2002-art135"],
+      "temas": ["comparendo", "testigo", "me_pararon"]
+    },
+    {
+      "id": "PV-041",
+      "pregunta": "¿Qué datos debe tener el comparendo?",
+      "variantes": [
+        "que tiene que decir el comparendo",
+        "el comparendo debe tener mi nombre",
+        "que informacion lleva un comparendo",
+        "que debe anotar el agente en el comparendo"
+      ],
+      "respuesta_sencilla": "Debe indicar el número de tu licencia de conducción, tu nombre, teléfono y dirección, y el nombre y número de placa del agente.",
+      "citas": ["L769-2002-art129"],
+      "temas": ["comparendo", "me_pararon"]
+    },
+    {
+      "id": "PV-042",
+      "pregunta": "¿Qué días son festivos en Colombia?",
+      "variantes": [
+        "cuales son los festivos",
+        "que festivos se pasan para el lunes",
+        "el 9 de julio es festivo",
+        "lista de festivos de colombia"
+      ],
+      "respuesta_sencilla": "La Ley 51 de 1983 fija estos festivos: 1 y 6 de enero, 19 de marzo, 1 de mayo, 29 de junio, 20 de julio, 7 y 15 de agosto, 12 de octubre, 1 y 11 de noviembre, 8 y 25 de diciembre, Jueves y Viernes Santo, Ascensión, Corpus Christi y Sagrado Corazón; varios se pasan al lunes siguiente. La Ley 2578 de 2026 declaró festivo nacional el 9 de julio.",
+      "citas": ["L51-1983-art1", "L2578-2026-art6"],
+      "temas": ["festivos", "plazos"]
+    },
+    {
+      "id": "PV-043",
+      "pregunta": "¿Qué derechos tengo sobre mis datos personales?",
+      "variantes": [
+        "que pasa con mis datos en la app",
+        "mis derechos de habeas data",
+        "puedo ver que datos tienen de mi",
+        "puedo corregir mis datos"
+      ],
+      "respuesta_sencilla": "Tienes derecho a conocer, actualizar y rectificar tus datos, a pedir prueba de tu autorización, a que te informen cómo se han usado y a acceder a ellos gratis. También puedes presentar quejas ante la Superintendencia de Industria y Comercio.",
+      "citas": ["L1581-2012-art8"],
+      "temas": ["datos personales", "derechos", "privacidad"]
+    },
+    {
+      "id": "PV-044",
+      "pregunta": "¿Pueden usar mis datos sin mi autorización?",
+      "variantes": [
+        "necesitan mi permiso para guardar mis datos",
+        "por que la app me pide autorizar mis datos",
+        "que es la autorizacion de tratamiento de datos",
+        "pueden usar mis datos sin permiso"
+      ],
+      "respuesta_sencilla": "Para el tratamiento de tus datos se requiere tu autorización previa e informada, salvo las excepciones de la ley. Esa autorización debe obtenerse por un medio que se pueda consultar después.",
+      "citas": ["L1581-2012-art9", "L1581-2012-art3"],
+      "temas": ["autorización", "datos personales", "privacidad"]
+    },
+    {
+      "id": "PV-045",
+      "pregunta": "¿Qué me tienen que informar cuando me piden autorización de datos?",
+      "variantes": [
+        "que deben decirme antes de usar mis datos",
+        "me tienen que decir para que usan mis datos",
+        "quien responde por mis datos",
+        "que informacion me deben dar sobre mis datos"
+      ],
+      "respuesta_sencilla": "Deben decirte de forma clara qué tratamiento tendrán tus datos y para qué, que no estás obligado a responder preguntas sobre datos sensibles o de niños, niñas y adolescentes, qué derechos tienes y quién es el responsable, con su dirección y teléfono.",
+      "citas": ["L1581-2012-art12"],
+      "temas": ["autorización", "deber de informar", "política de datos", "privacidad"]
+    }
+  ]
+}

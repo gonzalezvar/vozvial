@@ -1,0 +1,186 @@
+{
+  "norma": "Ley 1843 de 2017",
+  "entradas": [
+    {
+      "id": "L1843-2017-art1",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "1",
+      "titulo": "Objeto. Qué son los sistemas de fotodetección",
+      "texto_literal": "ARTÍCULO 1o. OBJETO. La presente ley tiene por objeto regular la instalación, adecuada señalización, puesta en operación de sistemas automáticos, semiautomáticos y otros medios tecnológicos para la detección de infracciones o control del tráfico y se dictan otras disposiciones.\nSe entenderá por sistemas automáticos y semiautomáticos y otros medios tecnológicos a todas las ayudas tecnológicas como cámaras de vídeo y equipos electrónicos de lectura que permitan con precisión la identificación del vehículo o del conductor, de que trata el parágrafo 2o del artículo 129 de la Ley 769 de 2002 Código Nacional de Tránsito Terrestre.",
+      "modificado_por": [],
+      "resumen_sencillo": "Esta ley regula las cámaras y otros equipos que detectan infracciones de tránsito. Son ayudas tecnológicas, como cámaras de video y equipos de lectura, que permiten identificar con precisión el vehículo o al conductor.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#1",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "camaras",
+        "definiciones"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "Fuente: HTML crudo data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667), convertido de cp1252 a UTF-8. La fuente trae una caja 'Notas del Editor' para este artículo que solo dice 'Fotomulta' (archivo data/fuentes/ley_1843_2017_notas.js, sha256 c7c318b555162b9abb60391554347d2c3f84269e9466cc3bfab41a1adda360c5). Sin notas de modificación. Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide."
+    },
+    {
+      "id": "L1843-2017-art2",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "2",
+      "titulo": "Criterios para la instalación y puesta en operación",
+      "texto_literal": "ARTÍCULO 2o. CRITERIOS PARA LA INSTALACIÓN Y PUESTA EN OPERACIÓN. Todo sistema automático, semiautomático y otros medios tecnológicos para la detección de presuntas infracciones al tránsito que se pretenda instalar, deberá cumplir con los criterios técnicos de seguridad vial que para su instalación y operación establezca el Ministerio de Transporte en conjunto con la Agencia Nacional de Seguridad Vial.\nLos sistemas automáticos, semiautomáticos y otros medios tecnológicos que se pretendan instalar, deberán contar con autorización de la Agencia Nacional de Seguridad Vial, la cual se otorgará de acuerdo con la reglamentación expedida por el Ministerio de Transporte y la Agencia Nacional de Seguridad Vial.\nPARÁGRAFO. Toda autorización otorgada en Colombia para la instalación de sistemas automáticos, semiautomáticos y otros medios tecnológicos para la detección de presuntas infracciones al tránsito, tendrá una duración de cinco (5) años, contados a partir de la fecha de su otorgamiento.\nPARÁGRAFO 2o. Las autoridades de tránsito podrán instalar o habilitar sistemas automáticos, semiautomáticos u otros medios tecnológicos, fijos o móviles para la detección de infracciones en la infraestructura de los sistemas de transporte, (i) en los tramos y a la distancia que se requiera en la vía pública, (ii) en las estaciones o (iii) a bordo de la flota vehicular de los sistemas de transporte público, sin que se requiera autorización por parte del Gobierno Nacional. Estos sistemas se orientarán principalmente a controlar la invasión de los carriles exclusivos o preferenciales de los sistemas de transporte público, y en todo caso se deberán señalizar las zonas vigiladas. Los recursos que se obtengan por la imposición de sanciones por parte de las autoridades de tránsito por circular sin autorización por los carriles exclusivos o preferenciales de los sistemas de transporte público se podrán destinar en un porcentaje hasta del 60% del recaudo correspondiente a la entidad territorial, para financiar la operación del respectivo sistema de transporte público.\nPARÁGRAFO TRANSITORIO. La autorización de los sistemas automáticos, semiautomáticos y otros medios tecnológicos por parte de la Agencia Nacional de Seguridad Vial entrará a operar en un plazo de ciento ochenta (180) días, contados a partir de la entrada en vigencia del presente decreto ley.\nLas solicitudes de autorización que se presenten durante el período de transición serán tramitadas por el Ministerio de Transporte, hasta su culminación, bajo la normativa vigente al momento de su radicación.",
+      "modificado_por": [
+        "Decreto Ley 2106 de 2019, art. 109",
+        "Ley 2294 de 2023, art. 181 (adiciona el parágrafo 2o)"
+      ],
+      "resumen_sencillo": "Las cámaras que detectan infracciones deben cumplir los criterios técnicos de seguridad vial del Ministerio de Transporte y la Agencia Nacional de Seguridad Vial. Necesitan autorización de la Agencia Nacional de Seguridad Vial. Esa autorización dura 5 años.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#2",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "camaras",
+        "autorizacion"
+      ],
+      "verificado": false,
+      "verificado_por": "",
+      "notas": "verificado:false por duda de vigencia. El texto se copió literal del HTML oficial, pero: (1) el parágrafo 2o fue adicionado por el art. 181 de la Ley 2294 de 2023 (Plan Nacional de Desarrollo 2022-2026) y la nota de vigencia de la fuente destaca la temporalidad de cuatro años de los planes de desarrollo; a la fecha de consulta (noviembre de 2026) no es claro si sigue vigente. (2) El parágrafo transitorio habla de 'presente decreto ley' porque viene del Decreto Ley 2106 de 2019. Requiere revisión jurídica antes de usarlo. Se omitieron del texto literal las marcas editoriales '<Artículo modificado por el artículo 109 del Decreto Ley 2106 de 2019...>' y '<Parágrafo adicionado por el artículo 181 de la Ley 2294 de 2023...>'. El texto original de 2017 está en la caja 'Legislación Anterior' de data/fuentes/ley_1843_2017_notas.js. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667)."
+    },
+    {
+      "id": "L1843-2017-art4",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "4",
+      "titulo": "Competencia para expedir órdenes de comparendo",
+      "texto_literal": "ARTÍCULO 4o. COMPETENCIA PARA EXPEDIR ÓRDENES DE COMPARENDOS. Solo las autoridades de tránsito a que hace referencia el Código Nacional de Tránsito, son las competentes para expedir y recaudar órdenes de comparendos por infracciones de tránsito ocurridas en su jurisdicción.\nNo podrá entregarse dicha facultad ni por delegación ni mediante convenio a ninguna entidad de naturaleza privada.",
+      "modificado_por": [],
+      "resumen_sencillo": "Solo las autoridades de tránsito pueden expedir y cobrar comparendos por infracciones en su territorio. No pueden pasar esa función a una entidad privada, ni por delegación ni por convenio.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#4",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "autoridad_competente",
+        "comparendo"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "Sin notas de vigencia en la fuente. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide."
+    },
+    {
+      "id": "L1843-2017-art7",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "7",
+      "titulo": "Parágrafo 2o del art. 136 de la Ley 769: plazos de descuento si no hubo notificación",
+      "texto_literal": "ARTÍCULO 7o. Adiciónese el parágrafo 2o al artículo 136 de la Ley 769 de 2002 el cual quedará así:\nPARÁGRAFO 2o. Cuando se demuestre que la orden de comparendo por infracción a las normas de tránsito detectada por sistemas automáticos, semiautomáticos y otros medios tecnológicos, no fue notificada o indebidamente notificada, los términos establecidos para la reducción de la sanción comenzarán a correr a partir de la fecha de la notificación del comparendo.",
+      "modificado_por": [],
+      "resumen_sencillo": "Si una cámara detectó la infracción y se demuestra que no te notificaron, o que te notificaron mal, los plazos para obtener la reducción de la sanción empiezan a contar desde la fecha en que te notifiquen el comparendo.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#7",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "notificacion",
+        "descuentos",
+        "plazos"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "Este artículo adiciona el parágrafo 2o al art. 136 de la Ley 769 de 2002. Los términos de reducción de la sanción a los que remite están en el art. 136 de la Ley 769 (ver L769-2002-art136); este artículo no fija cuántos días son. Sin notas de vigencia en la fuente para este artículo. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide. Cruce con la Ley 769: data/fuentes/ley_0769_2002_pr003.html muestra este parágrafo 2o dentro del art. 136 con la marca \"Parágrafo adicionado por el artículo 7 de la Ley 1843 de 2017\"."
+    },
+    {
+      "id": "L1843-2017-art8",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "8",
+      "titulo": "Procedimiento ante un comparendo por fotodetección: envío y plazo para presentarte",
+      "texto_literal": "ARTÍCULO 8o. Procedimiento ante la comisión de una contravención detectada por el sistema de ayudas tecnológicas, la autoridad de tránsito debe seguir el procedimiento que se describe a continuación:\nEl envío se hará por correo y/o correo electrónico, en el primer caso a través de una empresa de correos legalmente constituida, dentro de los tres (3) días hábiles siguientes a la validación del comparendo por parte de la autoridad, copia del comparendo y sus soportes al propietario del vehículo y a la empresa a la cual se encuentra vinculado; este último caso, en el evento de que se trate de un vehículo de servicio público. En el evento en que no sea posible identificar al propietario del vehículo en la última dirección registrada en el RUNT, la autoridad deberá hacer el proceso de notificación por aviso de la orden de comparendo.\nUna vez allegada a la autoridad de tránsito del respectivo ente territorial donde se detectó la infracción con ayudas tecnológicas se le enviará al propietario del vehículo la orden de comparendo y sus soportes en la que ordenará presentarse ante la autoridad de tránsito competente dentro de los once (11) días hábiles siguientes a la entrega del comparendo, contados a partir del recibo del comparendo en la última dirección registrada por el propietario del vehículo en el Registro Único Nacional de Tránsito, para el inicio del proceso contravencional, en los términos del Código Nacional de Tránsito.\nPARÁGRAFO 2o. Los organismos de tránsito podrán suscribir contratos o convenios con entes públicos o privados con el fin de dar aplicación a los principios de celeridad y eficiencia en el recaudo y cobro de las multas.\nPARÁGRAFO 3o. Será responsabilidad de los propietarios de vehículos actualizar la dirección de notificaciones en el Registro Único Nacional de Tránsito (RUNT), no hacerlo implicará que la autoridad enviará la orden de comparendo a la última dirección registrada en el RUNT, quedando vinculado al proceso contravencional y notificado en estrados de las decisiones subsiguientes en el mencionado proceso. La actualización de datos del propietario del vehículo en el RUNT deberá incluir como mínimo la siguiente información:\na) Dirección de notificación;\nb) Número telefónico de contacto;\nc) Correo electrónico; entre otros, los cuales serán fijados por el Ministerio de Transporte.",
+      "modificado_por": [],
+      "resumen_sencillo": "Si una cámara detecta una infracción, la autoridad de tránsito envía copia del comparendo y sus pruebas por correo o correo electrónico. Debe enviarla dentro de los 3 días hábiles siguientes a que la autoridad valida el comparendo. Se envía al propietario del vehículo y, si es de servicio público, también a la empresa a la que está vinculado. Si no es posible identificar al propietario en la última dirección registrada en el RUNT, la autoridad debe notificar por aviso. Si eres el propietario, el comparendo te ordena presentarte ante la autoridad de tránsito dentro de los 11 días hábiles siguientes a la entrega. Se cuentan desde que el comparendo se recibe en tu última dirección registrada en el RUNT. Como propietario, debes mantener al día en el RUNT, como mínimo, tu dirección de notificación, teléfono y correo. Si no lo haces, la autoridad envía el comparendo a la última dirección registrada, quedas vinculado al proceso y las decisiones que sigan se te notifican en estrados (es decir, en la misma audiencia).",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#8",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "notificacion",
+        "plazos",
+        "comparecencia",
+        "propietario",
+        "runt",
+        "procedimiento",
+        "audiencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "PLAZO EN FOTODETECCIÓN (explícito): son ONCE (11) DÍAS HÁBILES para presentarse ante la autoridad de tránsito. Texto literal que lo fija: 'dentro de los once (11) días hábiles siguientes a la entrega del comparendo, contados a partir del recibo del comparendo en la última dirección registrada por el propietario del vehículo en el Registro Único Nacional de Tránsito'. PUNTO DE PARTIDA: la entrega o recibo del comparendo en la última dirección registrada en el RUNT, NO la fecha de la infracción. Por la palabra 'siguientes', el día hábil 1 es el día hábil siguiente al recibo (equivale a punto_partida 'dia_siguiente_notificacion', entendiendo notificación como entrega o recibo del comparendo). Con esa regla el caso de CA-11.2 (recibo el viernes 13 nov 2026) da martes 1 dic 2026. OJO: el artículo usa las palabras 'entrega' y 'recibo', no 'notificación'. El plazo de 3 días hábiles NO es del conductor: es el plazo de la autoridad para enviar el comparendo, y se cuenta desde 'la validación del comparendo por parte de la autoridad', no desde la infracción ni desde la notificación. El artículo no precisa cómo se cuenta el recibo cuando el envío es solo por correo electrónico ni cuando se notifica por aviso; el art. 9 remite al Código Nacional de Tránsito y al CPACA. Esos dos casos requieren revisión jurídica y la app no debería resolverlos. El artículo NO menciona el art. 136 de la Ley 769; la relación con los descuentos está en el art. 7 de esta ley (L1843-2017-art7). VIGENCIA: según la caja 'Jurisprudencia Vigencia' de la fuente (data/fuentes/ley_1843_2017_notas.js), el parágrafo 1o (solidaridad del propietario con el conductor) fue declarado INEXEQUIBLE por la Corte Constitucional en la Sentencia C-038 de 2020 (6 de febrero de 2020); la misma nota cita que la Corte aclaró que la solidaridad sigue en lo que prevé el art. 93-1 del Código Nacional de Tránsito para vehículos vinculados a empresas de transporte. Antes, en la Sentencia C-112 de 2018, la Corte se declaró inhibida sobre ese parágrafo. Por eso el parágrafo 1o se omitió del texto literal (la fuente solo muestra '<Parágrafo INEXEQUIBLE>'). El artículo no tiene epígrafe en la fuente; el título es descriptivo del equipo. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667) y data/fuentes/ley_1843_2017_notas.js (sha256 c7c318b555162b9abb60391554347d2c3f84269e9466cc3bfab41a1adda360c5). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide. Única diferencia con la fuente: se omitió la línea \"PARÁGRAFO 1o. <Parágrafo INEXEQUIBLE>\", por la inexequibilidad explicada arriba. Se corrigió el resumen: la orden de presentarse y la obligación de actualizar el RUNT son del propietario del vehículo, no de cualquier conductor."
+    },
+    {
+      "id": "L1843-2017-art9",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "9",
+      "titulo": "Normas complementarias",
+      "texto_literal": "ARTÍCULO 9o. NORMAS COMPLEMENTARIAS. En lo que respecta a las demás actuaciones que se surten en el procedimiento administrativo sancionatorio, se regirá por las disposiciones del Código Nacional de Tránsito y en lo no regulado por esta, a lo dispuesto en el Código de Procedimiento Administrativo y de lo Contencioso Administrativo.",
+      "modificado_por": [],
+      "resumen_sencillo": "Para el resto del proceso sancionatorio se aplica el Código Nacional de Tránsito. Lo que ese código no regule se rige por el Código de Procedimiento Administrativo y de lo Contencioso Administrativo (CPACA).",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#9",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "procedimiento"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "Sin notas de vigencia en la fuente. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide."
+    },
+    {
+      "id": "L1843-2017-art10",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "10",
+      "titulo": "Señalización de las zonas con cámaras o radar",
+      "texto_literal": "ARTÍCULO 10. DE LOS SISTEMAS AUTOMÁTICOS, SEMIAUTOMÁTICOS Y OTROS MEDIOS TECNOLÓGICOS PARA LA DETECCIÓN DE INFRACCIONES. En las vías nacionales, departamentales y municipales, en donde funcionen sistemas automáticos, semiautomáticos y otros medios tecnológicos para la detección de infracciones, se deberá adicionar en la vía señales visibles que informen que es una zona vigilada por cámaras o radar, localizadas antes de iniciar estas zonas.\nLas zonas deberán ser establecidas con base en los estudios técnicos, por parte de las autoridades de tránsito, respetando los límites definidos por el Ministerio de Transporte conforme al artículo 2o de la presente ley.\nPara las vías nacionales en donde operen sistemas tecnológicos automáticos o semiautomáticos fijos para la detección de infracciones de velocidad, la señal tendrá que ubicarse con una antelación de 500 metros de distancia",
+      "modificado_por": [],
+      "resumen_sencillo": "Donde haya cámaras o radares que detectan infracciones, debe haber señales visibles antes de la zona, que digan que es una zona vigilada. Las zonas se definen con estudios técnicos. En vías nacionales con equipos fijos que miden la velocidad, la señal debe estar 500 metros antes.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#10",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "camaras",
+        "senalizacion"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "El último párrafo no termina en punto en la fuente; se copió así. Sin notas de vigencia en la fuente. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide."
+    },
+    {
+      "id": "L1843-2017-art11",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "11",
+      "titulo": "Caducidad (modifica el art. 161 de la Ley 769 de 2002)",
+      "texto_literal": "ARTÍCULO 11. CADUCIDAD. El artículo 161 de la Ley 769 de 2002 quedará así:\nArtículo 161. Caducidad. La acción por contravención de las normas de tránsito, caduca al año (1), contado a partir de la ocurrencia de los hechos que dieron origen a ella. En consecuencia, durante este término se deberá decidir sobre la imposición de la sanción, en tal momento se entenderá realizada efectivamente la audiencia e interrumpida la caducidad.\nLa decisión que resuelve los recursos, de ser procedentes, deberá ser expedida en un término de un (1) año contado a partir de su debida y oportuna interposición, si los recursos no se deciden en el término fijado en esta disposición, se entenderán fallados a favor del recurrente.\nLa revocación directa solo podrá proceder en forma supletiva al proceso contravencional y en el evento de ser resuelta a favor de los intereses del presunto infractor sus efectos serán a futuro, iniciando la contabilización de la caducidad a partir de la notificación de la aceptación de su solicitud o su declaratoria de oficio, permitiendo al presunto infractor contar con los términos establecidos en la ley para la obtención de los descuentos establecidos en la ley o la realización de la audiencia contemplados en el Código Nacional de Tránsito.",
+      "modificado_por": [],
+      "resumen_sencillo": "La autoridad tiene 1 año, contado desde el día de los hechos, para decidir si te sanciona. Si presentas recursos a tiempo, deben resolverlos en 1 año. Si no los resuelven en ese plazo, se entienden resueltos a tu favor. La revocación directa (que la misma autoridad deje sin efecto su decisión) solo procede de forma supletiva al proceso. Si se resuelve a tu favor, sus efectos son hacia el futuro: la caducidad se cuenta desde que te notifican que se aceptó tu solicitud, o desde que la autoridad la declara por su cuenta, y vuelves a tener los plazos de ley para los descuentos o la audiencia.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#11",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "caducidad",
+        "plazos",
+        "recursos",
+        "descuentos",
+        "audiencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "Este artículo reemplaza el texto del art. 161 de la Ley 769 de 2002. El texto aquí es el que publica la fuente dentro de la Ley 1843; conviene cruzarlo con la entrada del art. 161 en la base de la Ley 769 para confirmar que no hay una modificación posterior. Sin notas de vigencia en la fuente para este artículo. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide. Cruce con la Ley 769: en data/fuentes/ley_0769_2002_pr004.html el art. 161 vigente tiene este mismo texto y su única nota de vigencia (ley_0769_2002_pr004.js) es la modificación por el art. 11 de la Ley 1843 de 2017; no aparece una modificación posterior."
+    },
+    {
+      "id": "L1843-2017-art12",
+      "norma": "Ley 1843 de 2017",
+      "articulo": "12",
+      "titulo": "Comparecencia virtual",
+      "texto_literal": "ARTÍCULO 12. COMPARECENCIA VIRTUAL. Dentro de los seis meses siguientes a la vigencia de esta ley, quienes operen sistemas automáticos y semiautomáticos para detectar infracciones de tránsito, implementará igualmente mecanismos electrónicos que permitan la comparecencia a distancia del presunto infractor.",
+      "modificado_por": [],
+      "resumen_sencillo": "Quienes operan cámaras que detectan infracciones debían crear, dentro de los 6 meses siguientes a la vigencia de esta ley, medios electrónicos para que puedas presentarte a distancia.",
+      "url_fuente": "http://www.secretariasenado.gov.co/senado/basedoc/ley_1843_2017.html#12",
+      "fecha_consulta": "2026-11-08",
+      "temas": [
+        "fotodeteccion",
+        "comparecencia",
+        "audiencia"
+      ],
+      "verificado": true,
+      "verificado_por": "Agente de verificacion automatizada (copia literal desde la fuente oficial). Pendiente de revision humana de Juan David Gonzalez Varilla. Reverificado en fase 2 por agente verificador adversarial (2026-11-08)",
+      "notas": "El artículo fija una obligación para los operadores; no dice cómo se usa ese medio ni si cada autoridad lo implementó. La app no debe afirmar que una autoridad concreta tiene comparecencia virtual. Sin notas de vigencia en la fuente. Fuente: data/fuentes/ley_1843_2017.html (sha256 67d8ee6622482efe346cf252c39b25c951db2b2f11fe5d3ff301560ab2e41667). Reverificación fase 2 (2026-11-08): se volvió a descargar la URL con curl; el HTML y el JS de notas tienen el mismo sha256 que los guardados en data/fuentes. El texto literal se comparó palabra por palabra (normalizando solo espacios) contra una extracción independiente y coincide."
+    }
+  ]
+}

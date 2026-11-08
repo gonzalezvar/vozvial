@@ -1,0 +1,547 @@
+{
+  "descripcion": "Banco para medir el asistente (RNF-03). Las preguntas son distintas a las de data/preguntas-verificadas.json y a sus variantes. con_sustento: debe responder citando al menos uno de articulos_esperados (el artículo pertinente). sin_sustento: tema de tránsito que la base no cubre; se espera abstención. fuera_de_tema: se espera que decline y diga qué temas cubre.",
+  "fecha": "2026-11-08",
+  "criterio_acierto": "con_sustento: tipo 'respuesta' y al menos una cita dentro de articulos_esperados. sin_sustento: tipo 'abstencion'. fuera_de_tema: tipo 'fuera_de_tema'.",
+  "preguntas": [
+    {
+      "id": "BE-001",
+      "pregunta": "Firmé el comparendo esta mañana, ¿desde cuándo empiezan a correr los días para ir al tránsito?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136", "L769-2002-art135"],
+      "respuesta_esperada": "Los cinco (5) días hábiles son los siguientes a la notificación del comparendo.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-002",
+      "pregunta": "En la audiencia, ¿el funcionario puede pedir pruebas por su cuenta aunque yo no las pida?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Sí; decreta las pruebas conducentes que se le soliciten y las de oficio que considere útiles.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-003",
+      "pregunta": "¿Puedo pagar la multa de tránsito en un banco?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Los organismos de tránsito pueden celebrar acuerdos para el recaudo y convenios con los bancos para ese fin.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-004",
+      "pregunta": "¿El Ministerio Público puede intervenir en mi proceso de tránsito?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art138"],
+      "respuesta_esperada": "Sí; el Ministerio Público podrá intervenir en los procesos, de acuerdo con sus funciones.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-005",
+      "pregunta": "Si en el comparendo está involucrado un menor de edad, ¿tiene que ir acompañado?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art138"],
+      "respuesta_esperada": "Debe estar asistido por su representante legal, por un apoderado designado por este o por un defensor de familia.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-006",
+      "pregunta": "El carro es mío pero lo manejaba mi hijo cuando lo cogió la cámara, ¿a quién le mandan el comparendo?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art8", "L769-2002-art137"],
+      "respuesta_esperada": "Al propietario del vehículo, a la última dirección registrada en el RUNT.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-007",
+      "pregunta": "Si no encuentran al dueño en la dirección del RUNT, ¿cómo le notifican la fotomulta?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art8"],
+      "respuesta_esperada": "La autoridad debe hacer la notificación por aviso de la orden de comparendo.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-008",
+      "pregunta": "¿Qué datos debo tener al día en el RUNT para que me lleguen las notificaciones?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art8"],
+      "respuesta_esperada": "Como mínimo dirección de notificación, número telefónico de contacto y correo electrónico.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-009",
+      "pregunta": "¿Qué cuenta como sistema de fotodetección según la ley?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art1"],
+      "respuesta_esperada": "Las ayudas tecnológicas como cámaras de vídeo y equipos electrónicos de lectura que identifican con precisión el vehículo o el conductor.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-010",
+      "pregunta": "En una carretera nacional, ¿a cuántos metros antes del radar debe estar la señal?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art10"],
+      "respuesta_esperada": "Con una antelación de 500 metros para sistemas fijos de detección de velocidad en vías nacionales.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-011",
+      "pregunta": "¿Qué normas se aplican a lo que la ley de fotomultas no regula?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art9"],
+      "respuesta_esperada": "El Código Nacional de Tránsito y, en lo no regulado por este, el Código de Procedimiento Administrativo y de lo Contencioso Administrativo.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-012",
+      "pregunta": "Si demuestro que la notificación de la cámara fue a parar a otra parte, ¿desde qué fecha corre la rebaja?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1843-2017-art7", "L769-2002-art136"],
+      "respuesta_esperada": "Los términos de reducción corren desde la fecha de la notificación del comparendo.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-013",
+      "pregunta": "Si la multa es por cámara, ¿la prueba tiene que venir junto con el comparendo?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art137"],
+      "respuesta_esperada": "Sí; la prueba de la infracción debe ir como anexo necesario del comparendo.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-014",
+      "pregunta": "¿Los cursos para infractores deben enseñar a respetar a los ciclistas?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Sí; los cursos deben incluir contenidos de seguridad vial que promuevan el respeto a los usuarios de la bicicleta.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-015",
+      "pregunta": "¿Hasta cuántos días tengo para pagar solo el setenta y cinco por ciento?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Dentro de los veinte días siguientes a la orden de comparendo, con el curso.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-016",
+      "pregunta": "Si hago el curso en un municipio distinto al de la multa, ¿a quién le pago?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Al centro u organismo del curso se le paga el 25 % del valor a pagar y el excedente al organismo de tránsito de la jurisdicción de la infracción.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-017",
+      "pregunta": "¿Me pueden sancionar ahí mismo en la calle, sin ir a una oficina?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Donde existan inspecciones ambulantes de tránsito, los funcionarios pueden imponer la sanción en el sitio, respetando el derecho de defensa.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-018",
+      "pregunta": "Si en la audiencia me declaran contraventor, ¿pago la multa completa?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art136"],
+      "respuesta_esperada": "Sí, se impone el cien por ciento (100 %) de la sanción prevista en la ley.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-019",
+      "pregunta": "Tengo una multa de hace cuatro años que nunca me cobraron, ¿sigue vigente?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art159"],
+      "respuesta_esperada": "Las sanciones prescriben en tres años desde el hecho; la prescripción se interrumpe con la notificación del mandamiento de pago y se declara de oficio.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-020",
+      "pregunta": "¿Qué interrumpe la prescripción de una sanción de tránsito?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art159"],
+      "respuesta_esperada": "La notificación del mandamiento de pago.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-021",
+      "pregunta": "Me pusieron el comparendo hace más de un año y nunca decidieron nada, ¿qué pasa con eso?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art161", "L1843-2017-art11"],
+      "respuesta_esperada": "La acción caduca al año desde los hechos; en ese término se debe decidir sobre la sanción.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-022",
+      "pregunta": "¿Qué es la revocación directa en un proceso de tránsito?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art161", "L1843-2017-art11"],
+      "respuesta_esperada": "Procede solo en forma supletiva al proceso contravencional; si se resuelve a favor, sus efectos son a futuro y la caducidad se cuenta desde la notificación de la aceptación o su declaratoria de oficio.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-023",
+      "pregunta": "¿Cuándo queda en firme lo que decidió el inspector?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art142"],
+      "respuesta_esperada": "Cuando vencido el término de ejecutoria no se interpuso recurso o este fue negado.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-024",
+      "pregunta": "¿En qué momento tengo que sustentar la reposición?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art142"],
+      "respuesta_esperada": "En la propia audiencia en la que se pronuncie el auto, ante el mismo funcionario.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-025",
+      "pregunta": "¿Cómo me entero de lo que decidan dentro del proceso?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art139"],
+      "respuesta_esperada": "Las providencias se notifican en estrados.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-026",
+      "pregunta": "Si el problema del carro se puede arreglar ahí mismo, ¿igual se lo llevan al parqueadero?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art125"],
+      "respuesta_esperada": "No: el vehículo no se lleva al parqueadero si la causa es subsanable en el sitio donde se detectó la infracción.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-027",
+      "pregunta": "¿El parqueadero autorizado puede dejar salir mi carro sin orden de la autoridad?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art125"],
+      "respuesta_esperada": "No; el propietario o administrador que lo permita incurre en multa de 50 salarios mínimos legales mensuales vigentes.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-028",
+      "pregunta": "¿Por cuánto tiempo queda inmovilizado un vehículo?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art125", "L769-2002-art2"],
+      "respuesta_esperada": "Es una suspensión temporal: hasta que se subsane o cese la causa que le dio origen.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-029",
+      "pregunta": "¿Qué consecuencia tiene para un policía impedir que uno lo grabe?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1801-2016-art21"],
+      "respuesta_esperada": "Si lo impide sin justificación legal incurre en causal de mala conducta.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-030",
+      "pregunta": "Si choco y se comprueba que la causa fue una deficiencia física o de salud que yo tenía, ¿qué sanción me pueden poner?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art157"],
+      "respuesta_esperada": "Si se incumplió la obligación del art. 24 y se comprueba que la deficiencia orgánica o funcional causó el accidente: multa de hasta cien (100) SMLDV y suspensión de la licencia hasta por cinco (5) años.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-031",
+      "pregunta": "¿El testigo que firma el comparendo por mí qué datos tiene que dar?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art135"],
+      "respuesta_esperada": "Debe identificarse plenamente con su cédula o pasaporte, dirección de domicilio y teléfono, si lo tuviere.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-032",
+      "pregunta": "Al papel que me dieron le falta el número de placa del agente, ¿debía tenerlo?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art129"],
+      "respuesta_esperada": "Sí; el comparendo debe indicar el nombre y número de placa del agente que lo realiza.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-033",
+      "pregunta": "¿Cuánto me cobran por dejar el carro estacionado donde no se puede?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art131"],
+      "respuesta_esperada": "Estacionar en sitios prohibidos (C.2) tiene multa de 15 salarios mínimos legales diarios vigentes.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-034",
+      "pregunta": "¿Cuánto es la multa por llevar a mi nieto de ocho años en la silla de adelante?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art131"],
+      "respuesta_esperada": "Llevar niños menores de 10 años en el asiento delantero (B.22) tiene multa de 8 salarios mínimos legales diarios vigentes.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-035",
+      "pregunta": "Mi multa quedó ejecutoriada en 2022 y todavía la debo, ¿me la pasan a la unidad nueva que empezó en 2024?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L2294-2023-art313"],
+      "respuesta_esperada": "Las multas en firme o ejecutoriadas antes del 1 de enero de 2024 se mantienen en salarios mínimos (parágrafo 3 del art. 313).",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-036",
+      "pregunta": "Iba muy rápido y me pararon, ¿de cuánto es el comparendo por eso?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art131"],
+      "respuesta_esperada": "Conducir a velocidad superior a la máxima permitida (C.29) tiene multa de 15 salarios mínimos legales diarios vigentes.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-037",
+      "pregunta": "¿Qué diferencia hay entre una infracción simple y una compleja?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L769-2002-art2"],
+      "respuesta_esperada": "Simple es la violación a la mera norma; compleja si se produce un daño material.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-038",
+      "pregunta": "¿Quien guarda mis datos tiene que cuidarlos para que no se pierdan ni los vea cualquiera?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1581-2012-art17", "L1581-2012-art4"],
+      "respuesta_esperada": "Sí; debe conservar la información con las condiciones de seguridad necesarias para impedir su adulteración, pérdida, consulta, uso o acceso no autorizado.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-039",
+      "pregunta": "¿Ante qué entidad me puedo quejar si una aplicación usa mal mis datos?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L1581-2012-art8"],
+      "respuesta_esperada": "Ante la Superintendencia de Industria y Comercio.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-040",
+      "pregunta": "¿El 12 de octubre se corre para el lunes?",
+      "tipo": "con_sustento",
+      "articulos_esperados": ["L51-1983-art1"],
+      "respuesta_esperada": "Sí; el doce de octubre está en la lista de festivos que se trasladan al lunes siguiente cuando no caen en lunes.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-041",
+      "pregunta": "¿Qué día me toca pico y placa en Bogotá?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: no hay información verificada (el pico y placa lo fija cada autoridad local y no está en la base).",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-042",
+      "pregunta": "¿Cuánto vale el SOAT de una moto este año?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: las tarifas del SOAT no están en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-043",
+      "pregunta": "¿Cada cuánto tengo que hacerle la revisión técnico-mecánica a un carro nuevo?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: el art. 131 (C.35) menciona el 'plazo legal establecido', pero los plazos de la revisión no están en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-044",
+      "pregunta": "Tengo 70 años, ¿cada cuánto tengo que renovar la licencia de conducción?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: la vigencia de la licencia por edad no está en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-045",
+      "pregunta": "¿Qué exámenes médicos me hacen para renovar el pase?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: los requisitos médicos de la licencia no están en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-046",
+      "pregunta": "¿Cuánto cobra la grúa y cuánto vale el día de patios en Medellín?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: el art. 125 dice quién paga el parqueadero, pero las tarifas locales no están en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-047",
+      "pregunta": "¿Cuál es el límite de velocidad para un carro en una calle de la ciudad?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: los límites de velocidad para carros no están en la base (solo la multa por excederlos, C.29; el literal G.6 trae límites solo para vehículos eléctricos livianos de movilidad personal).",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-048",
+      "pregunta": "¿Puedo hacer un acuerdo de pago para una multa que ya está en cobro coactivo?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: el art. 159 menciona el cobro coactivo, pero los acuerdos de pago no están en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-049",
+      "pregunta": "Si me cogen con trago y la prueba sale en grado dos, ¿de cuánto es la multa?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: el art. 131 literal F remite al art. 152, que no está en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-050",
+      "pregunta": "¿Qué papeles necesito para hacer el traspaso de un carro?",
+      "tipo": "sin_sustento",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Abstención: el trámite de traspaso no está en la base.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-051",
+      "pregunta": "¿Cómo hago un sancocho de gallina?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-052",
+      "pregunta": "¿Va a llover mañana en Tunja?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-053",
+      "pregunta": "¿Cuándo juega la Selección Colombia?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-054",
+      "pregunta": "¿Cómo pido una cita médica en la EPS?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-055",
+      "pregunta": "¿A cómo está el dólar hoy?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-056",
+      "pregunta": "¿Qué requisitos piden para la pensión en Colpensiones?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-057",
+      "pregunta": "Cuénteme un chiste, mijo",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-058",
+      "pregunta": "¿Cuál es la capital de Francia?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-059",
+      "pregunta": "¿Cómo siembro tomates en una matera?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    },
+    {
+      "id": "BE-060",
+      "pregunta": "¿Qué remedio casero sirve para la tos?",
+      "tipo": "fuera_de_tema",
+      "articulos_esperados": [],
+      "respuesta_esperada": "Declina con amabilidad y explica qué temas cubre.",
+      "construida_por": "Equipo VozVial (borrador redactado con asistencia de IA)",
+      "calificada_por": "Pendiente de calificacion por Juan David Gonzalez Varilla"
+    }
+  ]
+}
