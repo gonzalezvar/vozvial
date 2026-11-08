@@ -311,7 +311,7 @@ Cómo están hechas las pruebas e2e:
 
 ## 6. Despliegue
 
-**Publicado en Railway:** https://vozvial-production.up.railway.app (desplegado el 2026-11-08 desde la cuenta de Juan). Código en GitHub: https://github.com/gonzalezvar/vozvial (privado).
+**Publicado en Railway:** https://vozvial-production.up.railway.app (desplegado el 2026-11-08 desde la cuenta de Juan). Código en GitHub: https://github.com/gonzalezvar/vozvial (público).
 
 - Railway corre un solo servicio Node: `npm run build` (`expo export -p web`) y `npm start` (`scripts/servidor-produccion.ts`), que sirve `dist/` como SPA y `/api/asistente` en el mismo origen, con las cabeceras y la CSP de `vercel.json`. Es el mismo servidor que usan las pruebas e2e.
 - Configuración en `railway.json` (builder Railpack, Node 22). `.railwayignore` deja fuera evidencias, documentos, fuentes crudas y pruebas para que la subida sea liviana.

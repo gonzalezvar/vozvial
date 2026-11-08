@@ -3,7 +3,7 @@
 ## Despliegue actual: Railway (2026-11-08)
 
 - **Enlace público:** https://vozvial-production.up.railway.app
-- **Repositorio:** https://github.com/gonzalezvar/vozvial (privado; para que la docente lo vea, hazlo público con `gh repo edit gonzalezvar/vozvial --visibility public --accept-visibility-change-consequences` o agrégala como colaboradora).
+- **Repositorio:** https://github.com/gonzalezvar/vozvial (público desde el 2026-11-08).
 - **Proyecto Railway:** `vozvial`, servicio `vozvial`, entorno `production`.
 - **Cómo funciona:** `railway.json` usa Railpack (Node 22), compila con `npm run build` y arranca con `npm start` (`scripts/servidor-produccion.ts`). Ese servidor sirve `dist/` como SPA y `/api/asistente` en el mismo origen, con las cabeceras y la CSP de `vercel.json`.
 - **Redesplegar** (desde la raíz, con la CLI enlazada):

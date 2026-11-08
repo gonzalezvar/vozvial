@@ -160,7 +160,7 @@ Este documento registra **lo que se hizo** en cada etapa del ciclo de vida del p
 
 ### 2026-11-08 · Publicación
 - **Qué se hizo:**
-  - Se creó el repositorio privado https://github.com/gonzalezvar/vozvial y se subió el historial completo.
+  - Se creó el repositorio https://github.com/gonzalezvar/vozvial, se subió el historial completo y luego se hizo público para la docente, después de revisar que no tuviera secretos.
   - Se publicó en Railway: https://vozvial-production.up.railway.app.
   - Se verificaron las rutas, las cabeceras CSP y HSTS, el asistente y la consola del navegador sin errores.
   - Se midió RNF-02 contra el despliegue: p95 de 119 ms.
