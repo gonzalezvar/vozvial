@@ -37,6 +37,8 @@ export interface EntradaNormativa {
   readonly urlFuente: string;
   readonly fechaConsulta: string;
   readonly temas: readonly string[];
+  /** Duda jurídica que el equipo dejó en las notas ("Requiere revisión jurídica: ..."), si la hay. */
+  readonly advertencia?: string;
 }
 
 /** Cita que acompaña una respuesta del asistente. */
@@ -48,6 +50,15 @@ export interface Cita {
   textoLiteral: string;
   urlFuente: string;
   fechaConsulta: string;
+}
+
+// De las notas de verificacion solo interesa al usuario la frase "Requiere revisión jurídica: ...";
+// el resto (sumas, archivos crudos, verificacion adversarial) es para el equipo.
+const PATRON_ADVERTENCIA = /Requiere revisión jurídica:\s*(.+?\.)(?=\s+[A-ZÁÉÍÓÚÑ]|\s*$)/s;
+
+export function extraerAdvertencia(notas: string | undefined): string | undefined {
+  const m = notas ? PATRON_ADVERTENCIA.exec(notas) : null;
+  return m?.[1]?.trim() || undefined;
 }
 
 export class BaseNormativa {
@@ -77,6 +88,7 @@ export class BaseNormativa {
           urlFuente: e.url_fuente,
           fechaConsulta: e.fecha_consulta,
           temas: Object.freeze([...(e.temas ?? [])]),
+          advertencia: extraerAdvertencia(e.notas),
         }),
       );
     }

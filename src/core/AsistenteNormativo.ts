@@ -11,8 +11,10 @@ import {
 export const MAX_CARACTERES_PREGUNTA = 500;
 
 /**
- * Asistente normativo: primero decide si la pregunta es del tema y luego le
- * pide la respuesta al proveedor (verificado o LLM). Garantiza dos cosas sin
+ * Asistente normativo: primero decide si la pregunta es del tema (si tiene
+ * detector) y luego le pide la respuesta al proveedor (verificado, LLM o Claude).
+ * Con Claude el detector va en null: Claude clasifica "fuera_de_tema" y así el
+ * vocabulario fijo no bloquea preguntas válidas escritas con otras palabras. Garantiza dos cosas sin
  * importar el proveedor: toda respuesta lleva el aviso legal y ninguna
  * respuesta de tipo 'respuesta' sale sin al menos una cita.
  * Si recibe la base normativa, además exige que cada cita sea una entrada
@@ -21,7 +23,7 @@ export const MAX_CARACTERES_PREGUNTA = 500;
 export class AsistenteNormativo {
   constructor(
     private readonly proveedor: ProveedorRespuesta,
-    private readonly detector: DetectorTema = new DetectorTema(),
+    private readonly detector: DetectorTema | null = new DetectorTema(),
     private readonly base: BaseNormativa | null = null,
   ) {}
 
@@ -33,7 +35,7 @@ export class AsistenteNormativo {
     const limpia = pregunta.trim().slice(0, MAX_CARACTERES_PREGUNTA);
     if (!limpia) return crearAbstencion(this.proveedor.modo, 0);
 
-    if (!this.detector.esDelTema(limpia)) {
+    if (this.detector && !this.detector.esDelTema(limpia)) {
       return {
         tipo: 'fuera_de_tema',
         texto: MENSAJE_FUERA_DE_TEMA,

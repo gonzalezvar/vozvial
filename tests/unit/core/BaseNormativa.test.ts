@@ -1,4 +1,4 @@
-import { BaseNormativa, type EntradaNormativaJSON } from '../../../src/core/BaseNormativa';
+import { BaseNormativa, extraerAdvertencia, type EntradaNormativaJSON } from '../../../src/core/BaseNormativa';
 import { ARCHIVOS_NORMATIVA, obtenerBaseNormativa } from '../../../src/core/cargarDatos';
 
 function entrada(id: string, cambios: Partial<EntradaNormativaJSON> = {}): EntradaNormativaJSON {
@@ -60,5 +60,20 @@ describe('BaseNormativa', () => {
     expect(noVerificadas.length).toBeGreaterThan(0);
     for (const id of noVerificadas) expect(base.porId(id)).toBeNull();
     expect(base.todas().length).toBe(todas.length - noVerificadas.length);
+  });
+
+  it('toma de las notas solo la frase de revisión jurídica', () => {
+    const notas =
+      "Fuente: Senado, art. 3. Requiere revisión jurídica: habla de 'Policía'; si cubre a agentes de tránsito no lo dice el texto. Verificación adversarial 2026-11-08: coincide.";
+    expect(extraerAdvertencia(notas)).toBe("habla de 'Policía'; si cubre a agentes de tránsito no lo dice el texto.");
+    expect(extraerAdvertencia('Requiere revisión jurídica. La app no debe usarlo.')).toBeUndefined();
+    expect(extraerAdvertencia('')).toBeUndefined();
+    const base = new BaseNormativa([entrada('X-art1', { notas }), entrada('X-art2')]);
+    expect(base.porId('X-art1')!.advertencia).toMatch(/^habla de 'Policía'/);
+    expect(base.porId('X-art2')!.advertencia).toBeUndefined();
+  });
+
+  it('con los datos reales el art. 21 de la Ley 1801 lleva la duda sobre agentes de tránsito', () => {
+    expect(obtenerBaseNormativa().porId('L1801-2016-art21')!.advertencia).toMatch(/agentes de tránsito civiles/);
   });
 });

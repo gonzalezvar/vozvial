@@ -21,11 +21,17 @@ export * from './ControlIntentos';
 export * from './GestorClaves';
 export * from './CodigoRecuperacion';
 export * from './ValidadorRegistro';
+export * from './ValidadorRedaccion';
+export * from './DerivadorVerificador';
+
+// Sincronizacion con el servidor (gana el mas reciente)
+export * from './ResolvedorSincronizacion';
 
 // Casos, comparendo y solicitud
 export * from './Evidencia';
 export * from './Comparendo';
 export * from './Caso';
+export * from './PrioridadCasos';
 export * from './ParserComparendo';
 export * from './CatalogoInfracciones';
 export * from './GeneradorSolicitud';

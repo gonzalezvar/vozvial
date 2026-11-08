@@ -4,6 +4,8 @@
  * Uso:
  *   npm run eval:asistente                          (en proceso, modo verificado)
  *   npm run eval:asistente -- --url http://localhost:3001/api/asistente   (además, contra un servidor)
+ *   npm run eval:asistente -- --claude              (solo el banco, con ProveedorClaude; requiere ANTHROPIC_API_KEY
+ *                                                    y escribe docs/evaluacion/asistente-claude.md; gasta créditos)
  *
  * También documenta cómo se eligió el umbral: la calibración usa solo
  * data/preguntas-verificadas.json, nunca el banco de evaluación.
@@ -17,6 +19,8 @@ import { obtenerBaseNormativa, PREGUNTAS_VERIFICADAS } from '../src/core/cargarD
 import { DetectorTema } from '../src/core/DetectorTema';
 import { NormalizadorEspanol } from '../src/core/NormalizadorEspanol';
 import type { RespuestaAsistente } from '../src/core/ProveedorRespuesta';
+import { crearAsistenteServidor } from '../src/servidor/crearAsistenteServidor';
+import type { InfoConsultaClaude } from '../src/servidor/ProveedorClaude';
 import {
   MARGEN_PREDETERMINADO,
   PESOS_PREDETERMINADOS,
@@ -28,6 +32,7 @@ import {
 
 const RAIZ = path.resolve(__dirname, '..');
 const SALIDA = path.join(RAIZ, 'docs', 'evaluacion', 'asistente.md');
+const SALIDA_CLAUDE = path.join(RAIZ, 'docs', 'evaluacion', 'asistente-claude.md');
 
 type TipoBanco = 'con_sustento' | 'sin_sustento' | 'fuera_de_tema';
 
@@ -601,7 +606,98 @@ function responderPorUrl(url: string): Responder {
   };
 }
 
+function leerBanco(): PreguntaBanco[] {
+  return (JSON.parse(readFileSync(path.join(RAIZ, 'data', 'banco-evaluacion.json'), 'utf8')) as {
+    preguntas: PreguntaBanco[];
+  }).preguntas;
+}
+
+/**
+ * --claude: corre el banco con el asistente del servidor (ProveedorClaude, sin
+ * prefiltro de tema y con el verificado de respaldo). Cada pregunta es una
+ * llamada real a la API de Anthropic. Mide lo mismo que el modo verificado y,
+ * además, cuántas veces se cayó al respaldo y el uso del caché de prompts.
+ */
+async function evaluarClaude(): Promise<void> {
+  if (!process.env.ANTHROPIC_API_KEY?.trim()) {
+    console.error('Falta ANTHROPIC_API_KEY: no se puede evaluar el modo Claude. No se escribió ningún informe.');
+    process.exit(1);
+  }
+  const consultas: InfoConsultaClaude[] = [];
+  const env = { ...process.env, ASISTENTE_MODO: 'claude' };
+  const asistente = crearAsistenteServidor({ env, opcionesClaude: { alConsultar: (i) => consultas.push(i) } });
+  if (asistente.modo !== 'claude') {
+    console.error('El asistente no quedó en modo Claude. Revisa ANTHROPIC_API_KEY y ASISTENTE_MODO.');
+    process.exit(1);
+  }
+  const banco = leerBanco();
+  const resultados = await correr(banco, (p) => asistente.responder(p));
+
+  const respaldos = resultados.filter((r) => r.respuesta.respaldo);
+  const modelos = [...new Set(resultados.map((r) => r.respuesta.modelo).filter((m): m is string => !!m))];
+  // El usage de nivel superior solo cubre el intento que produjo el mensaje. Si hubo fallback del
+  // servidor, los intentos rechazados y el del modelo de respaldo vienen en usage.iterations.
+  type Tokens = { input_tokens: number; output_tokens: number; cache_read_input_tokens: number | null; cache_creation_input_tokens: number | null };
+  const intentos = (i: InfoConsultaClaude): Tokens[] => {
+    if (!i.uso) return [];
+    return i.uso.iterations && i.uso.iterations.length > 0 ? i.uso.iterations : [i.uso];
+  };
+  const suma = (f: (t: Tokens) => number | null | undefined) =>
+    consultas.reduce((a, i) => a + intentos(i).reduce((b, t) => b + (f(t) ?? 0), 0), 0);
+  const leidosCache = suma((t) => t.cache_read_input_tokens);
+  const escritosCache = suma((t) => t.cache_creation_input_tokens);
+  const entradaSinCache = suma((t) => t.input_tokens);
+  const salida = suma((t) => t.output_tokens);
+  const modeloPedido = process.env.ANTHROPIC_MODELO?.trim() || 'claude-opus-5-5';
+  const porFallback = consultas.filter(
+    (i) => i.uso?.iterations?.some((t) => t.type === 'fallback_message') || (i.modelo !== null && i.modelo !== modeloPedido),
+  ).length;
+  const descartes = consultas.filter((i) => i.descarte);
+  const motivosDescarte = [...new Set(descartes.map((i) => i.descarte))].join(', ') || 'ninguno';
+  const tiempos = consultas.map((i) => i.ms);
+
+  const l: string[] = [];
+  l.push('# Evaluación del asistente con Claude', '');
+  l.push('Archivo generado por `npm run eval:asistente -- --claude` (scripts/eval-asistente.ts). No editar a mano.', '');
+  l.push(`- Fecha de ejecución: ${new Date().toISOString().slice(0, 10)}`);
+  l.push(`- Modelo pedido: ${modeloPedido}. Modelos que respondieron: ${modelos.join(', ') || 'ninguno'}.`);
+  l.push(`- Esfuerzo: ${process.env.ASISTENTE_ESFUERZO?.trim() || 'low'}. Tiempo máximo: ${process.env.ASISTENTE_TIMEOUT_MS?.trim() || '12000'} ms.`);
+  l.push('- Sin prefiltro de tema: Claude clasifica "fuera_de_tema". Si Claude falla, responde el modo verificado (con su detector de tema).');
+  l.push(`- Banco: ${banco.length} preguntas. Mismos criterios de acierto que \`docs/evaluacion/asistente.md\`.`);
+  l.push('- Los tiempos incluyen la red hasta la API de Anthropic, medidos desde este computador.');
+  l.push('');
+  l.push(...seccionResultados('Resultados con Claude', resultados));
+  l.push('## Respaldo y caché', '');
+  l.push('| Métrica | Valor |', '|---|---|');
+  l.push(`| Respuestas que cayeron al modo verificado | ${respaldos.length} de ${resultados.length} (${[...new Set(respaldos.map((r) => r.respuesta.respaldo))].join(', ') || 'ninguna'}) |`);
+  l.push(`| Respuestas servidas por el fallback del servidor (otro modelo) | ${porFallback} de ${consultas.length} |`);
+  l.push(`| Textos de Claude descartados por la revisión (abstención) | ${descartes.length} (${motivosDescarte}) |`);
+  l.push(`| Tiempo de la llamada a Claude p50 | ${percentil(tiempos, 50).toFixed(0)} ms |`);
+  l.push(`| Tiempo de la llamada a Claude p95 | ${percentil(tiempos, 95).toFixed(0)} ms |`);
+  l.push(`| Tokens leídos del caché | ${leidosCache} |`);
+  l.push(`| Tokens escritos en el caché | ${escritosCache} |`);
+  l.push(`| Tokens de entrada sin caché | ${entradaSinCache} |`);
+  l.push(`| Tokens de salida (incluye razonamiento) | ${salida} |`);
+  l.push('');
+  l.push('Los tokens suman todos los intentos de cada consulta (`usage.iterations`), incluidos los rechazados y los del modelo de respaldo.', '');
+  mkdirSync(path.dirname(SALIDA_CLAUDE), { recursive: true });
+  writeFileSync(SALIDA_CLAUDE, `${l.join('\n')}\n`, 'utf8');
+
+  const s = resumir(resultados);
+  console.log(`Citas pertinentes: ${s.pertinentes}/${s.con.length} (${pct(s.pertinentes, s.con.length)})`);
+  console.log(`Falsas abstenciones: ${s.falsasAbstenciones}/${s.con.length}; con cita no pertinente: ${s.noPertinentes}; marcadas fuera de tema: ${s.conFueraDeTema}`);
+  console.log(`Abstenciones correctas: ${s.abstencionesCorrectas}/${s.sin.length}`);
+  console.log(`Fuera de tema correctos: ${s.fueraCorrectos}/${s.fuera.length}`);
+  console.log(`Respaldos al modo verificado: ${respaldos.length}/${resultados.length}`);
+  console.log(`p50 ${percentil(resultados.map((r) => r.ms), 50).toFixed(0)} ms, p95 ${percentil(resultados.map((r) => r.ms), 95).toFixed(0)} ms`);
+  console.log(`Informe escrito en ${path.relative(RAIZ, SALIDA_CLAUDE)}`);
+}
+
 async function main(): Promise<void> {
+  if (process.argv.includes('--claude')) {
+    await evaluarClaude();
+    return;
+  }
   const argUrl = process.argv.indexOf('--url');
   const url = argUrl >= 0 ? process.argv[argUrl + 1] : undefined;
   const rapido = process.argv.includes('--rapido');
@@ -629,9 +725,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const banco = (JSON.parse(readFileSync(path.join(RAIZ, 'data', 'banco-evaluacion.json'), 'utf8')) as {
-    preguntas: PreguntaBanco[];
-  }).preguntas;
+  const banco = leerBanco();
   const proveedor = new ProveedorVerificado(PREGUNTAS_VERIFICADAS, obtenerBaseNormativa());
   const asistente = new AsistenteNormativo(proveedor, new DetectorTema(), obtenerBaseNormativa());
   const enProceso = await correr(banco, (p) => asistente.responder(p));
