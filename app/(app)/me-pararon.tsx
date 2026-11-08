@@ -11,8 +11,22 @@ import { explicacionSinUbicacion, ServicioUbicacion } from '../../src/services/S
 import { useCasos } from '../../src/state/casos';
 import { obtenerRepositorioCasos } from '../../src/state/servicios';
 import { useSesion } from '../../src/state/sesion';
-import { Alerta, Boton, EtiquetaEstado, Pantalla, Tarjeta, TarjetaCita, Texto, Titulo, useTema } from '../../src/ui';
+import {
+  Alerta,
+  Boton,
+  Cargando,
+  EtiquetaEstado,
+  Icono,
+  Pantalla,
+  Seccion,
+  Tarjeta,
+  TarjetaCita,
+  Texto,
+  useTema,
+} from '../../src/ui';
+import { DatoEnLinea } from '../../src/ui/caso/DatoEnLinea';
 import { fechaHoraEvidencia, SeccionEvidencias } from '../../src/ui/caso/SeccionEvidencias';
+import { AyudaPantalla } from '../../src/ui/guia/AyudaPantalla';
 
 type EstadoAudio = { estado: 'preparando' } | { estado: 'grabando'; desde: number } | { estado: 'sin_audio'; motivo: string };
 
@@ -27,7 +41,7 @@ function formatoTiempo(segundos: number): string {
  * fecha, hora y ubicacion. "Terminar" guarda el audio cifrado y abre el caso.
  */
 export default function MePararon() {
-  const { colores, espacio, radio, tipo } = useTema();
+  const { colores, espacio, radio, elevacion, medidas } = useTema();
   const actualizarEnLista = useCasos((s) => s.actualizarEnLista);
   const registro = useRef<RegistroMePararon | null>(null);
   const casoActual = useRef<Caso | null>(null);
@@ -105,42 +119,43 @@ export default function MePararon() {
   };
 
   return (
-    <Pantalla titulo="Me pararon" testID="pantalla-me-pararon">
+    <Pantalla
+      titulo="Me pararon"
+      descripcion="Graba lo que pasa con el agente. Toca “Terminar” cuando acabe."
+      testID="pantalla-me-pararon"
+      extraEncabezado={<AyudaPantalla pantalla="me-pararon" />}
+    >
       {audio.estado === 'grabando' ? (
         <View
           accessibilityRole="timer"
           accessibilityLabel={`Grabando. Tiempo ${formatoTiempo(segundos)}`}
           testID="indicador-grabando"
-          style={{
-            backgroundColor: colores.urgencia,
-            borderRadius: radio.l,
-            padding: espacio.l,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: espacio.m,
-            marginBottom: espacio.m,
-          }}
+          style={[
+            {
+              backgroundColor: colores.urgencia,
+              borderRadius: radio.xl,
+              padding: espacio.l,
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: espacio.m,
+              marginBottom: espacio.m,
+            },
+            elevacion.media,
+          ]}
         >
-          <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: colores.sobreUrgencia }} />
+          <Icono nombre="grabar" color="sobreUrgencia" tamano={medidas.cajaIcono} respaldo="●" />
           <View style={{ flex: 1 }}>
             <Texto negrita color="sobreUrgencia">
               Grabando
             </Texto>
-            <Texto
-              color="sobreUrgencia"
-              testID="tiempo-grabacion"
-              style={{ fontSize: tipo.destacado, lineHeight: tipo.alturaLinea(tipo.destacado), fontWeight: '800' }}
-            >
+            <Texto variante="destacado" color="sobreUrgencia" testID="tiempo-grabacion">
               {formatoTiempo(segundos)}
             </Texto>
           </View>
         </View>
       ) : audio.estado === 'preparando' ? (
-        <Tarjeta testID="preparando-microfono">
-          <Texto negrita>Preparando el micrófono…</Texto>
-          <Texto variante="nota" color="textoSuave">
-            Si el navegador te pregunta, permite usar el micrófono.
-          </Texto>
+        <Tarjeta titulo="Preparando el micrófono…" icono="microfono" testID="preparando-microfono">
+          <Texto color="textoSuave">Si el navegador te pregunta, permite usar el micrófono.</Texto>
         </Tarjeta>
       ) : (
         <Alerta titulo="No se está grabando audio" tono="aviso" anunciar testID="sin-audio">
@@ -148,12 +163,14 @@ export default function MePararon() {
         </Alerta>
       )}
 
-      <View style={{ marginBottom: espacio.m }}>
+      <View style={{ marginBottom: espacio.xl }}>
         <Boton
           etiqueta={terminando ? 'Guardando…' : 'Terminar'}
           descripcion="Detiene la grabación y guarda el caso"
           accessibilityRole="button"
           accessibilityLabel="Terminar. Detiene la grabación y guarda el caso"
+          icono="detener"
+          cargando={terminando}
           deshabilitado={terminando}
           onPress={() => void terminar()}
           testID="boton-terminar"
@@ -161,24 +178,32 @@ export default function MePararon() {
       </View>
 
       {errorCaso ? (
-        <Alerta titulo="Algo no salió bien" tono="urgente" anunciar testID="error-caso">
+        <Alerta titulo="Algo no salió bien" tono="peligro" anunciar testID="error-caso">
           <Texto>{errorCaso}</Texto>
         </Alerta>
       ) : null}
 
-      <Tarjeta titulo="Datos del momento" testID="datos-momento">
-        <Texto testID="fecha-hora-caso">Fecha y hora: {fechaHoraEvidencia(instante.toISOString())}</Texto>
+      <Tarjeta titulo="Datos del momento" icono="reloj" testID="datos-momento">
+        <DatoEnLinea etiqueta="Fecha y hora" testID="fecha-hora-caso">
+          {fechaHoraEvidencia(instante.toISOString())}
+        </DatoEnLinea>
         {caso === null ? (
-          <Texto testID="ubicacion-me-pararon">Ubicación: buscando dónde estás…</Texto>
+          <DatoEnLinea etiqueta="Ubicación" testID="ubicacion-me-pararon">
+            buscando dónde estás…
+          </DatoEnLinea>
         ) : caso.tieneUbicacion() ? (
-          <Texto testID="ubicacion-me-pararon">Ubicación: {caso.descripcionUbicacion()}</Texto>
+          <DatoEnLinea etiqueta="Ubicación" testID="ubicacion-me-pararon">
+            {caso.descripcionUbicacion()}
+          </DatoEnLinea>
         ) : (
           <>
             <View
               testID="ubicacion-me-pararon"
               style={{ flexDirection: 'row', gap: espacio.s, alignItems: 'center', flexWrap: 'wrap' }}
             >
-              <Texto>Ubicación:</Texto>
+              <Texto negrita color="textoSuave">
+                Ubicación:
+              </Texto>
               <EtiquetaEstado texto={caso.descripcionUbicacion()} tono="aviso" />
             </View>
             {caso.motivoSinUbicacion ? (
@@ -190,11 +215,11 @@ export default function MePararon() {
         )}
       </Tarjeta>
 
-      <Tarjeta testID="derechos-clave">
-        <Titulo nivel={2}>Tus derechos clave</Titulo>
-        <Texto variante="nota" color="textoSuave">
-          Salen de la ley. Toca el artículo para ver el texto exacto.
-        </Texto>
+      <Seccion
+        titulo="Tus derechos clave"
+        descripcion="Salen de la ley. Toca el artículo para ver el texto exacto."
+        testID="derechos-clave"
+      >
         {derechos.length === 0 ? (
           <Texto>No hay derechos verificados para mostrar.</Texto>
         ) : (
@@ -205,15 +230,9 @@ export default function MePararon() {
             </View>
           ))
         )}
-      </Tarjeta>
+      </Seccion>
 
-      {caso ? (
-        <SeccionEvidencias caso={caso} onCambio={alCambiarCaso} />
-      ) : (
-        <Tarjeta titulo="Evidencias">
-          <Texto>Preparando el caso…</Texto>
-        </Tarjeta>
-      )}
+      {caso ? <SeccionEvidencias caso={caso} onCambio={alCambiarCaso} /> : <Cargando texto="Preparando el caso" />}
     </Pantalla>
   );
 }

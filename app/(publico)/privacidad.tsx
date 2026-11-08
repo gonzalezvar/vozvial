@@ -18,8 +18,10 @@ const SECCIONES: { titulo: string; puntos: string[] }[] = [
   {
     titulo: 'Dónde quedan',
     puntos: [
-      'Solo en este celular, dentro del navegador, cifrados con una clave que sale de tu PIN.',
-      'VozVial no tiene un servidor de cuentas. Nadie más puede ver tus casos.',
+      'En este celular, dentro del navegador, cifrados con una clave que sale de tu PIN. Así "Me pararon" funciona sin internet.',
+      'También en el servidor de VozVial, para que puedas entrar desde otro celular con tu número y tu PIN. Al servidor tus casos, evidencias, nombre y la clave llegan ya cifrados desde tu celular, y el servidor no los puede leer.',
+      'En claro, el servidor solo guarda tu número de celular (para saber de quién es la cuenta), las fechas de cada cambio, el tamaño y el tipo de cada archivo.',
+      'Tu PIN y tu código de recuperación nunca viajan. El servidor guarda una huella de ellos que no sirve para abrir tus casos.',
     ],
   },
   {
@@ -27,6 +29,9 @@ const SECCIONES: { titulo: string; puntos: string[] }[] = [
     puntos: [
       'Cuando preguntas al asistente, solo viaja el texto de tu pregunta. Sin tu nombre, sin ubicación y sin audio.',
       'El servidor no guarda el contenido de tus preguntas.',
+      'Si el servidor tiene activada la IA Claude, para redactar la respuesta envía el texto de tu pregunta a Anthropic, la empresa que hace esa IA. Le llega solo ese texto, sin tus datos. Por eso no escribas tu nombre, tu cédula ni tu placa en la pregunta.',
+      'Anthropic puede guardar ese texto por un tiempo limitado, según sus propias reglas. Si el servidor no usa ninguna IA (modo verificado), la pregunta no sale de nuestro servidor. Si usa otro modelo de IA que configure el equipo, la pregunta va a ese servicio y no a Anthropic.',
+      'Cuando la IA está activada, el servidor cuenta cuántas preguntas llegan desde cada dirección de internet (IP), para evitar abusos. Guarda ese conteo en memoria hasta por un día y no lo junta con tu pregunta.',
       'Si dictas por voz en Chrome, el navegador envía el audio a Google para convertirlo en texto. Si no quieres, puedes escribir.',
     ],
   },

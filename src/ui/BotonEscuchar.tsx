@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { View } from 'react-native';
+import { View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { servicioLecturaVoz } from '../services/ServicioLecturaVoz';
 
@@ -12,12 +12,14 @@ interface PropsBotonEscuchar {
   /** Que se lee, para la etiqueta accesible. Por ejemplo "esta pantalla". */
   que?: string;
   etiqueta?: string;
-  variante?: 'primaria' | 'secundaria';
+  /** tonal es la del encabezado; secundaria, la de un boton dentro del contenido. */
+  variante?: 'primaria' | 'secundaria' | 'tonal';
   testID?: string;
+  style?: StyleProp<ViewStyle>;
 }
 
 /** Lee en voz alta en espanol (es-CO). Mientras lee, el boton dice "Detener". */
-export function BotonEscuchar({ texto, que = 'esta pantalla', etiqueta = 'Escuchar', variante = 'secundaria', testID }: PropsBotonEscuchar) {
+export function BotonEscuchar({ texto, que = 'esta pantalla', etiqueta = 'Escuchar', variante = 'secundaria', testID, style }: PropsBotonEscuchar) {
   const [leyendo, setLeyendo] = useState(false);
   const [sinVoz, setSinVoz] = useState(false);
   const montado = useRef(true);
@@ -48,8 +50,9 @@ export function BotonEscuchar({ texto, que = 'esta pantalla', etiqueta = 'Escuch
   };
 
   return (
-    <View style={{ gap: 4 }}>
+    <View style={[{ gap: 4 }, style]}>
       <Boton
+        icono={leyendo ? 'detener' : 'escuchar'}
         etiqueta={leyendo ? 'Detener' : etiqueta}
         accessibilityRole="button"
         accessibilityLabel={leyendo ? `Detener la lectura de ${que}` : `${etiqueta}: leer en voz alta ${que}`}

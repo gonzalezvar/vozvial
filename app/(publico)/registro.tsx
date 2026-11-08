@@ -5,10 +5,11 @@ import { Platform, View } from 'react-native';
 import { ValidadorRegistro, type CampoRegistro } from '../../src/core/ValidadorRegistro';
 import { ErrorCuenta } from '../../src/services/ServicioCuenta';
 import { servicioLecturaVoz } from '../../src/services/ServicioLecturaVoz';
+import { abrirSesion } from '../../src/state/cuenta';
 import { useRegistro } from '../../src/state/registro';
 import { obtenerServicioCuenta } from '../../src/state/servicios';
-import { useSesion } from '../../src/state/sesion';
 import { Alerta, Boton, CampoTexto, Casilla, Enlace, Pantalla, Texto, useTema } from '../../src/ui';
+import { AyudaPantalla } from '../../src/ui/guia/AyudaPantalla';
 
 type Errores = Partial<Record<CampoRegistro, string>>;
 
@@ -40,7 +41,7 @@ export default function Registro() {
   // Cambia en cada intento fallido para volver a enfocar aunque el primer error sea el mismo.
   const [intentoFallido, setIntentoFallido] = useState(0);
   const [creando, setCreando] = useState(false);
-  const [fallo, setFallo] = useState<string | null>(null);
+  const [fallo, setFallo] = useState<{ mensaje: string; celularEnUso: boolean } | null>(null);
 
   useEffect(() => {
     if (intentoFallido === 0) return;
@@ -64,23 +65,30 @@ export default function Registro() {
     setCreando(true);
     try {
       const creada = await obtenerServicioCuenta().crearCuenta({ nombre, celular, pin });
-      useRegistro.getState().fijarCodigo(creada.codigoRecuperacion);
-      useSesion.getState().iniciar(creada.claveDatos, creada.perfil);
+      useRegistro.getState().fijarCodigo(creada.codigoRecuperacion, creada.respaldo);
+      await abrirSesion(creada);
       router.replace('/codigo-recuperacion');
     } catch (error) {
+      const motivo = error instanceof ErrorCuenta ? error.motivo : null;
       const mensaje =
-        error instanceof ErrorCuenta && error.motivo === 'ya_existe'
-          ? 'Ya hay una cuenta en este celular. Entra con tu PIN.'
-          : 'No pudimos crear la cuenta. Intenta de nuevo.';
-      setFallo(mensaje);
+        motivo === 'celular_en_uso'
+          ? 'Ya hay una cuenta con ese celular. Entra con tu celular y tu PIN.'
+          : motivo === 'ya_existe'
+            ? 'Ya hay una cuenta en este celular. Entra con tu PIN.'
+            : 'No pudimos crear la cuenta. Intenta de nuevo.';
+      setFallo({ mensaje, celularEnUso: motivo === 'celular_en_uso' || motivo === 'ya_existe' });
       servicioLecturaVoz.leer(mensaje);
       setCreando(false);
     }
   };
 
   return (
-    <Pantalla titulo="Crear mi cuenta" volverA="/bienvenida">
-      <Texto style={{ marginBottom: espacio.l }}>Llena tus datos. Solo tú podrás ver tus casos.</Texto>
+    <Pantalla
+      titulo="Crear mi cuenta"
+      descripcion="Llena tus datos. Solo tú podrás ver tus casos, en este celular o en otro."
+      volverA="/bienvenida"
+      extraEncabezado={<AyudaPantalla pantalla="registro" />}
+    >
 
       <CampoTexto
         etiqueta="Tu nombre"
@@ -92,7 +100,7 @@ export default function Registro() {
       />
       <CampoTexto
         etiqueta="Tu celular"
-        ayuda="10 dígitos, empieza por 3"
+        ayuda="10 dígitos, empieza por 3. Con tu celular y tu PIN entras desde otro dispositivo."
         valor={celular}
         alCambiar={setCelular}
         teclado="phone-pad"
@@ -154,8 +162,18 @@ export default function Registro() {
       </View>
 
       {fallo ? (
-        <Alerta titulo="No se creó la cuenta" tono="urgente" anunciar testID="fallo-registro">
-          {fallo}
+        <Alerta
+          titulo="No se creó la cuenta"
+          tono="peligro"
+          anunciar
+          testID="fallo-registro"
+          accion={
+            fallo.celularEnUso
+              ? { etiqueta: 'Entrar con mi celular', accessibilityLabel: 'Entrar con mi celular y mi PIN', href: '/entrar', icono: 'llave' }
+              : undefined
+          }
+        >
+          {fallo.mensaje}
         </Alerta>
       ) : null}
 
@@ -163,10 +181,15 @@ export default function Registro() {
         etiqueta={creando ? 'Creando tu cuenta…' : 'Crear cuenta'}
         accessibilityRole="button"
         accessibilityLabel={creando ? 'Creando tu cuenta' : 'Crear cuenta'}
+        icono="usuario"
+        cargando={creando}
         deshabilitado={creando}
         onPress={() => void crear()}
         testID="crear-cuenta"
       />
+      <Texto variante="nota" color="textoSuave" centrado style={{ marginTop: espacio.m }}>
+        Tus casos se guardan cifrados en este celular y en el servidor. El servidor no los puede leer.
+      </Texto>
     </Pantalla>
   );
 }

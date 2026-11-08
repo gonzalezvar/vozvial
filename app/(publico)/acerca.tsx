@@ -1,9 +1,7 @@
-import { View } from 'react-native';
-
-import { EtiquetaEstado, Pantalla, Tarjeta, Texto, Titulo, useTema } from '../../src/ui';
+import { Lista, ListaItem, Pantalla, Seccion } from '../../src/ui';
 import { LO_REAL, LO_SIMULADO, type ElementoAcerca } from '../../src/ui/contenidoAcerca';
 
-function Lista({
+function ListaAcerca({
   elementos,
   testID,
   conEstado = true,
@@ -12,45 +10,38 @@ function Lista({
   testID: string;
   conEstado?: boolean;
 }) {
-  const { espacio, colores } = useTema();
   return (
-    <View accessibilityRole="list" testID={testID} style={{ gap: espacio.s, marginBottom: espacio.l }}>
+    <Lista testID={testID}>
       {elementos.map((e) => (
-        <View
+        <ListaItem
           key={e.titulo}
-          accessibilityRole="listitem"
-          style={{ borderBottomWidth: 1, borderBottomColor: colores.bordeSuave, paddingBottom: espacio.s, gap: espacio.xs }}
-        >
-          <Texto negrita>{e.titulo}</Texto>
-          <Texto color="textoSuave">{e.detalle}</Texto>
-          {conEstado ? (
-            <EtiquetaEstado
-              texto={e.estado === 'listo' ? 'Ya funciona' : 'En construcción'}
-              tono={e.estado === 'listo' ? 'exito' : 'neutro'}
-            />
-          ) : null}
-        </View>
+          titulo={e.titulo}
+          descripcion={e.detalle}
+          estado={
+            conEstado
+              ? { texto: e.estado === 'listo' ? 'Ya funciona' : 'En construcción', tono: e.estado === 'listo' ? 'exito' : 'neutro' }
+              : undefined
+          }
+        />
       ))}
-    </View>
+    </Lista>
   );
 }
 
 export default function Acerca() {
-  const { espacio } = useTema();
   return (
-    <Pantalla titulo="Acerca del prototipo" volverA="/bienvenida">
-      <Texto style={{ marginBottom: espacio.l }}>
-        VozVial es el prototipo de un proyecto universitario. Aquí te contamos qué hace de verdad y qué está simulado.
-      </Texto>
-      <Tarjeta>
-        <Titulo nivel={2}>Lo que es real</Titulo>
-        <Lista elementos={LO_REAL} testID="lista-real" />
-      </Tarjeta>
-      <Tarjeta>
-        <Titulo nivel={2}>Lo que es simulado o tiene límites</Titulo>
+    <Pantalla
+      titulo="Acerca del prototipo"
+      descripcion="VozVial es el prototipo de un proyecto universitario. Aquí ves qué hace de verdad y qué está simulado."
+      volverA="/bienvenida"
+    >
+      <Seccion titulo="Lo que es real" descripcion="Funciona en la app tal como se describe.">
+        <ListaAcerca elementos={LO_REAL} testID="lista-real" />
+      </Seccion>
+      <Seccion titulo="Lo que es simulado o tiene límites" descripcion="Léelo antes de confiar en un resultado.">
         {/* En los limites la etiqueta "Ya funciona" confundiria: solo se listan. */}
-        <Lista elementos={LO_SIMULADO} testID="lista-simulado" conEstado={false} />
-      </Tarjeta>
+        <ListaAcerca elementos={LO_SIMULADO} testID="lista-simulado" conEstado={false} />
+      </Seccion>
     </Pantalla>
   );
 }

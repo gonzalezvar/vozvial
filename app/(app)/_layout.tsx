@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { Platform, View } from 'react-native';
 
 import { CONFIG } from '../../src/state/configuracion';
+import { cerrarSesion } from '../../src/state/cuenta';
+import { obtenerSincronizador } from '../../src/state/servicios';
 import { useSesion } from '../../src/state/sesion';
 import { colores } from '../../src/ui/tema';
 
@@ -17,15 +19,18 @@ export default function LayoutApp() {
     if (!conSesion) return;
     const { tocar } = useSesion.getState();
     tocar();
+    // Al volver internet se suben los cambios que quedaron pendientes.
+    const alVolverConexion = () => void obtenerSincronizador()?.sincronizarTodo();
     if (Platform.OS === 'web' && typeof document !== 'undefined') {
       for (const evento of EVENTOS_ACTIVIDAD) document.addEventListener(evento, tocar, { capture: true, passive: true });
+      window.addEventListener('online', alVolverConexion);
     }
     // Revisa seguido para cerrar a tiempo tambien cuando la pestana vuelve de segundo plano.
     const intervalo = setInterval(
       () => {
-        const { ultimaActividad, cerrar } = useSesion.getState();
+        const { ultimaActividad } = useSesion.getState();
         if (Date.now() - ultimaActividad >= CONFIG.inactividadMs) {
-          cerrar('inactividad');
+          cerrarSesion('inactividad');
           router.replace('/entrar');
         }
       },
@@ -35,6 +40,7 @@ export default function LayoutApp() {
       clearInterval(intervalo);
       if (Platform.OS === 'web' && typeof document !== 'undefined') {
         for (const evento of EVENTOS_ACTIVIDAD) document.removeEventListener(evento, tocar, { capture: true });
+        window.removeEventListener('online', alVolverConexion);
       }
     };
   }, [conSesion]);

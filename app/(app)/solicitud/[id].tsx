@@ -1,22 +1,23 @@
 import { useState } from 'react';
-import { View } from 'react-native';
 
-import { Alerta, Boton, CampoTexto, Pantalla, Tarjeta, Texto, Titulo, useTema } from '../../../src/ui';
+import { Alerta, Boton, CampoTexto, Pantalla, Seccion, Tarjeta, Texto, useTema } from '../../../src/ui';
 import { NOMBRE_EJEMPLO } from '../../../src/ui/ejemplos';
+import { AyudaPantalla } from '../../../src/ui/guia/AyudaPantalla';
 
 export default function Solicitud() {
-  const { colores, espacio, radio } = useTema();
+  const { espacio } = useTema();
   const [cedula, setCedula] = useState('');
   const [vistaPrevia, setVistaPrevia] = useState(false);
   const [mensaje, setMensaje] = useState<string | null>(null);
 
   return (
-    <Pantalla titulo="Solicitud de audiencia" volverA="/casos" ejemplo="Simulación: todavía no se genera el PDF.">
-      <Texto style={{ marginBottom: espacio.m }}>
-        Con este documento pides la audiencia para decir que no estás de acuerdo con el comparendo. Tú lo presentas ante
-        el organismo de tránsito.
-      </Texto>
-
+    <Pantalla
+      titulo="Solicitud de audiencia"
+      descripcion="Con este documento pides la audiencia para decir que no estás de acuerdo con el comparendo. Tú lo presentas ante el organismo de tránsito."
+      volverA="/casos"
+      ejemplo="Simulación: todavía no se genera el PDF."
+      extraEncabezado={<AyudaPantalla pantalla="solicitud" />}
+    >
       {!vistaPrevia ? (
         <Alerta titulo="Falta un dato" tono="aviso" testID="datos-faltantes">
           <Texto>Para generar la solicitud falta tu cédula.</Texto>
@@ -29,26 +30,15 @@ export default function Solicitud() {
         etiqueta="Generar solicitud"
         accessibilityRole="button"
         accessibilityLabel="Generar solicitud"
+        icono="solicitud"
+        variante={vistaPrevia ? 'secundaria' : 'primaria'}
         onPress={() => setVistaPrevia(true)}
-        style={{ marginBottom: espacio.l }}
         testID="generar-solicitud"
       />
 
       {vistaPrevia ? (
-        <>
-          <Titulo nivel={2}>Vista previa</Titulo>
-          <View
-            testID="vista-previa"
-            style={{
-              backgroundColor: colores.superficie,
-              borderWidth: 1,
-              borderColor: colores.borde,
-              borderRadius: radio.s,
-              padding: espacio.l,
-              marginVertical: espacio.m,
-              gap: espacio.s,
-            }}
-          >
+        <Seccion titulo="Vista previa" descripcion="Así se verá el documento. Los datos son de ejemplo." style={{ marginTop: espacio.xl }}>
+          <Tarjeta testID="vista-previa" style={{ marginBottom: 0 }}>
             <Texto negrita centrado>
               Solicitud de audiencia (ejemplo)
             </Texto>
@@ -65,16 +55,15 @@ export default function Solicitud() {
               Normas citadas
             </Texto>
             <Texto variante="nota">Norma y artículo de la base verificada (ejemplo).</Texto>
-          </View>
-          <Tarjeta>
-            <Boton
-              etiqueta="Descargar PDF"
-              accessibilityRole="button"
-              accessibilityLabel="Descargar PDF de la solicitud"
-              onPress={() => setMensaje('En el prototipo final se descarga solicitud-audiencia-<numero>.pdf.')}
-            />
           </Tarjeta>
-        </>
+          <Boton
+            etiqueta="Descargar PDF"
+            accessibilityRole="button"
+            accessibilityLabel="Descargar PDF de la solicitud"
+            icono="descargar"
+            onPress={() => setMensaje('En el prototipo final se descarga solicitud-audiencia-<numero>.pdf.')}
+          />
+        </Seccion>
       ) : null}
 
       {mensaje ? (

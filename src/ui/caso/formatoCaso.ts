@@ -2,6 +2,11 @@ import type { Caso } from '../../core/Caso';
 
 const ZONA = 'America/Bogota';
 
+/** "10:15 a. m." con espacios no separables: la hora nunca se parte en dos lineas. */
+export function horaSinCorte(hora: string): string {
+  return hora.replace(/\s*([ap])\.\s*m\./g, '\u00A0$1.\u00A0m.');
+}
+
 /** "sábado 8 de noviembre de 2026, 10:15 a. m." en hora de Colombia. */
 export function fechaHoraCaso(caso: Caso): string {
   const d = new Date(caso.creadoEn);
@@ -13,7 +18,7 @@ export function fechaHoraCaso(caso: Caso): string {
     year: 'numeric',
   }).format(d);
   const hora = new Intl.DateTimeFormat('es-CO', { timeZone: ZONA, hour: 'numeric', minute: '2-digit' }).format(d);
-  return `${fecha.replace(',', '')}, ${hora}`;
+  return `${fecha.replace(',', '')}, ${horaSinCorte(hora)}`;
 }
 
 /** Titulo corto: el numero de comparendo si lo hay, si no la fecha del caso. */

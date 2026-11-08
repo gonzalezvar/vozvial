@@ -57,7 +57,7 @@ function OpcionRadio<T extends string>({ opcion, elegida, alElegir }: { opcion: 
           minHeight: medidas.altoMinimoBoton,
           padding: espacio.m,
           borderRadius: radio.m,
-          borderWidth: elegida ? 3 : 2,
+          borderWidth: 2,
           borderColor: elegida ? colores.primario : colores.borde,
           backgroundColor: elegida ? colores.primarioSuave : colores.superficie,
         },
@@ -69,13 +69,14 @@ function OpcionRadio<T extends string>({ opcion, elegida, alElegir }: { opcion: 
           width: 28,
           height: 28,
           borderRadius: 14,
-          borderWidth: 3,
-          borderColor: colores.primario,
+          borderWidth: 2,
+          borderColor: elegida ? colores.primario : colores.borde,
+          backgroundColor: colores.superficie,
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        {elegida ? <View style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: colores.primario }} /> : null}
+        {elegida ? <View style={{ width: 16, height: 16, borderRadius: 8, backgroundColor: colores.primario }} /> : null}
       </View>
       <View style={{ flex: 1 }}>
         <Texto negrita>{opcion.etiqueta}</Texto>

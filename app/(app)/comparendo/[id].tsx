@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 
 import infraccionesJSON from '../../../data/infracciones.json';
 import type { Caso } from '../../../src/core/Caso';
@@ -9,8 +9,10 @@ import { obtenerBaseNormativa } from '../../../src/core/cargarDatos';
 import { FechaCivil } from '../../../src/core/FechaCivil';
 import { ACCION_PLAZO, obtenerServicioPlazos, type EstadoPlazo } from '../../../src/services/ServicioPlazos';
 import { obtenerRepositorioCasos } from '../../../src/state/servicios';
-import { Alerta, Boton, Pantalla, Tarjeta, TarjetaCita, Texto, useTema } from '../../../src/ui';
+import { Alerta, Boton, Cargando, EstadoVacio, Pantalla, Tarjeta, TarjetaCita, Texto, useTema } from '../../../src/ui';
+import { DatoEnLinea } from '../../../src/ui/caso/DatoEnLinea';
 import { ETIQUETA_TIPO, fechaCorta, obtenerCatalogo, sancionLegible, ubicacionEnArticulo } from '../../../src/ui/caso/datosComparendo';
+import { AyudaPantalla } from '../../../src/ui/guia/AyudaPantalla';
 
 type Carga = { estado: 'cargando' } | { estado: 'listo'; caso: Caso } | { estado: 'no_existe' } | { estado: 'error' };
 
@@ -21,7 +23,6 @@ function formatoPesos(valor: number): string {
 }
 
 export default function DetalleComparendo() {
-  const { colores } = useTema();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [carga, setCarga] = useState<Carga>({ estado: 'cargando' });
 
@@ -40,9 +41,14 @@ export default function DetalleComparendo() {
     return (
       <Pantalla titulo={carga.estado === 'cargando' ? 'Abriendo el comparendo' : 'Comparendo no disponible'} volverA="/casos">
         {carga.estado === 'cargando' ? (
-          <ActivityIndicator size="large" color={colores.primario} accessibilityLabel="Abriendo el comparendo" />
+          <Cargando texto="Abriendo el comparendo" />
         ) : (
-          <Alerta titulo={carga.estado === 'no_existe' ? 'Este caso no existe' : 'No pudimos abrir el caso'} tono="aviso" anunciar>
+          <Alerta
+            titulo={carga.estado === 'no_existe' ? 'Este caso no existe' : 'No pudimos abrir el caso'}
+            tono={carga.estado === 'no_existe' ? 'aviso' : 'peligro'}
+            anunciar
+            accion={{ etiqueta: 'Ir a mis casos', accessibilityLabel: 'Ir a mis casos', href: '/casos', icono: 'casos' }}
+          >
             {carga.estado === 'no_existe' ? 'Puede que lo hayas borrado.' : 'Intenta de nuevo.'}
           </Alerta>
         )}
@@ -55,12 +61,16 @@ export default function DetalleComparendo() {
   if (!comparendo) {
     return (
       <Pantalla titulo="Tu comparendo" volverA={`/casos/${caso.id}`}>
-        <Texto>Este caso todavía no tiene comparendo.</Texto>
-        <Boton
-          etiqueta="Registrar el comparendo"
-          accessibilityRole="link"
-          accessibilityLabel="Registrar el comparendo de este caso"
-          href={{ pathname: '/comparendo/nuevo', params: { caso: caso.id } }}
+        <EstadoVacio
+          icono="comparendo"
+          titulo="Este caso todavía no tiene comparendo"
+          texto="Regístralo para ver qué significa la infracción y cuánto tiempo tienes."
+          accion={{
+            etiqueta: 'Registrar el comparendo',
+            accessibilityLabel: 'Registrar el comparendo de este caso',
+            href: { pathname: '/comparendo/nuevo', params: { caso: caso.id } },
+            icono: 'comparendo',
+          }}
         />
       </Pantalla>
     );
@@ -75,7 +85,48 @@ export default function DetalleComparendo() {
   const infraccion = obtenerCatalogo().buscar(comparendo.codigoInfraccion);
 
   return (
-    <Pantalla titulo="Tu comparendo" volverA={`/casos/${caso.id}`} testID="detalle-comparendo">
+    <Pantalla
+      titulo="Tu comparendo"
+      descripcion="Tu plazo, qué significa la infracción y cuánto cuesta, con la ley de donde sale."
+      volverA={`/casos/${caso.id}`}
+      testID="detalle-comparendo"
+      extraEncabezado={<AyudaPantalla pantalla="comparendo" />}
+      pie={
+        <>
+          <Boton
+            etiqueta="Ver el caso"
+            accessibilityRole="link"
+            accessibilityLabel="Ver el caso completo"
+            icono="casos"
+            href={`/casos/${caso.id}`}
+          />
+          <Boton
+            etiqueta="Generar solicitud"
+            accessibilityRole="link"
+            accessibilityLabel="Generar solicitud de audiencia"
+            variante="secundaria"
+            icono="solicitud"
+            href={`/solicitud/${caso.id}`}
+          />
+          <Boton
+            etiqueta="Preguntar sobre esto"
+            accessibilityRole="link"
+            accessibilityLabel="Preguntar sobre esto al asistente"
+            variante="secundaria"
+            icono="conversacion"
+            href="/asistente"
+          />
+          <Boton
+            etiqueta="Corregir los datos"
+            accessibilityRole="link"
+            accessibilityLabel="Corregir los datos del comparendo"
+            variante="texto"
+            icono="nota"
+            href={{ pathname: '/comparendo/nuevo', params: { caso: caso.id } }}
+          />
+        </>
+      }
+    >
       {plazo ? (
         <PanelPlazo plazo={plazo} fotodeteccion={comparendo.tipo === 'fotodeteccion'} />
       ) : (
@@ -84,12 +135,12 @@ export default function DetalleComparendo() {
         </Alerta>
       )}
 
-      <Tarjeta titulo="Datos del comparendo" testID="datos-comparendo">
-        <Texto>Número: {comparendo.numero}</Texto>
-        <Texto>Fecha de la infracción: {fechaCorta(comparendo.fecha)}</Texto>
-        <Texto>Placa: {comparendo.placa ?? 'Sin placa'}</Texto>
-        <Texto>Código: {comparendo.codigoInfraccion}</Texto>
-        <Texto>Cómo fue: {ETIQUETA_TIPO[comparendo.tipo]}</Texto>
+      <Tarjeta titulo="Datos del comparendo" icono="comparendo" testID="datos-comparendo">
+        <DatoEnLinea etiqueta="Número">{comparendo.numero}</DatoEnLinea>
+        <DatoEnLinea etiqueta="Fecha de la infracción">{fechaCorta(comparendo.fecha)}</DatoEnLinea>
+        <DatoEnLinea etiqueta="Placa">{comparendo.placa ?? 'Sin placa'}</DatoEnLinea>
+        <DatoEnLinea etiqueta="Código">{comparendo.codigoInfraccion}</DatoEnLinea>
+        <DatoEnLinea etiqueta="Cómo fue">{ETIQUETA_TIPO[comparendo.tipo]}</DatoEnLinea>
         {comparendo.fechaNotificacion ? (
           <Texto>Recibiste la notificación el {fechaCorta(comparendo.fechaNotificacion)}</Texto>
         ) : null}
@@ -105,31 +156,6 @@ export default function DetalleComparendo() {
           Revisa el código o pregunta en el organismo de tránsito.
         </Alerta>
       )}
-
-      <View style={{ gap: 16 }}>
-        <Boton etiqueta="Ver el caso" accessibilityRole="link" accessibilityLabel="Ver el caso completo" href={`/casos/${caso.id}`} />
-        <Boton
-          etiqueta="Generar solicitud"
-          accessibilityRole="link"
-          accessibilityLabel="Generar solicitud de audiencia"
-          variante="secundaria"
-          href={`/solicitud/${caso.id}`}
-        />
-        <Boton
-          etiqueta="Preguntar sobre esto"
-          accessibilityRole="link"
-          accessibilityLabel="Preguntar sobre esto al asistente"
-          variante="secundaria"
-          href="/asistente"
-        />
-        <Boton
-          etiqueta="Corregir los datos"
-          accessibilityRole="link"
-          accessibilityLabel="Corregir los datos del comparendo"
-          variante="secundaria"
-          href={{ pathname: '/comparendo/nuevo', params: { caso: caso.id } }}
-        />
-      </View>
     </Pantalla>
   );
 }
@@ -165,6 +191,8 @@ function PanelPlazo({ plazo, fotodeteccion }: { plazo: EstadoPlazo; fotodeteccio
           verFuentes ? 'Ocultar de dónde sale el plazo' : '¿De dónde sale este plazo? Ver las normas de las que sale'
         }
         variante="secundaria"
+        icono="ley"
+        iconoFinal={verFuentes ? 'arriba' : 'abajo'}
         onPress={() => setVerFuentes((v) => !v)}
       />
       {verFuentes ? (
@@ -180,16 +208,19 @@ function PanelPlazo({ plazo, fotodeteccion }: { plazo: EstadoPlazo; fotodeteccio
 
 /** CA-10.1: descripción sencilla, artículo y texto literal desplegable. */
 function SignificadoInfraccion({ infraccion }: { infraccion: Infraccion }) {
-  const { colores, espacio, radio } = useTema();
+  const { colores, espacio, radio, tipo, peso } = useTema();
   const [abierto, setAbierto] = useState(false);
   const cita = obtenerBaseNormativa().cita(infraccion.articuloId);
   const articulo = cita ? `Artículo ${cita.articulo} de la ${cita.norma}` : 'Código Nacional de Tránsito';
   return (
-    <Tarjeta titulo="Qué significa" testID="significado-infraccion">
-      <Texto variante="destacado" testID="descripcion-sencilla">
+    <Tarjeta titulo="Qué significa" icono="ley" testID="significado-infraccion">
+      <Texto
+        testID="descripcion-sencilla"
+        style={{ fontSize: tipo.subtitulo, lineHeight: tipo.alturaLinea(tipo.subtitulo), fontWeight: peso.medio }}
+      >
         {infraccion.descripcionSencilla}
       </Texto>
-      <Texto testID="articulo-infraccion" style={{ marginVertical: espacio.s }}>
+      <Texto testID="articulo-infraccion" color="textoSuave">
         Código {infraccion.codigo}. {articulo}, {ubicacionEnArticulo(infraccion)}.
       </Texto>
       {infraccion.otrasConsecuencias ? <Texto>{infraccion.otrasConsecuencias}</Texto> : null}
@@ -197,20 +228,22 @@ function SignificadoInfraccion({ infraccion }: { infraccion: Infraccion }) {
         etiqueta={abierto ? 'Ocultar el texto de la ley' : 'Ver el texto de la ley'}
         accessibilityRole="button"
         accessibilityLabel={abierto ? 'Ocultar el texto de la ley' : 'Ver el texto de la ley, tal como está escrito'}
-        variante="secundaria"
+        variante="texto"
+        alineacion="inicio"
+        iconoFinal={abierto ? 'arriba' : 'abajo'}
         onPress={() => setAbierto((a) => !a)}
         testID="ver-texto-literal"
       />
       {abierto ? (
-        <View style={{ gap: espacio.s, marginTop: espacio.m }}>
+        <View style={{ gap: espacio.s }}>
           <View
             testID="texto-literal"
             style={{
-              borderLeftWidth: 4,
-              borderLeftColor: colores.bordeSuave,
+              borderLeftWidth: espacio.xs,
+              borderLeftColor: colores.borde,
               backgroundColor: colores.superficieAlterna,
               padding: espacio.m,
-              borderRadius: radio.s,
+              borderRadius: radio.m,
             }}
           >
             <Texto>“{infraccion.descripcionLiteral}”</Texto>
@@ -241,7 +274,7 @@ function ValorInfraccion({ infraccion, anio }: { infraccion: Infraccion; anio: n
   const sancion = sancionLegible(infraccion);
 
   return (
-    <Tarjeta titulo="Cuánto cuesta" testID="valor-referencia">
+    <Tarjeta titulo="Cuánto cuesta" icono="info" testID="valor-referencia">
       {valor ? (
         <Texto negrita>
           Valor de referencia para {valor.vigencia} según {valor.fuente}: {formatoPesos(valor.pesos)}. Confirma en SIMIT.

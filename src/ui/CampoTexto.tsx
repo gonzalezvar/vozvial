@@ -2,7 +2,8 @@ import { useId, useState } from 'react';
 import { TextInput, View, type KeyboardTypeOptions } from 'react-native';
 
 import { useTema } from './estadoAjustes';
-import { aria } from './foco';
+import { aria, estiloFoco } from './foco';
+import { Icono } from './Icono';
 import { Texto } from './Texto';
 
 export interface PropsCampoTexto {
@@ -21,6 +22,10 @@ export interface PropsCampoTexto {
   maxLength?: number;
   placeholder?: string;
   autoComplete?: 'off' | 'name' | 'tel' | 'one-time-code';
+  /** Se llama al salir del campo: ahi se valida por primera vez (no mientras se escribe). */
+  alSalir?: () => void;
+  /** Al tocar "Enter" en el teclado. */
+  alEnviar?: () => void;
   testID?: string;
 }
 
@@ -39,9 +44,12 @@ export function CampoTexto({
   maxLength,
   placeholder,
   autoComplete,
+  alSalir,
+  alEnviar,
   testID,
 }: PropsCampoTexto) {
-  const { colores, tipo, espacio, radio, medidas } = useTema();
+  const tema = useTema();
+  const { colores, tipo, espacio, radio, medidas } = tema;
   const [enfocado, setEnfocado] = useState(false);
   const id = useId().replace(/:/g, '');
   const idEtiqueta = `campo-${id}-etiqueta`;
@@ -55,7 +63,7 @@ export function CampoTexto({
   const colorBorde = error ? colores.peligro : dudoso ? colores.avisoTexto : enfocado ? colores.primario : colores.borde;
 
   return (
-    <View style={{ gap: espacio.xs, marginBottom: espacio.m }}>
+    <View style={{ gap: espacio.s, marginBottom: espacio.l }}>
       <Texto negrita nativeID={idEtiqueta}>
         {etiqueta}
       </Texto>
@@ -65,8 +73,9 @@ export function CampoTexto({
         </Texto>
       ) : null}
       {dudoso ? (
-        <View style={{ backgroundColor: colores.avisoSuave, borderRadius: radio.s, padding: espacio.s }}>
-          <Texto negrita color="avisoTexto" nativeID={idDudoso}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: espacio.s, backgroundColor: colores.avisoSuave, borderRadius: radio.s, paddingHorizontal: espacio.ms, paddingVertical: espacio.s }}>
+          <Icono nombre="alerta" color="avisoTexto" />
+          <Texto negrita color="avisoTexto" nativeID={idDudoso} style={{ flex: 1 }}>
             Revisa este dato
           </Texto>
         </View>
@@ -77,7 +86,11 @@ export function CampoTexto({
         value={valor}
         onChangeText={alCambiar}
         onFocus={() => setEnfocado(true)}
-        onBlur={() => setEnfocado(false)}
+        onBlur={() => {
+          setEnfocado(false);
+          alSalir?.();
+        }}
+        onSubmitEditing={alEnviar ? () => alEnviar() : undefined}
         keyboardType={teclado}
         secureTextEntry={secreto}
         multiline={multilinea}
@@ -93,16 +106,22 @@ export function CampoTexto({
           color: colores.texto,
           backgroundColor: dudoso ? colores.avisoSuave : colores.superficie,
           borderColor: colorBorde,
-          borderWidth: enfocado || error || dudoso ? 3 : 2,
+          borderWidth: 2,
           borderRadius: radio.m,
           paddingHorizontal: espacio.m,
-          paddingVertical: espacio.s,
+          paddingVertical: espacio.ms,
           textAlignVertical: multilinea ? 'top' : 'center',
+          // El anillo de foco va por fuera del borde para que el campo no cambie de tamano.
+          ...(enfocado ? estiloFoco(tema) : null),
         }}
       />
       {error ? (
-        <View accessibilityRole="alert" style={{ backgroundColor: colores.peligroSuave, borderRadius: radio.s, padding: espacio.s }}>
-          <Texto negrita color="peligroTexto" nativeID={idError}>
+        <View
+          accessibilityRole="alert"
+          style={{ flexDirection: 'row', alignItems: 'flex-start', gap: espacio.s, backgroundColor: colores.peligroSuave, borderRadius: radio.s, paddingHorizontal: espacio.ms, paddingVertical: espacio.s }}
+        >
+          <Icono nombre="alerta" color="peligroTexto" style={{ marginTop: 2 }} />
+          <Texto negrita color="peligroTexto" nativeID={idError} style={{ flex: 1 }}>
             {error}
           </Texto>
         </View>

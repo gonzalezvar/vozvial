@@ -1,16 +1,27 @@
 import { router, type Href } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, Text, type StyleProp, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { useTema } from './estadoAjustes';
-import { estiloFoco } from './foco';
+import { aria, estiloFoco } from './foco';
+import { Icono } from './Icono';
+import type { NombreIcono } from './iconos';
+import type { NombreColor } from './tema';
 import { Texto } from './Texto';
 
-export type VarianteBoton = 'primaria' | 'secundaria' | 'peligro';
+/**
+ * primaria: la accion principal de la pantalla (una sola por pantalla).
+ * secundaria: acciones de apoyo; fondo blanco con borde.
+ * tonal: acciones frecuentes de poco peso, como "Escuchar".
+ * texto: acciones de navegacion discretas, como "Volver".
+ * urgencia: solo para grabar o detener una grabacion.
+ * peligro: borrar o cerrar sesion (rellena) y peligroSecundaria (con borde) para el disparador.
+ */
+export type VarianteBoton = 'primaria' | 'secundaria' | 'tonal' | 'texto' | 'urgencia' | 'peligro' | 'peligroSecundaria';
 
 export interface PropsBoton {
   etiqueta: string;
-  /** Obligatoria: lo que anuncia el lector de pantalla. */
+  /** Obligatoria: lo que anuncia el lector de pantalla. Debe contener la etiqueta visible. */
   accessibilityLabel: string;
   /** Obligatorio: 'button' para acciones, 'link' para navegar. */
   accessibilityRole: 'button' | 'link';
@@ -18,6 +29,14 @@ export interface PropsBoton {
   variante?: VarianteBoton;
   /** Texto pequeno debajo de la etiqueta. */
   descripcion?: string;
+  /** Icono antes de la etiqueta. */
+  icono?: NombreIcono;
+  /** Icono despues de la etiqueta (por ejemplo "siguiente" o "externo"). */
+  iconoFinal?: NombreIcono;
+  /** Muestra un indicador de carga y deja de responder a toques hasta que termine. */
+  cargando?: boolean;
+  /** Alineacion del contenido. Por defecto centrado; "inicio" para botones con descripcion larga. */
+  alineacion?: 'centro' | 'inicio';
   onPress?: () => void;
   /** Si se da, el boton navega a esa ruta. */
   href?: Href;
@@ -28,6 +47,14 @@ export interface PropsBoton {
   style?: StyleProp<ViewStyle>;
 }
 
+interface Paleta {
+  fondo: string;
+  presionado: string;
+  texto: NombreColor;
+  borde: string;
+  grosorBorde: number;
+}
+
 /** Boton accesible: minimo 56 px de alto, texto del tamano base y anillo de foco visible. */
 export function Boton({
   etiqueta,
@@ -36,6 +63,10 @@ export function Boton({
   accessibilityHint,
   variante = 'primaria',
   descripcion,
+  icono,
+  iconoFinal,
+  cargando,
+  alineacion = 'centro',
   onPress,
   href,
   reemplazar,
@@ -44,18 +75,23 @@ export function Boton({
   style,
 }: PropsBoton) {
   const tema = useTema();
-  const { colores, medidas, espacio, radio } = tema;
+  const { colores, medidas, espacio, radio, tipo, peso } = tema;
   const [enfocado, setEnfocado] = useState(false);
 
-  const paleta = {
-    primaria: { fondo: colores.primario, presionado: colores.primarioPresionado, texto: 'sobrePrimario', borde: colores.primario },
-    secundaria: { fondo: colores.superficie, presionado: colores.primarioSuave, texto: 'primario', borde: colores.primario },
-    peligro: { fondo: colores.peligro, presionado: colores.peligroPresionado, texto: 'sobrePeligro', borde: colores.peligro },
-  } as const;
-  const p = paleta[variante];
+  const paletas: Record<VarianteBoton, Paleta> = {
+    primaria: { fondo: colores.primario, presionado: colores.primarioPresionado, texto: 'sobrePrimario', borde: colores.primario, grosorBorde: 2 },
+    secundaria: { fondo: colores.superficie, presionado: colores.primarioSuave, texto: 'primario', borde: colores.primario, grosorBorde: 2 },
+    tonal: { fondo: colores.primarioSuave, presionado: colores.primarioSuaveFuerte, texto: 'primario', borde: colores.primarioSuave, grosorBorde: 2 },
+    texto: { fondo: 'transparent', presionado: colores.primarioSuave, texto: 'primario', borde: 'transparent', grosorBorde: 2 },
+    urgencia: { fondo: colores.urgencia, presionado: colores.urgenciaPresionado, texto: 'sobreUrgencia', borde: colores.urgencia, grosorBorde: 2 },
+    peligro: { fondo: colores.peligro, presionado: colores.peligroPresionado, texto: 'sobrePeligro', borde: colores.peligro, grosorBorde: 2 },
+    peligroSecundaria: { fondo: colores.superficie, presionado: colores.peligroSuave, texto: 'peligroTexto', borde: colores.peligro, grosorBorde: 2 },
+  };
+  const p = paletas[variante];
+  const inactivo = deshabilitado || cargando;
 
   const alPresionar = () => {
-    if (deshabilitado) return;
+    if (inactivo) return;
     onPress?.();
     if (href) {
       if (reemplazar) router.replace(href);
@@ -63,12 +99,16 @@ export function Boton({
     }
   };
 
+  const centrado = alineacion === 'centro';
+
   return (
     <Pressable
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled: !!deshabilitado, busy: !!cargando }}
       aria-disabled={deshabilitado || undefined}
+      {...aria({ 'aria-busy': cargando || undefined })}
       disabled={deshabilitado}
       onPress={alPresionar}
       onFocus={() => setEnfocado(true)}
@@ -77,29 +117,39 @@ export function Boton({
       style={({ pressed }) => [
         {
           minHeight: medidas.altoMinimoBoton,
-          paddingVertical: espacio.s + 4,
-          paddingHorizontal: espacio.m,
+          paddingVertical: espacio.ms,
+          paddingHorizontal: variante === 'texto' ? espacio.s : espacio.m,
           borderRadius: radio.m,
-          borderWidth: 2,
+          borderWidth: p.grosorBorde,
           borderColor: p.borde,
-          backgroundColor: pressed ? p.presionado : p.fondo,
-          justifyContent: 'center',
+          backgroundColor: pressed && !inactivo ? p.presionado : p.fondo,
+          flexDirection: 'row',
+          justifyContent: centrado ? 'center' : 'flex-start',
           alignItems: 'center',
+          gap: espacio.s,
           opacity: deshabilitado ? 0.55 : 1,
         },
         enfocado && estiloFoco(tema),
         style,
       ]}
     >
+      {cargando ? (
+        <ActivityIndicator color={colores[p.texto]} size="small" />
+      ) : icono ? (
+        <Icono nombre={icono} color={p.texto} />
+      ) : null}
       {/* Un solo bloque de texto: asi el nombre accesible contiene el texto visible (WCAG 2.5.3). */}
-      <Texto negrita centrado color={p.texto}>
-        {etiqueta}
-        {descripcion ? (
-          <Text style={{ fontSize: tema.tipo.nota, lineHeight: tema.tipo.alturaLinea(tema.tipo.nota), fontWeight: '400' }}>
-            {`\n${descripcion}`}
-          </Text>
-        ) : null}
-      </Texto>
+      <View style={{ flexShrink: 1, flexGrow: centrado ? 0 : 1 }}>
+        <Texto negrita centrado={centrado} color={p.texto} style={{ fontWeight: peso.medio }}>
+          {etiqueta}
+          {descripcion ? (
+            <Text style={{ fontSize: tipo.nota, lineHeight: tipo.alturaLinea(tipo.nota), fontWeight: peso.normal }}>
+              {`\n${descripcion}`}
+            </Text>
+          ) : null}
+        </Texto>
+      </View>
+      {iconoFinal ? <Icono nombre={iconoFinal} color={p.texto} /> : null}
     </Pressable>
   );
 }

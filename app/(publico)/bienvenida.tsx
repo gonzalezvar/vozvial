@@ -1,24 +1,31 @@
 import { View } from 'react-native';
 
-import { Boton, Enlace, Pantalla, Tarjeta, Texto, useTema } from '../../src/ui';
+import { Boton, Enlace, Lista, ListaItem, Pantalla, Seccion, Tarjeta, Texto, useTema } from '../../src/ui';
+import { AyudaPantalla } from '../../src/ui/guia/AyudaPantalla';
 
 export default function Bienvenida() {
   const { espacio } = useTema();
   return (
-    <Pantalla titulo="VozVial" volverA={false}>
-      <Texto variante="destacado" color="primario" style={{ marginBottom: espacio.s }}>
-        Entiende tu comparendo.
-      </Texto>
-      <Texto style={{ marginBottom: espacio.l }}>
-        Te explica tus derechos con la norma a la vista, guarda lo que pasa cuando te para un agente y te avisa hasta
-        cuándo puedes pedir la audiencia.
-      </Texto>
+    <Pantalla
+      titulo="VozVial"
+      descripcion="Entiende tu comparendo y conoce tus derechos, paso a paso."
+      volverA={false}
+      extraEncabezado={<AyudaPantalla pantalla="bienvenida" />}
+    >
+      <Seccion>
+        <Lista accessibilityLabel="Lo que hace VozVial">
+          <ListaItem icono="ley" titulo="Tus derechos, con la ley a la vista" descripcion="Cada respuesta dice de qué norma sale." />
+          <ListaItem icono="grabar" titulo="Guarda lo que pasa" descripcion="Si te para un agente, graba con un toque." />
+          <ListaItem icono="calendario" titulo="Cuida tus plazos" descripcion="Te avisa hasta cuándo puedes pedir la audiencia." />
+        </Lista>
+      </Seccion>
 
-      <View style={{ gap: espacio.m, marginBottom: espacio.l }}>
+      <View style={{ gap: espacio.ms, marginBottom: espacio.xl }}>
         <Boton
           etiqueta="Crear mi cuenta"
           accessibilityRole="link"
           accessibilityLabel="Crear mi cuenta"
+          icono="usuario"
           href="/registro"
           testID="ir-registro"
         />
@@ -32,16 +39,20 @@ export default function Bienvenida() {
           testID="ir-entrar"
         />
         <Boton
-          etiqueta="Olvidé mi PIN"
+          etiqueta="¿Cómo funciona?"
+          descripcion="Una guía corta antes de empezar"
           accessibilityRole="link"
-          accessibilityLabel="Olvidé mi PIN"
-          variante="secundaria"
-          href="/recuperar"
+          accessibilityLabel="¿Cómo funciona? Una guía corta antes de empezar"
+          variante="tonal"
+          icono="ayuda"
+          href="/guia"
+          testID="ir-guia"
         />
+        <Boton etiqueta="Olvidé mi PIN" accessibilityRole="link" accessibilityLabel="Olvidé mi PIN" variante="texto" href="/recuperar" />
       </View>
 
-      <Tarjeta titulo="Antes de empezar">
-        <Texto>Tus datos se quedan en tu celular, cifrados. No necesitas correo ni contraseña larga.</Texto>
+      <Tarjeta titulo="Antes de empezar" icono="candado">
+        <Texto>Tus datos se guardan cifrados. No necesitas correo ni contraseña larga.</Texto>
         <Enlace href="/privacidad">Lee la política de datos</Enlace>
         <Enlace href="/acerca">Qué es real y qué es simulado</Enlace>
       </Tarjeta>

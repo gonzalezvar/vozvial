@@ -18,12 +18,23 @@ export function estadoPlazoSeguro(caso: Caso): EstadoPlazo | null {
   }
 }
 
+const SIN_COMPARENDO = 'Sin comparendo todavía: no hay plazo que contar.';
+const SIN_CALCULO = 'No pudimos calcular el plazo de este comparendo.';
+
+/** El mismo texto que muestra ResumenPlazo, para armar nombres accesibles. */
+export function textoPlazo(caso: Caso): string {
+  if (!caso.comparendo) return SIN_COMPARENDO;
+  const estado = estadoPlazoSeguro(caso);
+  if (!estado) return SIN_CALCULO;
+  return estado.nivel === 'vencido' ? estado.mensaje : `${estado.mensaje} Vence el ${estado.resultado.fechaLimite.formatoLargo()}.`;
+}
+
 /** Días restantes del caso para la lista de casos (CA-11.4). */
 export function ResumenPlazo({ caso }: { caso: Caso }) {
   if (!caso.comparendo) {
     return (
       <Texto variante="nota" color="textoSuave" testID={`plazo-${caso.id}`}>
-        Sin comparendo todavía: no hay plazo que contar.
+        {SIN_COMPARENDO}
       </Texto>
     );
   }
@@ -31,14 +42,13 @@ export function ResumenPlazo({ caso }: { caso: Caso }) {
   if (!estado) {
     return (
       <Texto variante="nota" color="avisoTexto" testID={`plazo-${caso.id}`}>
-        No pudimos calcular el plazo de este comparendo.
+        {SIN_CALCULO}
       </Texto>
     );
   }
   return (
     <Texto negrita color={COLOR_NIVEL[estado.nivel]} testID={`plazo-${caso.id}`}>
-      {estado.mensaje}
-      {estado.nivel === 'vencido' ? '' : ` Vence el ${estado.resultado.fechaLimite.formatoLargo()}.`}
+      {textoPlazo(caso)}
     </Texto>
   );
 }

@@ -8,7 +8,8 @@ import type { ProveedorVoz } from '../../core/ProveedorVoz';
 import { crearProveedorVoz } from '../../services/ProveedorTexto';
 import { ErrorFoto, ServicioFotos, type OrigenFoto } from '../../services/ServicioFotos';
 import { obtenerRepositorioCasos } from '../../state/servicios';
-import { Alerta, Boton, CampoTexto, Tarjeta, Texto, Titulo, useTema } from '..';
+import { Alerta, Boton, CampoTexto, Icono, Lista, ListaItem, Seccion, Tarjeta, Texto, useTema, type NombreIcono } from '..';
+import { horaSinCorte } from './formatoCaso';
 import type { PropsSeccionCaso } from './tipos';
 
 const ZONA = 'America/Bogota';
@@ -24,7 +25,7 @@ export function fechaHoraEvidencia(iso: string): string {
     year: 'numeric',
   }).format(d);
   const hora = new Intl.DateTimeFormat('es-CO', { timeZone: ZONA, hour: 'numeric', minute: '2-digit' }).format(d);
-  return `${fecha.replace(',', '')}, ${hora}`;
+  return `${fecha.replace(',', '')}, ${horaSinCorte(hora)}`;
 }
 
 function duracionLegible(ms: number): string {
@@ -33,6 +34,7 @@ function duracionLegible(ms: number): string {
 }
 
 const NOMBRE_TIPO = { audio: 'Audio', foto: 'Foto', nota: 'Nota' } as const;
+const ICONO_TIPO: Readonly<Record<keyof typeof NOMBRE_TIPO, NombreIcono>> = { audio: 'audio', foto: 'foto', nota: 'nota' };
 
 /** Los mensajes de voz estan escritos para el asistente: aqui se habla de la nota. */
 function paraNota(mensaje: string): string {
@@ -196,33 +198,28 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
   const evidencias = caso.evidenciasOrdenadas();
 
   return (
-    <Tarjeta titulo="Evidencias" testID="seccion-evidencias">
-      <Texto variante="nota" color="textoSuave">
-        Se guardan cifradas en este celular. Solo se abren con tu PIN.
-      </Texto>
-
+    <Seccion
+      titulo="Evidencias"
+      descripcion="Se guardan cifradas en este celular. Solo se abren con tu PIN."
+      testID="seccion-evidencias"
+    >
       {evidencias.length === 0 ? (
-        <Texto testID="sin-evidencias">Todavía no hay evidencias en este caso.</Texto>
+        <Texto color="textoSuave" testID="sin-evidencias">
+          Todavía no hay evidencias en este caso.
+        </Texto>
       ) : (
-        <View style={{ gap: espacio.m }} testID="lista-evidencias">
+        <Lista testID="lista-evidencias" accessibilityLabel="Evidencias del caso" style={{ marginBottom: 0 }}>
           {evidencias.map((evidencia) => {
             const cuando = fechaHoraEvidencia(evidencia.creadaEn);
             const url = urls[evidencia.id];
             return (
-              <View
+              <ListaItem
                 key={evidencia.id}
                 testID={`evidencia-${evidencia.tipo}`}
-                style={{
-                  borderWidth: 1,
-                  borderColor: colores.bordeSuave,
-                  borderRadius: radio.s,
-                  padding: espacio.m,
-                  gap: espacio.s,
-                  backgroundColor: colores.superficieAlterna,
-                }}
+                icono={ICONO_TIPO[evidencia.tipo]}
+                titulo={NOMBRE_TIPO[evidencia.tipo]}
               >
-                <Titulo nivel={3}>{NOMBRE_TIPO[evidencia.tipo]}</Titulo>
-                <Texto variante="nota" testID="fecha-evidencia">
+                <Texto variante="nota" color="textoSuave" testID="fecha-evidencia">
                   {cuando}
                 </Texto>
 
@@ -235,7 +232,7 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
                       accessibilityLabel={`Foto del ${cuando}`}
                       testID="miniatura-foto"
                       resizeMode="cover"
-                      style={{ width: 128, height: 128, borderRadius: radio.s, backgroundColor: colores.bordeSuave }}
+                      style={{ width: 128, height: 128, borderRadius: radio.m, backgroundColor: colores.superficieAlterna }}
                     />
                   ) : (
                     <Texto variante="nota" color="textoSuave">
@@ -269,29 +266,33 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
                     )}
                   </>
                 ) : null}
-              </View>
+              </ListaItem>
             );
           })}
-        </View>
+        </Lista>
       )}
 
       {error ? (
-        <Alerta titulo="Algo no salió bien" tono="aviso" anunciar testID="error-evidencia">
+        <Alerta titulo="Algo no salió bien" tono="peligro" anunciar testID="error-evidencia">
           <Texto>{error}</Texto>
         </Alerta>
       ) : null}
       {aviso ? (
-        <Texto negrita color="exitoTexto" accessibilityLiveRegion="polite" testID="aviso-evidencia">
-          {aviso}
-        </Texto>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: espacio.s }}>
+          <Icono nombre="check" color="exitoTexto" />
+          <Texto negrita color="exitoTexto" accessibilityLiveRegion="polite" testID="aviso-evidencia">
+            {aviso}
+          </Texto>
+        </View>
       ) : null}
 
-      <View style={{ gap: espacio.m, marginTop: espacio.s }}>
+      <View style={{ gap: espacio.ms }}>
         <Boton
           etiqueta="Tomar una foto"
           accessibilityRole="button"
           accessibilityLabel="Tomar una foto"
           variante="secundaria"
+          icono="camara"
           deshabilitado={ocupado}
           onPress={() => agregarFoto('camara')}
           testID="boton-tomar-foto"
@@ -301,13 +302,14 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
           accessibilityRole="button"
           accessibilityLabel="Elegir una foto guardada"
           variante="secundaria"
+          icono="foto"
           deshabilitado={ocupado}
           onPress={() => agregarFoto('galeria')}
           testID="boton-elegir-foto"
         />
 
         {notaAbierta ? (
-          <View style={{ gap: espacio.s }} testID="formulario-nota">
+          <Tarjeta titulo="Nueva nota" icono="nota" nivelTitulo={3} testID="formulario-nota" style={{ marginBottom: 0 }}>
             <CampoTexto
               etiqueta="Tu nota"
               ayuda="Escribe o dicta lo que pasó: placa del agente, lo que te dijeron, testigos."
@@ -322,7 +324,8 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
                 etiqueta={escuchando ? 'Escuchando… toca para parar' : 'Dictar la nota'}
                 accessibilityRole="button"
                 accessibilityLabel={escuchando ? 'Escuchando. Toca para parar' : 'Dictar la nota con tu voz'}
-                variante="secundaria"
+                variante={escuchando ? 'urgencia' : 'tonal'}
+                icono={escuchando ? 'detener' : 'microfono'}
                 onPress={dictar}
                 testID="boton-dictar-nota"
               />
@@ -335,6 +338,7 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
               etiqueta="Guardar la nota"
               accessibilityRole="button"
               accessibilityLabel="Guardar la nota"
+              icono="check"
               deshabilitado={ocupado || escuchando}
               onPress={() => void guardarNota()}
               testID="boton-guardar-nota"
@@ -343,20 +347,21 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
               etiqueta="Cancelar la nota"
               accessibilityRole="button"
               accessibilityLabel="Cancelar la nota"
-              variante="secundaria"
+              variante="texto"
               onPress={() => {
                 voz.current?.detener();
                 setNotaAbierta(false);
                 setTextoNota('');
               }}
             />
-          </View>
+          </Tarjeta>
         ) : (
           <Boton
             etiqueta="Agregar una nota"
             accessibilityRole="button"
             accessibilityLabel="Agregar una nota escrita o dictada"
             variante="secundaria"
+            icono="nota"
             deshabilitado={ocupado}
             onPress={() => {
               setAviso(null);
@@ -367,6 +372,6 @@ export function SeccionEvidencias({ caso, onCambio }: PropsSeccionCaso) {
           />
         )}
       </View>
-    </Tarjeta>
+    </Seccion>
   );
 }

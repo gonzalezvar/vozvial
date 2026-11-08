@@ -3,6 +3,7 @@ import { Pressable, View } from 'react-native';
 
 import { useTema } from './estadoAjustes';
 import { estiloFoco } from './foco';
+import { Icono } from './Icono';
 import { Texto } from './Texto';
 
 interface PropsCasilla {
@@ -47,24 +48,24 @@ export function Casilla({ marcada, alCambiar, accessibilityLabel, children, erro
             width: 36,
             height: 36,
             borderRadius: radio.s,
-            borderWidth: 3,
-            borderColor: error ? colores.peligro : colores.primario,
+            borderWidth: 2,
+            borderColor: error ? colores.peligro : marcada ? colores.primario : colores.borde,
             backgroundColor: marcada ? colores.primario : colores.superficie,
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          {marcada ? (
-            <Texto negrita color="sobrePrimario" style={{ lineHeight: 28 }}>
-              {'✓'}
-            </Texto>
-          ) : null}
+          {marcada ? <Icono nombre="check" color="sobrePrimario" tamano={26} respaldo="✓" /> : null}
         </View>
         <View style={{ flex: 1 }}>{typeof children === 'string' ? <Texto>{children}</Texto> : children}</View>
       </Pressable>
       {error ? (
-        <View accessibilityRole="alert" style={{ backgroundColor: colores.peligroSuave, borderRadius: radio.s, padding: espacio.s }}>
-          <Texto negrita color="peligroTexto">
+        <View
+          accessibilityRole="alert"
+          style={{ flexDirection: 'row', alignItems: 'flex-start', gap: espacio.s, backgroundColor: colores.peligroSuave, borderRadius: radio.s, paddingHorizontal: espacio.ms, paddingVertical: espacio.s }}
+        >
+          <Icono nombre="alerta" color="peligroTexto" style={{ marginTop: 2 }} />
+          <Texto negrita color="peligroTexto" style={{ flex: 1 }}>
             {error}
           </Texto>
         </View>

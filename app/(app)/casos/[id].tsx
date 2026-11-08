@@ -1,21 +1,23 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 
 import type { Caso } from '../../../src/core/Caso';
 import { useCasos } from '../../../src/state/casos';
 import { obtenerRepositorioCasos } from '../../../src/state/servicios';
-import { Alerta, Boton, EtiquetaEstado, Pantalla, Tarjeta, Texto, useTema } from '../../../src/ui';
+import { Alerta, Boton, Cargando, EtiquetaEstado, Pantalla, Tarjeta, Texto, useTema } from '../../../src/ui';
+import { DatoEnLinea } from '../../../src/ui/caso/DatoEnLinea';
 import { fechaHoraCaso, tituloCaso } from '../../../src/ui/caso/formatoCaso';
 import { SeccionComparendo } from '../../../src/ui/caso/SeccionComparendo';
 import { SeccionEvidencias } from '../../../src/ui/caso/SeccionEvidencias';
+import { AyudaPantalla } from '../../../src/ui/guia/AyudaPantalla';
 
 type Carga = { estado: 'cargando' } | { estado: 'listo'; caso: Caso } | { estado: 'no_existe' } | { estado: 'error' };
 /** Resultado de la carga junto con el id que se pidio, para no mostrar un caso viejo al cambiar de id. */
 type CargaDe = Carga & { id: string };
 
 export default function DetalleCaso() {
-  const { colores, espacio } = useTema();
+  const { espacio } = useTema();
   const { id } = useLocalSearchParams<{ id: string }>();
   const actualizarEnLista = useCasos((s) => s.actualizarEnLista);
   const quitarDeLista = useCasos((s) => s.quitarDeLista);
@@ -56,9 +58,14 @@ export default function DetalleCaso() {
     return (
       <Pantalla titulo={carga.estado === 'cargando' ? 'Abriendo el caso' : 'Caso no disponible'} volverA="/casos">
         {carga.estado === 'cargando' ? (
-          <ActivityIndicator size="large" color={colores.primario} accessibilityLabel="Abriendo el caso" />
+          <Cargando texto="Abriendo el caso" />
         ) : (
-          <Alerta titulo={carga.estado === 'no_existe' ? 'Este caso no existe' : 'No pudimos abrir el caso'} tono="aviso" anunciar>
+          <Alerta
+            titulo={carga.estado === 'no_existe' ? 'Este caso no existe' : 'No pudimos abrir el caso'}
+            tono={carga.estado === 'no_existe' ? 'aviso' : 'peligro'}
+            anunciar
+            accion={{ etiqueta: 'Ir a mis casos', accessibilityLabel: 'Ir a mis casos', href: '/casos', icono: 'casos' }}
+          >
             {carga.estado === 'no_existe' ? 'Puede que lo hayas borrado.' : 'Intenta de nuevo.'}
           </Alerta>
         )}
@@ -68,52 +75,70 @@ export default function DetalleCaso() {
 
   const { caso } = carga;
   return (
-    <Pantalla titulo={tituloCaso(caso)} volverA="/casos" testID="detalle-caso">
-      <Tarjeta titulo="Datos del caso">
+    <Pantalla
+      titulo={tituloCaso(caso)}
+      descripcion="Aquí están el plazo, los datos y las evidencias de este caso."
+      volverA="/casos"
+      testID="detalle-caso"
+      extraEncabezado={<AyudaPantalla pantalla="caso" />}
+      pie={
+        <>
+          <Boton
+            etiqueta="Generar solicitud"
+            descripcion="Pide la audiencia para no aceptar el comparendo"
+            accessibilityRole="link"
+            accessibilityLabel="Generar solicitud de audiencia"
+            icono="solicitud"
+            href={`/solicitud/${caso.id}`}
+          />
+          {confirmarBorrado ? (
+            <Alerta titulo="¿Borrar este caso?" tono="peligro" anunciar>
+              <Texto>Se borra para siempre, con todas sus evidencias. No se puede deshacer.</Texto>
+              <View style={{ gap: espacio.s }}>
+                <Boton
+                  etiqueta="Sí, borrar"
+                  accessibilityRole="button"
+                  accessibilityLabel="Sí, borrar el caso"
+                  variante="peligro"
+                  icono="borrar"
+                  deshabilitado={borrando}
+                  onPress={() => void borrar(caso)}
+                />
+                <Boton
+                  etiqueta="No, dejarlo"
+                  accessibilityRole="button"
+                  accessibilityLabel="No, dejar el caso"
+                  variante="secundaria"
+                  onPress={() => setConfirmarBorrado(false)}
+                />
+              </View>
+            </Alerta>
+          ) : (
+            <Boton
+              etiqueta="Borrar"
+              accessibilityRole="button"
+              accessibilityLabel="Borrar este caso"
+              variante="peligroSecundaria"
+              icono="borrar"
+              onPress={() => setConfirmarBorrado(true)}
+            />
+          )}
+        </>
+      }
+    >
+      <SeccionComparendo caso={caso} onCambio={alCambiar} />
+
+      <Tarjeta titulo="Datos del caso" icono="casos">
         <EtiquetaEstado texto={caso.etiquetaEstado()} />
-        <Texto testID="fecha-hora-detalle">{fechaHoraCaso(caso)}</Texto>
-        <Texto testID="ubicacion-caso">Ubicación: {caso.descripcionUbicacion()}</Texto>
+        <DatoEnLinea etiqueta="Fecha y hora" testID="fecha-hora-detalle">
+          {fechaHoraCaso(caso)}
+        </DatoEnLinea>
+        <DatoEnLinea etiqueta="Ubicación" testID="ubicacion-caso">
+          {caso.descripcionUbicacion()}
+        </DatoEnLinea>
       </Tarjeta>
 
       <SeccionEvidencias caso={caso} onCambio={alCambiar} />
-      <SeccionComparendo caso={caso} onCambio={alCambiar} />
-
-      <View style={{ gap: espacio.m }}>
-        <Boton
-          etiqueta="Generar solicitud"
-          accessibilityRole="link"
-          accessibilityLabel="Generar solicitud de audiencia"
-          href={`/solicitud/${caso.id}`}
-        />
-        {confirmarBorrado ? (
-          <Alerta titulo="¿Borrar este caso?" tono="urgente" anunciar>
-            <Texto>Se borra para siempre, con todas sus evidencias. No se puede deshacer.</Texto>
-            <Boton
-              etiqueta="Sí, borrar"
-              accessibilityRole="button"
-              accessibilityLabel="Sí, borrar el caso"
-              variante="peligro"
-              deshabilitado={borrando}
-              onPress={() => void borrar(caso)}
-            />
-            <Boton
-              etiqueta="No, dejarlo"
-              accessibilityRole="button"
-              accessibilityLabel="No, dejar el caso"
-              variante="secundaria"
-              onPress={() => setConfirmarBorrado(false)}
-            />
-          </Alerta>
-        ) : (
-          <Boton
-            etiqueta="Borrar"
-            accessibilityRole="button"
-            accessibilityLabel="Borrar este caso"
-            variante="peligro"
-            onPress={() => setConfirmarBorrado(true)}
-          />
-        )}
-      </View>
     </Pantalla>
   );
 }

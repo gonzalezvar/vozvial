@@ -19,7 +19,14 @@ export const LO_REAL: readonly ElementoAcerca[] = [
   },
   {
     titulo: 'Tus casos van cifrados',
-    detalle: 'Casos, fotos, audios y notas se cifran con AES-GCM en tu celular, con una clave que sale de tu PIN.',
+    detalle:
+      'Casos, fotos, audios y notas se cifran con AES-GCM en tu celular, con una clave que sale de tu PIN. La copia en el servidor viaja ya cifrada y el servidor no la puede leer.',
+    estado: 'listo',
+  },
+  {
+    titulo: 'Entrar desde otro celular',
+    detalle:
+      'Con tu celular y tu PIN entras en otro dispositivo y ves tus casos. Al entrar se queda el cambio más reciente de cada caso.',
     estado: 'listo',
   },
   {
@@ -72,8 +79,14 @@ export const LO_REAL: readonly ElementoAcerca[] = [
     estado: 'listo',
   },
   {
-    titulo: 'Solo viaja tu pregunta',
-    detalle: 'Al servidor del asistente llega solo el texto de la pregunta: sin nombre, sin ubicación, sin audio.',
+    titulo: 'Qué llega al servidor',
+    detalle:
+      'Tu número de celular, para poder entrar. Tu nombre, tus casos y tus evidencias llegan cifrados y el servidor no los puede leer. Tu PIN no viaja: viaja una huella sacada de él. Al asistente llega solo el texto de la pregunta, sin nombre, sin ubicación y sin audio; si está activada la IA, el servidor reenvía ese texto a Anthropic (Claude), una empresa externa. Por eso no escribas datos personales en la pregunta.',
+    estado: 'listo',
+  },
+  {
+    titulo: 'Guía y ayuda en cada pantalla',
+    detalle: 'Un recorrido de 5 pasos para la primera vez, guías por situación y un botón "Ayuda" en cada pantalla.',
     estado: 'listo',
   },
   {
@@ -91,9 +104,9 @@ export const LO_REAL: readonly ElementoAcerca[] = [
 /** Lo que esta simulado o tiene limites. */
 export const LO_SIMULADO: readonly ElementoAcerca[] = [
   {
-    titulo: 'El asistente no usa inteligencia artificial generativa',
+    titulo: 'El asistente puede redactar con IA (Claude) o responder en modo verificado',
     detalle:
-      'Responde en "modo verificado": busca entre 49 preguntas ya revisadas por el equipo. Si preguntas con otras palabras, muchas veces te dirá que no tiene información verificada.',
+      'Si el servidor tiene la llave de Anthropic, Claude redacta la respuesta solo con los artículos verificados de la base y cada respuesta trae sus citas; la app revisa que cada cita exista en la base. Si no tiene la llave, o si Claude falla, responde el "modo verificado": busca entre 49 preguntas ya revisadas por el equipo y, si preguntas con otras palabras, muchas veces te dirá que no tiene información verificada. El texto que redacta la IA puede tener errores: revisa siempre el texto de la norma.',
     estado: 'listo',
   },
   {
@@ -109,13 +122,15 @@ export const LO_SIMULADO: readonly ElementoAcerca[] = [
     estado: 'listo',
   },
   {
-    titulo: 'No hay servidor de cuentas',
-    detalle: 'Tu cuenta vive solo en este navegador. Si borras los datos del navegador, se pierde.',
+    titulo: 'El servidor es de prueba',
+    detalle:
+      'La copia de tus datos está en el servidor de prueba de un proyecto universitario. No lo uses como única copia de algo importante. Si olvidas el PIN y el código de recuperación, nadie puede abrir tus casos.',
     estado: 'listo',
   },
   {
     titulo: 'El código de recuperación no tiene límite de intentos',
-    detalle: 'A diferencia del PIN, la app no se bloquea si escribes mal el código varias veces.',
+    detalle:
+      'A diferencia del PIN, la cuenta no se bloquea si escribes mal el código varias veces. El servidor solo limita a 30 intentos por minuto desde una misma conexión.',
     estado: 'listo',
   },
   {

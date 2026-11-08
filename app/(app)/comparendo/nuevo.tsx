@@ -11,8 +11,22 @@ import { ServicioOCR, type ProgresoOCR } from '../../../src/services/ServicioOCR
 import { obtenerServicioPlazos } from '../../../src/services/ServicioPlazos';
 import { useCasos } from '../../../src/state/casos';
 import { obtenerRepositorioCasos } from '../../../src/state/servicios';
-import { Alerta, Boton, CampoTexto, Casilla, GrupoOpciones, Pantalla, Tarjeta, TarjetaCita, Texto, useTema } from '../../../src/ui';
+import {
+  Alerta,
+  Boton,
+  CampoTexto,
+  Casilla,
+  GrupoOpciones,
+  Icono,
+  Pantalla,
+  Seccion,
+  Tarjeta,
+  TarjetaCita,
+  Texto,
+  useTema,
+} from '../../../src/ui';
 import { fechaCorta, leerFecha, obtenerCatalogo } from '../../../src/ui/caso/datosComparendo';
+import { AyudaPantalla } from '../../../src/ui/guia/AyudaPantalla';
 
 type Origen = 'foto' | 'manual';
 /** Campos que el OCR puede marcar como dudosos (el tipo se elige siempre a mano). */
@@ -207,14 +221,21 @@ export default function NuevoComparendo() {
   const porcentaje = leyendo ? Math.round(lectura.progreso.progreso * 100) : 0;
 
   return (
-    <Pantalla titulo="Registrar un comparendo" volverA={casoId ? `/casos/${casoId}` : '/inicio'}>
-      <Texto style={{ marginBottom: espacio.m }}>¿Cómo quieres registrarlo?</Texto>
-      <View style={{ gap: espacio.m, marginBottom: espacio.l }}>
+    <Pantalla
+      titulo="Registrar un comparendo"
+      descripcion="Guarda los datos de tu comparendo para saber qué significa y hasta cuándo tienes plazo."
+      volverA={casoId ? `/casos/${casoId}` : '/inicio'}
+      extraEncabezado={<AyudaPantalla pantalla="comparendo" />}
+    >
+      <Seccion titulo="¿Cómo quieres registrarlo?">
         <Boton
           etiqueta="Tomar foto del comparendo"
           descripcion="La app lee los datos. La foto no sale de tu celular."
           accessibilityRole="button"
           accessibilityLabel="Tomar foto del comparendo o elegir una guardada. La app lee los datos"
+          icono="camara"
+          alineacion="inicio"
+          variante={origen ? 'secundaria' : 'primaria'}
           onPress={() => void leerFoto()}
           deshabilitado={leyendo || guardando}
           testID="comparendo-foto"
@@ -223,12 +244,15 @@ export default function NuevoComparendo() {
           etiqueta="Escribir los datos"
           accessibilityRole="button"
           accessibilityLabel="Escribir los datos del comparendo a mano"
+          descripcion="Copia los datos del papel"
           variante="secundaria"
+          icono="nota"
+          alineacion="inicio"
           onPress={escribirAMano}
           deshabilitado={leyendo || guardando}
           testID="comparendo-manual"
         />
-      </View>
+      </Seccion>
 
       {leyendo ? (
         <Alerta
@@ -240,7 +264,14 @@ export default function NuevoComparendo() {
             accessibilityRole="progressbar"
             accessibilityLabel="Avance de la lectura"
             accessibilityValue={{ min: 0, max: 100, now: porcentaje }}
-            style={{ height: 16, borderRadius: radio.s, backgroundColor: colores.superficie, borderWidth: 2, borderColor: colores.primario }}
+            style={{
+              height: espacio.m,
+              borderRadius: radio.s,
+              backgroundColor: colores.superficie,
+              borderWidth: 1,
+              borderColor: colores.borde,
+              overflow: 'hidden',
+            }}
           >
             <View style={{ width: `${porcentaje}%`, height: '100%', backgroundColor: colores.primario }} />
           </View>
@@ -250,13 +281,18 @@ export default function NuevoComparendo() {
       ) : null}
 
       {lectura.fase === 'fallo' ? (
-        <Alerta titulo="No pudimos leer la foto" tono="aviso" anunciar testID="ocr-fallo">
+        <Alerta titulo="No pudimos leer la foto" tono="aviso" icono="camara" anunciar testID="ocr-fallo">
           Escribe los datos a mano. Se guardan igual.
         </Alerta>
       ) : null}
 
       {origen && !leyendo ? (
-        <Tarjeta titulo={origen === 'foto' ? 'Revisa los datos leídos' : 'Datos del comparendo'} testID="formulario-comparendo">
+        <Tarjeta
+          titulo={origen === 'foto' ? 'Revisa los datos leídos' : 'Datos del comparendo'}
+          descripcion="Cópialos tal como aparecen en el papel."
+          icono="comparendo"
+          testID="formulario-comparendo"
+        >
           {REVISABLES.some((c) => dudosos.has(c) && !confirmados.has(c)) ? (
             <Alerta titulo="Hay datos por revisar" tono="aviso" anunciar>
               Compáralos con tu comparendo. Corrígelos si hace falta y marca la casilla “Ya revisé…” debajo de cada uno.
@@ -306,9 +342,7 @@ export default function NuevoComparendo() {
           />
           {campoRevisable('codigoInfraccion')}
 
-          <Texto negrita style={{ marginBottom: espacio.s }}>
-            ¿Cómo te hicieron el comparendo?
-          </Texto>
+          <Texto negrita>¿Cómo te hicieron el comparendo?</Texto>
           <GrupoOpciones<TipoComparendo>
             accessibilityLabel="Cómo te hicieron el comparendo"
             seleccion={tipo}
@@ -319,8 +353,20 @@ export default function NuevoComparendo() {
             ]}
           />
           {errores.tipo ? (
-            <View accessibilityRole="alert" style={{ backgroundColor: colores.peligroSuave, borderRadius: radio.s, padding: espacio.s, marginTop: espacio.s }}>
-              <Texto negrita color="peligroTexto">
+            <View
+              accessibilityRole="alert"
+              style={{
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                gap: espacio.s,
+                backgroundColor: colores.peligroSuave,
+                borderRadius: radio.s,
+                paddingHorizontal: espacio.ms,
+                paddingVertical: espacio.s,
+              }}
+            >
+              <Icono nombre="alerta" color="peligroTexto" />
+              <Texto negrita color="peligroTexto" style={{ flex: 1 }}>
                 {errores.tipo}
               </Texto>
             </View>
@@ -348,7 +394,7 @@ export default function NuevoComparendo() {
           ) : null}
 
           {errorGeneral ? (
-            <Alerta titulo={errorGeneral} tono="urgente" anunciar testID="error-guardar" />
+            <Alerta titulo={errorGeneral} tono="peligro" anunciar testID="error-guardar" />
           ) : null}
 
           <View style={{ gap: espacio.m, marginTop: espacio.m }}>
@@ -356,6 +402,8 @@ export default function NuevoComparendo() {
               etiqueta={guardando ? 'Guardando...' : 'Guardar'}
               accessibilityRole="button"
               accessibilityLabel="Guardar el comparendo"
+              icono="check"
+              cargando={guardando}
               deshabilitado={guardando}
               onPress={() => void guardar()}
               testID="guardar-comparendo"

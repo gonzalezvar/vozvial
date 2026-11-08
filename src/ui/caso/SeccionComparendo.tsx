@@ -1,7 +1,5 @@
-import { View } from 'react-native';
-
 import { Boton } from '../Boton';
-import { useTema } from '../estadoAjustes';
+import { ListaDatos } from '../Lista';
 import { Tarjeta } from '../Tarjeta';
 import { Texto } from '../Texto';
 import { obtenerCatalogo } from './datosComparendo';
@@ -10,17 +8,18 @@ import type { PropsSeccionCaso } from './tipos';
 
 /** Comparendo del caso y su plazo, con acceso al detalle o al registro (HU-09 a HU-11). */
 export function SeccionComparendo({ caso }: PropsSeccionCaso) {
-  const { espacio } = useTema();
   const comparendo = caso.comparendo;
 
   if (!comparendo) {
     return (
-      <Tarjeta titulo="Comparendo" testID="seccion-comparendo">
-        <Texto style={{ marginBottom: espacio.m }}>Este caso todavía no tiene comparendo.</Texto>
+      <Tarjeta titulo="Comparendo" icono="comparendo" testID="seccion-comparendo">
+        <Texto color="textoSuave">Este caso todavía no tiene comparendo. Regístralo para calcular tu plazo.</Texto>
         <Boton
           etiqueta="Registrar el comparendo"
           accessibilityRole="link"
           accessibilityLabel="Registrar el comparendo de este caso"
+          variante="secundaria"
+          icono="comparendo"
           href={{ pathname: '/comparendo/nuevo', params: { caso: caso.id } }}
         />
       </Tarjeta>
@@ -29,19 +28,23 @@ export function SeccionComparendo({ caso }: PropsSeccionCaso) {
 
   const infraccion = obtenerCatalogo().buscar(comparendo.codigoInfraccion);
   return (
-    <Tarjeta titulo="Comparendo" testID="seccion-comparendo">
-      <View style={{ gap: espacio.s, marginBottom: espacio.m }}>
-        <Texto>Número: {comparendo.numero}</Texto>
-        <Texto>
-          Código {comparendo.codigoInfraccion}
-          {infraccion ? `: ${infraccion.descripcionSencilla}` : ''}
-        </Texto>
-        <ResumenPlazo caso={caso} />
-      </View>
+    <Tarjeta titulo="Comparendo y plazo" icono="comparendo" testID="seccion-comparendo">
+      <ResumenPlazo caso={caso} />
+      <ListaDatos
+        datos={[
+          { etiqueta: 'Número', valor: comparendo.numero },
+          {
+            etiqueta: 'Infracción',
+            valor: `Código ${comparendo.codigoInfraccion}${infraccion ? `: ${infraccion.descripcionSencilla}` : ''}`,
+          },
+        ]}
+      />
       <Boton
         etiqueta="Ver comparendo y plazo"
         accessibilityRole="link"
         accessibilityLabel={`Ver comparendo y plazo del comparendo ${comparendo.numero}`}
+        variante="secundaria"
+        iconoFinal="siguiente"
         href={`/comparendo/${caso.id}`}
       />
     </Tarjeta>

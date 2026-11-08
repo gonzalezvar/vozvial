@@ -3,20 +3,24 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { useTema } from './estadoAjustes';
-import { aria, estiloFoco } from './foco';
+import { estiloFoco } from './foco';
+import { Icono } from './Icono';
+import type { NombreIcono } from './iconos';
 import { Texto } from './Texto';
 
 interface PropsAccesoGrande {
   titulo: string;
   descripcion: string;
   href: Href;
+  /** Icono del destino, en un cuadro de color a la izquierda. */
+  icono?: NombreIcono;
   testID?: string;
 }
 
-/** Acceso grande del inicio: titulo y una linea que explica para que sirve. */
-export function AccesoGrande({ titulo, descripcion, href, testID }: PropsAccesoGrande) {
+/** Acceso grande del inicio: icono, titulo, una linea que explica para que sirve y flecha. */
+export function AccesoGrande({ titulo, descripcion, href, icono, testID }: PropsAccesoGrande) {
   const tema = useTema();
-  const { colores, espacio, radio, medidas } = tema;
+  const { colores, espacio, radio, medidas, tipo, peso, elevacion } = tema;
   const [enfocado, setEnfocado] = useState(false);
   return (
     <Pressable
@@ -28,37 +32,44 @@ export function AccesoGrande({ titulo, descripcion, href, testID }: PropsAccesoG
       testID={testID}
       style={({ pressed }) => [
         {
-          minHeight: medidas.altoMinimoBoton + 24,
-          padding: espacio.m,
-          borderRadius: radio.m,
-          borderWidth: 2,
-          borderColor: colores.primario,
+          minHeight: medidas.altoMinimoFila,
+          paddingVertical: espacio.m,
+          paddingHorizontal: espacio.m,
+          borderRadius: radio.l,
+          borderWidth: 1,
+          borderColor: pressed ? colores.primario : colores.bordeSuave,
           backgroundColor: pressed ? colores.primarioSuave : colores.superficie,
           flexDirection: 'row',
           alignItems: 'center',
           gap: espacio.m,
         },
+        elevacion.baja,
         enfocado && estiloFoco(tema),
       ]}
     >
-      <Texto negrita color="primario" style={{ flex: 1 }}>
-        {titulo}
-        <Text
+      {icono ? (
+        <View
           style={{
-            fontSize: tema.tipo.nota,
-            lineHeight: tema.tipo.alturaLinea(tema.tipo.nota),
-            fontWeight: '400',
-            color: colores.textoSuave,
+            width: medidas.cajaIcono,
+            height: medidas.cajaIcono,
+            borderRadius: radio.m,
+            backgroundColor: colores.primarioSuave,
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          {`\n${descripcion}`}
+          <Icono nombre={icono} color="primario" tamano={28} />
+        </View>
+      ) : null}
+      {/* Un solo bloque de texto: el nombre accesible contiene el texto visible (WCAG 2.5.3).
+          El bloque usa el interlineado del texto base; el titulo, mas grande, lleva el suyo. */}
+      <Texto color="textoSuave" variante="nota" style={{ flex: 1 }}>
+        <Text style={{ fontSize: tipo.subtitulo, lineHeight: tipo.alturaLinea(tipo.subtitulo), fontWeight: peso.medio, color: colores.texto }}>
+          {titulo}
         </Text>
+        {`\n${descripcion}`}
       </Texto>
-      <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" {...aria({ 'aria-hidden': true })}>
-        <Texto negrita color="primario" style={{ fontSize: tema.tipo.titulo }}>
-          {'›'}
-        </Texto>
-      </View>
+      <Icono nombre="siguiente" color="primario" respaldo="›" />
     </Pressable>
   );
 }
