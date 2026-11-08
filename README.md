@@ -368,7 +368,7 @@ Cómo están hechas las pruebas e2e:
 
 ## 6. Despliegue
 
-**Publicado en Railway:** https://vozvial-production.up.railway.app (desplegado el 2026-11-08 desde la cuenta de Juan). **Ojo:** a la fecha, el despliegue publicado es la versión anterior a la base de datos, la guía y el rediseño; falta redesplegar con `railway up --ci`. Código en GitHub: https://github.com/gonzalezvar/vozvial (público).
+**Publicado en Railway:** https://vozvial-production.up.railway.app (desplegado el 2026-11-08 desde la cuenta de Juan). Redesplegado el mismo día con Postgres, el asistente con Claude, la sincronización, el rediseño y la guía. Código en GitHub: https://github.com/gonzalezvar/vozvial (público).
 
 - Railway corre dos servicios en el proyecto `vozvial`:
   - `vozvial`: `npm run build` (`expo export -p web`) y `npm start` (`scripts/servidor-produccion.ts`), que sirve `dist/` como SPA, `/api/asistente` y la API de cuentas y datos cifrados en el mismo origen, con las cabeceras y la CSP de `vercel.json`. Es el mismo servidor que usan las pruebas e2e. Las migraciones de la base corren al arrancar.

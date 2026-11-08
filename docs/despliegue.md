@@ -14,9 +14,9 @@
     openssl rand -hex 32 | railway variable set SECRETO_SERVIDOR --stdin --service vozvial --skip-deploys
     ```
   - `RAILPACK_NODE_VERSION=22`.
-- **Cuentas de demostración:** se crean desde el equipo local contra la URL pública de Postgres (`DATABASE_PUBLIC_URL` del servicio `Postgres`; la interna no se alcanza desde fuera):
+- **Cuentas de demostración:** el servicio `Postgres` no tiene URL pública, así que la semilla se corre dentro del contenedor de la app, que alcanza la base por la red interna con su `DATABASE_URL`:
   ```bash
-  npx tsx scripts/sembrar-demo.ts --url-bd "$URL_PUBLICA"
+  railway ssh --service vozvial -- npx tsx scripts/sembrar-demo.ts
   ```
   Las fechas de los casos se calculan el día de la siembra. Los accesos ficticios están en `docs/usuarios-demo.md`.
 - **Redesplegar** (desde la raíz, con la CLI enlazada):
