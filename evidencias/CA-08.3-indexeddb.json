@@ -1,0 +1,23 @@
+{
+  "casos": [
+    {
+      "id": "9917a96b-f95e-429c-9671-44c17e735b46",
+      "iv": "8p93OIazzY3d28qU",
+      "datos": "3bQdjUhiGI3/gDyg3Qj8bRw87qB9MoUbFOmBH1OiO3f9ggeOCJrGaqIEqjmyWfPxlWkiPqaT6snOvMyWrpP6pZIaSU3hUIu1E1MFbo2fx6KUHje/i+tmBh3f… (1056 caracteres en base64)"
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "39197f55-74e1-4d5b-ba84-e92250f0a10c",
+      "casoId": "9917a96b-f95e-429c-9671-44c17e735b46",
+      "iv": "siy7f2h2vj3NZDSZ",
+      "datos": "lrqUN6QoDj6IeMa3I1jhstiey5fXZprE9QKKU1D9k4cDI8ChtLCM65cHCErCMq/JLGPUsKIIC/e67x4rZAQEj2l4RrQSVPqv8BU1jeyjHSVxr1AxUzey3hMd… (10520 caracteres en base64)"
+    },
+    {
+      "id": "df0ca362-e4cb-49e9-9469-283e7caf2bf0",
+      "casoId": "9917a96b-f95e-429c-9671-44c17e735b46",
+      "iv": "0DyAYP69MsIJeVCo",
+      "datos": "RhQPhYkQuTnt1rBqc3VW8tV22dFbEE0bEaIHZBtF2PKSktOcImpvsLlkxSmbCqR2vLh6cvoY63RzXVpkTgYmC7QybiGY36mWpnlEYG6a5k5KyFc6xQcQCXtn… (15444 caracteres en base64)"
+    }
+  ]
+}

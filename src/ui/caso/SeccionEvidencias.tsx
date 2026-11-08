@@ -36,7 +36,8 @@ const NOMBRE_TIPO = { audio: 'Audio', foto: 'Foto', nota: 'Nota' } as const;
 
 /** Los mensajes de voz estan escritos para el asistente: aqui se habla de la nota. */
 function paraNota(mensaje: string): string {
-  return mensaje.replace(/tu pregunta/g, 'la nota');
+  // En esta pantalla el boton se llama "Dictar la nota", no "Hablar".
+  return mensaje.replace(/tu pregunta/g, 'la nota').replace(/Toca "Hablar"/g, 'Toca "Dictar la nota"');
 }
 
 /** Convierte los bytes descifrados en algo que la pantalla puede mostrar o reproducir. */
