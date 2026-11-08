@@ -9,13 +9,13 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 
 ## Resumen
 
-- Fecha de generación: 8 de noviembre de 2026, 1:36 p. m.
-- Última ejecución registrada: 8 de noviembre de 2026, 1:36 p. m.
+- Fecha de generación: 8 de noviembre de 2026, 3:59 p. m.
+- Última ejecución registrada: 8 de noviembre de 2026, 3:59 p. m.
 - Total de criterios: 50
-- Cumple: 40
+- Cumple: 42
 - Cumple parcialmente: 1
 - No cumple: 0
-- Sin prueba: 9
+- Sin prueba: 7
 
 ## HU-01 · Crear mi cuenta
 
@@ -26,13 +26,13 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 | CA-01.3 Celular válido | "Escribe tu celular de 10 dígitos, por ejemplo 3001234567" | Comprobado: Un celular que no tiene 10 dígitos o no empieza por 3 se rechaza | Cumple | (prueba: e2e/hu01-crear-cuenta.spec.ts, 2026-11-08) | [CA-01.3.png](../../evidencias/CA-01.3.png) |
 | CA-01.4 PIN seguro | Mensaje que dice cuál regla falló | Comprobado: El PIN se rechaza diciendo qué regla falló | Cumple | (prueba: e2e/hu01-crear-cuenta.spec.ts, 2026-11-08) | [CA-01.4.png](../../evidencias/CA-01.4.png) |
 | CA-01.5 Autorización de datos (Ley 1581 de 2012) | Aviso y enlace a la política de datos en lenguaje sencillo | Comprobado: Sin la autorización de datos no se crea la cuenta y se enlaza la política | Cumple | (prueba: e2e/hu01-crear-cuenta.spec.ts, 2026-11-08) | [CA-01.5.png](../../evidencias/CA-01.5.png) |
-| CA-01.6 PIN protegido | Solo se ven el hash PBKDF2, la sal y el número de iteraciones | Comprobado: El PIN no queda en texto plano: solo hash PBKDF2, sal e iteraciones | Cumple | (prueba: e2e/hu01-crear-cuenta.spec.ts, 2026-11-08) | [CA-01.6.png](../../evidencias/CA-01.6.png) |
+| CA-01.6 PIN protegido | Solo se ven el hash PBKDF2, la sal y el número de iteraciones | Comprobado: El PIN no queda en texto plano: ni en el navegador ni en la base del servidor | Cumple | (prueba: e2e/hu01-crear-cuenta.spec.ts, 2026-11-08) | [CA-01.6.png](../../evidencias/CA-01.6.png) |
 
 ## HU-02 · Entrar con mi PIN
 
 | Criterio | Resultado esperado | Resultado observado | Cumple / No cumple | Observación | Evidencia |
 |---|---|---|---|---|---|
-| CA-02.1 PIN correcto | Pantalla de inicio con mi nombre | Comprobado: Con el PIN correcto entro y veo mi nombre en el inicio | Cumple | (prueba: e2e/hu02-entrar.spec.ts, 2026-11-08) | [CA-02.1.png](../../evidencias/CA-02.1.png) |
+| CA-02.1 PIN correcto | Pantalla de inicio con mi nombre | Comprobado: Con el PIN correcto entro y veo mi nombre en el inicio | Cumple | Hay 2 pruebas con este id; cuenta como Cumple solo si todas pasan. (prueba: e2e/hu02-entrar.spec.ts, 2026-11-08) | [CA-02.1.png](../../evidencias/CA-02.1.png) |
 | CA-02.2 PIN incorrecto | "PIN incorrecto. Te quedan N intentos." | Comprobado: Con un PIN incorrecto no entro y me dice cuántos intentos quedan | Cumple | (prueba: e2e/hu02-entrar.spec.ts, 2026-11-08) | [CA-02.2.png](../../evidencias/CA-02.2.png) |
 | CA-02.3 Bloqueo temporal | Contador visible del tiempo restante | Comprobado: Tras 5 fallos seguidos se bloquea con un contador visible del tiempo restante | Cumple | (prueba: e2e/hu02-entrar.spec.ts, 2026-11-08) | [CA-02.3.png](../../evidencias/CA-02.3.png) |
 | CA-02.4 Cierre por inactividad | Vuelve a pedir el PIN. En las pruebas el tiempo se configura más corto | Comprobado: Sin actividad la sesión se cierra y vuelve a pedir el PIN | Cumple | (prueba: e2e/hu02-entrar.spec.ts, 2026-11-08) | [CA-02.4.png](../../evidencias/CA-02.4.png) |
@@ -41,7 +41,7 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 
 | Criterio | Resultado esperado | Resultado observado | Cumple / No cumple | Observación | Evidencia |
 |---|---|---|---|---|---|
-| CA-03.1 Código correcto | Mis casos anteriores siguen ahí y se pueden abrir | Comprobado: Con el código correcto y un PIN nuevo entro y mis casos anteriores siguen ahí | Cumple | (prueba: e2e/hu03-recuperar.spec.ts, 2026-11-08) | [CA-03.1.png](../../evidencias/CA-03.1.png) |
+| CA-03.1 Código correcto | Mis casos anteriores siguen ahí y se pueden abrir | Comprobado: Con el código correcto y un PIN nuevo entro y mis casos anteriores siguen ahí | Cumple | Hay 2 pruebas con este id; cuenta como Cumple solo si todas pasan. (prueba: e2e/hu03-recuperar.spec.ts, 2026-11-08) | [CA-03.1.png](../../evidencias/CA-03.1.png) |
 | CA-03.2 Código incorrecto | Mensaje de error; no permite cambiar el PIN | Comprobado: Con un código incorrecto se rechaza y el PIN no cambia | Cumple | (prueba: e2e/hu03-recuperar.spec.ts, 2026-11-08) | [CA-03.2.png](../../evidencias/CA-03.2.png) |
 
 ## HU-04 · Ver y escuchar con comodidad
@@ -50,7 +50,7 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 |---|---|---|---|---|---|
 | CA-04.1 Tamaño de letra (pospuesto para la entrega final) | Texto base de 18 / 22 / 26 px según la opción; la elección se conserva al volver a entrar | — | Sin prueba | No hay prueba registrada para este criterio. | — |
 | CA-04.2 Escuchar pantalla (pospuesto para la entrega final) | Lectura en español; el botón cambia a "Detener" | — | Sin prueba | No hay prueba registrada para este criterio. | — |
-| CA-04.3 Contraste y etiquetas | Reporte de axe adjunto en la evaluación | axe (wcag2a, wcag2aa) en 10 pantallas: 0 critical, 0 serious, 0 moderate, 0 minor. Reporte en docs/evaluacion/axe-reporte.md. | Cumple | (prueba: e2e/axe.spec.ts, 2026-11-08) | [CA-04.3.png](../../evidencias/CA-04.3.png) |
+| CA-04.3 Contraste y etiquetas | Reporte de axe adjunto en la evaluación | axe (wcag2a, wcag2aa) en 12 pantallas: 0 critical, 0 serious, 0 moderate, 0 minor. Reporte en docs/evaluacion/axe-reporte.md. | Cumple | (prueba: e2e/axe.spec.ts, 2026-11-08) | [CA-04.3.png](../../evidencias/CA-04.3.png) |
 
 ## HU-05 · Preguntar hablando
 
@@ -77,13 +77,13 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 | CA-07.1 Inicio rápido | Indicador visible "Grabando" con tiempo transcurrido | 1 toque desde el inicio. Indicador "Grabando" con tiempo 00:02 (MediaRecorder activo). | Cumple | (prueba: e2e/hu07-me-pararon.spec.ts, 2026-11-08) | [CA-07.1.png](../../evidencias/CA-07.1.png) |
 | CA-07.2 Datos del momento | Si niego la ubicación, el caso se crea igual y lo indica: "Sin ubicación" | Con permiso: 4.60970, -74.08170 y fecha 8 de noviembre de 2026. Sin permiso: el caso se crea igual con "Sin ubicación". | Cumple | (prueba: e2e/hu07-me-pararon.spec.ts, 2026-11-08) | [CA-07.2.png](../../evidencias/CA-07.2.png) |
 | CA-07.3 Derechos a la vista (refinado 2026-11-08, ver refinamiento) | Solo entradas verificadas de la base, cada una con su artículo. El derecho a grabar se sustenta en el art. 21 de la Ley 1801 de 2016, que habla de "procedimiento policivo"; si se aplica a agentes de tránsito civiles requiere revisión jurídica | Se muestran 4 derechos verificados: L1801-2016-art21, L769-2002-art135, L769-2002-art125, L769-2002-art136. | Cumple | (prueba: e2e/hu07-me-pararon.spec.ts, 2026-11-08) | [CA-07.3.png](../../evidencias/CA-07.3.png) |
-| CA-07.4 Terminar y guardar | El caso aparece en el historial con su audio reproducible | Caso en Mis casos con audio audio/webm;codecs=opus de 28971 bytes, descifrado y cargado en el reproductor. | Cumple | (prueba: e2e/hu07-me-pararon.spec.ts, 2026-11-08) | [CA-07.4.png](../../evidencias/CA-07.4.png) |
+| CA-07.4 Terminar y guardar | El caso aparece en el historial con su audio reproducible | Caso en Mis casos con audio audio/webm;codecs=opus de 29285 bytes, descifrado y cargado en el reproductor. | Cumple | (prueba: e2e/hu07-me-pararon.spec.ts, 2026-11-08) | [CA-07.4.png](../../evidencias/CA-07.4.png) |
 
 ## HU-08 · Agregar evidencias
 
 | Criterio | Resultado esperado | Resultado observado | Cumple / No cumple | Observación | Evidencia |
 |---|---|---|---|---|---|
-| CA-08.1 Foto | Miniatura en la lista de evidencias | Foto con fecha "domingo 8 de noviembre de 2026, 1:35 p. m." y miniatura de 64 x 64. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.1.png](../../evidencias/CA-08.1.png) |
+| CA-08.1 Foto | Miniatura en la lista de evidencias | Foto con fecha "domingo 8 de noviembre de 2026, 3:56 p. m." y miniatura de 64 x 64. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.1.png](../../evidencias/CA-08.1.png) |
 | CA-08.2 Nota por voz o texto | Nota visible con fecha y hora | Nota dictada (reconocimiento simulado, es-CO) y nota escrita, ambas con fecha y hora. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.2.png](../../evidencias/CA-08.2.png) |
 | CA-08.3 Evidencias cifradas | Solo se ven datos cifrados, sin texto ni imagen legible | IndexedDB: 1 caso y 2 contenidos, solo id, iv y datos cifrados. No aparece el texto de la nota ni la firma PNG o webm. | Cumple | (prueba: e2e/hu08-evidencias.spec.ts, 2026-11-08) | [CA-08.3.png](../../evidencias/CA-08.3.png) |
 
@@ -131,10 +131,10 @@ Archivo generado por el reporter `e2e/reporter-matriz.ts` al correr Playwright, 
 
 | Criterio | Resultado esperado | Resultado observado | Cumple / No cumple | Observación | Evidencia |
 |---|---|---|---|---|---|
-| CA-14.1 Orden por urgencia (pospuesto para la entrega final) | Cada caso con estado y días restantes | — | Sin prueba | No hay prueba registrada para este criterio. | — |
+| CA-14.1 Orden por urgencia | Cada caso con estado y días restantes | Orden en pantalla: vence hoy, 4 días hábiles restantes y vencido; cada fila con estado "Abierto" y su plazo. | Cumple | (prueba: e2e/hu14-mis-casos.spec.ts, 2026-11-08) | [CA-14.1.png](../../evidencias/CA-14.1.png) |
 | CA-14.2 Exportar (pospuesto para la entrega final) | ZIP con JSON y archivos | — | Sin prueba | No hay prueba registrada para este criterio. | — |
 | CA-14.3 Borrar caso (pospuesto para la entrega final) | El caso ya no aparece y sus datos ya no están en IndexedDB | — | Sin prueba | No hay prueba registrada para este criterio. | — |
-| CA-14.4 Borrar todo (pospuesto para la entrega final) | Pantalla de bienvenida; IndexedDB vacío | — | Sin prueba | No hay prueba registrada para este criterio. | — |
+| CA-14.4 Borrar todo (refinado 2026-11-08, ver refinamiento) | Pantalla de bienvenida; IndexedDB vacío y la cuenta borrada del servidor | Comprobado: Al borrar todo con el PIN la app vuelve a la bienvenida y no quedan datos ni en el navegador ni en el servidor | Cumple | (prueba: e2e/hu14-borrar-todo.spec.ts, 2026-11-08) | [CA-14.4.png](../../evidencias/CA-14.4.png) |
 
 ## RNF-01 · Privacidad (requisito no funcional)
 

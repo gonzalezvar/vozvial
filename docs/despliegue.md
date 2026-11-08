@@ -1,11 +1,24 @@
-# Despliegue de VozVial (GitHub y Vercel)
+# Despliegue de VozVial (Railway, GitHub y alternativa en Vercel)
 
 ## Despliegue actual: Railway (2026-11-08)
 
 - **Enlace público:** https://vozvial-production.up.railway.app
 - **Repositorio:** https://github.com/gonzalezvar/vozvial (público desde el 2026-11-08).
-- **Proyecto Railway:** `vozvial`, servicio `vozvial`, entorno `production`.
-- **Cómo funciona:** `railway.json` usa Railpack (Node 22), compila con `npm run build` y arranca con `npm start` (`scripts/servidor-produccion.ts`). Ese servidor sirve `dist/` como SPA y `/api/asistente` en el mismo origen, con las cabeceras y la CSP de `vercel.json`.
+- **Proyecto Railway:** `vozvial`, entorno `production`, con dos servicios: `vozvial` (la app) y `Postgres` (la base de datos).
+- **Cómo funciona:** `railway.json` usa Railpack (Node 22), compila con `npm run build` y arranca con `npm start` (`scripts/servidor-produccion.ts`). Ese servidor sirve `dist/` como SPA, `/api/asistente` y la API de cuentas y datos cifrados en el mismo origen, con las cabeceras y la CSP de `vercel.json`. Las migraciones de la base corren al arrancar.
+- **Variables del servicio `vozvial`** (los valores no se escriben en el repositorio):
+  - `ANTHROPIC_API_KEY`: activa el asistente con Claude.
+  - `DATABASE_URL` = `${{Postgres.DATABASE_URL}}`: la base por la red interna de Railway.
+  - `SECRETO_SERVIDOR`: valor aleatorio para la sal falsa de los celulares no registrados. Se generó con:
+    ```bash
+    openssl rand -hex 32 | railway variable set SECRETO_SERVIDOR --stdin --service vozvial --skip-deploys
+    ```
+  - `RAILPACK_NODE_VERSION=22`.
+- **Cuentas de demostración:** se crean desde el equipo local contra la URL pública de Postgres (`DATABASE_PUBLIC_URL` del servicio `Postgres`; la interna no se alcanza desde fuera):
+  ```bash
+  npx tsx scripts/sembrar-demo.ts --url-bd "$URL_PUBLICA"
+  ```
+  Las fechas de los casos se calculan el día de la siembra. Los accesos ficticios están en `docs/usuarios-demo.md`.
 - **Redesplegar** (desde la raíz, con la CLI enlazada):
   ```bash
   railway up --ci -m "resumen del cambio"
@@ -14,7 +27,7 @@
 - **Comprobación hecha:** `/`, `/entrar` y `/acerca` responden 200. Las cabeceras CSP y HSTS están presentes. `/api/asistente` responde con cita o abstención, rechaza campos extra con 400 y la consola del navegador no muestra errores.
 - **RNF-02 medido contra Railway:** `npm run eval:asistente -- --url https://vozvial-production.up.railway.app/api/asistente` da p50 98 ms y p95 119 ms con red (meta < 1,5 s). Ver `docs/evaluacion/asistente.md`.
 
-Las secciones siguientes son la alternativa con Vercel.
+Las secciones siguientes son la alternativa con Vercel. Sirven solo para el asistente: la función `api/asistente.ts` no incluye la API de cuentas ni la base de datos, así que en Vercel no funcionaría entrar desde otro celular.
 
 Estos pasos los hace **Juan desde su propia cuenta**, cuando decida publicar. Hasta hoy (8 de noviembre de 2026) no se ha creado el repositorio remoto ni se ha desplegado nada. El proyecto ya trae `vercel.json` listo.
 

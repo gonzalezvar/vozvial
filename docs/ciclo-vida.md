@@ -172,3 +172,34 @@ Este documento registra **lo que se hizo** en cada etapa del ciclo de vida del p
   - La primera subida con `railway up` se cortó por tiempo: subía unos 58 MB con evidencias y fuentes. Se resolvió con `.railwayignore`.
   - Railway no pudo conectarse al repo privado, porque su app de GitHub no tiene acceso. Por eso se despliega desde el equipo local.
 
+
+
+## 7. Segunda iteración del ciclo
+
+### 2026-11-08 · Asistente con Claude, base de datos cifrada, rediseño y guía
+Esta iteración volvió a pasar por las seis etapas, a partir de lo que dejó la evaluación de la primera.
+
+1. **Recolección de requisitos.**
+   - La evaluación del asistente en modo verificado dio 0 de 40 citas pertinentes: con preguntas en palabras propias casi siempre se abstiene.
+   - Con la app publicada, la cuenta vivía solo en un navegador: si el conductor cambiaba de celular o borraba los datos, perdía sus casos.
+   - Las pantallas se veían como formularios sueltos y no había ayuda para quien abre la app por primera vez.
+2. **Diseño rápido.**
+   - Crítica de las pantallas anteriores y sistema visual "papel y petróleo" (`docs/diseno/critica.md` y `docs/diseno/sistema.md`): fondo cálido, un solo color de acción, terracota solo para urgencias e iconos propios.
+   - Protocolo de la base de datos con cifrado de extremo a extremo (`docs/bd.md`), antes de escribir código.
+3. **Construcción.**
+   - Asistente con Claude (`src/servidor/ProveedorClaude.ts`): toda la base verificada va en el system, la salida es JSON con citas, las citas se validan contra la base y `ValidadorRedaccion` revisa el texto. Si Claude falla, responde el modo verificado.
+   - Postgres en Railway (PGlite en local y pruebas), API de cuentas, sesiones, recuperación, casos y evidencias, y `SincronizadorCasos` en el navegador.
+   - Rediseño de 13 pantallas, "Mis casos" ordenado por urgencia (`PrioridadCasos`) y "Borrar todos mis datos".
+   - Guía: recorrido de 5 pasos, `/ayuda` y botón "Ayuda" en cada pantalla.
+4. **Evaluación.**
+   - Suite completa: 55 pruebas e2e pasan, 0 fallan; jest 496/496 (44 suites); `tsc` y `eslint` sin errores; axe sin violaciones serias en 12 pantallas.
+   - Matriz: 42 Cumple, 1 Cumple parcialmente (CA-10.2), 0 No cumple, 7 Sin prueba.
+   - Asistente con Claude probado en vivo con preguntas naturales que antes se abstenían: responde con cita en 3 a 6 s, y se abstiene o declina bien en preguntas sin sustento, fuera de tema o con intento de inyección. **No se ha medido con el banco** (`npm run eval:asistente -- --claude`), así que RNF-03 sigue con el resultado del modo verificado.
+   - Hallazgo: con Claude, la respuesta sobre grabar a un agente dejó de advertir que el art. 21 de la Ley 1801 habla de "autoridad de Policía", porque las notas de la base no le llegaban. Se corrigió pasando a Claude solo la frase "Requiere revisión jurídica" de cada entrada (`BaseNormativa.advertencia`); probado en vivo, la respuesta vuelve a decir que la norma no aclara si cubre a los agentes de tránsito civiles.
+   - Revisión visual a 412 px: en las pantallas con "Volver", los botones "Ayuda" y "Escuchar" bajaban a una segunda fila por 5 px; se ajustó el espacio entre botones.
+5. **Refinamiento.**
+   - CA-14.1 y CA-14.4 vuelven al prototipo; CA-14.4 incluye borrar la cuenta del servidor. CA-02.1 se prueba también desde otro navegador (`docs/refinamiento-historias.md`).
+   - La regla de privacidad cambió: al servidor ya no viaja solo la pregunta, sino también datos cifrados que no puede leer. Se actualizaron `CLAUDE.md`, el README, la política y "Acerca del prototipo".
+6. **Entrega.** Código en commits por tema y `SECRETO_SERVIDOR` definido en Railway. **Pendiente:** redesplegar (`railway up --ci`), sembrar las cuentas de demostración en la base de producción (`docs/usuarios-demo.md`) y probar producción de punta a punta. Hasta entonces, el enlace público sigue mostrando la versión anterior.
+
+- **Pendiente para Juan:** medir el banco con Claude (gasta créditos), fijar un límite de gasto en la consola de Anthropic y la revisión jurídica de `docs/pendientes-verificacion.md`.

@@ -129,11 +129,17 @@ test('CA-04.3 sin violaciones serias ni criticas en pantallas principales', asyn
   await desdeInicio(page, reportes, page.getByTestId('ir-comparendo'), 'Registrar comparendo', /\/comparendo\/nuevo$/, 'Registrar un comparendo');
   await desdeInicio(page, reportes, page.getByTestId('ir-ajustes'), 'Ajustes', /\/ajustes$/, 'Ajustes');
   await desdeInicio(page, reportes, page.getByRole('link', { name: /Acerca del prototipo/ }), 'Acerca del prototipo', /\/acerca$/, 'Acerca del prototipo');
+  await desdeInicio(page, reportes, page.getByTestId('ir-ayuda'), 'Ayuda', /\/ayuda$/, 'Ayuda');
 
   // Me pararon va al final porque al abrirla puede empezar a grabar y crear un caso.
   await page.getByTestId('boton-me-pararon').click();
   await esperarPantalla(page, /\/me-pararon$/, 'Me pararon');
   reportes.push(await analizar(page, 'Me pararon'));
+
+  // La guía es pública: abrirla con goto no necesita sesión.
+  await page.goto('/guia');
+  await esperarPantalla(page, /\/guia$/, 'Cómo funciona VozVial');
+  reportes.push(await analizar(page, 'Guía (recorrido)'));
 
   // Recargar cierra la sesión en memoria: así se llega a la pantalla de entrar con la cuenta ya creada.
   await page.goto('/entrar');

@@ -2,7 +2,7 @@
 
 Archivo generado por `e2e/axe.spec.ts` (prueba CA-04.3). No editar a mano.
 
-- Fecha de ejecución: 2026-11-08T18:36:40.066Z
+- Fecha de ejecución: 2026-11-08T20:59:21.572Z
 - Herramienta: `@axe-core/playwright` con las etiquetas `wcag2a` y `wcag2aa`, en Chromium con viewport Pixel 7.
 - Criterio: no debe haber violaciones de impacto `critical` (crítico) ni `serious` (serio).
 - axe revisa reglas automáticas. No reemplaza una revisión manual con lector de pantalla.
@@ -19,7 +19,9 @@ Archivo generado por `e2e/axe.spec.ts` (prueba CA-04.3). No editar a mano.
 | Registrar comparendo | `/comparendo/nuevo` | 0 | 0 | 0 | 0 |
 | Ajustes | `/ajustes` | 0 | 0 | 0 | 0 |
 | Acerca del prototipo | `/acerca` | 0 | 0 | 0 | 0 |
+| Ayuda | `/ayuda` | 0 | 0 | 0 | 0 |
 | Me pararon | `/me-pararon` | 0 | 0 | 0 | 0 |
+| Guía (recorrido) | `/guia` | 0 | 0 | 0 | 0 |
 | Entrar | `/entrar` | 0 | 0 | 0 | 0 |
 
 ## Detalle
@@ -56,7 +58,15 @@ Sin violaciones.
 
 Sin violaciones.
 
+### Ayuda (`/ayuda`)
+
+Sin violaciones.
+
 ### Me pararon (`/me-pararon`)
+
+Sin violaciones.
+
+### Guía (recorrido) (`/guia`)
 
 Sin violaciones.
 

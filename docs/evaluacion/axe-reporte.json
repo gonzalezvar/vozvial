@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-11-08T18:36:40.066Z",
+  "fecha": "2026-11-08T20:59:21.572Z",
   "etiquetas": [
     "wcag2a",
     "wcag2aa"
@@ -46,8 +46,18 @@
       "violaciones": []
     },
     {
+      "pantalla": "Ayuda",
+      "ruta": "/ayuda",
+      "violaciones": []
+    },
+    {
       "pantalla": "Me pararon",
       "ruta": "/me-pararon",
+      "violaciones": []
+    },
+    {
+      "pantalla": "Guía (recorrido)",
+      "ruta": "/guia",
       "violaciones": []
     },
     {

@@ -176,16 +176,16 @@ Orden de uso, que también es el orden del documento y del video:
 ## Módulo 7 · Historial y privacidad
 
 ### HU-14 · Mis casos
-*Pospuesta para la entrega final (ver `docs/refinamiento-historias.md`). Los criterios se conservan.*
+*CA-14.1 y CA-14.4 se construyeron en el prototipo; CA-14.2 y CA-14.3 quedan para la entrega final (ver `docs/refinamiento-historias.md`). Los criterios se conservan.*
 
 **Como** conductor, **quiero** ver todos mis casos ordenados por urgencia, y poder exportarlos o borrarlos, **para** tener el control de mi información.
 
 | Id | Criterio | Dado / Cuando / Entonces | Resultado esperado |
 |---|---|---|---|
-| CA-14.1 | Orden por urgencia (pospuesto para la entrega final) | Dado que tengo varios casos, cuando abro "Mis casos", entonces aparecen primero los de plazo más próximo | Cada caso con estado y días restantes |
+| CA-14.1 | Orden por urgencia | Dado que tengo varios casos, cuando abro "Mis casos", entonces aparecen primero los de plazo más próximo | Cada caso con estado y días restantes |
 | CA-14.2 | Exportar (pospuesto para la entrega final) | Dado un caso, cuando toco "Exportar", entonces descargo un archivo con el caso y sus evidencias | ZIP con JSON y archivos |
 | CA-14.3 | Borrar caso (pospuesto para la entrega final) | Dado un caso, cuando toco "Borrar" y confirmo, entonces se elimina de forma definitiva | El caso ya no aparece y sus datos ya no están en IndexedDB |
-| CA-14.4 | Borrar todo (pospuesto para la entrega final) | Dado que estoy en Ajustes, cuando elijo "Borrar todos mis datos" y confirmo con el PIN, entonces la app vuelve al estado inicial | Pantalla de bienvenida; IndexedDB vacío |
+| CA-14.4 | Borrar todo (refinado 2026-11-08, ver refinamiento) | Dado que estoy en Ajustes, cuando elijo "Borrar todos mis datos" y confirmo con el PIN, entonces la app vuelve al estado inicial | Pantalla de bienvenida; IndexedDB vacío y la cuenta borrada del servidor |
 
 ---
 
