@@ -1,0 +1,14 @@
+# Lo que no hace falta para construir ni servir la app en Railway (se sube menos y mas rapido).
+node_modules/
+dist/
+dist-*/
+.cache/
+.expo/
+evidencias/
+docs/
+data/fuentes/
+e2e/
+tests/
+test-results/
+test-results-*/
+playwright-report/

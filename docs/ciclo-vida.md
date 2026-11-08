@@ -157,3 +157,18 @@ Este documento registra **lo que se hizo** en cada etapa del ciclo de vida del p
   - Scripts de orquestación usados con el asistente de programación con IA, guardados en `docs/prompts/`.
   - Limpieza de los builds y resultados aislados (`dist-*`, `test-results-*`, `.cache`).
 - **Pendiente para Juan:** publicar en GitHub y Vercel, medir RNF-02 desde Vercel, ver los diagramas Mermaid renderizados en GitHub, cambiar la fecha del fixture a 06/11/2026 si graba antes del 13 nov 2026, confirmar con la app el ejemplo de CA-12.1 del guion, y la revisión jurídica y humana de lo listado en `docs/pendientes-verificacion.md`.
+
+### 2026-11-08 · Publicación
+- **Qué se hizo:**
+  - Se creó el repositorio privado https://github.com/gonzalezvar/vozvial y se subió el historial completo.
+  - Se publicó en Railway: https://vozvial-production.up.railway.app.
+  - Se verificaron las rutas, las cabeceras CSP y HSTS, el asistente y la consola del navegador sin errores.
+  - Se midió RNF-02 contra el despliegue: p95 de 119 ms.
+- **Decisiones:**
+  - Railway en lugar de Vercel, porque es la cuenta que tiene el equipo.
+  - Un solo servicio Node (`scripts/servidor-produccion.ts`) que reutiliza el servidor de las pruebas e2e, así producción y pruebas sirven la app igual.
+  - `.railwayignore` para subir solo lo necesario.
+- **Problemas:**
+  - La primera subida con `railway up` se cortó por tiempo: subía unos 58 MB con evidencias y fuentes. Se resolvió con `.railwayignore`.
+  - Railway no pudo conectarse al repo privado, porque su app de GitHub no tiene acceso. Por eso se despliega desde el equipo local.
+

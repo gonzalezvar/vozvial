@@ -240,7 +240,7 @@ cd vozvial
 npm ci
 ```
 
-La app necesita un **contexto seguro** (HTTPS o `localhost`) porque usa WebCrypto (`crypto.subtle`). Si se abre por la IP de la red local (`http://192.168…`), no se puede crear la cuenta. Para probar en un celular, usa el enlace HTTPS de Vercel.
+La app necesita un **contexto seguro** (HTTPS o `localhost`) porque usa WebCrypto (`crypto.subtle`). Si se abre por la IP de la red local (`http://192.168…`), no se puede crear la cuenta. Para probar en un celular, usa el enlace HTTPS publicado: https://vozvial-production.up.railway.app
 
 ## 4. Variables de entorno
 
@@ -311,7 +311,12 @@ Cómo están hechas las pruebas e2e:
 
 ## 6. Despliegue
 
-El proyecto está listo para Vercel, pero **no se ha publicado**. Juan lo publica desde su cuenta. Los pasos exactos están en [`docs/despliegue.md`](docs/despliegue.md).
+**Publicado en Railway:** https://vozvial-production.up.railway.app (desplegado el 2026-11-08 desde la cuenta de Juan). Código en GitHub: https://github.com/gonzalezvar/vozvial (privado).
+
+- Railway corre un solo servicio Node: `npm run build` (`expo export -p web`) y `npm start` (`scripts/servidor-produccion.ts`), que sirve `dist/` como SPA y `/api/asistente` en el mismo origen, con las cabeceras y la CSP de `vercel.json`. Es el mismo servidor que usan las pruebas e2e.
+- Configuración en `railway.json` (builder Railpack, Node 22). `.railwayignore` deja fuera evidencias, documentos, fuentes crudas y pruebas para que la subida sea liviana.
+- Redesplegar: `railway up --ci -m "<resumen>"` desde la raíz del proyecto.
+- Vercel sigue como alternativa: los pasos están en [`docs/despliegue.md`](docs/despliegue.md).
 
 En resumen:
 - `vercel.json` instala con `npm ci`, compila con `npx expo export -p web`, publica `dist/` y crea la función `api/*.ts` con un máximo de 15 s.
@@ -434,7 +439,7 @@ Son las mismas que declara la pantalla "Acerca del prototipo" (`src/ui/contenido
 - **Política de datos.** Falta publicar la identificación, la dirección y el teléfono del responsable (Ley 1581, art. 12).
 - **Revisión humana.** Toda la base fue verificada por agentes automatizados y falta la revisión de Juan (`docs/pendientes-verificacion.md`).
 - **Módulos pospuestos.** 6 (solicitud de audiencia en PDF) y 7 (exportar y borrar casos) quedan para la entrega final, igual que las pruebas e2e de CA-04.1 y CA-04.2.
-- **Despliegue sin probar.** El tiempo de respuesta desde Vercel (RNF-02) no se ha medido, porque el despliegue no se ha hecho.
+- **Despliegue en Railway, no en Vercel.** RNF-02 se midió contra Railway (p95 de 119 ms con red, meta < 1,5 s). La función de Vercel (`api/asistente.ts` con `vercel.json`) no se ha probado en Vercel.
 
 ## 10. Documentos del proyecto
 

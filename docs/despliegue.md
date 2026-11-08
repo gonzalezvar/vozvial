@@ -1,5 +1,21 @@
 # Despliegue de VozVial (GitHub y Vercel)
 
+## Despliegue actual: Railway (2026-11-08)
+
+- **Enlace público:** https://vozvial-production.up.railway.app
+- **Repositorio:** https://github.com/gonzalezvar/vozvial (privado; para que la docente lo vea, hazlo público con `gh repo edit gonzalezvar/vozvial --visibility public --accept-visibility-change-consequences` o agrégala como colaboradora).
+- **Proyecto Railway:** `vozvial`, servicio `vozvial`, entorno `production`.
+- **Cómo funciona:** `railway.json` usa Railpack (Node 22), compila con `npm run build` y arranca con `npm start` (`scripts/servidor-produccion.ts`). Ese servidor sirve `dist/` como SPA y `/api/asistente` en el mismo origen, con las cabeceras y la CSP de `vercel.json`.
+- **Redesplegar** (desde la raíz, con la CLI enlazada):
+  ```bash
+  railway up --ci -m "resumen del cambio"
+  ```
+  El código se sube desde el equipo local. El servicio no está conectado al repo de GitHub porque la app de Railway en GitHub no tiene acceso al repositorio privado. Si le das acceso en GitHub (Settings → Applications → Railway), se puede conectar para que cada push despliegue solo.
+- **Comprobación hecha:** `/`, `/entrar` y `/acerca` responden 200. Las cabeceras CSP y HSTS están presentes. `/api/asistente` responde con cita o abstención, rechaza campos extra con 400 y la consola del navegador no muestra errores.
+- **RNF-02 medido contra Railway:** `npm run eval:asistente -- --url https://vozvial-production.up.railway.app/api/asistente` da p50 98 ms y p95 119 ms con red (meta < 1,5 s). Ver `docs/evaluacion/asistente.md`.
+
+Las secciones siguientes son la alternativa con Vercel.
+
 Estos pasos los hace **Juan desde su propia cuenta**, cuando decida publicar. Hasta hoy (8 de noviembre de 2026) no se ha creado el repositorio remoto ni se ha desplegado nada. El proyecto ya trae `vercel.json` listo.
 
 > **El enlace tiene que ser HTTPS.** La app usa WebCrypto (`crypto.subtle`) para el hash del PIN y el cifrado, y el navegador solo lo ofrece en un contexto seguro (HTTPS o `localhost`). Vercel da HTTPS automáticamente en `*.vercel.app` y en los dominios propios. No compartas un enlace `http://` ni una IP de la red local: ahí no se puede crear la cuenta.

@@ -62,8 +62,8 @@ ANTES: versión del 2026-11-08 con umbral 0.85, sin margen y 45 preguntas verifi
 | Con sustento marcadas fuera de tema | - | 2.5 % (1/40) | 2.5 % (1/40) |
 | Sin sustento respondidas (error) | - | 0.0 % (0/10) | 0.0 % (0/10) |
 | Diagnóstico: la primera candidata cita un artículo esperado (sin umbral) | - | 21/40 | 24/40 |
-| Tiempo p50 por pregunta (local, en proceso) | - | 1.07 ms | 3.71 ms |
-| Tiempo p95 por pregunta (local, en proceso) | < 1,5 s desde Vercel | 2.45 ms | 6.31 ms |
+| Tiempo p50 por pregunta (local, en proceso) | - | 1.07 ms | 3.99 ms |
+| Tiempo p95 por pregunta (local, en proceso) | < 1,5 s desde Vercel | 2.45 ms | 7.11 ms |
 
 ## Conclusión frente a RNF-02 y RNF-03
 
@@ -71,12 +71,12 @@ ANTES: versión del 2026-11-08 con umbral 0.85, sin margen y 45 preguntas verifi
 |---|---|---|---|
 | RNF-03 · citas pertinentes | ≥ 95 % | 0.0 % | No cumple |
 | RNF-03 · abstenciones correctas | ≥ 90 % | 100.0 % | Cumple |
-| RNF-02 · p95 desde Vercel | < 1,5 s | 6.31 ms en local (en proceso, sin red) | Pendiente: falta medir desde Vercel |
+| RNF-02 · p95 desde el despliegue | < 1,5 s | 119 ms contra Railway, con red (7.11 ms en local, en proceso) | **Cumple** (medido contra Railway, no contra Vercel) |
 
 - RNF-03 (citas pertinentes) **No cumple**: 0 de 40. Quedan 39 falsas abstenciones, 0 respuestas con cita no pertinente y 1 marcadas fuera de tema. Las causas están en "Errores restantes".
 - Cota informativa: aun eligiendo el umbral mirando el banco (lo que no se hizo), el mejor resultado que mantiene las abstenciones correctas en 90 % o más es 8 de 40 (20.0 %) con umbral 0.70. La meta de 95 % no se alcanza con este modo verificado y estas 49 preguntas verificadas: hace falta más cobertura de preguntas verificadas (redactadas y revisadas por una persona) o un recuperador semántico, no un umbral distinto.
 - La mejora real de este refinamiento está en el orden de las candidatas (fila "Diagnóstico" de la tabla ANTES vs DESPUÉS), no en las respuestas entregadas: con el umbral calibrado el asistente sigue prefiriendo abstenerse.
-- RNF-02: el p95 se midió en local, en proceso y sin red. La medición desde Vercel la hace Juan después de publicar (docs/despliegue.md, sección 5). Hasta entonces RNF-02 no se da por cumplido.
+- RNF-02: el p95 contra el despliegue en Railway (https://vozvial-production.up.railway.app/api/asistente, 2026-11-08) es de 119 ms, con red, y cumple la meta de 1,5 s. El despliegue final quedó en Railway y no en Vercel; ver docs/refinamiento-historias.md.
 - El banco lo construyó el equipo con asistencia de IA y su calificación humana está pendiente; los porcentajes valen para este banco de 60 preguntas.
 
 ## Resultados en proceso (DESPUÉS)
@@ -90,8 +90,8 @@ ANTES: versión del 2026-11-08 con umbral 0.85, sin margen y 45 preguntas verifi
 | Abstenciones correctas (sin_sustento) | 100.0 % | 10 de 10; respondieron sin sustento: 0 |
 | Fuera de tema correctos | 100.0 % | 10 de 10 |
 | Respuestas tipo "respuesta" con al menos una cita | n/a | 0 de 0 |
-| Tiempo por pregunta p50 | 3.71 ms | |
-| Tiempo por pregunta p95 | 6.31 ms | |
+| Tiempo por pregunta p50 | 3.99 ms | |
+| Tiempo por pregunta p95 | 7.11 ms | |
 
 ### Errores (40 de 60)
 
@@ -142,56 +142,56 @@ ANTES: versión del 2026-11-08 con umbral 0.85, sin margen y 45 preguntas verifi
 
 | Id | Tipo | Obtenido | Pregunta verificada usada | Citas | Puntaje | ms | Acierto |
 |---|---|---|---|---|---|---|---|
-| BE-001 | con_sustento | abstencion | - | - | 0.663 | 7.11 | No |
-| BE-002 | con_sustento | abstencion | - | - | 0.594 | 4.74 | No |
-| BE-003 | con_sustento | abstencion | - | - | 0.743 | 3.45 | No |
-| BE-004 | con_sustento | abstencion | - | - | 0.569 | 5.48 | No |
-| BE-005 | con_sustento | abstencion | - | - | 0.473 | 3.96 | No |
-| BE-006 | con_sustento | abstencion | - | - | 0.376 | 7.75 | No |
-| BE-007 | con_sustento | abstencion | - | - | 0.805 | 4.77 | No |
-| BE-008 | con_sustento | abstencion | - | - | 0.592 | 3.07 | No |
-| BE-009 | con_sustento | abstencion | - | - | 0.672 | 3.11 | No |
-| BE-010 | con_sustento | abstencion | - | - | 0.511 | 5.25 | No |
-| BE-011 | con_sustento | abstencion | - | - | 0.405 | 3.71 | No |
-| BE-012 | con_sustento | abstencion | - | - | 0.642 | 7.69 | No |
-| BE-013 | con_sustento | abstencion | - | - | 0.427 | 3.93 | No |
-| BE-014 | con_sustento | abstencion | - | - | 0.462 | 3.09 | No |
-| BE-015 | con_sustento | abstencion | - | - | 0.725 | 4.30 | No |
-| BE-016 | con_sustento | abstencion | - | - | 0.487 | 5.25 | No |
-| BE-017 | con_sustento | abstencion | - | - | 0.548 | 2.29 | No |
-| BE-018 | con_sustento | abstencion | - | - | 0.659 | 5.47 | No |
-| BE-019 | con_sustento | abstencion | - | - | 0.456 | 4.53 | No |
-| BE-020 | con_sustento | abstencion | - | - | 0.745 | 3.99 | No |
-| BE-021 | con_sustento | abstencion | - | - | 0.365 | 3.18 | No |
-| BE-022 | con_sustento | abstencion | - | - | 0.571 | 3.52 | No |
-| BE-023 | con_sustento | abstencion | - | - | 0.575 | 4.66 | No |
-| BE-024 | con_sustento | abstencion | - | - | 0.636 | 1.59 | No |
-| BE-025 | con_sustento | fuera_de_tema | - | - | 0.000 | 0.09 | No |
-| BE-026 | con_sustento | abstencion | - | - | 0.553 | 4.32 | No |
-| BE-027 | con_sustento | abstencion | - | - | 0.757 | 5.84 | No |
-| BE-028 | con_sustento | abstencion | - | - | 0.766 | 4.22 | No |
-| BE-029 | con_sustento | abstencion | - | - | 0.604 | 2.79 | No |
-| BE-030 | con_sustento | abstencion | - | - | 0.121 | 5.01 | No |
-| BE-031 | con_sustento | abstencion | - | - | 0.789 | 3.79 | No |
-| BE-032 | con_sustento | abstencion | - | - | 0.351 | 4.18 | No |
-| BE-033 | con_sustento | abstencion | - | - | 0.570 | 4.53 | No |
-| BE-034 | con_sustento | abstencion | - | - | 0.514 | 6.16 | No |
-| BE-035 | con_sustento | abstencion | - | - | 0.381 | 6.31 | No |
-| BE-036 | con_sustento | abstencion | - | - | 0.584 | 3.88 | No |
-| BE-037 | con_sustento | abstencion | - | - | 0.411 | 3.72 | No |
-| BE-038 | con_sustento | abstencion | - | - | 0.336 | 3.45 | No |
-| BE-039 | con_sustento | abstencion | - | - | 0.423 | 3.05 | No |
-| BE-040 | con_sustento | abstencion | - | - | 0.814 | 1.38 | No |
-| BE-041 | sin_sustento | abstencion | - | - | 0.234 | 1.83 | Sí |
-| BE-042 | sin_sustento | abstencion | - | - | 0.817 | 3.70 | Sí |
-| BE-043 | sin_sustento | abstencion | - | - | 0.551 | 5.63 | Sí |
-| BE-044 | sin_sustento | abstencion | - | - | 0.518 | 3.94 | Sí |
-| BE-045 | sin_sustento | abstencion | - | - | 0.363 | 2.87 | Sí |
-| BE-046 | sin_sustento | abstencion | - | - | 0.684 | 4.96 | Sí |
+| BE-001 | con_sustento | abstencion | - | - | 0.663 | 7.72 | No |
+| BE-002 | con_sustento | abstencion | - | - | 0.594 | 4.89 | No |
+| BE-003 | con_sustento | abstencion | - | - | 0.743 | 4.67 | No |
+| BE-004 | con_sustento | abstencion | - | - | 0.569 | 5.73 | No |
+| BE-005 | con_sustento | abstencion | - | - | 0.473 | 3.83 | No |
+| BE-006 | con_sustento | abstencion | - | - | 0.376 | 7.87 | No |
+| BE-007 | con_sustento | abstencion | - | - | 0.805 | 4.60 | No |
+| BE-008 | con_sustento | abstencion | - | - | 0.592 | 4.01 | No |
+| BE-009 | con_sustento | abstencion | - | - | 0.672 | 3.22 | No |
+| BE-010 | con_sustento | abstencion | - | - | 0.511 | 5.31 | No |
+| BE-011 | con_sustento | abstencion | - | - | 0.405 | 3.75 | No |
+| BE-012 | con_sustento | abstencion | - | - | 0.642 | 7.92 | No |
+| BE-013 | con_sustento | abstencion | - | - | 0.427 | 4.17 | No |
+| BE-014 | con_sustento | abstencion | - | - | 0.462 | 3.08 | No |
+| BE-015 | con_sustento | abstencion | - | - | 0.725 | 4.44 | No |
+| BE-016 | con_sustento | abstencion | - | - | 0.487 | 5.24 | No |
+| BE-017 | con_sustento | abstencion | - | - | 0.548 | 2.57 | No |
+| BE-018 | con_sustento | abstencion | - | - | 0.659 | 5.88 | No |
+| BE-019 | con_sustento | abstencion | - | - | 0.456 | 6.18 | No |
+| BE-020 | con_sustento | abstencion | - | - | 0.745 | 4.71 | No |
+| BE-021 | con_sustento | abstencion | - | - | 0.365 | 3.21 | No |
+| BE-022 | con_sustento | abstencion | - | - | 0.571 | 4.05 | No |
+| BE-023 | con_sustento | abstencion | - | - | 0.575 | 4.36 | No |
+| BE-024 | con_sustento | abstencion | - | - | 0.636 | 1.63 | No |
+| BE-025 | con_sustento | fuera_de_tema | - | - | 0.000 | 0.08 | No |
+| BE-026 | con_sustento | abstencion | - | - | 0.553 | 4.57 | No |
+| BE-027 | con_sustento | abstencion | - | - | 0.757 | 5.82 | No |
+| BE-028 | con_sustento | abstencion | - | - | 0.766 | 4.58 | No |
+| BE-029 | con_sustento | abstencion | - | - | 0.604 | 2.78 | No |
+| BE-030 | con_sustento | abstencion | - | - | 0.121 | 7.11 | No |
+| BE-031 | con_sustento | abstencion | - | - | 0.789 | 3.61 | No |
+| BE-032 | con_sustento | abstencion | - | - | 0.351 | 4.48 | No |
+| BE-033 | con_sustento | abstencion | - | - | 0.570 | 4.73 | No |
+| BE-034 | con_sustento | abstencion | - | - | 0.514 | 6.23 | No |
+| BE-035 | con_sustento | abstencion | - | - | 0.381 | 6.47 | No |
+| BE-036 | con_sustento | abstencion | - | - | 0.584 | 3.86 | No |
+| BE-037 | con_sustento | abstencion | - | - | 0.411 | 3.74 | No |
+| BE-038 | con_sustento | abstencion | - | - | 0.336 | 3.99 | No |
+| BE-039 | con_sustento | abstencion | - | - | 0.423 | 4.06 | No |
+| BE-040 | con_sustento | abstencion | - | - | 0.814 | 1.40 | No |
+| BE-041 | sin_sustento | abstencion | - | - | 0.234 | 1.91 | Sí |
+| BE-042 | sin_sustento | abstencion | - | - | 0.817 | 3.97 | Sí |
+| BE-043 | sin_sustento | abstencion | - | - | 0.551 | 6.01 | Sí |
+| BE-044 | sin_sustento | abstencion | - | - | 0.518 | 3.96 | Sí |
+| BE-045 | sin_sustento | abstencion | - | - | 0.363 | 2.86 | Sí |
+| BE-046 | sin_sustento | abstencion | - | - | 0.684 | 5.11 | Sí |
 | BE-047 | sin_sustento | abstencion | - | - | 0.559 | 3.68 | Sí |
-| BE-048 | sin_sustento | abstencion | - | - | 0.649 | 3.60 | Sí |
-| BE-049 | sin_sustento | abstencion | - | - | 0.533 | 5.30 | Sí |
-| BE-050 | sin_sustento | abstencion | - | - | 0.436 | 3.10 | Sí |
+| BE-048 | sin_sustento | abstencion | - | - | 0.649 | 4.02 | Sí |
+| BE-049 | sin_sustento | abstencion | - | - | 0.533 | 5.41 | Sí |
+| BE-050 | sin_sustento | abstencion | - | - | 0.436 | 3.18 | Sí |
 | BE-051 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 0.02 | Sí |
 | BE-052 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 0.01 | Sí |
 | BE-053 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 0.01 | Sí |
@@ -256,6 +256,130 @@ El criterio del banco mide el artículo citado, no si la respuesta sencilla cont
 
 | Id | Pregunta del banco | Pregunta verificada devuelta | Citas |
 |---|---|---|---|
+
+## Resultados contra https://vozvial-production.up.railway.app/api/asistente
+
+| Métrica | Resultado | Detalle |
+|---|---|---|
+| Citas pertinentes (con_sustento) | 0.0 % | 0 de 40 respondieron y citaron al menos un artículo esperado |
+| Falsas abstenciones (con_sustento) | 97.5 % | 39 de 40 |
+| Respuestas con cita no pertinente (con_sustento) | 0.0 % | 0 de 40 |
+| Con sustento marcadas fuera de tema | 2.5 % | 1 de 40 |
+| Abstenciones correctas (sin_sustento) | 100.0 % | 10 de 10; respondieron sin sustento: 0 |
+| Fuera de tema correctos | 100.0 % | 10 de 10 |
+| Respuestas tipo "respuesta" con al menos una cita | n/a | 0 de 0 |
+| Tiempo por pregunta p50 | 98 ms | |
+| Tiempo por pregunta p95 | 119 ms | |
+
+### Errores (40 de 60)
+
+| Id | Tipo | Pregunta | Esperado | Obtenido | Puntaje | Error |
+|---|---|---|---|---|---|---|
+| BE-001 | con_sustento | Firmé el comparendo esta mañana, ¿desde cuándo empiezan a correr los días para ir al tránsito? | respuesta citando L769-2002-art136 o L769-2002-art135 | abstención | 0.663 | falsa abstención |
+| BE-002 | con_sustento | En la audiencia, ¿el funcionario puede pedir pruebas por su cuenta aunque yo no las pida? | respuesta citando L769-2002-art136 | abstención | 0.594 | falsa abstención |
+| BE-003 | con_sustento | ¿Puedo pagar la multa de tránsito en un banco? | respuesta citando L769-2002-art136 | abstención | 0.743 | falsa abstención |
+| BE-004 | con_sustento | ¿El Ministerio Público puede intervenir en mi proceso de tránsito? | respuesta citando L769-2002-art138 | abstención | 0.569 | falsa abstención |
+| BE-005 | con_sustento | Si en el comparendo está involucrado un menor de edad, ¿tiene que ir acompañado? | respuesta citando L769-2002-art138 | abstención | 0.473 | falsa abstención |
+| BE-006 | con_sustento | El carro es mío pero lo manejaba mi hijo cuando lo cogió la cámara, ¿a quién le mandan el comparendo? | respuesta citando L1843-2017-art8 o L769-2002-art137 | abstención | 0.376 | falsa abstención |
+| BE-007 | con_sustento | Si no encuentran al dueño en la dirección del RUNT, ¿cómo le notifican la fotomulta? | respuesta citando L1843-2017-art8 | abstención | 0.805 | falsa abstención |
+| BE-008 | con_sustento | ¿Qué datos debo tener al día en el RUNT para que me lleguen las notificaciones? | respuesta citando L1843-2017-art8 | abstención | 0.592 | falsa abstención |
+| BE-009 | con_sustento | ¿Qué cuenta como sistema de fotodetección según la ley? | respuesta citando L1843-2017-art1 | abstención | 0.672 | falsa abstención |
+| BE-010 | con_sustento | En una carretera nacional, ¿a cuántos metros antes del radar debe estar la señal? | respuesta citando L1843-2017-art10 | abstención | 0.511 | falsa abstención |
+| BE-011 | con_sustento | ¿Qué normas se aplican a lo que la ley de fotomultas no regula? | respuesta citando L1843-2017-art9 | abstención | 0.405 | falsa abstención |
+| BE-012 | con_sustento | Si demuestro que la notificación de la cámara fue a parar a otra parte, ¿desde qué fecha corre la rebaja? | respuesta citando L1843-2017-art7 o L769-2002-art136 | abstención | 0.642 | falsa abstención |
+| BE-013 | con_sustento | Si la multa es por cámara, ¿la prueba tiene que venir junto con el comparendo? | respuesta citando L769-2002-art137 | abstención | 0.427 | falsa abstención |
+| BE-014 | con_sustento | ¿Los cursos para infractores deben enseñar a respetar a los ciclistas? | respuesta citando L769-2002-art136 | abstención | 0.462 | falsa abstención |
+| BE-015 | con_sustento | ¿Hasta cuántos días tengo para pagar solo el setenta y cinco por ciento? | respuesta citando L769-2002-art136 | abstención | 0.725 | falsa abstención |
+| BE-016 | con_sustento | Si hago el curso en un municipio distinto al de la multa, ¿a quién le pago? | respuesta citando L769-2002-art136 | abstención | 0.487 | falsa abstención |
+| BE-017 | con_sustento | ¿Me pueden sancionar ahí mismo en la calle, sin ir a una oficina? | respuesta citando L769-2002-art136 | abstención | 0.548 | falsa abstención |
+| BE-018 | con_sustento | Si en la audiencia me declaran contraventor, ¿pago la multa completa? | respuesta citando L769-2002-art136 | abstención | 0.659 | falsa abstención |
+| BE-019 | con_sustento | Tengo una multa de hace cuatro años que nunca me cobraron, ¿sigue vigente? | respuesta citando L769-2002-art159 | abstención | 0.456 | falsa abstención |
+| BE-020 | con_sustento | ¿Qué interrumpe la prescripción de una sanción de tránsito? | respuesta citando L769-2002-art159 | abstención | 0.745 | falsa abstención |
+| BE-021 | con_sustento | Me pusieron el comparendo hace más de un año y nunca decidieron nada, ¿qué pasa con eso? | respuesta citando L769-2002-art161 o L1843-2017-art11 | abstención | 0.365 | falsa abstención |
+| BE-022 | con_sustento | ¿Qué es la revocación directa en un proceso de tránsito? | respuesta citando L769-2002-art161 o L1843-2017-art11 | abstención | 0.571 | falsa abstención |
+| BE-023 | con_sustento | ¿Cuándo queda en firme lo que decidió el inspector? | respuesta citando L769-2002-art142 | abstención | 0.575 | falsa abstención |
+| BE-024 | con_sustento | ¿En qué momento tengo que sustentar la reposición? | respuesta citando L769-2002-art142 | abstención | 0.636 | falsa abstención |
+| BE-025 | con_sustento | ¿Cómo me entero de lo que decidan dentro del proceso? | respuesta citando L769-2002-art139 | fuera de tema | 0.000 | marcada fuera de tema |
+| BE-026 | con_sustento | Si el problema del carro se puede arreglar ahí mismo, ¿igual se lo llevan al parqueadero? | respuesta citando L769-2002-art125 | abstención | 0.553 | falsa abstención |
+| BE-027 | con_sustento | ¿El parqueadero autorizado puede dejar salir mi carro sin orden de la autoridad? | respuesta citando L769-2002-art125 | abstención | 0.757 | falsa abstención |
+| BE-028 | con_sustento | ¿Por cuánto tiempo queda inmovilizado un vehículo? | respuesta citando L769-2002-art125 o L769-2002-art2 | abstención | 0.766 | falsa abstención |
+| BE-029 | con_sustento | ¿Qué consecuencia tiene para un policía impedir que uno lo grabe? | respuesta citando L1801-2016-art21 | abstención | 0.604 | falsa abstención |
+| BE-030 | con_sustento | Si choco y se comprueba que la causa fue una deficiencia física o de salud que yo tenía, ¿qué sanción me pueden poner? | respuesta citando L769-2002-art157 | abstención | 0.121 | falsa abstención |
+| BE-031 | con_sustento | ¿El testigo que firma el comparendo por mí qué datos tiene que dar? | respuesta citando L769-2002-art135 | abstención | 0.789 | falsa abstención |
+| BE-032 | con_sustento | Al papel que me dieron le falta el número de placa del agente, ¿debía tenerlo? | respuesta citando L769-2002-art129 | abstención | 0.351 | falsa abstención |
+| BE-033 | con_sustento | ¿Cuánto me cobran por dejar el carro estacionado donde no se puede? | respuesta citando L769-2002-art131 | abstención | 0.570 | falsa abstención |
+| BE-034 | con_sustento | ¿Cuánto es la multa por llevar a mi nieto de ocho años en la silla de adelante? | respuesta citando L769-2002-art131 | abstención | 0.514 | falsa abstención |
+| BE-035 | con_sustento | Mi multa quedó ejecutoriada en 2022 y todavía la debo, ¿me la pasan a la unidad nueva que empezó en 2024? | respuesta citando L2294-2023-art313 | abstención | 0.381 | falsa abstención |
+| BE-036 | con_sustento | Iba muy rápido y me pararon, ¿de cuánto es el comparendo por eso? | respuesta citando L769-2002-art131 | abstención | 0.584 | falsa abstención |
+| BE-037 | con_sustento | ¿Qué diferencia hay entre una infracción simple y una compleja? | respuesta citando L769-2002-art2 | abstención | 0.411 | falsa abstención |
+| BE-038 | con_sustento | ¿Quien guarda mis datos tiene que cuidarlos para que no se pierdan ni los vea cualquiera? | respuesta citando L1581-2012-art17 o L1581-2012-art4 | abstención | 0.336 | falsa abstención |
+| BE-039 | con_sustento | ¿Ante qué entidad me puedo quejar si una aplicación usa mal mis datos? | respuesta citando L1581-2012-art8 | abstención | 0.423 | falsa abstención |
+| BE-040 | con_sustento | ¿El 12 de octubre se corre para el lunes? | respuesta citando L51-1983-art1 | abstención | 0.814 | falsa abstención |
+
+### Detalle de todas las preguntas
+
+| Id | Tipo | Obtenido | Pregunta verificada usada | Citas | Puntaje | ms | Acierto |
+|---|---|---|---|---|---|---|---|
+| BE-001 | con_sustento | abstencion | - | - | 0.663 | 405 | No |
+| BE-002 | con_sustento | abstencion | - | - | 0.594 | 326 | No |
+| BE-003 | con_sustento | abstencion | - | - | 0.743 | 107 | No |
+| BE-004 | con_sustento | abstencion | - | - | 0.569 | 94 | No |
+| BE-005 | con_sustento | abstencion | - | - | 0.473 | 99 | No |
+| BE-006 | con_sustento | abstencion | - | - | 0.376 | 98 | No |
+| BE-007 | con_sustento | abstencion | - | - | 0.805 | 107 | No |
+| BE-008 | con_sustento | abstencion | - | - | 0.592 | 95 | No |
+| BE-009 | con_sustento | abstencion | - | - | 0.672 | 114 | No |
+| BE-010 | con_sustento | abstencion | - | - | 0.511 | 97 | No |
+| BE-011 | con_sustento | abstencion | - | - | 0.405 | 100 | No |
+| BE-012 | con_sustento | abstencion | - | - | 0.642 | 119 | No |
+| BE-013 | con_sustento | abstencion | - | - | 0.427 | 101 | No |
+| BE-014 | con_sustento | abstencion | - | - | 0.462 | 97 | No |
+| BE-015 | con_sustento | abstencion | - | - | 0.725 | 103 | No |
+| BE-016 | con_sustento | abstencion | - | - | 0.487 | 96 | No |
+| BE-017 | con_sustento | abstencion | - | - | 0.548 | 111 | No |
+| BE-018 | con_sustento | abstencion | - | - | 0.659 | 98 | No |
+| BE-019 | con_sustento | abstencion | - | - | 0.456 | 110 | No |
+| BE-020 | con_sustento | abstencion | - | - | 0.745 | 94 | No |
+| BE-021 | con_sustento | abstencion | - | - | 0.365 | 109 | No |
+| BE-022 | con_sustento | abstencion | - | - | 0.571 | 94 | No |
+| BE-023 | con_sustento | abstencion | - | - | 0.575 | 119 | No |
+| BE-024 | con_sustento | abstencion | - | - | 0.636 | 94 | No |
+| BE-025 | con_sustento | fuera_de_tema | - | - | 0.000 | 99 | No |
+| BE-026 | con_sustento | abstencion | - | - | 0.553 | 97 | No |
+| BE-027 | con_sustento | abstencion | - | - | 0.757 | 102 | No |
+| BE-028 | con_sustento | abstencion | - | - | 0.766 | 99 | No |
+| BE-029 | con_sustento | abstencion | - | - | 0.604 | 99 | No |
+| BE-030 | con_sustento | abstencion | - | - | 0.121 | 91 | No |
+| BE-031 | con_sustento | abstencion | - | - | 0.789 | 103 | No |
+| BE-032 | con_sustento | abstencion | - | - | 0.351 | 95 | No |
+| BE-033 | con_sustento | abstencion | - | - | 0.570 | 99 | No |
+| BE-034 | con_sustento | abstencion | - | - | 0.514 | 98 | No |
+| BE-035 | con_sustento | abstencion | - | - | 0.381 | 102 | No |
+| BE-036 | con_sustento | abstencion | - | - | 0.584 | 97 | No |
+| BE-037 | con_sustento | abstencion | - | - | 0.411 | 95 | No |
+| BE-038 | con_sustento | abstencion | - | - | 0.336 | 94 | No |
+| BE-039 | con_sustento | abstencion | - | - | 0.423 | 98 | No |
+| BE-040 | con_sustento | abstencion | - | - | 0.814 | 93 | No |
+| BE-041 | sin_sustento | abstencion | - | - | 0.234 | 109 | Sí |
+| BE-042 | sin_sustento | abstencion | - | - | 0.817 | 93 | Sí |
+| BE-043 | sin_sustento | abstencion | - | - | 0.551 | 98 | Sí |
+| BE-044 | sin_sustento | abstencion | - | - | 0.518 | 92 | Sí |
+| BE-045 | sin_sustento | abstencion | - | - | 0.363 | 98 | Sí |
+| BE-046 | sin_sustento | abstencion | - | - | 0.684 | 90 | Sí |
+| BE-047 | sin_sustento | abstencion | - | - | 0.559 | 103 | Sí |
+| BE-048 | sin_sustento | abstencion | - | - | 0.649 | 112 | Sí |
+| BE-049 | sin_sustento | abstencion | - | - | 0.533 | 102 | Sí |
+| BE-050 | sin_sustento | abstencion | - | - | 0.436 | 99 | Sí |
+| BE-051 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 101 | Sí |
+| BE-052 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 88 | Sí |
+| BE-053 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 95 | Sí |
+| BE-054 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 90 | Sí |
+| BE-055 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 92 | Sí |
+| BE-056 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 89 | Sí |
+| BE-057 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 93 | Sí |
+| BE-058 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 83 | Sí |
+| BE-059 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 91 | Sí |
+| BE-060 | fuera_de_tema | fuera_de_tema | - | - | 0.000 | 92 | Sí |
 
 ## Cómo se eligieron umbral, margen y pesos
 
