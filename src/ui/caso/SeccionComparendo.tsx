@@ -41,7 +41,7 @@ export function SeccionComparendo({ caso }: PropsSeccionCaso) {
       <Boton
         etiqueta="Ver comparendo y plazo"
         accessibilityRole="link"
-        accessibilityLabel={`Ver el comparendo ${comparendo.numero} y su plazo`}
+        accessibilityLabel={`Ver comparendo y plazo del comparendo ${comparendo.numero}`}
         href={`/comparendo/${caso.id}`}
       />
     </Tarjeta>
