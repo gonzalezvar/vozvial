@@ -223,6 +223,6 @@ Esta iteración volvió a pasar por las seis etapas, a partir de lo que dejó la
 3. **Reevaluación.**
    - E2E local con Claude real: 55 de 55. Unitarias: 503 de 503.
    - Banco con Claude: 40/40 citas pertinentes, 10/10 abstenciones y 10/10 fuera de tema, 0 respaldos; p50 de 2,2 s y p95 de 7,8 s.
-   - Producción: 28 de 28 después de redesplegar.
+   - Producción: 28 de 28 después de redesplegar con la pantalla 404, y otra vez 28 de 28 después de desplegar la sesión activa y la segunda petición a Claude. Los logs de Railway no contienen las preguntas ni registran tiempos agotados.
 4. **Limpieza.** Se retiraron del repositorio y de su historial los documentos de trabajo (ver la nota al inicio). Antes se guardó un respaldo completo del repositorio fuera de la carpeta del proyecto.
 
