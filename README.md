@@ -10,15 +10,20 @@ VozVial es una app móvil con asistente de voz para que conductores en Colombia,
 ## Contenido
 
 1. [Estado del prototipo](#1-estado-del-prototipo)
-2. [Arquitectura](#2-arquitectura)
-3. [Requisitos e instalación](#3-requisitos-e-instalación)
-4. [Variables de entorno](#4-variables-de-entorno)
-5. [Comandos y pruebas](#5-comandos-y-pruebas)
-6. [Despliegue](#6-despliegue)
-7. [Flujo de datos y privacidad](#7-flujo-de-datos-y-privacidad)
-8. [Base normativa](#8-base-normativa)
-9. [Limitaciones](#9-limitaciones)
-10. [Documentos del proyecto](#10-documentos-del-proyecto)
+2. [Inicio rápido](#2-inicio-rápido)
+3. [Cómo probar cada módulo](#3-cómo-probar-cada-módulo)
+4. [Stack](#4-stack)
+5. [Estructura del proyecto](#5-estructura-del-proyecto)
+6. [Arquitectura](#6-arquitectura)
+7. [Requisitos e instalación](#7-requisitos-e-instalación)
+8. [Variables de entorno](#8-variables-de-entorno)
+9. [Comandos y pruebas](#9-comandos-y-pruebas)
+10. [Despliegue](#10-despliegue)
+11. [Flujo de datos y privacidad](#11-flujo-de-datos-y-privacidad)
+12. [Base normativa](#12-base-normativa)
+13. [Limitaciones](#13-limitaciones)
+14. [Problemas comunes](#14-problemas-comunes)
+15. [Documentos del proyecto](#15-documentos-del-proyecto)
 
 ## 1. Estado del prototipo
 
@@ -44,7 +49,109 @@ RNF-02 (tiempo de respuesta) y RNF-03 (precisión del asistente) se miden con `n
 - **Modo verificado** (`docs/evaluacion/asistente.md`): RNF-02 cumple (p95 de 119 ms contra Railway); RNF-03 no cumple (0 de 40 citas pertinentes: se abstiene con otras palabras).
 - **Con Claude, el modo que corre en producción** (`docs/evaluacion/asistente-claude.md`): RNF-03 **cumple**, con 40 de 40 citas pertinentes (100 %), 10 de 10 abstenciones correctas, 10 de 10 fuera de tema y 0 respaldos al modo verificado. El p50 es de 2,2 s y el p95 de 7,8 s: RNF-02 se definió para el modo verificado y con Claude la meta de 1,5 s no se alcanza.
 
-## 2. Arquitectura
+## 2. Inicio rápido
+
+### Sin instalar nada
+
+Abre https://vozvial-production.up.railway.app en el celular o en Chrome con vista móvil. Puedes crear una cuenta propia o entrar con una de las cuentas de demostración de [`docs/usuarios-demo.md`](docs/usuarios-demo.md) (datos ficticios y públicos): toca "Ya tengo cuenta", escribe el celular y el PIN de la tabla y verás sus casos con plazos cargados.
+
+### En tu computador
+
+Necesitas Node.js 22 y npm (ver [Requisitos](#7-requisitos-e-instalación)).
+
+```bash
+git clone https://github.com/gonzalezvar/vozvial.git
+cd vozvial
+npm ci
+cp .env.example .env        # opcional: pon tu ANTHROPIC_API_KEY para usar Claude
+npm run build               # compila la web a dist/ y revisa que el SDK de Anthropic no quede en ella
+```
+
+Elige cómo arrancar:
+
+| Quieres | Comando | Abre |
+|---|---|---|
+| La app como en producción, con el asistente en modo verificado y la base en memoria | `npm start` | http://localhost:4173 |
+| Lo mismo, pero con el asistente de Claude (lee tu `.env`) | `set -a; . ./.env; set +a; npm start` | http://localhost:4173 |
+| Con las 3 cuentas de demostración y los datos guardados en disco | `npx tsx scripts/sembrar-demo.ts --pglite .datos-locales --sin-doc` y luego `set -a; . ./.env; set +a; PGLITE_DIR=.datos-locales npm start` | http://localhost:4173/entrar |
+| Desarrollar con recarga en caliente | `npm run api` en una terminal y `EXPO_PUBLIC_API_URL=http://localhost:3001 npm run web` en otra | http://localhost:8081 |
+
+- Usa `localhost`, no la IP de tu red: WebCrypto solo funciona en un contexto seguro y sin él no se puede crear la cuenta.
+- Para verla como en un celular: Chrome, DevTools (F12), "Toggle device toolbar" y elige Pixel 7.
+- `npm start` sin `PGLITE_DIR` guarda la base en memoria: al detenerlo se borran las cuentas del servidor (las del navegador siguen en IndexedDB).
+- La semilla es idempotente: si la vuelves a correr, recrea las cuentas demo con fechas calculadas ese día. PGlite no admite dos procesos a la vez sobre la misma carpeta: corre la semilla con el servidor detenido.
+
+### Comprobar que todo funciona
+
+```bash
+npm run typecheck && npm run lint && npm test   # tipos, estilo y 503 pruebas unitarias
+npx playwright install chromium                 # solo la primera vez
+npm run e2e                                     # 55 pruebas e2e, capturas en evidencias/ y matriz en docs/evaluacion/
+```
+
+## 3. Cómo probar cada módulo
+
+Recorrido a mano en la app (local o publicada), en el orden de las historias. Cada criterio tiene además su prueba automática y su captura en `evidencias/CA-xx.y.png`.
+
+| Módulo | Qué hacer | Qué debe pasar |
+|---|---|---|
+| 1 · Crear cuenta (HU-01) | "Crear mi cuenta": deja un campo vacío, escribe un celular de 9 dígitos y un PIN como 123456; luego llénalo bien y marca la autorización | Cada error se marca y se lee en voz alta; con datos válidos aparece el código de recuperación de 12 caracteres con "Escuchar" |
+| 1 · Entrar (HU-02) | Entra con tu PIN; escribe un PIN equivocado 5 veces; deja la app quieta 10 minutos; abre la app en otro navegador y entra con celular y PIN | Entras al inicio con tu nombre; al quinto error se bloquea 5 minutos; la sesión se cierra por inactividad; en el otro navegador ves tus mismos casos |
+| 1 · Recuperar (HU-03) | "Olvidé mi PIN" con el código de recuperación | Pones un PIN nuevo y tus casos siguen ahí |
+| 2 · Accesibilidad (HU-04) | Ajustes, tamaño de letra "Muy grande"; "Escuchar" en cualquier pantalla | Toda la app crece; la pantalla se lee en voz alta |
+| 3 · Asistente (HU-05 y HU-06) | "Preguntar": toca "Hablar" (Chrome) o escribe "¿Cuántos días tengo para pedir audiencia?"; prueba también "¿Qué día tengo pico y placa?" y "¿Cómo hago un sancocho?" | Ves "Esto entendí" con Enviar y Corregir; la respuesta trae norma, artículo y enlace, y al tocar la cita ves el texto literal y la fecha de consulta; sin sustento se abstiene; fuera de tema lo dice; siempre aparece el aviso legal |
+| 3 · Sin conexión (CA-06.5) | Con la app abierta, quita el internet y entra a "Preguntar" | Avisa que el asistente necesita internet y ofrece lo que sí funciona |
+| 4 · Me pararon (HU-07) | Toca "Me pararon" y permite micrófono y ubicación; toca "Terminar" | Empieza a grabar con contador; se guardan fecha, hora y ubicación; ves tus derechos verificados con su artículo; el audio queda en el caso |
+| 4 · Evidencias (HU-08) | En un caso, agrega una foto y una nota dictada o escrita | Quedan con fecha y hora; en IndexedDB todo está cifrado (DevTools, Application, IndexedDB, `vozvial`) |
+| 5 · Comparendo (HU-09 y HU-10) | "Registrar un comparendo", "Tomar foto del comparendo" con `e2e/fixtures/comparendo-prueba.png` (imagen de prueba con datos inventados); o "Escribir los datos" | Se llenan número, fecha, placa y código; lo dudoso se resalta; un código inexistente se rechaza; el detalle explica la infracción con su artículo y la sanción en SMDLV |
+| 5 · Plazos y recordatorios (HU-11 y HU-12) | Registra un comparendo en vía o por fotodetección con fecha reciente; entra con la cuenta demo de Rosa | Ves la fecha límite en días hábiles con festivos y la fecha que se usó; en el inicio aparece la alerta "Tu plazo vence pronto" |
+| 7 · Mis casos y borrar (HU-14) | "Mis casos"; luego Ajustes, "Borrar todos mis datos" con tu PIN | Los casos salen ordenados por urgencia; al borrar vuelves a la bienvenida y la cuenta ya no existe en el servidor |
+| Guía | En la bienvenida, "¿Cómo funciona?"; en cualquier pantalla, "Ayuda" | Recorrido de 5 pasos con Escuchar; ayuda de la pantalla y guías por situación |
+
+El módulo 6 (solicitud en PDF), exportar y borrar un caso quedan para la entrega final: la pantalla de solicitud muestra datos de ejemplo marcados "Ejemplo".
+
+## 4. Stack
+
+| Capa | Tecnología | Versión |
+|---|---|---|
+| App | Expo con Expo Router, salida web | Expo 58, React 19.3, React Native 0.88 |
+| Lenguaje | TypeScript estricto | 6.0 |
+| Estado | zustand | 5.1 |
+| Persistencia en el navegador | IndexedDB con `idb` | 8.0 |
+| Cifrado | WebCrypto: PBKDF2 y AES-GCM | del navegador |
+| Voz | Web Speech API (`es-CO`) y `expo-speech` | del navegador |
+| OCR | `tesseract.js` con modelo `spa`, autoalojado | 7.0 |
+| Búsqueda (modo verificado) | `minisearch` con normalización de español | 7.2 |
+| PDF (entrega final) | `pdf-lib` | 1.17 |
+| Servidor | Node con `tsx`, sin framework | Node 22 |
+| Base de datos | Postgres con `pg` en producción; PGlite en local y pruebas | `pg` 8.23, PGlite 0.5 |
+| Asistente | API de Anthropic con `@anthropic-ai/sdk`, modelo `claude-opus-5-5` | SDK 1.6 |
+| Pruebas | Jest con `jest-expo`; Playwright con Pixel 7; `@axe-core/playwright` | Jest 30, Playwright 1.65 |
+| Despliegue | Railway (Railpack) con Postgres | — |
+
+## 5. Estructura del proyecto
+
+```
+app/                    pantallas (Expo Router)
+  (publico)/            bienvenida, registro, código de recuperación, entrar, recuperar, guía, privacidad, acerca
+  (app)/                con sesión: inicio, asistente, me-pararon, casos, comparendo, solicitud, ayuda, ajustes
+  +not-found.tsx        pantalla para rutas que no existen
+api/asistente.ts        endpoint POST /api/asistente
+src/core/               dominio orientado a objetos, sin React (lo comparten la app y el servidor)
+src/services/           adaptadores del navegador: almacén cifrado, cuenta, sincronización, voz, OCR, audio, fotos, ubicación
+src/state/              estado con zustand: sesión en memoria, casos, ajustes, sincronización
+src/servidor/           solo servidor: ProveedorClaude, base de datos (bd/), cuentas, rutas de la API de datos, límites, semilla
+src/ui/                 sistema de diseño accesible, componentes y guía (guia/)
+data/                   base normativa verificada, infracciones, preguntas verificadas, banco de evaluación y fuentes crudas
+public/tesseract/       worker, núcleo WASM y modelo en español del OCR
+scripts/                servidores (desarrollo, e2e y producción), evaluación del asistente, semilla demo, verificación del bundle
+tests/unit/             pruebas unitarias (Jest)
+e2e/                    pruebas e2e (una por criterio), utilidades, reporter de la matriz y suite de producción (produccion/)
+evidencias/             capturas que generan las pruebas e2e (CA-xx.y.png) y las de producción (produccion/)
+docs/                   historias, base normativa, ciclo de vida, refinamiento, evaluación, base de datos, despliegue, usuarios demo
+```
+
+## 6. Arquitectura
 
 ### 2.1 Capas
 
@@ -235,6 +342,10 @@ classDiagram
 - `AsistenteNormativo` aplica dos garantías con cualquier proveedor:
   - toda respuesta lleva el aviso legal;
   - una respuesta sin cita, o con una cita que no coincide con la base (mismo id, mismo texto literal y misma URL), se convierte en abstención.
+- Clases agregadas después del diagrama:
+  - en `src/core/`: `ValidadorRedaccion` (revisa el texto de Claude), `DerivadorVerificador` (verificador del PIN que viaja al servidor, separado de la clave de datos), `ResolvedorSincronizacion` (decide qué subir, bajar o borrar) y `PrioridadCasos` (orden de "Mis casos" por urgencia);
+  - en `src/servidor/`: `ProveedorClaude`, `ControlConsumo` (topes de gasto), `LimitadorPeticiones`, `ServicioCuentasServidor`, `CriptoServidor` (scrypt), `RepositorioCuentas`, `RepositorioSesiones` y `RepositorioDatosCifrados`;
+  - en `src/services/`: `SincronizadorCasos`, `ClienteCuentas` y `ClienteSincronizacion`.
 - `CalculadoraPlazos` no tiene los días escritos en el código: los lee de `data/normativa/parametros.json` a través de `ParametrosPlazos`, que rechaza los parámetros con `verificado: false`.
 
 ### 2.3 Asistente: modos
@@ -262,10 +373,10 @@ classDiagram
   - Si una cita no está entre los fragmentos recuperados, si el JSON no sirve o si se agota el tiempo, se abstiene.
   - No se evaluó en el prototipo.
 
-## 3. Requisitos e instalación
+## 7. Requisitos e instalación
 
 Requisitos:
-- Node.js 22 o superior y npm;
+- Node.js 22 y npm (`package.json` acepta desde la 20; Railway y las pruebas usan la 22);
 - git;
 - Google Chrome o Edge para el dictado por voz (Web Speech API). En Firefox no hay dictado y la app ofrece escribir;
 - para las pruebas e2e, Chromium de Playwright (`npx playwright install chromium`, una sola vez) y la herramienta `flock` (viene en Linux; la usa `scripts/build-e2e.sh`).
@@ -273,14 +384,16 @@ Requisitos:
 Instalación:
 
 ```bash
-git clone <url-del-repositorio> vozvial
+git clone https://github.com/gonzalezvar/vozvial.git
 cd vozvial
 npm ci
 ```
 
+Los pasos para arrancarla están en [Inicio rápido](#2-inicio-rápido).
+
 La app necesita un **contexto seguro** (HTTPS o `localhost`) porque usa WebCrypto (`crypto.subtle`). Si se abre por la IP de la red local (`http://192.168…`), no se puede crear la cuenta. Para probar en un celular, usa el enlace HTTPS publicado: https://vozvial-production.up.railway.app
 
-## 4. Variables de entorno
+## 8. Variables de entorno
 
 Ninguna es obligatoria. Estas son las que el código lee de verdad:
 
@@ -320,7 +433,7 @@ Ninguna es obligatoria. Estas son las que el código lee de verdad:
 - Los tiempos cortos (3 s de bloqueo, 5 s de inactividad, 1000 iteraciones) se usan **solo** en el build de e2e (`scripts/build-e2e.sh` y `npm run build:web:e2e`). La app publicada usa los valores reales.
 - No hay archivo `.env` en el repositorio: `.gitignore` excluye `.env*`.
 
-## 5. Comandos y pruebas
+## 9. Comandos y pruebas
 
 | Comando | Qué hace |
 |---|---|
@@ -357,6 +470,17 @@ npm run build
 npm start      # abre http://localhost:4173
 ```
 
+Para correr la e2e completa con la API real de Anthropic (gasta créditos; en local se sube el tope por minuto para que la suite no reciba 429):
+
+```bash
+set -a; . ./.env; set +a
+ASISTENTE_LIMITE_MINUTO=1000 ASISTENTE_LIMITE_DIA=10000 E2E_PUERTO=4181 E2E_DIST=dist-claude npx playwright test
+```
+
+Las pruebas del asistente valen en los dos modos: en modo verificado comparan con la respuesta sencilla fija; con Claude, con el texto y las citas que devolvió el servidor, y en ambos validan norma, artículo, texto literal, fecha de consulta y enlace.
+
+Si tienes `npm start` corriendo en el puerto 4173, Playwright lo reutilizaría en vez de levantar su propio servidor con tiempos cortos: deténlo o usa `E2E_PUERTO` y `E2E_DIST` como arriba.
+
 Cómo están hechas las pruebas e2e:
 - Cada criterio tiene una prueba cuyo nombre empieza por su id (`CA-09.2 …`) y guarda la captura `evidencias/CA-09.2.png`.
 - El reporter `e2e/reporter-matriz.ts` arma la matriz con Cumple, Cumple parcialmente, No cumple o Sin prueba.
@@ -369,7 +493,7 @@ Cómo están hechas las pruebas e2e:
 - El servidor de e2e usa PGlite en memoria, compartido por todas las pruebas, así que `e2e/utilidades.ts` genera un celular distinto en cada registro. La prueba de varios dispositivos abre dos contextos de navegador contra el mismo servidor.
 - `e2e/axe.spec.ts` revisa 12 pantallas con axe (wcag2a y wcag2aa) y escribe `docs/evaluacion/axe-reporte.md`.
 
-## 6. Despliegue
+## 10. Despliegue
 
 **Publicado en Railway:** https://vozvial-production.up.railway.app (desplegado el 2026-11-08 desde la cuenta de Juan). Redesplegado el mismo día con Postgres, el asistente con Claude, la sincronización, el rediseño y la guía. Código en GitHub: https://github.com/gonzalezvar/vozvial (público).
 
@@ -379,6 +503,22 @@ Cómo están hechas las pruebas e2e:
 - Variables del servicio `vozvial`: `ANTHROPIC_API_KEY`, `DATABASE_URL`, `SECRETO_SERVIDOR` y `RAILPACK_NODE_VERSION=22`. Los valores no van en el repositorio.
 - Configuración en `railway.json` (builder Railpack, Node 22). `.railwayignore` deja fuera evidencias, documentos, fuentes crudas y pruebas para que la subida sea liviana.
 - Redesplegar: `railway up --ci -m "<resumen>"` desde la raíz del proyecto.
+
+Desplegar desde cero en otra cuenta de Railway (con la CLI instalada y `railway login`):
+
+```bash
+railway init                       # crea el proyecto
+railway add --database postgres    # agrega el servicio Postgres
+railway up --ci -m "primer despliegue"
+railway variable set 'DATABASE_URL=${{Postgres.DATABASE_URL}}' --service vozvial
+railway variable set RAILPACK_NODE_VERSION=22 --service vozvial
+openssl rand -hex 32 | railway variable set SECRETO_SERVIDOR --stdin --service vozvial
+railway variable set ANTHROPIC_API_KEY --stdin --service vozvial   # pega la llave y Ctrl+D; opcional
+railway domain                     # genera la URL pública
+railway ssh --service vozvial -- npx tsx scripts/sembrar-demo.ts --sin-doc   # cuentas demo, opcional
+```
+
+El nombre del servicio (`vozvial`) es el que Railway le dé a la app; revísalo con `railway status`. Cada `railway variable set` sin `--skip-deploys` redespliega.
 - Vercel quedó como alternativa solo para el asistente: la función `api/asistente.ts` no sirve la API de cuentas ni la base de datos. Los pasos están en [`docs/despliegue.md`](docs/despliegue.md).
 
 En resumen:
@@ -387,7 +527,7 @@ En resumen:
 - Agrega cabeceras de seguridad: CSP, HSTS, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer` y `Permissions-Policy`.
 - Sin variables la app funciona en modo verificado y con PGlite en memoria (los datos se pierden al reiniciar). Para activar Claude, se agrega `ANTHROPIC_API_KEY` en las variables del servicio (Railway: Variables; Vercel: Environment Variables) y se redespliega.
 
-## 7. Flujo de datos y privacidad
+## 11. Flujo de datos y privacidad
 
 ```mermaid
 sequenceDiagram
@@ -467,7 +607,7 @@ IndexedDB es la copia principal. Si el servidor responde, cada cambio se sube **
   - El servidor e2e aplica las mismas cabeceras, así que las pruebas detectan si algo intenta salir.
 - **Lectura en voz alta:** usa la síntesis de voz del sistema (`expo-speech`, `speechSynthesis` en web).
 
-## 8. Base normativa
+## 12. Base normativa
 
 Regla del proyecto: ningún artículo, plazo, código de infracción ni valor de multa entra a la app si no se copió de una fuente oficial. El procedimiento está en `docs/base-normativa.md`.
 
@@ -496,7 +636,7 @@ Contenido:
 
 Todo lo que quedó sin verificar o que requiere decisión jurídica está en `docs/pendientes-verificacion.md`.
 
-## 9. Limitaciones
+## 13. Limitaciones
 
 Son las mismas que declara la pantalla "Acerca del prototipo" (`src/ui/contenidoAcerca.ts`), más los pendientes de verificación:
 
@@ -524,7 +664,21 @@ Son las mismas que declara la pantalla "Acerca del prototipo" (`src/ui/contenido
 - **Módulos pospuestos.** El 6 (solicitud de audiencia en PDF) y la exportación de casos del 7 quedan para la entrega final, igual que las pruebas e2e de CA-04.1 y CA-04.2.
 - **Despliegue en Railway, no en Vercel.** RNF-02 se midió contra Railway (p95 de 119 ms con red, meta < 1,5 s). La función de Vercel (`api/asistente.ts` con `vercel.json`) no se ha probado en Vercel.
 
-## 10. Documentos del proyecto
+## 14. Problemas comunes
+
+| Síntoma | Causa y solución |
+|---|---|
+| "No se pudo crear la cuenta" o error de `crypto.subtle` | La app se abrió por IP (`http://192.168…`) o por HTTP. Usa `http://localhost:…` o el enlace HTTPS |
+| El asistente responde siempre con las mismas 49 respuestas o se abstiene mucho | No hay `ANTHROPIC_API_KEY` en el proceso del servidor: carga el `.env` con `set -a; . ./.env; set +a` antes de `npm start` o `npm run api` |
+| La app en `npm run web` no encuentra el asistente | Falta `EXPO_PUBLIC_API_URL=http://localhost:3001` y `npm run api` en otra terminal |
+| `EADDRINUSE` al arrancar | El puerto ya está ocupado por otro servidor: cámbialo con `PORT=4180 npm start` |
+| La semilla falla con PGlite | El servidor está abierto sobre la misma carpeta: detenlo y vuelve a correr la semilla |
+| Al recargar la página pide el PIN otra vez | Es a propósito: la clave de datos vive solo en memoria y se borra al recargar |
+| `npm run e2e` falla en muchas pruebas a la vez | Reutilizó un `npm start` del puerto 4173 (sin los tiempos cortos de prueba): deténlo o usa `E2E_PUERTO` |
+| Playwright no encuentra el navegador | Falta `npx playwright install chromium` |
+| Railway: "No se pudo sembrar: ENOENT … usuarios-demo.md" | Falta `--sin-doc`: `docs/` no se sube a Railway |
+
+## 15. Documentos del proyecto
 
 | Archivo | Contenido |
 |---|---|
@@ -533,7 +687,9 @@ Son las mismas que declara la pantalla "Acerca del prototipo" (`src/ui/contenido
 | `docs/pendientes-verificacion.md` | Lo no verificado y las decisiones jurídicas pendientes |
 | `docs/ciclo-vida.md` | Lo que se hizo en cada etapa del ciclo de vida del prototipo |
 | `docs/refinamiento-historias.md` | Cambios a historias y criterios, con su motivo |
-| `docs/evaluacion/` | Matriz de criterios, evaluación del asistente y reporte de axe |
+| `docs/evaluacion/` | `matriz-criterios.md` (resultado por criterio), `asistente.md` (banco en modo verificado), `asistente-claude.md` (banco con Claude), `produccion.md` (pruebas contra el despliegue) y `axe-reporte.md` |
+| `evidencias/` | Capturas de cada criterio (`CA-xx.y.png`), volcado cifrado de IndexedDB y capturas de producción |
+| `.env.example` | Variables que se pueden definir en local, sin valores |
 | `docs/despliegue.md` | Pasos para publicar en Railway (y la alternativa en Vercel) |
 | `docs/bd.md` | Base de datos, cifrado de extremo a extremo, protocolo y rutas de la API de datos |
 | `docs/usuarios-demo.md` | Cuentas de demostración con datos ficticios |

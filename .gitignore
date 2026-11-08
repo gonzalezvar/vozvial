@@ -34,6 +34,9 @@ coverage/
 
 # variables de entorno
 .env*
+!.env.example
+# Datos de PGlite en disco para pruebas locales
+.datos-locales/
 
 # logs
 npm-debug.*
