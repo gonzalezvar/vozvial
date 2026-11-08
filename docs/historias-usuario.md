@@ -55,12 +55,14 @@ Orden de uso, que también es el orden del documento y del video:
 ## Módulo 2 · Accesibilidad
 
 ### HU-04 · Ver y escuchar con comodidad
+*CA-04.1 y CA-04.2 pospuestos para la entrega final (ver `docs/refinamiento-historias.md`). CA-04.3 sí se evalúa en el prototipo.*
+
 **Como** adulto mayor, **quiero** agrandar la letra y escuchar lo que dice cada pantalla, **para** usar la app sin esforzar la vista.
 
 | Id | Criterio | Dado / Cuando / Entonces | Resultado esperado |
 |---|---|---|---|
-| CA-04.1 | Tamaño de letra | Dado que estoy en Ajustes, cuando elijo "Grande" o "Muy grande", entonces toda la app cambia | Texto base de 18 / 22 / 26 px según la opción; la elección se conserva al volver a entrar |
-| CA-04.2 | Escuchar pantalla | Dado que estoy en cualquier pantalla principal, cuando toco "Escuchar", entonces se lee el contenido | Lectura en español; el botón cambia a "Detener" |
+| CA-04.1 | Tamaño de letra (pospuesto para la entrega final) | Dado que estoy en Ajustes, cuando elijo "Grande" o "Muy grande", entonces toda la app cambia | Texto base de 18 / 22 / 26 px según la opción; la elección se conserva al volver a entrar |
+| CA-04.2 | Escuchar pantalla (pospuesto para la entrega final) | Dado que estoy en cualquier pantalla principal, cuando toco "Escuchar", entonces se lee el contenido | Lectura en español; el botón cambia a "Detener" |
 | CA-04.3 | Contraste y etiquetas | Dado cualquier pantalla principal, cuando se analiza con axe, entonces no hay violaciones serias ni críticas | Reporte de axe adjunto en la evaluación |
 
 ---
@@ -85,7 +87,7 @@ Orden de uso, que también es el orden del documento y del video:
 | CA-06.2 | Abstención | Dado que la pregunta es de tránsito pero no hay sustento verificado, cuando responde, entonces no inventa | "No tengo información verificada sobre eso" + sugerencia de dónde consultar |
 | CA-06.3 | Fuera de tema | Dado que pregunto algo que no es de tránsito, cuando responde, entonces declina con amabilidad | Mensaje que explica qué temas sí cubre |
 | CA-06.4 | Aviso legal | Dado cualquier respuesta, cuando se muestra, entonces aparece el aviso | "VozVial informa y organiza. No reemplaza a un abogado." |
-| CA-06.5 | Sin conexión | Dado que no hay internet, cuando abro el asistente, entonces me avisa | "El asistente necesita internet" + accesos a las funciones que sí sirven sin conexión |
+| CA-06.5 | Sin conexión (refinado 2026-11-08, ver refinamiento) | Dado que la app ya está abierta y se pierde internet, cuando abro el asistente, entonces me avisa. El prototipo no tiene service worker: si se recarga sin internet la app no abre | "El asistente necesita internet" + accesos a las funciones que sí sirven sin conexión |
 
 ---
 
@@ -98,7 +100,7 @@ Orden de uso, que también es el orden del documento y del video:
 |---|---|---|---|
 | CA-07.1 | Inicio rápido | Dado que estoy en la pantalla de inicio, cuando toco "Me pararon", entonces en máximo 2 toques empieza a grabar audio | Indicador visible "Grabando" con tiempo transcurrido |
 | CA-07.2 | Datos del momento | Dado que se inicia el modo, cuando se crea el caso, entonces se guardan fecha, hora y ubicación | Si niego la ubicación, el caso se crea igual y lo indica: "Sin ubicación" |
-| CA-07.3 | Derechos a la vista | Dado que el modo está activo, cuando miro la pantalla, entonces veo mis derechos clave | Solo entradas verificadas de la base, cada una con su artículo |
+| CA-07.3 | Derechos a la vista (refinado 2026-11-08, ver refinamiento) | Dado que el modo está activo, cuando miro la pantalla, entonces veo mis derechos clave | Solo entradas verificadas de la base, cada una con su artículo. El derecho a grabar se sustenta en el art. 21 de la Ley 1801 de 2016, que habla de "procedimiento policivo"; si se aplica a agentes de tránsito civiles requiere revisión jurídica |
 | CA-07.4 | Terminar y guardar | Dado que toco "Terminar", cuando se detiene la grabación, entonces el audio queda en el caso | El caso aparece en el historial con su audio reproducible |
 
 ### HU-08 · Agregar evidencias
@@ -130,19 +132,21 @@ Orden de uso, que también es el orden del documento y del video:
 | Id | Criterio | Dado / Cuando / Entonces | Resultado esperado |
 |---|---|---|---|
 | CA-10.1 | Explicación | Dado un comparendo guardado, cuando abro su detalle, entonces veo la descripción de la infracción en palabras sencillas y su artículo | Texto sencillo + texto literal desplegable |
-| CA-10.2 | Valor de referencia | Dado un comparendo guardado, cuando veo el valor, entonces aparece con su unidad, su vigencia y su fuente | "Valor de referencia para AAAA según [fuente]. Confirma en SIMIT." |
+| CA-10.2 | Valor de referencia (refinado 2026-11-08, ver refinamiento) | Dado un comparendo guardado, cuando veo el valor, entonces aparece con su unidad, su vigencia y su fuente. Se divide en dos partes: (a) la sanción en su unidad legal con su fuente y remisión a SIMIT; (b) el valor en pesos del año, bloqueado hasta verificar el valor de la UVB 2026 (resolución de MinHacienda) | (a) Sanción en su unidad legal, fuente con fecha de consulta y "Confirma en SIMIT". (b) "Valor de referencia para AAAA según [fuente]": bloqueado hasta verificar la UVB 2026 |
 
 ### HU-11 · Saber hasta cuándo puedo actuar
 **Como** conductor, **quiero** que la app calcule mi fecha límite, **para** no perder el derecho a impugnar.
 
 | Id | Criterio | Dado / Cuando / Entonces | Resultado esperado |
 |---|---|---|---|
-| CA-11.1 | Comparendo en vía | Dado un comparendo en vía del viernes 13 nov 2026, cuando calculo, entonces se cuentan 5 días hábiles desde el día siguiente | Fecha límite: lunes 23 nov 2026 (el 16 nov es festivo) |
-| CA-11.2 | Fotodetección | Dado un comparendo por fotodetección notificado el viernes 13 nov 2026, cuando calculo, entonces se cuentan 11 días hábiles desde la notificación | Fecha límite: martes 1 dic 2026 |
-| CA-11.3 | Fecha de notificación explícita | Dado un comparendo por fotodetección, cuando lo registro, entonces la app pregunta la fecha en que **recibí la notificación** (no la de la infracción) | Pregunta con explicación; el cálculo dice qué fecha usó |
+| CA-11.1 | Comparendo en vía (refinado 2026-11-08, ver refinamiento) | Dado un comparendo en vía del viernes 13 nov 2026, cuando calculo, entonces se cuentan 5 días hábiles desde el día siguiente. La app no acepta fechas de infracción futuras: la prueba fija el reloj en el 13 nov 2026 | Fecha límite: lunes 23 nov 2026 (el 16 nov es festivo) |
+| CA-11.2 | Fotodetección (refinado 2026-11-08, ver refinamiento) | Dado un comparendo por fotodetección recibido (comparendo o notificación) en mi dirección del RUNT el viernes 13 nov 2026, cuando calculo, entonces se cuentan 11 días hábiles desde el día siguiente al recibo (art. 8 de la Ley 1843 de 2017). Si el día del recibo cuenta o no requiere revisión jurídica. La app no acepta fechas futuras: la prueba fija el reloj en el 13 nov 2026 | Fecha límite: martes 1 dic 2026 |
+| CA-11.3 | Fecha de recibo explícita (refinado 2026-11-08, ver refinamiento) | Dado un comparendo por fotodetección, cuando lo registro, entonces la app pregunta la fecha en que **recibí el comparendo o la notificación** en mi dirección (no la de la infracción) | Pregunta con explicación; el cálculo dice qué fecha usó |
 | CA-11.4 | Días restantes | Dado un caso con fecha límite, cuando lo abro, entonces veo los días hábiles restantes | "Te quedan N días hábiles" o "El plazo venció el …" |
 
 *Las cifras de 5 y 11 días hábiles y su punto de partida se toman de los artículos verificados en la base normativa (art. 136 de la Ley 769 de 2002, con sus modificaciones, y art. 8 de la Ley 1843 de 2017). Si la verificación muestra otra cosa, se corrige el criterio y se registra en refinamiento.*
+
+*Refinado 2026-11-08: el art. 8 de la Ley 1843 cuenta los 11 días hábiles "a partir del recibo del comparendo en la última dirección registrada por el propietario del vehículo" en el RUNT, no desde la "notificación". El caso de prueba da la misma fecha (1 dic 2026). Si el día del recibo contara como día 1, daría lunes 30 nov 2026: requiere revisión jurídica (ver `docs/pendientes-verificacion.md`).*
 
 ### HU-12 · Recordatorios de plazo
 **Como** conductor, **quiero** que la app me avise antes de que venza el plazo, **para** no olvidarlo.
@@ -157,27 +161,31 @@ Orden de uso, que también es el orden del documento y del video:
 ## Módulo 6 · Documentos
 
 ### HU-13 · Generar la solicitud de audiencia
+*Pospuesta para la entrega final (ver `docs/refinamiento-historias.md`). Los criterios se conservan.*
+
 **Como** conductor que no está de acuerdo con el comparendo, **quiero** generar la solicitud de audiencia en PDF, **para** radicarla a tiempo.
 
 | Id | Criterio | Dado / Cuando / Entonces | Resultado esperado |
 |---|---|---|---|
-| CA-13.1 | Vista previa | Dado un caso con comparendo completo, cuando toco "Generar solicitud", entonces veo la vista previa | PDF con mis datos, los del comparendo, la lista de evidencias y la norma citada |
-| CA-13.2 | Datos faltantes | Dado que falta un dato obligatorio (por ejemplo, la cédula), cuando intento generar, entonces no se genera | La app dice qué falta y me lleva a completarlo |
-| CA-13.3 | Descarga | Dado que reviso la vista previa, cuando toco "Descargar", entonces obtengo el PDF | Archivo `solicitud-audiencia-<numero>.pdf` |
+| CA-13.1 | Vista previa (pospuesto para la entrega final) | Dado un caso con comparendo completo, cuando toco "Generar solicitud", entonces veo la vista previa | PDF con mis datos, los del comparendo, la lista de evidencias y la norma citada |
+| CA-13.2 | Datos faltantes (pospuesto para la entrega final) | Dado que falta un dato obligatorio (por ejemplo, la cédula), cuando intento generar, entonces no se genera | La app dice qué falta y me lleva a completarlo |
+| CA-13.3 | Descarga (pospuesto para la entrega final) | Dado que reviso la vista previa, cuando toco "Descargar", entonces obtengo el PDF | Archivo `solicitud-audiencia-<numero>.pdf` |
 
 ---
 
 ## Módulo 7 · Historial y privacidad
 
 ### HU-14 · Mis casos
+*Pospuesta para la entrega final (ver `docs/refinamiento-historias.md`). Los criterios se conservan.*
+
 **Como** conductor, **quiero** ver todos mis casos ordenados por urgencia, y poder exportarlos o borrarlos, **para** tener el control de mi información.
 
 | Id | Criterio | Dado / Cuando / Entonces | Resultado esperado |
 |---|---|---|---|
-| CA-14.1 | Orden por urgencia | Dado que tengo varios casos, cuando abro "Mis casos", entonces aparecen primero los de plazo más próximo | Cada caso con estado y días restantes |
-| CA-14.2 | Exportar | Dado un caso, cuando toco "Exportar", entonces descargo un archivo con el caso y sus evidencias | ZIP con JSON y archivos |
-| CA-14.3 | Borrar caso | Dado un caso, cuando toco "Borrar" y confirmo, entonces se elimina de forma definitiva | El caso ya no aparece y sus datos ya no están en IndexedDB |
-| CA-14.4 | Borrar todo | Dado que estoy en Ajustes, cuando elijo "Borrar todos mis datos" y confirmo con el PIN, entonces la app vuelve al estado inicial | Pantalla de bienvenida; IndexedDB vacío |
+| CA-14.1 | Orden por urgencia (pospuesto para la entrega final) | Dado que tengo varios casos, cuando abro "Mis casos", entonces aparecen primero los de plazo más próximo | Cada caso con estado y días restantes |
+| CA-14.2 | Exportar (pospuesto para la entrega final) | Dado un caso, cuando toco "Exportar", entonces descargo un archivo con el caso y sus evidencias | ZIP con JSON y archivos |
+| CA-14.3 | Borrar caso (pospuesto para la entrega final) | Dado un caso, cuando toco "Borrar" y confirmo, entonces se elimina de forma definitiva | El caso ya no aparece y sus datos ya no están en IndexedDB |
+| CA-14.4 | Borrar todo (pospuesto para la entrega final) | Dado que estoy en Ajustes, cuando elijo "Borrar todos mis datos" y confirmo con el PIN, entonces la app vuelve al estado inicial | Pantalla de bienvenida; IndexedDB vacío |
 
 ---
 
