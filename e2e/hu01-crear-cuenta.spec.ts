@@ -2,7 +2,8 @@
 import { expect, test, type Page } from '@playwright/test';
 
 import { espiarLecturaEnVoz, lecturas } from './asistente-comun';
-import { CUENTA, capturar, crearCuenta, leerIndexedDB, llenarRegistro } from './utilidades';
+import { iniciarServidorPrueba } from './hu01-servidor-prueba';
+import { CUENTA, capturar, crearCuentaCompleta, leerIndexedDB, llenarRegistro } from './utilidades';
 
 async function abrirRegistro(page: Page): Promise<void> {
   await page.goto('/');
@@ -134,39 +135,76 @@ test('CA-01.5 sin la autorización de datos no se crea la cuenta y se enlaza la 
   await esperarSinCuenta(page);
 });
 
-test('CA-01.6 el PIN no queda en texto plano: solo hash PBKDF2, sal e iteraciones', async ({ page }) => {
-  await crearCuenta(page);
-  const volcado = await leerIndexedDB(page);
-  const cuentas = volcado.cuenta as { credencial: Record<string, unknown> }[];
-  expect(cuentas).toHaveLength(1);
-  const credencial = cuentas[0]!.credencial;
-  expect(Object.keys(credencial).sort()).toEqual(['algoritmo', 'hash', 'iteraciones', 'sal']);
-  expect(credencial.algoritmo).toBe('PBKDF2-SHA256');
-  expect(typeof credencial.hash).toBe('string');
-  expect(typeof credencial.sal).toBe('string');
-  expect(credencial.iteraciones).toBeGreaterThan(0);
-
-  const almacenamientoWeb = await page.evaluate(() => {
-    const leer = (s: Storage) => Object.fromEntries(Object.keys(s).map((k) => [k, s.getItem(k)]));
-    return JSON.stringify({ local: leer(localStorage), sesion: leer(sessionStorage), cookies: document.cookie });
+test('CA-01.6 el PIN no queda en texto plano: ni en el navegador ni en la base del servidor', async ({ page }) => {
+  // Las peticiones de cuentas y datos van a un servidor propio de esta prueba para poder leer sus tablas.
+  const servidor = await iniciarServidorPrueba(page.context());
+  const enviado: string[] = [];
+  page.on('request', (r) => {
+    if (new URL(r.url()).pathname.startsWith('/api/')) enviado.push(`${r.url()} ${r.postData() ?? ''}`);
   });
-  const todo = JSON.stringify(volcado) + almacenamientoWeb;
-  expect(todo).not.toContain(CUENTA.pin);
-  // Tampoco el nombre ni el celular quedan legibles.
-  expect(todo).not.toContain(CUENTA.nombre);
-  expect(todo).not.toContain(CUENTA.celular);
+  try {
+    const cuenta = await crearCuentaCompleta(page);
+    const volcado = await leerIndexedDB(page);
+    const cuentas = volcado.cuenta as { credencial: Record<string, unknown> }[];
+    expect(cuentas).toHaveLength(1);
+    const credencial = cuentas[0]!.credencial;
+    expect(Object.keys(credencial).sort()).toEqual(['algoritmo', 'hash', 'iteraciones', 'sal']);
+    expect(credencial.algoritmo).toBe('PBKDF2-SHA256');
+    expect(typeof credencial.hash).toBe('string');
+    expect(typeof credencial.sal).toBe('string');
+    expect(credencial.iteraciones).toBeGreaterThan(0);
 
-  // Evidencia visible: se muestra en la pagina lo que guarda el navegador.
-  await page.evaluate((texto) => {
-    const pre = document.createElement('pre');
-    pre.setAttribute('data-testid', 'volcado');
-    pre.style.cssText =
-      'position:fixed;inset:0;margin:0;padding:16px;background:#fff;color:#000;font-size:14px;white-space:pre-wrap;word-break:break-all;overflow:auto;z-index:99999';
-    pre.textContent =
-      'IndexedDB "vozvial", store "cuenta" (PIN usado: no aparece).\n' +
-      'Build de pruebas: 1000 iteraciones para que corra rapido. La app publicada usa 600000.\n\n' +
-      texto;
-    document.body.appendChild(pre);
-  }, JSON.stringify({ credencial }, null, 2));
-  await capturar(page, 'CA-01.6');
+    const almacenamientoWeb = await page.evaluate(() => {
+      const leer = (s: Storage) => Object.fromEntries(Object.keys(s).map((k) => [k, s.getItem(k)]));
+      return JSON.stringify({ local: leer(localStorage), sesion: leer(sessionStorage), cookies: document.cookie });
+    });
+    const todo = JSON.stringify(volcado) + almacenamientoWeb;
+    expect(todo).not.toContain(cuenta.pin);
+    // Tampoco el nombre ni el celular quedan legibles en el navegador.
+    expect(todo).not.toContain(cuenta.nombre);
+    expect(todo).not.toContain(cuenta.celular);
+
+    // En la base del servidor: una fila en "cuentas" con verificadores protegidos con scrypt.
+    // El PIN, el codigo y el nombre no estan en ninguna tabla ni viajaron en ninguna peticion.
+    const base = await servidor.volcar();
+    expect(base.cuentas).toHaveLength(1);
+    const fila = base.cuentas![0]!;
+    expect(fila.celular).toBe(cuenta.celular);
+    expect(String(fila.verificador_pin)).toMatch(/^scrypt\$/);
+    expect(String(fila.verificador_codigo)).toMatch(/^scrypt\$/);
+    const textoBase = JSON.stringify(base);
+    const codigoLimpio = cuenta.codigo.replace(/-/g, '');
+    for (const secreto of [cuenta.pin, cuenta.nombre, codigoLimpio, cuenta.codigo]) {
+      expect(textoBase).not.toContain(secreto);
+      expect(enviado.join('\n')).not.toContain(secreto);
+    }
+
+    // Evidencia visible: lo que guarda el navegador y la fila de la base, en la pagina.
+    const resumenFila = {
+      celular: fila.celular,
+      verificador_pin: `${String(fila.verificador_pin).slice(0, 40)}…`,
+      verificador_codigo: `${String(fila.verificador_codigo).slice(0, 40)}…`,
+      clave_envuelta_pin: '{ iv, sal, iteraciones, datos } (cifrada)',
+      perfil_cifrado: '{ iv, datos } (cifrado)',
+    };
+    await page.evaluate(
+      ({ navegador, servidorTexto }) => {
+        const pre = document.createElement('pre');
+        pre.setAttribute('data-testid', 'volcado');
+        pre.style.cssText =
+          'position:fixed;inset:0;margin:0;padding:16px;background:#fff;color:#000;font-size:14px;white-space:pre-wrap;word-break:break-all;overflow:auto;z-index:99999';
+        pre.textContent =
+          'IndexedDB "vozvial", store "cuenta" (PIN usado: no aparece).\n' +
+          'Build de pruebas: 1000 iteraciones para que corra rapido. La app publicada usa 600000.\n\n' +
+          navegador +
+          '\n\nBase del servidor, tabla "cuentas" (PIN, nombre y codigo: no aparecen en ninguna tabla).\n\n' +
+          servidorTexto;
+        document.body.appendChild(pre);
+      },
+      { navegador: JSON.stringify({ credencial }, null, 2), servidorTexto: JSON.stringify(resumenFila, null, 2) },
+    );
+    await capturar(page, 'CA-01.6');
+  } finally {
+    await servidor.cerrar();
+  }
 });

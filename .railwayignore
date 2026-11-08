@@ -12,3 +12,6 @@ tests/
 test-results/
 test-results-*/
 playwright-report/
+
+# Secretos locales: las variables van en Railway, no en la subida
+.env*

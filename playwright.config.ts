@@ -33,7 +33,11 @@ export default defineConfig({
   ],
   webServer: {
     // El build e2e inyecta tiempos cortos de bloqueo e inactividad y menos iteraciones PBKDF2.
-    command: `bash scripts/build-e2e.sh ${DIST} && PORT=${PUERTO} E2E_DIST=${DIST} tsx scripts/servidor-e2e.ts`,
+    // La API de datos usa PGlite en memoria (sin DATABASE_URL), bloqueo corto como el build e2e,
+    // 1000 iteraciones como EXPO_PUBLIC_PBKDF2_ITERACIONES, scrypt barato y sin limite de peticiones practico.
+    command:
+      `bash scripts/build-e2e.sh ${DIST} && PORT=${PUERTO} E2E_DIST=${DIST} DATABASE_URL= BLOQUEO_CUENTA_MS=3000 ` +
+      `ITERACIONES_AUTENTICACION=1000 SCRYPT_N=1024 LIMITE_PETICIONES_MINUTO=10000 tsx scripts/servidor-e2e.ts`,
     url: `http://localhost:${PUERTO}`,
     reuseExistingServer: !process.env.CI && !process.env.E2E_DIST,
     timeout: 300_000,

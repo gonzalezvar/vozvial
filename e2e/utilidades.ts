@@ -18,6 +18,31 @@ export interface DatosCuentaPrueba {
   pin: string;
 }
 
+export interface CuentaCreadaPrueba extends DatosCuentaPrueba {
+  /** Codigo de recuperacion tal como se muestra ("ABCD-EFGH-JKMN"). */
+  codigo: string;
+}
+
+let celularesUsados = 0;
+
+/**
+ * Celular de prueba distinto en cada llamada (10 digitos, empieza por 3). El servidor e2e es uno
+ * solo para toda la corrida y no acepta dos cuentas con el mismo celular.
+ */
+export function celularUnico(): string {
+  celularesUsados++;
+  const marca = String(Date.now() % 1_000_000).padStart(6, '0');
+  return `3${marca}${String((process.pid * 7 + celularesUsados) % 1000).padStart(3, '0')}`;
+}
+
+/**
+ * CUENTA.celular se reemplaza por uno unico: varias pruebas crean "la misma" cuenta y cada una
+ * necesita su propio registro en el servidor. Un celular distinto de CUENTA.celular se respeta.
+ */
+function conCelularPropio<T extends { celular: string }>(datos: T): T {
+  return datos.celular === CUENTA.celular ? { ...datos, celular: celularUnico() } : datos;
+}
+
 const CARPETA_EVIDENCIAS = path.join(__dirname, '..', 'evidencias');
 
 /**
@@ -53,7 +78,7 @@ export async function llenarRegistro(
   page: Page,
   datos: Partial<DatosCuentaPrueba> & { confirmacion?: string; autoriza?: boolean } = {},
 ): Promise<void> {
-  const d = { ...CUENTA, confirmacion: datos.pin ?? CUENTA.pin, autoriza: true, ...datos };
+  const d = conCelularPropio({ ...CUENTA, confirmacion: datos.pin ?? CUENTA.pin, autoriza: true, ...datos });
   await page.getByLabel('Tu nombre', { exact: true }).fill(d.nombre);
   await page.getByLabel('Tu celular', { exact: true }).fill(d.celular);
   await page.getByLabel('Tu PIN', { exact: true }).fill(d.pin);
@@ -64,23 +89,41 @@ export async function llenarRegistro(
 }
 
 /**
- * Recorre bienvenida y registro, crea la cuenta y devuelve el codigo de recuperacion tal como
- * se muestra (por ejemplo "ABCD-EFGH-JKMN"). Termina en /inicio con la sesion iniciada.
+ * Recorre bienvenida y registro, crea la cuenta (en el dispositivo y en el servidor) y devuelve
+ * los datos usados con el codigo de recuperacion. Termina en /inicio con la sesion iniciada.
  */
-export async function crearCuenta(page: Page, datos: DatosCuentaPrueba = CUENTA): Promise<string> {
+export async function crearCuentaCompleta(page: Page, datos: DatosCuentaPrueba = CUENTA): Promise<CuentaCreadaPrueba> {
+  const d = conCelularPropio({ nombre: datos.nombre, celular: datos.celular, pin: datos.pin });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1, name: 'VozVial' })).toBeVisible();
   await page.getByTestId('ir-registro').click();
   await expect(page.getByRole('heading', { level: 1, name: 'Crear mi cuenta' })).toBeVisible();
-  await llenarRegistro(page, datos);
+  await llenarRegistro(page, d);
   await page.getByRole('button', { name: 'Crear cuenta', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Tu código de recuperación' })).toBeVisible({
     timeout: 30_000,
   });
   const codigo = ((await page.getByTestId('codigo-recuperacion').innerText()) ?? '').trim();
   await page.getByRole('link', { name: /^Ya lo guardé/ }).click();
-  await expect(page.getByRole('heading', { level: 1, name: `Hola, ${datos.nombre}` })).toBeVisible();
-  return codigo;
+  await expect(page.getByRole('heading', { level: 1, name: `Hola, ${d.nombre}` })).toBeVisible();
+  return { ...d, codigo };
+}
+
+/** Como crearCuentaCompleta, pero devuelve solo el codigo de recuperacion (por ejemplo "ABCD-EFGH-JKMN"). */
+export async function crearCuenta(page: Page, datos: DatosCuentaPrueba = CUENTA): Promise<string> {
+  return (await crearCuentaCompleta(page, datos)).codigo;
+}
+
+/**
+ * Entra en un navegador sin cuenta guardada (otro dispositivo): /entrar pide celular y PIN.
+ * No espera el resultado.
+ */
+export async function entrarConCelular(page: Page, celular: string, pin: string = CUENTA.pin): Promise<void> {
+  await page.goto('/entrar');
+  await expect(page.getByRole('heading', { level: 1, name: 'Entrar' })).toBeVisible();
+  await page.getByLabel('Tu celular', { exact: true }).fill(celular);
+  await page.getByLabel('Tu PIN', { exact: true }).fill(pin);
+  await page.getByRole('button', { name: 'Entrar', exact: true }).click();
 }
 
 /** Deja la sesion iniciada en /inicio con una cuenta nueva. Devuelve el codigo de recuperacion. */
@@ -231,4 +274,16 @@ export async function sinReconocimientoVoz(page: Page): Promise<void> {
       }
     }
   });
+}
+
+/**
+ * Vuelve al inicio sin recargar (recargar cierra la sesion): toca "Volver" hasta ver el saludo.
+ */
+export async function volverAlInicio(page: Page): Promise<void> {
+  const saludo = page.getByRole('heading', { level: 1, name: /^Hola, / });
+  for (let i = 0; i < 5 && !(await saludo.isVisible()); i++) {
+    await page.getByRole('button', { name: 'Volver a la pantalla anterior' }).click();
+    await page.waitForTimeout(300);
+  }
+  await expect(saludo).toBeVisible();
 }

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 import type { Caso } from '../core/Caso';
-import { obtenerRepositorioCasos } from './servicios';
+import { alCambiarDatosRemotos, obtenerRepositorioCasos } from './servicios';
 import { useSesion } from './sesion';
 
 interface EstadoCasos {
@@ -35,6 +35,11 @@ export const useCasos = create<EstadoCasos>()((set, get) => ({
   },
   quitarDeLista: (id) => set({ casos: get().casos.filter((c) => c.id !== id) }),
 }));
+
+// Cuando llegan casos de otro dispositivo, la lista se vuelve a leer del almacen.
+alCambiarDatosRemotos(() => {
+  if (useSesion.getState().claveDatos) void useCasos.getState().recargar();
+});
 
 // Al cerrar la sesion no quedan casos descifrados en memoria.
 useSesion.subscribe((estado, anterior) => {

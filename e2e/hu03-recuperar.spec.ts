@@ -1,7 +1,7 @@
 // HU-03 Recuperar el acceso con el codigo de recuperacion.
-import { expect, test, type Page } from '@playwright/test';
+import { devices, expect, test, type Page } from '@playwright/test';
 
-import { CUENTA, capturar, crearCuentaYEntrar, escribirPinYEntrar, leerIndexedDB } from './utilidades';
+import { CUENTA, capturar, crearCuentaCompleta, crearCuentaYEntrar, escribirPinYEntrar, leerIndexedDB } from './utilidades';
 
 const PIN_NUEVO = '739164';
 
@@ -84,4 +84,55 @@ test('CA-03.2 con un código incorrecto se rechaza y el PIN no cambia', async ({
   await expect(page.getByText('PIN incorrecto. Te quedan 4 intentos.', { exact: true })).toBeVisible();
   await escribirPinYEntrar(page, CUENTA.pin);
   await expect(page.getByRole('heading', { level: 1, name: `Hola, ${CUENTA.nombre}` })).toBeVisible();
+});
+
+test('CA-03.1 en otro navegador, con mi celular y el código, defino un PIN nuevo y mis casos siguen ahí', async ({
+  page,
+  browser,
+  baseURL,
+}) => {
+  test.setTimeout(90_000);
+  const cuenta = await crearCuentaCompleta(page);
+  await page.getByTestId('boton-me-pararon').click();
+  const subida = page.waitForResponse((r) => /\/api\/casos\/[^/?]+/.test(r.url()) && r.request().method() === 'PUT' && r.ok(), {
+    timeout: 20_000,
+  });
+  await page.getByTestId('boton-terminar').click();
+  await subida;
+
+  const otro = await browser.newContext({ ...devices['Pixel 7'], baseURL, locale: 'es-CO', timezoneId: 'America/Bogota' });
+  try {
+    const page2 = await otro.newPage();
+    await page2.goto('/recuperar');
+    await expect(page2.getByRole('heading', { level: 1, name: 'Recuperar el acceso' })).toBeVisible();
+    // Sin cuenta en este navegador tambien se pide el celular.
+    await page2.getByLabel('Tu celular', { exact: true }).fill(cuenta.celular);
+
+    // Un codigo ajeno se rechaza en el servidor.
+    await llenarRecuperacion(page2, codigoAjeno(cuenta.codigo));
+    await expect(page2.getByText('El celular o el código no son correctos. Revísalos.', { exact: true })).toBeVisible({
+      timeout: 15_000,
+    });
+
+    await llenarRecuperacion(page2, cuenta.codigo);
+    await expect(page2.getByRole('heading', { level: 1, name: `Hola, ${cuenta.nombre}` })).toBeVisible({ timeout: 30_000 });
+    await page2.getByTestId('ir-casos').click();
+    await expect(page2.getByTestId('lista-casos').getByRole('listitem')).toHaveCount(1, { timeout: 15_000 });
+    await capturar(page2, 'CA-03.1-otro-dispositivo');
+  } finally {
+    await otro.close();
+  }
+
+  // El PIN nuevo quedo en el servidor: desde un tercer navegador se entra con el.
+  const tercero = await browser.newContext({ ...devices['Pixel 7'], baseURL, locale: 'es-CO', timezoneId: 'America/Bogota' });
+  try {
+    const page3 = await tercero.newPage();
+    await page3.goto('/entrar');
+    await page3.getByLabel('Tu celular', { exact: true }).fill(cuenta.celular);
+    await page3.getByLabel('Tu PIN', { exact: true }).fill(PIN_NUEVO);
+    await page3.getByRole('button', { name: 'Entrar', exact: true }).click();
+    await expect(page3.getByRole('heading', { level: 1, name: `Hola, ${cuenta.nombre}` })).toBeVisible({ timeout: 30_000 });
+  } finally {
+    await tercero.close();
+  }
 });

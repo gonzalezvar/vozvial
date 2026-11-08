@@ -8,24 +8,30 @@ interface EstadoSesion {
   /** Clave de datos AES-GCM. Vive solo en memoria: al recargar la pagina hay que volver a entrar. */
   claveDatos: CryptoKey | null;
   perfil: Perfil | null;
+  /** Token de la sesion con el servidor. Tambien solo en memoria; null = sin copia en el servidor ahora. */
+  tokenServidor: string | null;
   /** Instante (ms) del ultimo toque o tecla. Lo usa el cierre por inactividad. */
   ultimaActividad: number;
   /** Por que se cerro la ultima sesion. La pantalla "Entrar" lo usa para explicar el cierre. */
   motivoCierre: MotivoCierre;
-  iniciar: (claveDatos: CryptoKey, perfil: Perfil) => void;
+  iniciar: (claveDatos: CryptoKey, perfil: Perfil, tokenServidor?: string | null) => void;
+  fijarToken: (tokenServidor: string | null) => void;
   cerrar: (motivo?: Exclude<MotivoCierre, null>) => void;
   tocar: () => void;
   olvidarMotivoCierre: () => void;
 }
 
-// Sin middleware persist a proposito: la clave nunca se escribe en almacenamiento.
+// Sin middleware persist a proposito: ni la clave ni el token se escriben en almacenamiento.
 export const useSesion = create<EstadoSesion>()((set) => ({
   claveDatos: null,
   perfil: null,
+  tokenServidor: null,
   ultimaActividad: Date.now(),
   motivoCierre: null,
-  iniciar: (claveDatos, perfil) => set({ claveDatos, perfil, ultimaActividad: Date.now(), motivoCierre: null }),
-  cerrar: (motivo = 'usuario') => set({ claveDatos: null, perfil: null, motivoCierre: motivo }),
+  iniciar: (claveDatos, perfil, tokenServidor = null) =>
+    set({ claveDatos, perfil, tokenServidor, ultimaActividad: Date.now(), motivoCierre: null }),
+  fijarToken: (tokenServidor) => set({ tokenServidor }),
+  cerrar: (motivo = 'usuario') => set({ claveDatos: null, perfil: null, tokenServidor: null, motivoCierre: motivo }),
   tocar: () => set({ ultimaActividad: Date.now() }),
   olvidarMotivoCierre: () => set({ motivoCierre: null }),
 }));
