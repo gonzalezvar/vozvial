@@ -1,0 +1,13 @@
+Lector de texto (OCR) autoalojado para la pantalla "Registrar un comparendo".
+No se carga nada desde CDN de terceros: todo sale de esta carpeta.
+
+Origen de cada archivo
+- tesseract.min.js y worker.min.js: copiados de node_modules/tesseract.js/dist (tesseract.js 7.0.0, licencia Apache 2.0, ver LICENSE-tesseract.js.txt).
+- core/tesseract-core-*-lstm.wasm.js: copiados de node_modules/tesseract.js-core (7.0.0, licencia Apache 2.0, ver core/LICENSE.txt). Solo las variantes LSTM, que son las que usa el modo predeterminado.
+- lang/spa.traineddata: descargado una vez del repositorio oficial tessdata_fast
+  https://github.com/tesseract-ocr/tessdata_fast/raw/main/spa.traineddata (8 de noviembre de 2026, licencia Apache 2.0)
+  sha256 6f2e04d02774a18f01bed44b1111f2cd7f3ba7ac9dc4373cd3f898a40ea6b464
+
+Para actualizar tras subir de versión tesseract.js:
+  cp node_modules/tesseract.js/dist/{tesseract.min.js,worker.min.js} public/tesseract/
+  cp node_modules/tesseract.js-core/tesseract-core{,-simd,-relaxedsimd}-lstm.wasm.js public/tesseract/core/
